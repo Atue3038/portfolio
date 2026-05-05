@@ -1,0 +1,126 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Nexa Bold font via CDN */
+@import url('https://fonts.cdnfonts.com/css/nexa');
+
+:root {
+  --bg: #07100b;
+  --white: #ffffff;
+  --white-70: rgba(255, 255, 255, 0.7);
+  --white-20: rgba(255, 255, 255, 0.2);
+  --green: #064622;
+}
+
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+html,
+body {
+  background-color: var(--bg);
+  color: var(--white);
+  font-family: 'Nexa', sans-serif;
+  overflow-x: hidden;
+}
+
+/* Smooth scroll */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Nav button pill */
+.nav-btn {
+  border: 1px solid var(--white-20);
+  border-radius: 200px;
+  padding: 12px 15px;
+  font-family: 'Nexa', sans-serif;
+  font-weight: 700;
+  font-size: 25px;
+  color: var(--white);
+  background: transparent;
+  white-space: nowrap;
+  cursor: pointer;
+  transition: background 0.2s, color 0.2s;
+  text-decoration: none;
+}
+
+.nav-btn:hover {
+  background: rgba(255, 255, 255, 0.08);
+}
+
+/* Contact button (filled white) */
+.btn-primary {
+  background: var(--white);
+  color: var(--bg);
+  border-radius: 200px;
+  padding: 15px 30px;
+  font-family: 'Nexa', sans-serif;
+  font-weight: 700;
+  font-size: 25px;
+  white-space: nowrap;
+  cursor: pointer;
+  border: none;
+  text-decoration: none;
+  transition: opacity 0.2s;
+}
+
+.btn-primary:hover {
+  opacity: 0.9;
+}
+
+/* Contact button (outlined) */
+.btn-outline {
+  background: var(--bg);
+  color: var(--white);
+  border: 1px solid var(--white-20);
+  border-radius: 200px;
+  padding: 15px 30px;
+  font-family: 'Nexa', sans-serif;
+  font-weight: 700;
+  font-size: 25px;
+  white-space: nowrap;
+  cursor: pointer;
+  text-decoration: none;
+  transition: background 0.2s;
+}
+
+.btn-outline:hover {
+  background: rgba(255, 255, 255, 0.08);
+}
+
+/* Tags: white filled small pill */
+.tag {
+  background: var(--white);
+  color: var(--bg);
+  padding: 2px 20px;
+  font-family: 'Nexa', sans-serif;
+  font-weight: 700;
+  font-size: 18px;
+  white-space: nowrap;
+}
+
+/* Divider line */
+.divider {
+  width: 100%;
+  height: 1px;
+  background: var(--white-20);
+}
+
+/* Ellipse dot */
+.dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: var(--white);
+}
+
+/* Project card */
+.project-card {
+  border-radius: 16px;
+  overflow: hidden;
+  background: #0f1f16;
+}
