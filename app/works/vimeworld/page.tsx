@@ -1,10 +1,15 @@
 import Link from "next/link";
 
-/* ── Fresh Figma assets ── */
-const IMG_HERO        = "https://www.figma.com/api/mcp/asset/72b8cbf0-89a3-4bf2-9f83-6b001727c2b4";
-const IMG_MAIN_UI     = "https://www.figma.com/api/mcp/asset/dc06252a-1ecd-4a78-9f16-4eefba54881d";
-const IMG_UX_FLOW     = "https://www.figma.com/api/mcp/asset/97f61097-48b8-42a4-9c58-0a713737b9d5";
-const IMG_SKETCH_L    = "https://www.figma.com/api/mcp/asset/f41ea73b-268c-4e77-821b-6366b5e4d915";
+const font = "'Nexa', sans-serif";
+const bg = "#07100b";
+const white = "#ffffff";
+const muted = "rgba(255,255,255,0.55)";
+
+/* ── Figma asset URLs ── */
+const IMG_HERO     = "https://www.figma.com/api/mcp/asset/72b8cbf0-89a3-4bf2-9f83-6b001727c2b4";
+const IMG_MAIN_UI  = "https://www.figma.com/api/mcp/asset/dc06252a-1ecd-4a78-9f16-4eefba54881d";
+const IMG_SKETCH   = "https://www.figma.com/api/mcp/asset/f41ea73b-268c-4e77-821b-6366b5e4d915";
+const IMG_UX_FLOW  = "https://www.figma.com/api/mcp/asset/97f61097-48b8-42a4-9c58-0a713737b9d5";
 
 const USER_NEEDS = [
   "https://www.figma.com/api/mcp/asset/2828cb21-b4e4-4401-9977-627a8af0b535",
@@ -24,10 +29,10 @@ const COLORS = [
   "https://www.figma.com/api/mcp/asset/56ed0caf-71f1-4e1f-a857-ec9046a764c6",
 ];
 
-const BUTTONS   = "https://www.figma.com/api/mcp/asset/37457c5e-3b93-4356-b432-c9314d5f78be";
-const ICONS_1   = "https://www.figma.com/api/mcp/asset/a527cf3d-a216-4c19-a6aa-e546f880e003";
-const ICONS_2   = "https://www.figma.com/api/mcp/asset/df06d388-fdf3-4ed0-965b-95c3cf5204a8";
-const STATES    = "https://www.figma.com/api/mcp/asset/96534af3-cf35-4524-aee3-302e07740ccc";
+const BUTTONS  = "https://www.figma.com/api/mcp/asset/37457c5e-3b93-4356-b432-c9314d5f78be";
+const ICONS_1  = "https://www.figma.com/api/mcp/asset/a527cf3d-a216-4c19-a6aa-e546f880e003";
+const ICONS_2  = "https://www.figma.com/api/mcp/asset/df06d388-fdf3-4ed0-965b-95c3cf5204a8";
+const STATES   = "https://www.figma.com/api/mcp/asset/96534af3-cf35-4524-aee3-302e07740ccc";
 
 const FEATURES = [
   "https://www.figma.com/api/mcp/asset/e8343665-f4db-4bdb-a0d7-5f94c3bdacde",
@@ -39,42 +44,38 @@ const FEATURES = [
   "https://www.figma.com/api/mcp/asset/9927f9f5-a7ec-41ce-a2d3-2401c0e1356f",
 ];
 
-/* Additional screens — left col (text side), right col (image side) */
-const CASE_IMG_RIGHT  = "https://www.figma.com/api/mcp/asset/d1e6a165-b04e-4ec8-a411-37d4c6c24c60";
-const CASE_IMG_LEFT   = "https://www.figma.com/api/mcp/asset/f0085539-5467-4888-b11f-2c762d7af867";
+/* Additional screens — правильный порядок: картинки слева, текст справа */
+const CASES   = [
+  "https://www.figma.com/api/mcp/asset/d1e6a165-b04e-4ec8-a411-37d4c6c24c60",
+  "https://www.figma.com/api/mcp/asset/f0085539-5467-4888-b11f-2c762d7af867",
+  "https://www.figma.com/api/mcp/asset/a0b915fa-6ae8-447e-8f47-e6a87e5f504e",
+];
+const PRIVS   = [
+  "https://www.figma.com/api/mcp/asset/9cb5b341-e1db-4496-a3f2-5df21066e541",
+  "https://www.figma.com/api/mcp/asset/c8d575d3-9efe-4310-b1f5-2c58c9feef07",
+  "https://www.figma.com/api/mcp/asset/6781bc27-9431-47dc-82f9-99fd589c4acc",
+];
+const WARPS   = [
+  "https://www.figma.com/api/mcp/asset/28c075ec-6509-4688-9804-a3821852107e",
+  "https://www.figma.com/api/mcp/asset/02d883d2-390d-4ea5-9542-13414f7dfea3",
+];
+const GUIDES  = [
+  "https://www.figma.com/api/mcp/asset/e0e65fe4-7406-4518-8cff-178e26d909b9",
+  "https://www.figma.com/api/mcp/asset/5492f058-324e-4ef1-a776-9c575329c81d",
+];
 
-const PRIV_IMG_RIGHT  = "https://www.figma.com/api/mcp/asset/c66bb347-580a-4bdc-8254-7ff5234eb3a4";
-const PRIV_IMG_MID    = "https://www.figma.com/api/mcp/asset/3cc08112-44ca-46f0-b631-ab52c390e16f";
-const PRIV_IMG_LEFT   = "https://www.figma.com/api/mcp/asset/b959507b-b0a2-4263-846e-94063011e22e";
+/* ── Shared components ── */
 
-const WARP_IMG_RIGHT  = "https://www.figma.com/api/mcp/asset/4edce945-56d6-4f34-a03c-9ca9c4405c40";
-const WARP_IMG_LEFT   = "https://www.figma.com/api/mcp/asset/96534af3-cf35-4524-aee3-302e07740ccc";
-
-const GUIDE_IMG_RIGHT = "https://www.figma.com/api/mcp/asset/1b6ba9dd-3bcb-4ee5-b547-11d93e1d2351";
-const GUIDE_IMG_LEFT  = "https://www.figma.com/api/mcp/asset/26a4d67c-16ee-469f-b76b-0e40996db9a3";
-
-/* ── Shared style tokens ── */
-const font = "'Nexa', sans-serif";
-const white = "#ffffff";
-const muted = "rgba(255,255,255,0.6)";
-
-const s = {
-  h2: { fontFamily: font, fontWeight: 700, fontSize: "35px", color: white, lineHeight: "normal", margin: 0 } as React.CSSProperties,
-  h3: { fontFamily: font, fontWeight: 700, fontSize: "30px", color: white, lineHeight: "normal", margin: 0 } as React.CSSProperties,
-  body: { fontFamily: font, fontWeight: 700, fontSize: "20px", color: white, lineHeight: "34px", margin: 0 } as React.CSSProperties,
-  muted: { fontFamily: font, fontWeight: 700, fontSize: "32px", color: muted, lineHeight: "normal", margin: 0 } as React.CSSProperties,
-};
-
-/* Thin-border image frame — твоя идея: лёгкая подложка, не жирная */
+/* Рамка как у картины — заметная, но не грубая */
 function Frame({ src, alt = "" }: { src: string; alt?: string }) {
   return (
     <div style={{
-      border: "1px solid rgba(255,255,255,0.12)",
-      borderRadius: "16px",
-      overflow: "hidden",
-      background: "rgba(255,255,255,0.03)",
+      border: "2px solid rgba(255,255,255,0.18)",
+      borderRadius: "14px",
+      padding: "10px",
+      background: "rgba(255,255,255,0.04)",
     }}>
-      <img src={src} alt={alt} style={{ width: "100%", height: "auto", display: "block" }} />
+      <img src={src} alt={alt} style={{ width: "100%", height: "auto", display: "block", borderRadius: "8px" }} />
     </div>
   );
 }
@@ -83,25 +84,46 @@ function Divider() {
   return <div style={{ width: "100%", height: "1px", background: "rgba(255,255,255,0.12)", margin: "80px 0" }} />;
 }
 
-function NavBtn({ href, children }: { href: string; children: React.ReactNode }) {
+/* Блок: картинка слева (~60%), текст справа (~40%) — как в Figma */
+function ScreenBlock({ images, texts }: { images: string[]; texts: string[] }) {
   return (
-    <a href={href} style={{
-      border: "1px solid rgba(255,255,255,0.2)",
-      borderRadius: "200px",
-      padding: "12px 15px",
-      fontFamily: font,
-      fontWeight: 700,
-      fontSize: "25px",
-      color: white,
-      textDecoration: "none",
-      whiteSpace: "nowrap" as const,
-    }}>{children}</a>
+    <div style={{ display: "grid", gridTemplateColumns: "3fr 2fr", gap: "48px", alignItems: "start", marginBottom: "64px" }}>
+      {/* Левая колонка — стопка картинок */}
+      <div style={{ display: "flex", flexDirection: "column", gap: "16px" }}>
+        {images.map((src, i) => <Frame key={i} src={src} />)}
+      </div>
+      {/* Правая колонка — тексты */}
+      <div style={{ display: "flex", flexDirection: "column", gap: "20px", paddingTop: "8px" }}>
+        {texts.map((text, i) => (
+          <p key={i} style={{ fontFamily: font, fontWeight: 700, fontSize: "18px", lineHeight: "30px", color: white, margin: 0 }}>
+            {text}
+          </p>
+        ))}
+      </div>
+    </div>
+  );
+}
+
+function H2({ children }: { children: React.ReactNode }) {
+  return <p style={{ fontFamily: font, fontWeight: 700, fontSize: "34px", color: white, margin: "0 0 32px" }}>{children}</p>;
+}
+function H3({ children }: { children: React.ReactNode }) {
+  return <p style={{ fontFamily: font, fontWeight: 700, fontSize: "26px", color: white, margin: "0 0 20px" }}>{children}</p>;
+}
+function Body({ children }: { children: React.ReactNode }) {
+  return <p style={{ fontFamily: font, fontWeight: 700, fontSize: "18px", lineHeight: "30px", color: white, margin: 0 }}>{children}</p>;
+}
+function Ul({ items }: { items: string[] }) {
+  return (
+    <ul style={{ fontFamily: font, fontWeight: 700, fontSize: "18px", lineHeight: "30px", color: white, paddingLeft: "22px", margin: 0, display: "flex", flexDirection: "column", gap: "4px" }}>
+      {items.map((item, i) => <li key={i}>{item}</li>)}
+    </ul>
   );
 }
 
 export default function VimeworldCase() {
   return (
-    <main style={{ background: "#07100b", minHeight: "100vh" }}>
+    <main style={{ background: bg, minHeight: "100vh" }}>
 
       {/* NAV */}
       <header style={{ padding: "45px 60px 0" }}>
@@ -109,283 +131,251 @@ export default function VimeworldCase() {
           Oleksii Klymushkin
         </Link>
         <nav style={{ display: "flex", justifyContent: "space-between", marginTop: "22px" }}>
-          <NavBtn href="/#works">Works</NavBtn>
-          <NavBtn href="/#about">About me</NavBtn>
-          <NavBtn href="/#contact">Contact</NavBtn>
+          {[["Works", "/#works"], ["About me", "/#about"], ["Contact", "/#contact"]].map(([l, h]) => (
+            <a key={l} href={h} style={{ border: "1px solid rgba(255,255,255,0.2)", borderRadius: "200px", padding: "10px 18px", fontFamily: font, fontWeight: 700, fontSize: "22px", color: white, textDecoration: "none" }}>{l}</a>
+          ))}
         </nav>
       </header>
 
-      <div style={{ padding: "80px 60px 0" }}>
+      <div style={{ padding: "72px 60px 0" }}>
 
         {/* HERO */}
         <div style={{ textAlign: "center", marginBottom: "48px" }}>
-          <p style={{ ...s.h2, fontSize: "42px" }}>Minecraft ESC Menu — UI/UX Design</p>
-          <p style={{ ...s.muted, marginTop: "12px" }}>Full Interface &amp; Experience</p>
+          <p style={{ fontFamily: font, fontWeight: 700, fontSize: "40px", color: white, margin: "0 0 12px" }}>Minecraft ESC Menu — UI/UX Design</p>
+          <p style={{ fontFamily: font, fontWeight: 700, fontSize: "28px", color: muted, margin: 0 }}>Full Interface &amp; Experience</p>
         </div>
         <Frame src={IMG_HERO} />
 
         {/* PROJECT OVERVIEW */}
-        <div style={{ marginTop: "80px" }}>
-          <p style={{ ...s.h2, marginBottom: "32px" }}>Project overview</p>
-          <div style={{ display: "flex", flexDirection: "column", gap: "14px", maxWidth: "860px" }}>
-            <p style={s.body}>The project is a completely redesigned ESC menu for a Minecraft server.</p>
-            <p style={s.body}>I created the UX flow, navigation, player action scenarios, as well as a visual UI that integrates the player profile, quests, daily rewards, guidebook, updates, and social features.</p>
-            <p style={s.body}>The goal is to enhance the player experience and make the interface intuitive, modern, and user-friendly.</p>
+        <div style={{ marginTop: "72px" }}>
+          <H2>Project overview</H2>
+          <div style={{ display: "flex", flexDirection: "column", gap: "14px", maxWidth: "820px" }}>
+            <Body>The project is a completely redesigned ESC menu for a Minecraft server.</Body>
+            <Body>I created the UX flow, navigation, player action scenarios, as well as a visual UI that integrates the player profile, quests, daily rewards, guidebook, updates, and social features.</Body>
+            <Body>The goal is to enhance the player experience and make the interface intuitive, modern, and user-friendly.</Body>
           </div>
         </div>
 
         {/* DISCLAIMER */}
-        <div style={{ marginTop: "60px" }}>
-          <p style={{ ...s.h2, marginBottom: "32px" }}>Disclaimer</p>
-          <div style={{ display: "flex", flexDirection: "column", gap: "14px", maxWidth: "860px" }}>
-            <p style={s.body}>The server logo and branding belong to their respective owners.</p>
-            <p style={s.body}>The project showcases both UX and UI: menu structure, player scenarios, navigation, and visual design.</p>
-            <p style={s.body}>The project was developed for a client.</p>
+        <div style={{ marginTop: "56px" }}>
+          <H2>Disclaimer</H2>
+          <div style={{ display: "flex", flexDirection: "column", gap: "14px", maxWidth: "820px" }}>
+            <Body>The server logo and branding belong to their respective owners.</Body>
+            <Body>The project showcases both UX and UI: menu structure, player scenarios, navigation, and visual design.</Body>
+            <Body>The project was developed for a client.</Body>
           </div>
         </div>
 
         <Divider />
 
         {/* PROBLEM & GOALS */}
-        <p style={{ ...s.h2, marginBottom: "48px" }}>Problem &amp; Goals</p>
-        <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "80px" }}>
+        <H2>Problem &amp; Goals</H2>
+        <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "60px" }}>
           <div>
-            <p style={{ ...s.h3, marginBottom: "24px" }}>Problem</p>
-            <p style={{ ...s.body, marginBottom: "12px" }}>Standard Minecraft ESC menu:</p>
-            <ul style={{ ...s.body, paddingLeft: "24px", display: "flex", flexDirection: "column", gap: "6px" }}>
-              <li>Does not display the player&apos;s profile or statistics</li>
-              <li>Does not reflect bonuses, quests, or the shop</li>
-              <li>Not suitable for servers with a large number of features</li>
-            </ul>
+            <H3>Problem</H3>
+            <Body>Standard Minecraft ESC menu:</Body>
+            <div style={{ marginTop: "12px" }}>
+              <Ul items={[
+                "Does not display the player's profile or statistics",
+                "Does not reflect bonuses, quests, or the shop",
+                "Not suitable for servers with a large number of features",
+              ]} />
+            </div>
           </div>
           <div>
-            <p style={{ ...s.h3, marginBottom: "24px" }}>Goals</p>
-            <ul style={{ ...s.body, paddingLeft: "24px", display: "flex", flexDirection: "column", gap: "6px" }}>
-              <li>Create an extended ESC menu with clear navigation</li>
-              <li>Place key server features on a single screen</li>
-              <li>Reduce the number of clicks and make the interface intuitive</li>
-              <li>Design a modern UI with a neon aesthetic</li>
-              <li>Improve player accessibility and engagement</li>
-            </ul>
+            <H3>Goals</H3>
+            <Ul items={[
+              "Create an extended ESC menu with clear navigation",
+              "Place key server features on a single screen",
+              "Reduce the number of clicks and make the interface intuitive",
+              "Design a modern UI with a neon aesthetic",
+              "Improve player accessibility and engagement",
+            ]} />
           </div>
         </div>
 
         <Divider />
 
         {/* USER NEEDS */}
-        <p style={{ ...s.h2, marginBottom: "48px" }}>User needs</p>
-        <div style={{ display: "grid", gridTemplateColumns: "repeat(4, 1fr)", gap: "16px", marginBottom: "16px" }}>
-          {USER_NEEDS.slice(0, 4).map((src, i) => (
-            <img key={i} src={src} alt="" style={{ width: "100%", borderRadius: "12px" }} />
-          ))}
+        <H2>User needs</H2>
+        <div style={{ display: "grid", gridTemplateColumns: "repeat(4, 1fr)", gap: "14px", marginBottom: "14px" }}>
+          {USER_NEEDS.slice(0, 4).map((src, i) => <img key={i} src={src} alt="" style={{ width: "100%", borderRadius: "10px" }} />)}
         </div>
-        <div style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: "16px", maxWidth: "75%", margin: "0 auto 48px" }}>
-          {USER_NEEDS.slice(4).map((src, i) => (
-            <img key={i} src={src} alt="" style={{ width: "100%", borderRadius: "12px" }} />
-          ))}
+        <div style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: "14px", maxWidth: "75%", margin: "0 auto 48px" }}>
+          {USER_NEEDS.slice(4).map((src, i) => <img key={i} src={src} alt="" style={{ width: "100%", borderRadius: "10px" }} />)}
         </div>
-        <p style={{ ...s.h3, marginBottom: "20px" }}>The player needs to:</p>
-        <ul style={{ ...s.body, paddingLeft: "24px", display: "flex", flexDirection: "column", gap: "6px" }}>
-          <li>quickly access quests</li>
-          <li>collect daily rewards</li>
-          <li>see their balance and privileges</li>
-          <li>keep track of server updates</li>
-          <li>navigate to the shop and settings</li>
-          <li>easily exit the game and open social links</li>
-        </ul>
+        <H3>The player needs to:</H3>
+        <Ul items={[
+          "quickly access quests",
+          "collect daily rewards",
+          "see their balance and privileges",
+          "keep track of server updates",
+          "navigate to the shop and settings",
+          "easily exit the game and open social links",
+        ]} />
 
         <Divider />
 
         {/* UX STRUCTURE */}
-        <p style={{ ...s.h2, marginBottom: "32px" }}>UX structure</p>
-        <p style={{ ...s.body, marginBottom: "20px", maxWidth: "860px" }}>
-          At the concept stage, I created sketches to distribute blocks, separate the left and right areas, and define the card-based structure for quests and the guidebook. This helped establish the UX flow and minimize cognitive load.
-        </p>
-        <p style={{ ...s.body, marginBottom: "48px", maxWidth: "860px" }}>
-          The menu structure reflects the logic of how players use the features. The UX flow intuitively guides the player from the main screen to the actions they need.
-        </p>
-        <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "20px" }}>
-          <Frame src={IMG_SKETCH_L} />
-          <Frame src={IMG_UX_FLOW} />
+        <H2>UX structure</H2>
+        {/* Текст слева, две картинки справа — как в PDF */}
+        <div style={{ display: "grid", gridTemplateColumns: "2fr 3fr", gap: "48px", alignItems: "start" }}>
+          <div style={{ display: "flex", flexDirection: "column", gap: "16px" }}>
+            <Body>At the concept stage, I created sketches to distribute blocks, separate the left and right areas, and define the card-based structure for quests and the guidebook. This helped establish the UX flow and minimize cognitive load.</Body>
+            <Body>The menu structure reflects the logic of how players use the features. The UX flow intuitively guides the player from the main screen to the actions they need.</Body>
+          </div>
+          <div style={{ display: "flex", flexDirection: "column", gap: "14px" }}>
+            <Frame src={IMG_SKETCH} />
+            <Frame src={IMG_UX_FLOW} />
+          </div>
         </div>
 
         <Divider />
 
         {/* UI STYLE GUIDE */}
-        <p style={{ ...s.h2, marginBottom: "40px" }}>UI Style Guide</p>
+        <H2>UI Style Guide</H2>
 
-        <p style={{ ...s.h3, marginBottom: "24px" }}>Colors</p>
-        <div style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: "16px", marginBottom: "16px" }}>
-          {COLORS.slice(0, 3).map((src, i) => <img key={i} src={src} alt="" style={{ width: "100%", borderRadius: "12px" }} />)}
+        <H3>Colors</H3>
+        <div style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: "14px", marginBottom: "14px" }}>
+          {COLORS.slice(0, 3).map((src, i) => <img key={i} src={src} alt="" style={{ width: "100%", borderRadius: "10px" }} />)}
         </div>
-        <div style={{ display: "grid", gridTemplateColumns: "repeat(2, 1fr)", gap: "16px", maxWidth: "66%", marginBottom: "60px" }}>
-          {COLORS.slice(3).map((src, i) => <img key={i} src={src} alt="" style={{ width: "100%", borderRadius: "12px" }} />)}
+        <div style={{ display: "grid", gridTemplateColumns: "repeat(2, 1fr)", gap: "14px", maxWidth: "66%", marginBottom: "56px" }}>
+          {COLORS.slice(3).map((src, i) => <img key={i} src={src} alt="" style={{ width: "100%", borderRadius: "10px" }} />)}
         </div>
 
-        <p style={{ ...s.h3, marginBottom: "24px" }}>Typography — Nexa [Bold]</p>
-        <div style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: "14px", marginBottom: "60px" }}>
+        <H3>Typography — Nexa [Bold]</H3>
+        <div style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: "12px", marginBottom: "56px" }}>
           {[
-            { label: "Headings — 30-40 px", size: "32px" },
-            { label: "Body Text — 22-25 px", size: "22px" },
-            { label: "Small Buttons — 15 px", size: "15px" },
-            { label: "Default Buttons — 20 px", size: "20px" },
-            { label: "Large Buttons — 30 px", size: "30px" },
-            { label: "UI Labels — 22-30 px", size: "26px" },
-            { label: "Captions — 20-30 px", size: "22px" },
-          ].map(({ label, size }) => (
-            <div key={label} style={{ background: "rgba(255,255,255,0.07)", borderRadius: "16px", padding: "24px 28px", display: "flex", flexDirection: "column", gap: "20px" }}>
-              <span style={{ fontFamily: font, fontWeight: 700, fontSize: "15px", color: muted }}>{label}</span>
-              <span style={{ fontFamily: font, fontWeight: 700, fontSize: size, color: white }}>{label.split("—")[0].trim()}</span>
+            ["Headings — 30-40 px", "32px"],
+            ["Body Text — 22-25 px", "22px"],
+            ["Small Buttons — 15 px", "15px"],
+            ["Default Buttons — 20 px", "20px"],
+            ["Large Buttons — 30 px", "28px"],
+            ["UI Labels — 22-30 px", "24px"],
+            ["Captions — 20-30 px", "20px"],
+          ].map(([label, size]) => (
+            <div key={label} style={{ background: "rgba(255,255,255,0.06)", borderRadius: "14px", padding: "22px 24px", display: "flex", flexDirection: "column", gap: "18px" }}>
+              <span style={{ fontFamily: font, fontWeight: 700, fontSize: "13px", color: muted }}>{label}</span>
+              <span style={{ fontFamily: font, fontWeight: 700, fontSize: size, color: white }}>Hello World</span>
             </div>
           ))}
         </div>
 
-        <p style={{ ...s.h3, marginBottom: "24px" }}>Buttons</p>
-        <img src={BUTTONS} alt="Buttons" style={{ width: "100%", borderRadius: "12px", marginBottom: "60px" }} />
+        <H3>Buttons</H3>
+        <img src={BUTTONS} alt="Buttons" style={{ width: "100%", borderRadius: "10px", marginBottom: "56px" }} />
 
-        <p style={{ ...s.h3, marginBottom: "24px" }}>Icons &amp; Components</p>
-        <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "16px", marginBottom: "60px" }}>
-          <img src={ICONS_1} alt="" style={{ width: "100%", borderRadius: "12px" }} />
-          <img src={ICONS_2} alt="" style={{ width: "100%", borderRadius: "12px" }} />
+        <H3>Icons &amp; Components</H3>
+        <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "14px", marginBottom: "56px" }}>
+          <img src={ICONS_1} alt="" style={{ width: "100%", borderRadius: "10px" }} />
+          <img src={ICONS_2} alt="" style={{ width: "100%", borderRadius: "10px" }} />
         </div>
 
-        {/* Hover / Active */}
-        <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "60px", marginBottom: "36px" }}>
+        <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "56px", marginBottom: "32px" }}>
           <div>
-            <p style={{ ...s.h3, marginBottom: "20px" }}>Hover state</p>
-            <ul style={{ ...s.body, paddingLeft: "24px", display: "flex", flexDirection: "column", gap: "6px" }}>
-              <li>Icons slightly enlarge when hovered</li>
-              <li>Provides visual feedback and draws attention to interactive elements</li>
-              <li>Improves click target perception and engagement</li>
-            </ul>
+            <H3>Hover state</H3>
+            <Ul items={["Icons slightly enlarge when hovered", "Provides visual feedback and draws attention to interactive elements", "Improves click target perception and engagement"]} />
           </div>
           <div>
-            <p style={{ ...s.h3, marginBottom: "20px" }}>Pressed / Active State</p>
-            <ul style={{ ...s.body, paddingLeft: "24px", display: "flex", flexDirection: "column", gap: "6px" }}>
-              <li>A light neon outline appears around the icon or button</li>
-              <li>Signals that the element has been clicked or activated</li>
-              <li>Maintains visual consistency with the neon UI style</li>
-            </ul>
+            <H3>Pressed / Active State</H3>
+            <Ul items={["A light neon outline appears around the icon or button", "Signals that the element has been clicked or activated", "Maintains visual consistency with the neon UI style"]} />
           </div>
         </div>
-        <img src={STATES} alt="States" style={{ width: "100%", borderRadius: "12px" }} />
+        <img src={STATES} alt="States" style={{ width: "100%", borderRadius: "10px" }} />
 
         <Divider />
 
         {/* MAIN UI */}
-        <p style={{ ...s.h2, marginBottom: "32px" }}>Main UI</p>
-        <p style={{ ...s.body, marginBottom: "40px", maxWidth: "860px" }}>
-          The main screen demonstrates the UX flow: large navigation blocks, quest and reward cards, and a right column with social buttons and settings. Everything is designed for convenient and predictable player interaction.
-        </p>
-        <Frame src={IMG_MAIN_UI} />
+        <H2>Main UI</H2>
+        <Body>The main screen demonstrates the UX flow: large navigation blocks, quest and reward cards, and a right column with social buttons and settings. Everything is designed for convenient and predictable player interaction.</Body>
+        <div style={{ marginTop: "32px" }}>
+          <Frame src={IMG_MAIN_UI} />
+        </div>
 
         <Divider />
 
         {/* FEATURE BREAKDOWN */}
-        <p style={{ ...s.h2, marginBottom: "40px" }}>Feature Breakdown</p>
-        <div style={{ display: "flex", flexDirection: "column", gap: "16px" }}>
-          <div style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: "16px" }}>
-            {FEATURES.slice(0, 3).map((src, i) => <img key={i} src={src} alt="" style={{ width: "100%", borderRadius: "12px" }} />)}
+        <H2>Feature Breakdown</H2>
+        <div style={{ display: "flex", flexDirection: "column", gap: "14px" }}>
+          <div style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: "14px" }}>
+            {FEATURES.slice(0, 3).map((src, i) => <img key={i} src={src} alt="" style={{ width: "100%", borderRadius: "10px" }} />)}
           </div>
-          <div style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: "16px" }}>
-            {FEATURES.slice(3, 6).map((src, i) => <img key={i} src={src} alt="" style={{ width: "100%", borderRadius: "12px" }} />)}
+          <div style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: "14px" }}>
+            {FEATURES.slice(3, 6).map((src, i) => <img key={i} src={src} alt="" style={{ width: "100%", borderRadius: "10px" }} />)}
           </div>
-          <div style={{ display: "grid", gridTemplateColumns: "repeat(2, 1fr)", gap: "16px" }}>
-            {FEATURES.slice(6).map((src, i) => <img key={i} src={src} alt="" style={{ width: "100%", borderRadius: "12px" }} />)}
+          <div style={{ display: "grid", gridTemplateColumns: "repeat(2, 1fr)", gap: "14px" }}>
+            {FEATURES.slice(6).map((src, i) => <img key={i} src={src} alt="" style={{ width: "100%", borderRadius: "10px" }} />)}
           </div>
         </div>
 
         <Divider />
 
-        {/* ADDITIONAL SCREENS */}
-        <p style={{ ...s.h2, marginBottom: "56px" }}>Additional Screens</p>
+        {/* ADDITIONAL SCREENS — картинка слева, текст справа */}
+        <H2>Additional Screens</H2>
 
-        {/* Cases — текст слева (1/3), картинка справа (2/3) */}
-        <p style={{ ...s.h3, marginBottom: "32px" }}>Cases</p>
-        <div style={{ display: "grid", gridTemplateColumns: "1fr 2fr", gap: "48px", alignItems: "start", marginBottom: "80px" }}>
-          <div style={{ display: "flex", flexDirection: "column", gap: "24px" }}>
-            <p style={s.body}>Clicking the &quot;Buy&quot; button opens a menu where you can select the number of cases to purchase. The total cost and a confirmation button are also displayed.</p>
-            <p style={s.body}>Clicking the &quot;Open&quot; button opens a case-opening window for the user, which includes a &quot;Boost&quot; button.</p>
-          </div>
-          <div style={{ display: "flex", flexDirection: "column", gap: "16px" }}>
-            <Frame src={CASE_IMG_RIGHT} />
-            <Frame src={CASE_IMG_LEFT} />
-          </div>
-        </div>
+        <H3>Cases</H3>
+        <ScreenBlock
+          images={CASES}
+          texts={[
+            'Clicking the "Buy" button opens a menu where you can select the number of cases to purchase. The total cost and a confirmation button are also displayed.',
+            'Clicking the "Open" button opens a case-opening window for the user, which includes a "Boost" button.',
+          ]}
+        />
 
-        {/* Privileges */}
-        <p style={{ ...s.h3, marginBottom: "32px" }}>Privileges</p>
-        <div style={{ display: "grid", gridTemplateColumns: "1fr 2fr", gap: "48px", alignItems: "start", marginBottom: "80px" }}>
-          <div style={{ display: "flex", flexDirection: "column", gap: "24px" }}>
-            <p style={s.body}>This screen displays a list of privileges, as well as information about the selected case. There are buttons to purchase a privilege or gift it to another player.</p>
-            <p style={s.body}>Clicking &quot;Buy&quot; opens a window with purchase details and a confirmation button.</p>
-            <p style={s.body}>Clicking &quot;Gift&quot; opens an almost identical window to the &quot;Buy&quot; option, but includes a field to enter the nickname of the player to whom the user wants to gift the privilege.</p>
-          </div>
-          <div style={{ display: "flex", flexDirection: "column", gap: "16px" }}>
-            <Frame src={PRIV_IMG_LEFT} />
-            <Frame src={PRIV_IMG_MID} />
-            <Frame src={PRIV_IMG_RIGHT} />
-          </div>
-        </div>
+        <H3>Privileges</H3>
+        <ScreenBlock
+          images={PRIVS}
+          texts={[
+            "This screen displays a list of privileges, as well as information about the selected case. There are buttons to purchase a privilege or gift it to another player.",
+            'Clicking "Buy" opens a window with purchase details and a confirmation button.',
+            'Clicking "Gift" opens an almost identical window to the "Buy" option, but includes a field to enter the nickname of the player to whom the user wants to gift the privilege.',
+          ]}
+        />
 
-        {/* Warps */}
-        <p style={{ ...s.h3, marginBottom: "32px" }}>Warps</p>
-        <div style={{ display: "grid", gridTemplateColumns: "1fr 2fr", gap: "48px", alignItems: "start", marginBottom: "80px" }}>
-          <div style={{ display: "flex", flexDirection: "column", gap: "24px" }}>
-            <p style={s.body}>The screen displays cards for warps, each with a &quot;More Info&quot; button, allowing the user to click and learn more about the warp. Clicking the left mouse button on a warp card will automatically teleport the user to it.</p>
-            <p style={s.body}>Each card has a hover effect, highlighting it and slightly increasing its size.</p>
-            <p style={s.body}>Clicking the &quot;More Info&quot; button opens a window with detailed information about the warp, as well as a &quot;Teleport&quot; button.</p>
-          </div>
-          <div style={{ display: "flex", flexDirection: "column", gap: "16px" }}>
-            <Frame src={WARP_IMG_LEFT} />
-            <Frame src={WARP_IMG_RIGHT} />
-          </div>
-        </div>
+        <H3>Warps</H3>
+        <ScreenBlock
+          images={WARPS}
+          texts={[
+            'The screen displays cards for warps, each with a "More Info" button, allowing the user to click and learn more about the warp. Clicking the left mouse button on a warp card will automatically teleport the user to it.',
+            "Each card has a hover effect, highlighting it and slightly increasing its size.",
+            'Clicking the "More Info" button opens a window with detailed information about the warp, as well as a "Teleport" button.',
+          ]}
+        />
 
-        {/* GuideBook */}
-        <p style={{ ...s.h3, marginBottom: "32px" }}>GuideBook</p>
-        <div style={{ display: "grid", gridTemplateColumns: "1fr 2fr", gap: "48px", alignItems: "start", marginBottom: "80px" }}>
-          <div style={{ display: "flex", flexDirection: "column", gap: "24px" }}>
-            <p style={s.body}>Clicking the &quot;Go&quot; button on a GuideBook card on the main page opens a convenient window, with categories (rules, guides, command list, and server features) on the left side, and the information for the selected category displayed on the right side.</p>
-            <p style={s.body}>On the right side of the window, all information is structured, with each item having buttons to expand for more details and the option to collapse it back.</p>
-          </div>
-          <div style={{ display: "flex", flexDirection: "column", gap: "16px" }}>
-            <Frame src={GUIDE_IMG_LEFT} />
-            <Frame src={GUIDE_IMG_RIGHT} />
-          </div>
-        </div>
+        <H3>GuideBook</H3>
+        <ScreenBlock
+          images={GUIDES}
+          texts={[
+            'Clicking the "Go" button on a GuideBook card on the main page opens a convenient window, with categories (rules, guides, command list, and server features) on the left side, and the information for the selected category displayed on the right side.',
+            "On the right side of the window, all information is structured, with each item having buttons to expand for more details and the option to collapse it back.",
+          ]}
+        />
+
+        <Divider />
 
         {/* FINAL RESULT */}
-        <Divider />
-        <p style={{ ...s.h2, marginBottom: "32px" }}>Final Result</p>
-        <p style={{ ...s.body, maxWidth: "860px" }}>
-          I created an interface that integrates all server functionality, improved the UX, and developed UI components. The project enhanced my UI/UX skills for game interfaces and helped me gain a deeper understanding of the visual logic behind player interactions.
-        </p>
+        <H2>Final Result</H2>
+        <Body>I created an interface that integrates all server functionality, improved the UX, and developed UI components. The project enhanced my UI/UX skills for game interfaces and helped me gain a deeper understanding of the visual logic behind player interactions.</Body>
 
         {/* CONTACT */}
-        <div style={{ marginTop: "140px", display: "flex", justifyContent: "flex-end" }}>
-          <div style={{ display: "flex", flexDirection: "column", gap: "36px", maxWidth: "480px" }}>
-            <p style={{ fontFamily: font, fontWeight: 700, fontSize: "20px", color: white, lineHeight: "1.5", margin: 0 }}>
-              Ready to work together? Let&apos;s talk about freelance projects, collaborations, and full-time roles.
-            </p>
+        <div style={{ marginTop: "120px", display: "flex", justifyContent: "flex-end" }}>
+          <div style={{ display: "flex", flexDirection: "column", gap: "28px", maxWidth: "460px" }}>
+            <Body>Ready to work together? Let&apos;s talk about freelance projects, collaborations, and full-time roles.</Body>
             <div style={{ display: "flex", gap: "12px" }}>
-              <a href="https://t.me/" target="_blank" rel="noreferrer" style={{ background: white, color: "#07100b", borderRadius: "200px", padding: "13px 26px", fontFamily: font, fontWeight: 700, fontSize: "20px", textDecoration: "none" }}>Telegram</a>
-              <a href="https://instagram.com/" target="_blank" rel="noreferrer" style={{ border: "1px solid rgba(255,255,255,0.2)", color: white, borderRadius: "200px", padding: "13px 26px", fontFamily: font, fontWeight: 700, fontSize: "20px", textDecoration: "none" }}>Instagram</a>
-              <a href="mailto:example@gmail.com" style={{ border: "1px solid rgba(255,255,255,0.2)", color: white, borderRadius: "200px", padding: "13px 26px", fontFamily: font, fontWeight: 700, fontSize: "20px", textDecoration: "none" }}>Gmail</a>
+              {[["Telegram", true], ["Instagram", false], ["Gmail", false]].map(([label, filled]) => (
+                <a key={label as string} href={label === "Gmail" ? "mailto:example@gmail.com" : "#"} style={{ background: filled ? white : "transparent", color: filled ? bg : white, border: filled ? "none" : "1px solid rgba(255,255,255,0.2)", borderRadius: "200px", padding: "12px 24px", fontFamily: font, fontWeight: 700, fontSize: "18px", textDecoration: "none", whiteSpace: "nowrap" }}>{label}</a>
+              ))}
             </div>
           </div>
         </div>
 
         {/* FOOTER */}
-        <footer style={{ marginTop: "140px", paddingBottom: "0" }}>
-          <div style={{ display: "flex", justifyContent: "space-between", marginBottom: "0" }}>
-            {[["Insta", "#"], ["Behance", "#"], ["Telegram", "#"]].map(([label, href]) => (
-              <a key={label} href={href} style={{ border: "1px solid rgba(255,255,255,0.2)", borderRadius: "200px", padding: "12px 15px", fontFamily: font, fontWeight: 700, fontSize: "25px", color: white, textDecoration: "none" }}>{label}</a>
+        <footer style={{ marginTop: "120px" }}>
+          <div style={{ display: "flex", justifyContent: "space-between" }}>
+            {["Insta", "Behance", "Telegram"].map(l => (
+              <a key={l} href="#" style={{ border: "1px solid rgba(255,255,255,0.2)", borderRadius: "200px", padding: "10px 18px", fontFamily: font, fontWeight: 700, fontSize: "22px", color: white, textDecoration: "none" }}>{l}</a>
             ))}
           </div>
-          <p style={{ fontFamily: font, fontWeight: 700, fontSize: "110px", color: white, letterSpacing: "-5.5px", textTransform: "uppercase", lineHeight: 1, margin: 0 }}>
-            Oleksii Klymushkin
-          </p>
+          <p style={{ fontFamily: font, fontWeight: 700, fontSize: "110px", color: white, letterSpacing: "-5.5px", textTransform: "uppercase", lineHeight: 1, margin: 0 }}>Oleksii Klymushkin</p>
         </footer>
 
       </div>
