@@ -5,7 +5,6 @@ const bg = "#07100b";
 const white = "#ffffff";
 const muted = "rgba(255,255,255,0.55)";
 
-/* ── Figma asset URLs ── */
 const IMG_HERO     = "https://www.figma.com/api/mcp/asset/72b8cbf0-89a3-4bf2-9f83-6b001727c2b4";
 const IMG_MAIN_UI  = "https://www.figma.com/api/mcp/asset/dc06252a-1ecd-4a78-9f16-4eefba54881d";
 const IMG_SKETCH   = "https://www.figma.com/api/mcp/asset/f41ea73b-268c-4e77-821b-6366b5e4d915";
@@ -44,64 +43,42 @@ const FEATURES = [
   "https://www.figma.com/api/mcp/asset/9927f9f5-a7ec-41ce-a2d3-2401c0e1356f",
 ];
 
-/* Additional screens — правильный порядок: картинки слева, текст справа */
-const CASES   = [
+const CASES  = [
   "https://www.figma.com/api/mcp/asset/d1e6a165-b04e-4ec8-a411-37d4c6c24c60",
   "https://www.figma.com/api/mcp/asset/f0085539-5467-4888-b11f-2c762d7af867",
   "https://www.figma.com/api/mcp/asset/a0b915fa-6ae8-447e-8f47-e6a87e5f504e",
 ];
-const PRIVS   = [
+const PRIVS  = [
   "https://www.figma.com/api/mcp/asset/9cb5b341-e1db-4496-a3f2-5df21066e541",
   "https://www.figma.com/api/mcp/asset/c8d575d3-9efe-4310-b1f5-2c58c9feef07",
   "https://www.figma.com/api/mcp/asset/6781bc27-9431-47dc-82f9-99fd589c4acc",
 ];
-const WARPS   = [
+const WARPS  = [
   "https://www.figma.com/api/mcp/asset/28c075ec-6509-4688-9804-a3821852107e",
   "https://www.figma.com/api/mcp/asset/02d883d2-390d-4ea5-9542-13414f7dfea3",
 ];
-const GUIDES  = [
+const GUIDES = [
   "https://www.figma.com/api/mcp/asset/e0e65fe4-7406-4518-8cff-178e26d909b9",
   "https://www.figma.com/api/mcp/asset/5492f058-324e-4ef1-a776-9c575329c81d",
 ];
 
-/* ── Shared components ── */
-
-/* Рамка как у картины — заметная, но не грубая */
+/* Белая рамка как у картины — толстая, заметная */
 function Frame({ src, alt = "" }: { src: string; alt?: string }) {
   return (
     <div style={{
-      border: "2px solid rgba(255,255,255,0.18)",
-      borderRadius: "14px",
-      padding: "10px",
-      background: "rgba(255,255,255,0.04)",
+      border: "8px solid rgba(255,255,255,0.85)",
+      borderRadius: "16px",
+      overflow: "hidden",
+      background: white,
+      flexShrink: 0,
     }}>
-      <img src={src} alt={alt} style={{ width: "100%", height: "auto", display: "block", borderRadius: "8px" }} />
+      <img src={src} alt={alt} style={{ width: "100%", height: "auto", display: "block" }} />
     </div>
   );
 }
 
 function Divider() {
   return <div style={{ width: "100%", height: "1px", background: "rgba(255,255,255,0.12)", margin: "80px 0" }} />;
-}
-
-/* Блок: картинка слева (~60%), текст справа (~40%) — как в Figma */
-function ScreenBlock({ images, texts }: { images: string[]; texts: string[] }) {
-  return (
-    <div style={{ display: "grid", gridTemplateColumns: "3fr 2fr", gap: "48px", alignItems: "start", marginBottom: "64px" }}>
-      {/* Левая колонка — стопка картинок */}
-      <div style={{ display: "flex", flexDirection: "column", gap: "16px" }}>
-        {images.map((src, i) => <Frame key={i} src={src} />)}
-      </div>
-      {/* Правая колонка — тексты */}
-      <div style={{ display: "flex", flexDirection: "column", gap: "20px", paddingTop: "8px" }}>
-        {texts.map((text, i) => (
-          <p key={i} style={{ fontFamily: font, fontWeight: 700, fontSize: "18px", lineHeight: "30px", color: white, margin: 0 }}>
-            {text}
-          </p>
-        ))}
-      </div>
-    </div>
-  );
 }
 
 function H2({ children }: { children: React.ReactNode }) {
@@ -121,9 +98,76 @@ function Ul({ items }: { items: string[] }) {
   );
 }
 
+/* 
+  Блок с чередованием: картинка выходит за край страницы на ~12%
+  side="left"  → картинка слева (уходит влево за padding), текст справа
+  side="right" → текст слева, картинка справа (уходит вправо за padding)
+  side="left-only" → только картинка слева (без текста)
+*/
+function ScreenRow({
+  src,
+  text,
+  side,
+}: {
+  src: string;
+  text?: string;
+  side: "left" | "right" | "left-only";
+}) {
+  const img = (
+    <div style={{
+      flex: "0 0 62%",
+      /* Выходим за край на 60px (равно padding контейнера) */
+      marginLeft: side === "left" || side === "left-only" ? "-60px" : "0",
+      marginRight: side === "right" ? "-60px" : "0",
+    }}>
+      <Frame src={src} />
+    </div>
+  );
+
+  const txt = text ? (
+    <div style={{ flex: 1, display: "flex", alignItems: "center" }}>
+      <Body>{text}</Body>
+    </div>
+  ) : null;
+
+  return (
+    <div style={{
+      display: "flex",
+      gap: "40px",
+      alignItems: "center",
+      marginBottom: "32px",
+      overflow: "hidden",
+    }}>
+      {side === "left" || side === "left-only" ? (
+        <>{img}{txt}</>
+      ) : (
+        <>{txt}{img}</>
+      )}
+    </div>
+  );
+}
+
+/* Секция с заголовком и набором блоков */
+function AdditionalSection({
+  title,
+  rows,
+}: {
+  title: string;
+  rows: { src: string; text?: string; side: "left" | "right" | "left-only" }[];
+}) {
+  return (
+    <div style={{ marginBottom: "80px" }}>
+      <H3>{title}</H3>
+      {rows.map((row, i) => (
+        <ScreenRow key={i} src={row.src} text={row.text} side={row.side} />
+      ))}
+    </div>
+  );
+}
+
 export default function VimeworldCase() {
   return (
-    <main style={{ background: bg, minHeight: "100vh" }}>
+    <main style={{ background: bg, minHeight: "100vh", overflow: "hidden" }}>
 
       {/* NAV */}
       <header style={{ padding: "45px 60px 0" }}>
@@ -175,22 +219,12 @@ export default function VimeworldCase() {
             <H3>Problem</H3>
             <Body>Standard Minecraft ESC menu:</Body>
             <div style={{ marginTop: "12px" }}>
-              <Ul items={[
-                "Does not display the player's profile or statistics",
-                "Does not reflect bonuses, quests, or the shop",
-                "Not suitable for servers with a large number of features",
-              ]} />
+              <Ul items={["Does not display the player's profile or statistics", "Does not reflect bonuses, quests, or the shop", "Not suitable for servers with a large number of features"]} />
             </div>
           </div>
           <div>
             <H3>Goals</H3>
-            <Ul items={[
-              "Create an extended ESC menu with clear navigation",
-              "Place key server features on a single screen",
-              "Reduce the number of clicks and make the interface intuitive",
-              "Design a modern UI with a neon aesthetic",
-              "Improve player accessibility and engagement",
-            ]} />
+            <Ul items={["Create an extended ESC menu with clear navigation", "Place key server features on a single screen", "Reduce the number of clicks and make the interface intuitive", "Design a modern UI with a neon aesthetic", "Improve player accessibility and engagement"]} />
           </div>
         </div>
 
@@ -205,20 +239,12 @@ export default function VimeworldCase() {
           {USER_NEEDS.slice(4).map((src, i) => <img key={i} src={src} alt="" style={{ width: "100%", borderRadius: "10px" }} />)}
         </div>
         <H3>The player needs to:</H3>
-        <Ul items={[
-          "quickly access quests",
-          "collect daily rewards",
-          "see their balance and privileges",
-          "keep track of server updates",
-          "navigate to the shop and settings",
-          "easily exit the game and open social links",
-        ]} />
+        <Ul items={["quickly access quests", "collect daily rewards", "see their balance and privileges", "keep track of server updates", "navigate to the shop and settings", "easily exit the game and open social links"]} />
 
         <Divider />
 
         {/* UX STRUCTURE */}
         <H2>UX structure</H2>
-        {/* Текст слева, две картинки справа — как в PDF */}
         <div style={{ display: "grid", gridTemplateColumns: "2fr 3fr", gap: "48px", alignItems: "start" }}>
           <div style={{ display: "flex", flexDirection: "column", gap: "16px" }}>
             <Body>At the concept stage, I created sketches to distribute blocks, separate the left and right areas, and define the card-based structure for quests and the guidebook. This helped establish the UX flow and minimize cognitive load.</Body>
@@ -234,7 +260,6 @@ export default function VimeworldCase() {
 
         {/* UI STYLE GUIDE */}
         <H2>UI Style Guide</H2>
-
         <H3>Colors</H3>
         <div style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: "14px", marginBottom: "14px" }}>
           {COLORS.slice(0, 3).map((src, i) => <img key={i} src={src} alt="" style={{ width: "100%", borderRadius: "10px" }} />)}
@@ -245,15 +270,7 @@ export default function VimeworldCase() {
 
         <H3>Typography — Nexa [Bold]</H3>
         <div style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: "12px", marginBottom: "56px" }}>
-          {[
-            ["Headings — 30-40 px", "32px"],
-            ["Body Text — 22-25 px", "22px"],
-            ["Small Buttons — 15 px", "15px"],
-            ["Default Buttons — 20 px", "20px"],
-            ["Large Buttons — 30 px", "28px"],
-            ["UI Labels — 22-30 px", "24px"],
-            ["Captions — 20-30 px", "20px"],
-          ].map(([label, size]) => (
+          {[["Headings — 30-40 px", "32px"], ["Body Text — 22-25 px", "22px"], ["Small Buttons — 15 px", "15px"], ["Default Buttons — 20 px", "20px"], ["Large Buttons — 30 px", "28px"], ["UI Labels — 22-30 px", "24px"], ["Captions — 20-30 px", "20px"]].map(([label, size]) => (
             <div key={label} style={{ background: "rgba(255,255,255,0.06)", borderRadius: "14px", padding: "22px 24px", display: "flex", flexDirection: "column", gap: "18px" }}>
               <span style={{ fontFamily: font, fontWeight: 700, fontSize: "13px", color: muted }}>{label}</span>
               <span style={{ fontFamily: font, fontWeight: 700, fontSize: size, color: white }}>Hello World</span>
@@ -271,14 +288,8 @@ export default function VimeworldCase() {
         </div>
 
         <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "56px", marginBottom: "32px" }}>
-          <div>
-            <H3>Hover state</H3>
-            <Ul items={["Icons slightly enlarge when hovered", "Provides visual feedback and draws attention to interactive elements", "Improves click target perception and engagement"]} />
-          </div>
-          <div>
-            <H3>Pressed / Active State</H3>
-            <Ul items={["A light neon outline appears around the icon or button", "Signals that the element has been clicked or activated", "Maintains visual consistency with the neon UI style"]} />
-          </div>
+          <div><H3>Hover state</H3><Ul items={["Icons slightly enlarge when hovered", "Provides visual feedback and draws attention to interactive elements", "Improves click target perception and engagement"]} /></div>
+          <div><H3>Pressed / Active State</H3><Ul items={["A light neon outline appears around the icon or button", "Signals that the element has been clicked or activated", "Maintains visual consistency with the neon UI style"]} /></div>
         </div>
         <img src={STATES} alt="States" style={{ width: "100%", borderRadius: "10px" }} />
 
@@ -287,9 +298,7 @@ export default function VimeworldCase() {
         {/* MAIN UI */}
         <H2>Main UI</H2>
         <Body>The main screen demonstrates the UX flow: large navigation blocks, quest and reward cards, and a right column with social buttons and settings. Everything is designed for convenient and predictable player interaction.</Body>
-        <div style={{ marginTop: "32px" }}>
-          <Frame src={IMG_MAIN_UI} />
-        </div>
+        <div style={{ marginTop: "32px" }}><Frame src={IMG_MAIN_UI} /></div>
 
         <Divider />
 
@@ -309,46 +318,30 @@ export default function VimeworldCase() {
 
         <Divider />
 
-        {/* ADDITIONAL SCREENS — картинка слева, текст справа */}
+        {/* ADDITIONAL SCREENS */}
         <H2>Additional Screens</H2>
 
-        <H3>Cases</H3>
-        <ScreenBlock
-          images={CASES}
-          texts={[
-            'Clicking the "Buy" button opens a menu where you can select the number of cases to purchase. The total cost and a confirmation button are also displayed.',
-            'Clicking the "Open" button opens a case-opening window for the user, which includes a "Boost" button.',
-          ]}
-        />
+        <AdditionalSection title="Cases" rows={[
+          { src: CASES[0], text: 'Clicking the "Buy" button opens a menu where you can select the number of cases to purchase. The total cost and a confirmation button are also displayed.', side: "left" },
+          { src: CASES[1], text: 'Clicking the "Open" button opens a case-opening window for the user, which includes a "Boost" button.', side: "right" },
+          { src: CASES[2], side: "left-only" },
+        ]} />
 
-        <H3>Privileges</H3>
-        <ScreenBlock
-          images={PRIVS}
-          texts={[
-            "This screen displays a list of privileges, as well as information about the selected case. There are buttons to purchase a privilege or gift it to another player.",
-            'Clicking "Buy" opens a window with purchase details and a confirmation button.',
-            'Clicking "Gift" opens an almost identical window to the "Buy" option, but includes a field to enter the nickname of the player to whom the user wants to gift the privilege.',
-          ]}
-        />
+        <AdditionalSection title="Privileges" rows={[
+          { src: PRIVS[0], text: "This screen displays a list of privileges, as well as information about the selected case. There are buttons to purchase a privilege or gift it to another player.", side: "left" },
+          { src: PRIVS[1], text: 'Clicking "Buy" opens a window with purchase details and a confirmation button.', side: "right" },
+          { src: PRIVS[2], text: 'Clicking "Gift" opens an almost identical window to the "Buy" option, but includes a field to enter the nickname of the player to whom the user wants to gift the privilege.', side: "left" },
+        ]} />
 
-        <H3>Warps</H3>
-        <ScreenBlock
-          images={WARPS}
-          texts={[
-            'The screen displays cards for warps, each with a "More Info" button, allowing the user to click and learn more about the warp. Clicking the left mouse button on a warp card will automatically teleport the user to it.',
-            "Each card has a hover effect, highlighting it and slightly increasing its size.",
-            'Clicking the "More Info" button opens a window with detailed information about the warp, as well as a "Teleport" button.',
-          ]}
-        />
+        <AdditionalSection title="Warps" rows={[
+          { src: WARPS[0], text: 'The screen displays cards for warps, each with a "More Info" button. Each card has a hover effect, highlighting it and slightly increasing its size.', side: "left" },
+          { src: WARPS[1], text: 'Clicking the "More Info" button opens a window with detailed information about the warp, as well as a "Teleport" button.', side: "right" },
+        ]} />
 
-        <H3>GuideBook</H3>
-        <ScreenBlock
-          images={GUIDES}
-          texts={[
-            'Clicking the "Go" button on a GuideBook card on the main page opens a convenient window, with categories (rules, guides, command list, and server features) on the left side, and the information for the selected category displayed on the right side.',
-            "On the right side of the window, all information is structured, with each item having buttons to expand for more details and the option to collapse it back.",
-          ]}
-        />
+        <AdditionalSection title="GuideBook" rows={[
+          { src: GUIDES[0], text: 'Clicking the "Go" button opens a convenient window, with categories on the left side and the information for the selected category displayed on the right side.', side: "left" },
+          { src: GUIDES[1], text: "On the right side of the window, all information is structured, with each item having buttons to expand for more details and the option to collapse it back.", side: "right" },
+        ]} />
 
         <Divider />
 
