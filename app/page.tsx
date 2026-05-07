@@ -8,30 +8,16 @@ import Footer from "@/components/Footer";
 
 export default function Home() {
   return (
-    <main
-      className="bg-[#07100b] min-h-screen w-full"
-      style={{ position: "relative" }}
-    >
-      {/* Header / Nav */}
-      <Navbar />
-
-      {/* Hero */}
-      <HeroSection />
-
-      {/* What I do */}
-      <WhatIDoSection />
-
-      {/* Work Experience */}
-      <WorkExperienceSection />
-
-      {/* Projects */}
-      <ProjectsSection />
-
-      {/* Contact CTA */}
-      <ContactSection />
-
-      {/* Footer */}
-      <Footer />
+    <main style={{ background: "#07100b", minHeight: "100vh" }}>
+      <div style={{ maxWidth: "1200px", margin: "0 auto" }}>
+        <Navbar />
+        <HeroSection />
+        <WhatIDoSection />
+        <WorkExperienceSection />
+        <ProjectsSection />
+        <ContactSection />
+        <Footer />
+      </div>
     </main>
   );
 }
