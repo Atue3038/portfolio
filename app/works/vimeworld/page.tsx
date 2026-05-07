@@ -19,7 +19,6 @@ const USER_NEEDS = [
   "https://www.figma.com/api/mcp/asset/7e73860d-a58d-4e9b-add9-7d34825fdfec",
   "https://www.figma.com/api/mcp/asset/db5b48d8-455c-4933-993d-cfc639781050",
 ];
-
 const COLORS = [
   "https://www.figma.com/api/mcp/asset/cdd7a95c-84a2-412e-9564-4a5c2bb8759d",
   "https://www.figma.com/api/mcp/asset/374b9ebf-da1b-4f52-a31c-158baa2ddfb5",
@@ -27,12 +26,10 @@ const COLORS = [
   "https://www.figma.com/api/mcp/asset/b8390bbc-d230-4fc7-8a94-0b8d8c8dc562",
   "https://www.figma.com/api/mcp/asset/56ed0caf-71f1-4e1f-a857-ec9046a764c6",
 ];
-
 const BUTTONS  = "https://www.figma.com/api/mcp/asset/37457c5e-3b93-4356-b432-c9314d5f78be";
 const ICONS_1  = "https://www.figma.com/api/mcp/asset/a527cf3d-a216-4c19-a6aa-e546f880e003";
 const ICONS_2  = "https://www.figma.com/api/mcp/asset/df06d388-fdf3-4ed0-965b-95c3cf5204a8";
 const STATES   = "https://www.figma.com/api/mcp/asset/96534af3-cf35-4524-aee3-302e07740ccc";
-
 const FEATURES = [
   "https://www.figma.com/api/mcp/asset/e8343665-f4db-4bdb-a0d7-5f94c3bdacde",
   "https://www.figma.com/api/mcp/asset/e61ad240-d842-4469-aaa5-23c1466d2982",
@@ -42,7 +39,6 @@ const FEATURES = [
   "https://www.figma.com/api/mcp/asset/8e016223-d2c9-4313-bf67-d0db202da682",
   "https://www.figma.com/api/mcp/asset/9927f9f5-a7ec-41ce-a2d3-2401c0e1356f",
 ];
-
 const CASES  = [
   "https://www.figma.com/api/mcp/asset/d1e6a165-b04e-4ec8-a411-37d4c6c24c60",
   "https://www.figma.com/api/mcp/asset/f0085539-5467-4888-b11f-2c762d7af867",
@@ -62,17 +58,10 @@ const GUIDES = [
   "https://www.figma.com/api/mcp/asset/5492f058-324e-4ef1-a776-9c575329c81d",
 ];
 
-/* Белая рамка как у картины — толстая, заметная */
-function Frame({ src, alt = "" }: { src: string; alt?: string }) {
+function Frame({ src }: { src: string }) {
   return (
-    <div style={{
-      border: "8px solid rgba(255,255,255,0.85)",
-      borderRadius: "16px",
-      overflow: "hidden",
-      background: white,
-      flexShrink: 0,
-    }}>
-      <img src={src} alt={alt} style={{ width: "100%", height: "auto", display: "block" }} />
+    <div style={{ border: "8px solid rgba(255,255,255,0.85)", borderRadius: "16px", overflow: "hidden", background: white, flexShrink: 0 }}>
+      <img src={src} alt="" style={{ width: "100%", height: "auto", display: "block" }} />
     </div>
   );
 }
@@ -80,7 +69,6 @@ function Frame({ src, alt = "" }: { src: string; alt?: string }) {
 function Divider() {
   return <div style={{ width: "100%", height: "1px", background: "rgba(255,255,255,0.12)", margin: "80px 0" }} />;
 }
-
 function H2({ children }: { children: React.ReactNode }) {
   return <p style={{ fontFamily: font, fontWeight: 700, fontSize: "34px", color: white, margin: "0 0 32px" }}>{children}</p>;
 }
@@ -98,34 +86,27 @@ function Ul({ items }: { items: string[] }) {
   );
 }
 
-/* 
-  Блок с чередованием: картинка выходит за край страницы на ~12%
-  side="left"  → картинка слева (уходит влево за padding), текст справа
-  side="right" → текст слева, картинка справа (уходит вправо за padding)
-  side="left-only" → только картинка слева (без текста)
+/*
+  ScreenRow — картинка выходит до самого края экрана
+  side="left"  → картинка слева уходит до левого края браузера
+  side="right" → картинка справа уходит до правого края браузера
 */
-function ScreenRow({
-  src,
-  text,
-  side,
-}: {
-  src: string;
-  text?: string;
-  side: "left" | "right" | "left-only";
-}) {
-  const img = (
+function ScreenRow({ src, text, side }: { src: string; text?: string; side: "left" | "right" }) {
+  const imgEl = (
     <div style={{
-      flex: "0 0 62%",
-      /* Выходим за край на 60px (равно padding контейнера) */
-      marginLeft: side === "left" || side === "left-only" ? "-60px" : "0",
-      marginRight: side === "right" ? "-60px" : "0",
+      /* Растягиваем картинку до края viewport через viewport units */
+      width: side === "left"
+        ? "calc(60% + ((100vw - 1200px) / 2) + 60px)"
+        : "calc(60% + ((100vw - 1200px) / 2) + 60px)",
+      flexShrink: 0,
+      minWidth: 0,
     }}>
       <Frame src={src} />
     </div>
   );
 
-  const txt = text ? (
-    <div style={{ flex: 1, display: "flex", alignItems: "center" }}>
+  const txtEl = text ? (
+    <div style={{ flex: 1, display: "flex", alignItems: "center", minWidth: 0 }}>
       <Body>{text}</Body>
     </div>
   ) : null;
@@ -136,38 +117,30 @@ function ScreenRow({
       gap: "40px",
       alignItems: "center",
       marginBottom: "32px",
-      overflow: "hidden",
+      /* Выходим за padding контейнера в нужную сторону */
+      marginLeft: side === "left" ? "-60px" : "0",
+      marginRight: side === "right" ? "-60px" : "0",
     }}>
-      {side === "left" || side === "left-only" ? (
-        <>{img}{txt}</>
-      ) : (
-        <>{txt}{img}</>
-      )}
+      {side === "left" ? <>{imgEl}{txtEl}</> : <>{txtEl}{imgEl}</>}
     </div>
   );
 }
 
-/* Секция с заголовком и набором блоков */
-function AdditionalSection({
-  title,
-  rows,
-}: {
+function AdditionalSection({ title, rows }: {
   title: string;
-  rows: { src: string; text?: string; side: "left" | "right" | "left-only" }[];
+  rows: { src: string; text?: string; side: "left" | "right" }[];
 }) {
   return (
     <div style={{ marginBottom: "80px" }}>
       <H3>{title}</H3>
-      {rows.map((row, i) => (
-        <ScreenRow key={i} src={row.src} text={row.text} side={row.side} />
-      ))}
+      {rows.map((row, i) => <ScreenRow key={i} {...row} />)}
     </div>
   );
 }
 
 export default function VimeworldCase() {
   return (
-    <main style={{ background: bg, minHeight: "100vh", overflow: "hidden" }}>
+    <main style={{ background: bg, minHeight: "100vh" }}>
 
       {/* NAV */}
       <header style={{ padding: "45px 60px 0" }}>
@@ -181,7 +154,7 @@ export default function VimeworldCase() {
         </nav>
       </header>
 
-      <div style={{ padding: "72px 60px 0" }}>
+      <div style={{ padding: "72px 60px 0", overflowX: "hidden" }}>
 
         {/* HERO */}
         <div style={{ textAlign: "center", marginBottom: "48px" }}>
@@ -324,7 +297,7 @@ export default function VimeworldCase() {
         <AdditionalSection title="Cases" rows={[
           { src: CASES[0], text: 'Clicking the "Buy" button opens a menu where you can select the number of cases to purchase. The total cost and a confirmation button are also displayed.', side: "left" },
           { src: CASES[1], text: 'Clicking the "Open" button opens a case-opening window for the user, which includes a "Boost" button.', side: "right" },
-          { src: CASES[2], side: "left-only" },
+          { src: CASES[2], side: "left" },
         ]} />
 
         <AdditionalSection title="Privileges" rows={[
@@ -339,8 +312,8 @@ export default function VimeworldCase() {
         ]} />
 
         <AdditionalSection title="GuideBook" rows={[
-          { src: GUIDES[0], text: 'Clicking the "Go" button opens a convenient window, with categories on the left side and the information for the selected category displayed on the right side.', side: "left" },
-          { src: GUIDES[1], text: "On the right side of the window, all information is structured, with each item having buttons to expand for more details and the option to collapse it back.", side: "right" },
+          { src: GUIDES[0], text: 'Clicking the "Go" button opens a convenient window, with categories on the left side and information for the selected category on the right side.', side: "left" },
+          { src: GUIDES[1], text: "On the right side, all information is structured, with each item having buttons to expand for more details and the option to collapse it back.", side: "right" },
         ]} />
 
         <Divider />
