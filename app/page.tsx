@@ -68,7 +68,7 @@ export default function Home() {
               </div>
               <h1 style={{ fontFamily: "'Syne', sans-serif", fontWeight: 800, fontSize: "clamp(52px, 7vw, 92px)", lineHeight: 0.95, letterSpacing: "-0.03em", color: "var(--white)", marginBottom: "36px" }}>
                 Oleksii<br />
-                <span style={{ background: "linear-gradient(90deg, #f0f4f1 0%, #a8f0c0 100%)", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent" }}>Klymushkin</span>
+                <span style={{ background: "linear-gradient(90deg, #ffffff 0%, #1aff6e 100%)", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent", backgroundClip: "text" }}>Klymushkin</span>
               </h1>
               <p style={{ fontFamily: "'Space Grotesk', sans-serif", fontSize: "17px", lineHeight: "1.75", color: "var(--muted)", maxWidth: "440px", marginBottom: "48px" }}>
                 Creating interfaces where every pixel has a reason. Game UI, web experiences, and digital products that feel alive.
@@ -90,7 +90,7 @@ export default function Home() {
                 <div style={{ position: "absolute", bottom: 0, left: 0, right: 0, height: "3px", background: "var(--green)" }} />
               </div>
               <div style={{ position: "absolute", bottom: 20, left: -20, background: "var(--bg)", border: "1px solid var(--border)", padding: "7px 14px", fontFamily: "'DM Mono', monospace", fontSize: "11px", color: "var(--green)", letterSpacing: "0.1em", zIndex: 2 }}>
-                KYIV — UKRAINE
+                WARSAW — POLAND
               </div>
             </div>
           </div>
@@ -148,21 +148,48 @@ export default function Home() {
               <span style={{ fontFamily: "'DM Mono', monospace", fontSize: "11px", color: "var(--green)", letterSpacing: "0.15em" }}>03 / EXPERIENCE</span>
               <div style={{ flex: 1, height: "1px", background: "var(--border)" }} />
             </div>
-            <div
-              className="liquid-border"
-              style={{ display: "flex", alignItems: "center", justifyContent: "space-between", padding: "32px 32px", borderRadius: "2px" }}
-              onMouseOver={e => (e.currentTarget.style.background = "rgba(26,255,110,0.04)")}
-              onMouseOut={e => (e.currentTarget.style.background = "transparent")}
-            >
-              <div style={{ display: "flex", alignItems: "center", gap: "20px" }}>
-                <div style={{ width: "8px", height: "8px", borderRadius: "50%", background: "var(--green)", animation: "blink 2s infinite", flexShrink: 0 }} />
-                <div>
-                  <div style={{ fontFamily: "'Syne', sans-serif", fontWeight: 700, fontSize: "22px", color: "var(--white)" }}>VimeWorld — Pixelmon Ultimate</div>
-                  <div style={{ fontFamily: "'DM Mono', monospace", fontSize: "12px", color: "var(--muted)", marginTop: "4px" }}>UI/UX Designer</div>
+            {[
+              {
+                name: "VimeWorld — Pixelmon Ultimate",
+                role: "UI/UX Designer",
+                year: "2025 — NOW",
+                link: null,
+                active: true,
+              },
+              {
+                name: "Czysto Cleaner",
+                role: "UI/UX Designer & Web Developer",
+                year: "2026",
+                link: "https://czysto-cleaner.pl",
+                active: false,
+              },
+            ].map((job) => (
+              <div
+                key={job.name}
+                className="liquid-border"
+                style={{ display: "flex", alignItems: "center", justifyContent: "space-between", padding: "28px 32px", borderRadius: "2px", marginBottom: "2px", transition: "background 0.3s" }}
+                onMouseOver={e => (e.currentTarget.style.background = "rgba(26,255,110,0.04)")}
+                onMouseOut={e => (e.currentTarget.style.background = "transparent")}
+              >
+                <div style={{ display: "flex", alignItems: "center", gap: "20px" }}>
+                  <div style={{ width: "8px", height: "8px", borderRadius: "50%", background: "var(--green)", flexShrink: 0, animation: job.active ? "blink 2s infinite" : "none", opacity: job.active ? 1 : 0.4 }} />
+                  <div>
+                    <div style={{ display: "flex", alignItems: "center", gap: "12px" }}>
+                      <span style={{ fontFamily: "'Syne', sans-serif", fontWeight: 700, fontSize: "22px", color: "var(--white)" }}>{job.name}</span>
+                      {job.link && (
+                        <a href={job.link} target="_blank" rel="noreferrer"
+                          style={{ fontFamily: "'DM Mono', monospace", fontSize: "11px", color: "var(--green)", letterSpacing: "0.08em", textDecoration: "none", border: "1px solid rgba(26,255,110,0.3)", padding: "2px 8px", borderRadius: "2px", transition: "background 0.2s" }}
+                          onMouseOver={e => (e.currentTarget.style.background = "rgba(26,255,110,0.1)")}
+                          onMouseOut={e => (e.currentTarget.style.background = "transparent")}
+                        >↗ czysto-cleaner.pl</a>
+                      )}
+                    </div>
+                    <div style={{ fontFamily: "'DM Mono', monospace", fontSize: "12px", color: "var(--muted)", marginTop: "4px" }}>{job.role}</div>
+                  </div>
                 </div>
+                <div style={{ fontFamily: "'DM Mono', monospace", fontSize: "13px", color: "var(--green)", letterSpacing: "0.05em" }}>{job.year}</div>
               </div>
-              <div style={{ fontFamily: "'DM Mono', monospace", fontSize: "13px", color: "var(--green)", letterSpacing: "0.05em" }}>2025 — NOW</div>
-            </div>
+            ))}
           </div>
         </section>
 
