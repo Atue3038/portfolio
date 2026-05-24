@@ -68,16 +68,16 @@ export default function Home() {
               </div>
               <h1 style={{ fontFamily: "'Syne', sans-serif", fontWeight: 800, fontSize: "clamp(52px, 7vw, 92px)", lineHeight: 0.95, letterSpacing: "-0.03em", color: "var(--white)", marginBottom: "36px" }}>
                 Oleksii<br />
-                <span style={{ background: "linear-gradient(90deg, #ffffff 0%, #1aff6e 100%)", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent", backgroundClip: "text" }}>Klymushkin</span>
+                <span className="liquid-text">Klymushkin</span>
               </h1>
               <p style={{ fontFamily: "'Space Grotesk', sans-serif", fontSize: "17px", lineHeight: "1.75", color: "var(--muted)", maxWidth: "440px", marginBottom: "48px" }}>
                 Creating interfaces where every pixel has a reason. Game UI, web experiences, and digital products that feel alive.
               </p>
-              <div style={{ display: "flex", gap: "40px" }}>
+              <div style={{ display: "flex", gap: "40px", alignItems: "flex-end" }}>
                 {[["04", "Projects"], ["01", "Year Exp"], ["∞", "Ideas"]].map(([n, l]) => (
-                  <div key={l} style={{ display: "flex", flexDirection: "column", alignItems: "center" }}>
-                    <div style={{ fontFamily: "'Syne', sans-serif", fontWeight: 800, fontSize: "34px", color: "var(--green)", lineHeight: 1 }}>{n}</div>
-                    <div style={{ fontFamily: "'DM Mono', monospace", fontSize: "11px", color: "var(--muted)", marginTop: "6px", letterSpacing: "0.1em", textTransform: "uppercase" }}>{l}</div>
+                  <div key={l} style={{ display: "flex", flexDirection: "column", alignItems: "center", gap: "8px" }}>
+                    <div style={{ fontFamily: "'Syne', sans-serif", fontWeight: 800, fontSize: "34px", color: "var(--green)", lineHeight: 1, letterSpacing: "-0.02em" }}>{n}</div>
+                    <div style={{ fontFamily: "'DM Mono', monospace", fontSize: "11px", color: "var(--muted)", letterSpacing: "0.1em", textTransform: "uppercase" }}>{l}</div>
                   </div>
                 ))}
               </div>

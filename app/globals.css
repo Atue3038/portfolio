@@ -82,6 +82,21 @@ body::before {
   0% { transform: translateY(-100%); }
   100% { transform: translateY(100vh); }
 }
+@keyframes liquidText {
+  0%   { background-position: 0% 50%; }
+  50%  { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+.liquid-text {
+  background: linear-gradient(90deg, #ffffff 0%, #1aff6e 40%, #ffffff 60%, #a8ffcc 80%, #ffffff 100%);
+  background-size: 300% 100%;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  animation: liquidText 4s ease infinite;
+}
+
 @keyframes glitch {
   0%, 100% { clip-path: inset(0 0 100% 0); transform: translateX(0); }
   20% { clip-path: inset(20% 0 60% 0); transform: translateX(-4px); }
