@@ -68,14 +68,14 @@ export default function Home() {
               </div>
               <h1 style={{ fontFamily: "'Syne', sans-serif", fontWeight: 800, fontSize: "clamp(52px, 7vw, 92px)", lineHeight: 0.95, letterSpacing: "-0.03em", color: "var(--white)", marginBottom: "36px" }}>
                 Oleksii<br />
-                <span style={{ WebkitTextStroke: "1px rgba(240,244,241,0.25)", color: "transparent" }}>Klymu</span><span style={{ color: "var(--green)" }}>sh</span><span style={{ WebkitTextStroke: "1px rgba(240,244,241,0.25)", color: "transparent" }}>kin</span>
+                <span style={{ background: "linear-gradient(90deg, #f0f4f1 0%, #a8f0c0 100%)", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent" }}>Klymushkin</span>
               </h1>
               <p style={{ fontFamily: "'Space Grotesk', sans-serif", fontSize: "17px", lineHeight: "1.75", color: "var(--muted)", maxWidth: "440px", marginBottom: "48px" }}>
                 Creating interfaces where every pixel has a reason. Game UI, web experiences, and digital products that feel alive.
               </p>
               <div style={{ display: "flex", gap: "40px" }}>
-                {[["01", "Projects"], ["01", "Year Exp"], ["∞", "Ideas"]].map(([n, l]) => (
-                  <div key={l}>
+                {[["04", "Projects"], ["01", "Year Exp"], ["∞", "Ideas"]].map(([n, l]) => (
+                  <div key={l} style={{ display: "flex", flexDirection: "column", alignItems: "center" }}>
                     <div style={{ fontFamily: "'Syne', sans-serif", fontWeight: 800, fontSize: "34px", color: "var(--green)", lineHeight: 1 }}>{n}</div>
                     <div style={{ fontFamily: "'DM Mono', monospace", fontSize: "11px", color: "var(--muted)", marginTop: "6px", letterSpacing: "0.1em", textTransform: "uppercase" }}>{l}</div>
                   </div>
