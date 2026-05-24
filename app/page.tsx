@@ -57,32 +57,22 @@ export default function Home() {
 
         {/* ── HERO ── */}
         <section style={{ minHeight: "100vh", display: "flex", alignItems: "center", padding: "80px 48px 64px", position: "relative", overflow: "hidden" }}>
-
-          {/* Big background number */}
           <div style={{ position: "absolute", right: "-20px", top: "50%", transform: "translateY(-50%)", fontFamily: "'Syne', sans-serif", fontWeight: 800, fontSize: "clamp(180px, 30vw, 420px)", color: "rgba(26,255,110,0.03)", lineHeight: 1, userSelect: "none", pointerEvents: "none", letterSpacing: "-0.05em" }}>01</div>
-
-          {/* Scanline */}
           <div style={{ position: "absolute", top: 0, left: 0, right: 0, height: "2px", background: "linear-gradient(90deg, transparent, rgba(26,255,110,0.4), transparent)", animation: "scanline 6s linear infinite", opacity: 0.4 }} />
 
           <div style={{ display: "grid", gridTemplateColumns: "1fr auto", gap: "80px", alignItems: "center", width: "100%", maxWidth: "1200px", margin: "0 auto", opacity: loaded ? 1 : 0, transition: "opacity 0.8s ease 0.2s" }}>
-
-            {/* Left — text */}
             <div style={{ maxWidth: "580px" }}>
               <div style={{ display: "flex", alignItems: "center", gap: "12px", marginBottom: "32px" }}>
                 <div style={{ width: "32px", height: "1px", background: "var(--green)" }} />
                 <span style={{ fontFamily: "'DM Mono', monospace", fontSize: "12px", color: "var(--green)", letterSpacing: "0.15em", textTransform: "uppercase" }}>UI/UX Designer</span>
               </div>
-
               <h1 style={{ fontFamily: "'Syne', sans-serif", fontWeight: 800, fontSize: "clamp(52px, 7vw, 92px)", lineHeight: 0.95, letterSpacing: "-0.03em", color: "var(--white)", marginBottom: "36px" }}>
                 Oleksii<br />
                 <span style={{ WebkitTextStroke: "1px rgba(240,244,241,0.25)", color: "transparent" }}>Klymu</span><span style={{ color: "var(--green)" }}>sh</span><span style={{ WebkitTextStroke: "1px rgba(240,244,241,0.25)", color: "transparent" }}>kin</span>
               </h1>
-
-              {/* Bio — maxWidth на текст чтобы не растягивался */}
               <p style={{ fontFamily: "'Space Grotesk', sans-serif", fontSize: "17px", lineHeight: "1.75", color: "var(--muted)", maxWidth: "440px", marginBottom: "48px" }}>
                 Creating interfaces where every pixel has a reason. Game UI, web experiences, and digital products that feel alive.
               </p>
-
               <div style={{ display: "flex", gap: "40px" }}>
                 {[["01", "Projects"], ["01", "Year Exp"], ["∞", "Ideas"]].map(([n, l]) => (
                   <div key={l}>
@@ -93,17 +83,10 @@ export default function Home() {
               </div>
             </div>
 
-            {/* Right — photo */}
             <div style={{ position: "relative", flexShrink: 0 }}>
-              {/* Декоративная рамка */}
               <div style={{ position: "absolute", top: -14, right: -14, width: "100%", height: "100%", border: "1px solid rgba(26,255,110,0.25)", borderRadius: "4px", zIndex: 0 }} />
               <div style={{ position: "relative", zIndex: 1, width: "340px", borderRadius: "4px", overflow: "hidden", background: "#000" }}>
-                {/* Твоё фото с чёрным фоном — идеально вписывается */}
-                <img
-                  src="/photo.png"
-                  alt="Oleksii Klymushkin"
-                  style={{ width: "100%", height: "auto", display: "block", filter: "contrast(1.05)" }}
-                />
+                <img src="/photo.png" alt="Oleksii Klymushkin" style={{ width: "100%", height: "auto", display: "block", filter: "contrast(1.05)" }} />
                 <div style={{ position: "absolute", bottom: 0, left: 0, right: 0, height: "3px", background: "var(--green)" }} />
               </div>
               <div style={{ position: "absolute", bottom: 20, left: -20, background: "var(--bg)", border: "1px solid var(--border)", padding: "7px 14px", fontFamily: "'DM Mono', monospace", fontSize: "11px", color: "var(--green)", letterSpacing: "0.1em", zIndex: 2 }}>
@@ -112,7 +95,6 @@ export default function Home() {
             </div>
           </div>
 
-          {/* Scroll hint */}
           <div style={{ position: "absolute", bottom: 32, left: "50%", transform: "translateX(-50%)", display: "flex", flexDirection: "column", alignItems: "center", gap: "8px" }}>
             <div style={{ fontFamily: "'DM Mono', monospace", fontSize: "10px", color: "var(--muted)", letterSpacing: "0.15em", textTransform: "uppercase" }}>Scroll</div>
             <div style={{ width: "1px", height: "40px", background: "linear-gradient(to bottom, var(--green), transparent)" }} />
@@ -126,16 +108,28 @@ export default function Home() {
               <span style={{ fontFamily: "'DM Mono', monospace", fontSize: "11px", color: "var(--green)", letterSpacing: "0.15em" }}>02 / SERVICES</span>
               <div style={{ flex: 1, height: "1px", background: "var(--border)" }} />
             </div>
-            <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "0", border: "1px solid var(--border)" }}>
+
+            {/* Services — liquid border на каждой ячейке */}
+            <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "0" }}>
               {[
                 { n: "01", title: "UI/UX Design", desc: "Research-driven interfaces that solve real problems. From wireframe to final pixel." },
                 { n: "02", title: "Interface Design", desc: "Complex systems made simple. Game UIs, dashboards, admin panels." },
                 { n: "03", title: "Website Design", desc: "Marketing sites and landing pages that convert. Clean, fast, memorable." },
                 { n: "04", title: "App Design", desc: "Mobile-first experiences. iOS, Android, cross-platform." },
               ].map((item, i) => (
-                <div key={item.n} onMouseEnter={onEnter} onMouseLeave={onLeave}
-                  style={{ padding: "44px", borderBottom: i < 2 ? "1px solid var(--border)" : "none", borderRight: i % 2 === 0 ? "1px solid var(--border)" : "none", transition: "background 0.3s", cursor: "default" }}
-                  onMouseOver={e => (e.currentTarget.style.background = "var(--green-dim)")}
+                <div
+                  key={item.n}
+                  className="liquid-border"
+                  onMouseEnter={onEnter} onMouseLeave={onLeave}
+                  style={{
+                    padding: "44px",
+                    borderBottom: i < 2 ? "1px solid var(--border)" : "none",
+                    borderRight: i % 2 === 0 ? "1px solid var(--border)" : "none",
+                    border: i < 2 && i % 2 === 0 ? "1px solid var(--border)" : undefined,
+                    outline: "1px solid var(--border)",
+                    cursor: "default",
+                  }}
+                  onMouseOver={e => (e.currentTarget.style.background = "rgba(26,255,110,0.04)")}
                   onMouseOut={e => (e.currentTarget.style.background = "transparent")}
                 >
                   <div style={{ fontFamily: "'DM Mono', monospace", fontSize: "11px", color: "var(--green)", marginBottom: "20px", letterSpacing: "0.1em" }}>{item.n}</div>
@@ -154,7 +148,12 @@ export default function Home() {
               <span style={{ fontFamily: "'DM Mono', monospace", fontSize: "11px", color: "var(--green)", letterSpacing: "0.15em" }}>03 / EXPERIENCE</span>
               <div style={{ flex: 1, height: "1px", background: "var(--border)" }} />
             </div>
-            <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", padding: "32px 0", borderBottom: "1px solid var(--border)", borderTop: "1px solid var(--border)" }}>
+            <div
+              className="liquid-border"
+              style={{ display: "flex", alignItems: "center", justifyContent: "space-between", padding: "32px 32px", borderRadius: "2px" }}
+              onMouseOver={e => (e.currentTarget.style.background = "rgba(26,255,110,0.04)")}
+              onMouseOut={e => (e.currentTarget.style.background = "transparent")}
+            >
               <div style={{ display: "flex", alignItems: "center", gap: "20px" }}>
                 <div style={{ width: "8px", height: "8px", borderRadius: "50%", background: "var(--green)", animation: "blink 2s infinite", flexShrink: 0 }} />
                 <div>
@@ -218,12 +217,26 @@ export default function Home() {
                   Open to freelance, collaborations, and full-time roles. If you have a project in mind — let&apos;s talk.
                 </p>
               </div>
+
+              {/* Contact buttons — liquid border */}
               <div style={{ display: "flex", flexDirection: "column", gap: "12px" }}>
                 {[["Telegram", "Fastest response", "#"], ["Instagram", "Design updates", "#"], ["Gmail", "For proposals", "mailto:example@gmail.com"]].map(([label, hint, href]) => (
-                  <a key={label} href={href} onMouseEnter={onEnter} onMouseLeave={onLeave}
-                    style={{ display: "flex", justifyContent: "space-between", alignItems: "center", padding: "22px 24px", border: "1px solid var(--border)", textDecoration: "none", transition: "border-color 0.2s, background 0.2s" }}
-                    onMouseOver={e => { e.currentTarget.style.borderColor = "var(--green)"; e.currentTarget.style.background = "var(--green-dim)"; }}
-                    onMouseOut={e => { e.currentTarget.style.borderColor = "var(--border)"; e.currentTarget.style.background = "transparent"; }}
+                  <a
+                    key={label}
+                    href={href}
+                    className="liquid-border"
+                    onMouseEnter={onEnter} onMouseLeave={onLeave}
+                    style={{
+                      display: "flex",
+                      justifyContent: "space-between",
+                      alignItems: "center",
+                      padding: "22px 24px",
+                      textDecoration: "none",
+                      borderRadius: "2px",
+                      transition: "background 0.2s",
+                    }}
+                    onMouseOver={e => (e.currentTarget.style.background = "rgba(26,255,110,0.05)")}
+                    onMouseOut={e => (e.currentTarget.style.background = "transparent")}
                   >
                     <span style={{ fontFamily: "'Syne', sans-serif", fontWeight: 700, fontSize: "18px", color: "var(--white)" }}>{label}</span>
                     <div style={{ display: "flex", alignItems: "center", gap: "12px" }}>
@@ -238,7 +251,7 @@ export default function Home() {
         </section>
 
         {/* ── FOOTER ── */}
-        <footer style={{ borderTop: "1px solid var(--border)", padding: "28px 48px", display: "flex", justifyContent: "space-between", alignItems: "center", maxWidth: "100%" }}>
+        <footer style={{ borderTop: "1px solid var(--border)", padding: "28px 48px", display: "flex", justifyContent: "space-between", alignItems: "center" }}>
           <span style={{ fontFamily: "'DM Mono', monospace", fontSize: "11px", color: "var(--muted)" }}>© 2025 OLEKSII KLYMUSHKIN</span>
           <div style={{ display: "flex", gap: "24px" }}>
             {["Insta", "Behance", "Telegram"].map(l => (

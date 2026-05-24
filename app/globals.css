@@ -92,3 +92,65 @@ body::before {
 
 .animate-fadeUp { animation: fadeUp 0.8s ease forwards; }
 .animate-fadeIn { animation: fadeIn 1s ease forwards; }
+
+/* Liquid border animation */
+@keyframes liquidBorder {
+  0%   { --angle: 0deg; }
+  100% { --angle: 360deg; }
+}
+
+@property --angle {
+  syntax: '<angle>';
+  initial-value: 0deg;
+  inherits: false;
+}
+
+.liquid-border {
+  position: relative;
+  z-index: 0;
+}
+
+.liquid-border::before {
+  content: '';
+  position: absolute;
+  inset: -1.5px;
+  border-radius: inherit;
+  background: conic-gradient(
+    from var(--angle),
+    transparent 0deg,
+    transparent 60deg,
+    rgba(26,255,110,0.15) 90deg,
+    rgba(26,255,110,0.9) 150deg,
+    rgba(200,255,220,1) 180deg,
+    rgba(26,255,110,0.9) 210deg,
+    rgba(26,255,110,0.15) 270deg,
+    transparent 300deg,
+    transparent 360deg
+  );
+  animation: liquidBorder 2.5s linear infinite;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  z-index: -1;
+}
+
+.liquid-border::after {
+  content: '';
+  position: absolute;
+  inset: 1px;
+  background: var(--bg);
+  border-radius: inherit;
+  z-index: -1;
+}
+
+.liquid-border:hover::before {
+  opacity: 1;
+}
+
+/* Services grid cell */
+.service-cell {
+  position: relative;
+  transition: background 0.3s;
+}
+.service-cell:hover {
+  background: var(--green-dim) !important;
+}
