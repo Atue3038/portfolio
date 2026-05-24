@@ -75,9 +75,28 @@ export default function Home() {
               </p>
               <div style={{ display: "flex", gap: "40px", alignItems: "flex-end" }}>
                 {[["04", "Projects"], ["01", "Year Exp"], ["∞", "Ideas"]].map(([n, l]) => (
-                  <div key={l} style={{ display: "flex", flexDirection: "column", alignItems: "center", gap: "8px" }}>
-                    <div style={{ fontFamily: "'Syne', sans-serif", fontWeight: 800, fontSize: "34px", color: "var(--green)", lineHeight: 1, letterSpacing: "-0.02em" }}>{n}</div>
-                    <div style={{ fontFamily: "'DM Mono', monospace", fontSize: "11px", color: "var(--muted)", letterSpacing: "0.1em", textTransform: "uppercase" }}>{l}</div>
+                  <div key={l} style={{ display: "flex", flexDirection: "column", alignItems: "center" }}>
+                    <div style={{
+                      fontFamily: "'Syne', sans-serif",
+                      fontWeight: 800,
+                      fontSize: "34px",
+                      color: "var(--green)",
+                      lineHeight: 1,
+                      letterSpacing: "-0.02em",
+                      display: "flex",
+                      alignItems: "flex-end",
+                      height: "34px",
+                    }}>{n}</div>
+                    <div style={{
+                      fontFamily: "'DM Mono', monospace",
+                      fontSize: "11px",
+                      color: "var(--muted)",
+                      marginTop: "8px",
+                      letterSpacing: "0.1em",
+                      textTransform: "uppercase",
+                      textAlign: "center",
+                      whiteSpace: "nowrap",
+                    }}>{l}</div>
                   </div>
                 ))}
               </div>
