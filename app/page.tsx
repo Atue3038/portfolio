@@ -77,21 +77,21 @@ export default function Home() {
                 {/* 04 */}
                 <div style={{ display: "flex", flexDirection: "column", alignItems: "center" }}>
                   <div style={{ height: "40px", display: "flex", alignItems: "flex-end" }}>
-                    <span style={{ fontFamily: "'Syne', sans-serif", fontWeight: 800, fontSize: "34px", color: "var(--green)", lineHeight: 1, fontVariantNumeric: "tabular-nums" }}>04</span>
+                    <span style={{ fontFamily: "'Barlow', sans-serif", fontWeight: 800, fontSize: "34px", color: "var(--green)", lineHeight: 1, fontVariantNumeric: "tabular-nums" }}>04</span>
                   </div>
                   <div style={{ fontFamily: "'DM Mono', monospace", fontSize: "11px", color: "var(--muted)", marginTop: "8px", letterSpacing: "0.1em", textTransform: "uppercase", textAlign: "center" }}>Projects</div>
                 </div>
                 {/* 01 */}
                 <div style={{ display: "flex", flexDirection: "column", alignItems: "center" }}>
                   <div style={{ height: "40px", display: "flex", alignItems: "flex-end" }}>
-                    <span style={{ fontFamily: "'Syne', sans-serif", fontWeight: 800, fontSize: "34px", color: "var(--green)", lineHeight: 1, fontVariantNumeric: "tabular-nums" }}>01</span>
+                    <span style={{ fontFamily: "'Barlow', sans-serif", fontWeight: 800, fontSize: "34px", color: "var(--green)", lineHeight: 1, fontVariantNumeric: "tabular-nums" }}>01</span>
                   </div>
                   <div style={{ fontFamily: "'DM Mono', monospace", fontSize: "11px", color: "var(--muted)", marginTop: "8px", letterSpacing: "0.1em", textTransform: "uppercase", textAlign: "center" }}>Year Exp</div>
                 </div>
                 {/* ∞ — центрируем по высоте относительно чисел */}
                 <div style={{ display: "flex", flexDirection: "column", alignItems: "center" }}>
                   <div style={{ height: "40px", display: "flex", alignItems: "center" }}>
-                    <span style={{ fontFamily: "'Syne', sans-serif", fontWeight: 800, fontSize: "34px", color: "var(--green)", lineHeight: 1 }}>∞</span>
+                    <span style={{ fontFamily: "'Barlow', sans-serif", fontWeight: 800, fontSize: "34px", color: "var(--green)", lineHeight: 1 }}>∞</span>
                   </div>
                   <div style={{ fontFamily: "'DM Mono', monospace", fontSize: "11px", color: "var(--muted)", marginTop: "8px", letterSpacing: "0.1em", textTransform: "uppercase", textAlign: "center" }}>Ideas</div>
                 </div>
