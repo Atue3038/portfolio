@@ -2,8 +2,8 @@
 import { useEffect, useRef, useState } from "react";
 import Link from "next/link";
 
-const CARD_IMG = "https://www.figma.com/api/mcp/asset/1006b5a8-f8c2-4849-ad1a-f84d5f46c8c9";
-const CARD_IMG_LECTRA = "https://www.figma.com/api/mcp/asset/805be11e-73fb-4480-9545-d132757eee5c";
+const CARD_IMG = "/vimeworld_preview.png";
+const CARD_IMG_LECTRA = "/lectra_preview.png";
 
 export default function Home() {
   const cursorRef = useRef<HTMLDivElement>(null);
