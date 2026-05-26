@@ -3,6 +3,7 @@ import { useEffect, useRef, useState } from "react";
 import Link from "next/link";
 
 const CARD_IMG = "https://www.figma.com/api/mcp/asset/1006b5a8-f8c2-4849-ad1a-f84d5f46c8c9";
+const CARD_IMG_LECTRA = "https://www.figma.com/api/mcp/asset/805be11e-73fb-4480-9545-d132757eee5c";
 
 export default function Home() {
   const cursorRef = useRef<HTMLDivElement>(null);
@@ -216,12 +217,15 @@ export default function Home() {
               <div style={{ flex: 1, height: "1px", background: "var(--border)" }} />
             </div>
             <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "2px", background: "var(--border)" }}>
-              {[0, 1].map(i => (
-                <Link key={i} href="/works/vimeworld" onMouseEnter={onEnter} onMouseLeave={onLeave}
+              {[
+                { href: "/works/vimeworld", img: CARD_IMG,        tag: "GAME UI · 2025",      title: "VimeWorld" },
+                { href: "/works/lectra",    img: CARD_IMG_LECTRA,  tag: "MOBILE APP · 2025",   title: "Lectra" },
+              ].map(({ href, img, tag, title }) => (
+                <Link key={title} href={href} onMouseEnter={onEnter} onMouseLeave={onLeave}
                   style={{ textDecoration: "none", background: "var(--bg)", display: "block", position: "relative", overflow: "hidden" }}>
                   <div style={{ position: "relative", height: "360px", overflow: "hidden" }}>
-                    <img src={CARD_IMG} alt="VimeWorld"
-                      style={{ width: "100%", height: "100%", objectFit: "cover", filter: "saturate(0.6) brightness(0.75)", transition: "transform 0.7s cubic-bezier(0.23,1,0.32,1), filter 0.4s" }}
+                    <img src={img} alt={title}
+                      style={{ width: "100%", height: "100%", objectFit: "cover", objectPosition: "top", filter: "saturate(0.6) brightness(0.75)", transition: "transform 0.7s cubic-bezier(0.23,1,0.32,1), filter 0.4s" }}
                       onMouseOver={e => { const el = e.currentTarget as HTMLImageElement; el.style.transform = "scale(1.05)"; el.style.filter = "saturate(1) brightness(0.9)"; }}
                       onMouseOut={e => { const el = e.currentTarget as HTMLImageElement; el.style.transform = "scale(1)"; el.style.filter = "saturate(0.6) brightness(0.75)"; }}
                     />
@@ -229,8 +233,8 @@ export default function Home() {
                     <div style={{ position: "absolute", bottom: 0, left: 0, right: 0, padding: "28px" }}>
                       <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-end" }}>
                         <div>
-                          <div style={{ fontFamily: "'DM Mono', monospace", fontSize: "11px", color: "var(--green)", letterSpacing: "0.1em", marginBottom: "8px" }}>GAME UI · 2025</div>
-                          <div style={{ fontFamily: "'Syne', sans-serif", fontWeight: 800, fontSize: "28px", color: "var(--white)", letterSpacing: "-0.02em" }}>VimeWorld</div>
+                          <div style={{ fontFamily: "'DM Mono', monospace", fontSize: "11px", color: "var(--green)", letterSpacing: "0.1em", marginBottom: "8px" }}>{tag}</div>
+                          <div style={{ fontFamily: "'Syne', sans-serif", fontWeight: 800, fontSize: "28px", color: "var(--white)", letterSpacing: "-0.02em" }}>{title}</div>
                         </div>
                         <div style={{ width: "44px", height: "44px", border: "1px solid rgba(26,255,110,0.4)", borderRadius: "50%", display: "flex", alignItems: "center", justifyContent: "center", color: "var(--green)", fontSize: "20px" }}>↗</div>
                       </div>
