@@ -4,6 +4,7 @@ import Link from "next/link";
 
 const CARD_IMG = "/vimeworld_preview.png";
 const CARD_IMG_LECTRA = "/lectra_preview.png";
+const CARD_IMG_CZYSTO = "/czysto_preview.png";
 
 export default function Home() {
   const cursorRef = useRef<HTMLDivElement>(null);
@@ -216,10 +217,11 @@ export default function Home() {
               <span style={{ fontFamily: "'DM Mono', monospace", fontSize: "11px", color: "var(--green)", letterSpacing: "0.15em" }}>04 / WORKS</span>
               <div style={{ flex: 1, height: "1px", background: "var(--border)" }} />
             </div>
-            <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "2px", background: "var(--border)" }}>
+            <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr 1fr", gap: "2px", background: "var(--border)" }}>
               {[
-                { href: "/works/vimeworld", img: CARD_IMG,        tag: "GAME UI · 2025",      title: "VimeWorld" },
-                { href: "/works/lectra",    img: CARD_IMG_LECTRA,  tag: "MOBILE APP · 2025",   title: "Lectra" },
+                { href: "/works/vimeworld", img: CARD_IMG,        tag: "GAME UI · 2025",        title: "VimeWorld" },
+                { href: "/works/lectra",    img: CARD_IMG_LECTRA,  tag: "MOBILE APP · 2025",     title: "Lectra" },
+                { href: "/works/czysto",    img: CARD_IMG_CZYSTO,  tag: "WEB · COMMERCIAL · 2026", title: "Czysto Cleaner" },
               ].map(({ href, img, tag, title }) => (
                 <Link key={title} href={href} onMouseEnter={onEnter} onMouseLeave={onLeave}
                   style={{ textDecoration: "none", background: "var(--bg)", display: "block", position: "relative", overflow: "hidden" }}>
@@ -234,7 +236,7 @@ export default function Home() {
                       <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-end" }}>
                         <div>
                           <div style={{ fontFamily: "'DM Mono', monospace", fontSize: "11px", color: "var(--green)", letterSpacing: "0.1em", marginBottom: "8px" }}>{tag}</div>
-                          <div style={{ fontFamily: "'Syne', sans-serif", fontWeight: 800, fontSize: "28px", color: "var(--white)", letterSpacing: "-0.02em" }}>{title}</div>
+                          <div style={{ fontFamily: "'Syne', sans-serif", fontWeight: 800, fontSize: "24px", color: "var(--white)", letterSpacing: "-0.02em" }}>{title}</div>
                         </div>
                         <div style={{ width: "44px", height: "44px", border: "1px solid rgba(26,255,110,0.4)", borderRadius: "50%", display: "flex", alignItems: "center", justifyContent: "center", color: "var(--green)", fontSize: "20px" }}>↗</div>
                       </div>
