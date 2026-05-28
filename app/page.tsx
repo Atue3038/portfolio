@@ -5,6 +5,7 @@ import Link from "next/link";
 const CARD_IMG = "/vimeworld_preview.png";
 const CARD_IMG_LECTRA = "/lectra_preview.png";
 const CARD_IMG_CZYSTO = "/czysto_preview.png";
+const CARD_IMG_RENTEASE = "/rentease_preview.png";
 
 export default function Home() {
   const cursorRef = useRef<HTMLDivElement>(null);
@@ -217,11 +218,12 @@ export default function Home() {
               <span style={{ fontFamily: "'DM Mono', monospace", fontSize: "11px", color: "var(--green)", letterSpacing: "0.15em" }}>04 / WORKS</span>
               <div style={{ flex: 1, height: "1px", background: "var(--border)" }} />
             </div>
-            <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr 1fr", gap: "2px", background: "var(--border)" }}>
+            <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "2px", background: "var(--border)" }}>
               {[
-                { href: "/works/vimeworld", img: CARD_IMG,        tag: "GAME UI · 2025",        title: "VimeWorld" },
-                { href: "/works/lectra",    img: CARD_IMG_LECTRA,  tag: "MOBILE APP · 2025",     title: "Lectra" },
-                { href: "/works/czysto",    img: CARD_IMG_CZYSTO,  tag: "WEB · COMMERCIAL · 2026", title: "Czysto Cleaner" },
+                { href: "/works/vimeworld",  img: CARD_IMG,           tag: "GAME UI · 2025",        title: "VimeWorld" },
+                { href: "/works/lectra",     img: CARD_IMG_LECTRA,    tag: "MOBILE APP · 2025",     title: "Lectra" },
+                { href: "/works/czysto",     img: CARD_IMG_CZYSTO,    tag: "WEB · COMMERCIAL · 2026", title: "Czysto Cleaner" },
+                { href: "/works/rentease",   img: CARD_IMG_RENTEASE,  tag: "WEB APP · IN PROGRESS", title: "RentEase" },
               ].map(({ href, img, tag, title }) => (
                 <Link key={title} href={href} onMouseEnter={onEnter} onMouseLeave={onLeave}
                   style={{ textDecoration: "none", background: "var(--bg)", display: "block", position: "relative", overflow: "hidden" }}>
