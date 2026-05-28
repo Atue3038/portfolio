@@ -18,8 +18,8 @@ const SCREENS = {
 
 function Phone({ src, label }: { src: string; label: string }) {
   return (
-    <div style={{ display: "flex", flexDirection: "column", alignItems: "center", gap: "10px" }}>
-      <div style={{ width: "200px", borderRadius: "32px", overflow: "hidden", boxShadow: "0 20px 60px rgba(0,0,0,0.6)", border: "1px solid rgba(255,255,255,0.08)" }}>
+    <div style={{ display: "flex", flexDirection: "column", alignItems: "center", gap: "10px", flexShrink: 0 }}>
+      <div className="phone-frame" style={{ width: "200px", borderRadius: "32px", overflow: "hidden", boxShadow: "0 20px 60px rgba(0,0,0,0.6)" }}>
         <img src={src} alt={label} style={{ width: "100%", display: "block" }} />
       </div>
       <span style={{ ...m, fontSize: "10px", color: "rgba(240,244,241,0.4)", letterSpacing: "0.08em" }}>{label}</span>
@@ -70,6 +70,21 @@ export default function LectraCase() {
     return () => window.removeEventListener("mousemove", move);
   }, []);
 
+  const scrollRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const el = scrollRef.current;
+    if (!el) return;
+    const onWheel = (e: WheelEvent) => {
+      if (Math.abs(e.deltaX) < Math.abs(e.deltaY)) {
+        e.preventDefault();
+        el.scrollLeft += e.deltaY;
+      }
+    };
+    el.addEventListener("wheel", onWheel, { passive: false });
+    return () => el.removeEventListener("wheel", onWheel);
+  }, []);
+
   const onEnter = () => setHovered(true);
   const onLeave = () => setHovered(false);
 
@@ -111,7 +126,77 @@ export default function LectraCase() {
         </div>
 
         {/* ── ALL SCREENS ROW ── */}
-        <div style={{ display: "flex", gap: "20px", justifyContent: "space-between", overflowX: "auto", paddingBottom: "8px", marginBottom: "8px" }}>
+        <style>{`
+          .phones-scroll {
+            display: flex;
+            gap: 20px;
+            overflow-x: auto;
+            padding-bottom: 16px;
+            margin-bottom: 8px;
+            scroll-behavior: smooth;
+            cursor: grab;
+          }
+          .phones-scroll::-webkit-scrollbar {
+            height: 4px;
+          }
+          .phones-scroll::-webkit-scrollbar-track {
+            background: rgba(240,244,241,0.06);
+            border-radius: 2px;
+          }
+          .phones-scroll::-webkit-scrollbar-thumb {
+            background: rgba(26,255,110,0.5);
+            border-radius: 2px;
+          }
+          .phones-scroll::-webkit-scrollbar-thumb:hover {
+            background: #1aff6e;
+          }
+
+          /* Phone frame — white border default, liquid on hover */
+          .phone-frame {
+            border: 2px solid rgba(255,255,255,0.18);
+            border-radius: 32px;
+            transition: border-color 0.3s;
+            position: relative;
+            z-index: 0;
+          }
+          .phone-frame::before {
+            content: '';
+            position: absolute;
+            inset: -2px;
+            border-radius: 34px;
+            background: conic-gradient(
+              from var(--angle, 0deg),
+              transparent 0deg,
+              transparent 60deg,
+              rgba(26,255,110,0.15) 90deg,
+              rgba(26,255,110,0.9) 150deg,
+              rgba(200,255,220,1) 180deg,
+              rgba(26,255,110,0.9) 210deg,
+              rgba(26,255,110,0.15) 270deg,
+              transparent 300deg,
+              transparent 360deg
+            );
+            animation: liquidBorder 2.5s linear infinite;
+            opacity: 0;
+            transition: opacity 0.3s;
+            z-index: -1;
+          }
+          .phone-frame::after {
+            content: '';
+            position: absolute;
+            inset: 1px;
+            background: #050a06;
+            border-radius: 31px;
+            z-index: -1;
+          }
+          .phone-frame:hover::before {
+            opacity: 1;
+          }
+          .phone-frame:hover {
+            border-color: transparent;
+          }
+        `}</style>
+        <div ref={scrollRef} className="phones-scroll">
           <Phone src={SCREENS.home}     label="Home" />
           <Phone src={SCREENS.library}  label="Library" />
           <Phone src={SCREENS.discrete} label="Discrete Mathematics" />
