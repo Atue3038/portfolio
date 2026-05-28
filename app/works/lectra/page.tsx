@@ -71,18 +71,29 @@ export default function LectraCase() {
   }, []);
 
   const scrollRef = useRef<HTMLDivElement>(null);
+  const isHoveringScroll = useRef(false);
 
   useEffect(() => {
     const el = scrollRef.current;
     if (!el) return;
+
+    const onEnterScroll = () => { isHoveringScroll.current = true; };
+    const onLeaveScroll = () => { isHoveringScroll.current = false; };
     const onWheel = (e: WheelEvent) => {
-      if (Math.abs(e.deltaX) < Math.abs(e.deltaY)) {
-        e.preventDefault();
-        el.scrollLeft += e.deltaY;
-      }
+      if (!isHoveringScroll.current) return;
+      e.preventDefault();
+      e.stopPropagation();
+      el.scrollLeft += e.deltaY * 2.5;
     };
-    el.addEventListener("wheel", onWheel, { passive: false });
-    return () => el.removeEventListener("wheel", onWheel);
+
+    el.addEventListener("mouseenter", onEnterScroll);
+    el.addEventListener("mouseleave", onLeaveScroll);
+    window.addEventListener("wheel", onWheel, { passive: false });
+    return () => {
+      el.removeEventListener("mouseenter", onEnterScroll);
+      el.removeEventListener("mouseleave", onLeaveScroll);
+      window.removeEventListener("wheel", onWheel);
+    };
   }, []);
 
   const onEnter = () => setHovered(true);
@@ -153,7 +164,7 @@ export default function LectraCase() {
 
           /* Phone frame — white border default, liquid on hover */
           .phone-frame {
-            border: 2px solid rgba(255,255,255,0.18);
+            border: 2px solid rgba(255,255,255,0.25);
             border-radius: 32px;
             transition: border-color 0.3s;
             position: relative;
@@ -162,31 +173,29 @@ export default function LectraCase() {
           .phone-frame::before {
             content: '';
             position: absolute;
-            inset: -2px;
-            border-radius: 34px;
+            inset: -3px;
+            border-radius: 35px;
             background: conic-gradient(
               from var(--angle, 0deg),
               transparent 0deg,
-              transparent 60deg,
-              rgba(26,255,110,0.15) 90deg,
-              rgba(26,255,110,0.9) 150deg,
-              rgba(200,255,220,1) 180deg,
-              rgba(26,255,110,0.9) 210deg,
-              rgba(26,255,110,0.15) 270deg,
-              transparent 300deg,
+              rgba(26,255,110,0.3) 60deg,
+              rgba(26,255,110,1) 120deg,
+              rgba(255,255,255,1) 180deg,
+              rgba(26,255,110,1) 240deg,
+              rgba(26,255,110,0.3) 300deg,
               transparent 360deg
             );
-            animation: liquidBorder 2.5s linear infinite;
+            animation: liquidBorder 2s linear infinite;
             opacity: 0;
-            transition: opacity 0.3s;
+            transition: opacity 0.4s;
             z-index: -1;
           }
           .phone-frame::after {
             content: '';
             position: absolute;
-            inset: 1px;
+            inset: 2px;
             background: #050a06;
-            border-radius: 31px;
+            border-radius: 30px;
             z-index: -1;
           }
           .phone-frame:hover::before {
