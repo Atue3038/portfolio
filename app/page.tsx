@@ -227,9 +227,9 @@ export default function Home() {
               ].map(({ href, img, tag, title }) => (
                 <Link key={title} href={href} onMouseEnter={onEnter} onMouseLeave={onLeave}
                   style={{ textDecoration: "none", background: "var(--bg)", display: "block", position: "relative", overflow: "hidden" }}>
-                  <div style={{ position: "relative", height: "360px", overflow: "hidden" }}>
+                  <div style={{ position: "relative", height: "400px", overflow: "hidden" }}>
                     <img src={img} alt={title}
-                      style={{ width: "100%", height: "100%", objectFit: "cover", objectPosition: "top", filter: "saturate(0.6) brightness(0.75)", transition: "transform 0.7s cubic-bezier(0.23,1,0.32,1), filter 0.4s" }}
+                      style={{ width: "100%", height: "100%", objectFit: "cover", objectPosition: "center", filter: "saturate(0.6) brightness(0.75)", transition: "transform 0.7s cubic-bezier(0.23,1,0.32,1), filter 0.4s" }}
                       onMouseOver={e => { const el = e.currentTarget as HTMLImageElement; el.style.transform = "scale(1.05)"; el.style.filter = "saturate(1) brightness(0.9)"; }}
                       onMouseOut={e => { const el = e.currentTarget as HTMLImageElement; el.style.transform = "scale(1)"; el.style.filter = "saturate(0.6) brightness(0.75)"; }}
                     />
