@@ -170,3 +170,39 @@ body::before {
 .service-cell:hover {
   background: var(--green-dim) !important;
 }
+
+/* ── RESPONSIVE ── */
+
+/* На мобильных — скрываем кастомный курсор */
+@media (max-width: 768px) {
+  body { cursor: auto; }
+  .cursor, .cursor-ring { display: none; }
+}
+
+/* Общие адаптивные утилиты */
+.r-grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 48px; }
+.r-grid-3 { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 12px; }
+.r-pad { padding: 0 48px; }
+.r-hero-title { font-size: clamp(48px, 7vw, 92px); }
+.r-section-gap { padding: 120px 48px; }
+.r-works-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 2px; }
+
+/* Tablet — 768px to 1024px */
+@media (max-width: 1024px) {
+  .r-pad { padding: 0 32px; }
+  .r-section-gap { padding: 80px 32px; }
+  .r-grid-2 { gap: 32px; }
+  .r-grid-3 { grid-template-columns: 1fr 1fr; }
+  .r-hero-title { font-size: clamp(40px, 6vw, 72px); }
+  .r-works-grid { grid-template-columns: 1fr 1fr; }
+}
+
+/* Mobile — up to 768px */
+@media (max-width: 768px) {
+  .r-pad { padding: 0 20px; }
+  .r-section-gap { padding: 60px 20px; }
+  .r-grid-2 { grid-template-columns: 1fr; gap: 24px; }
+  .r-grid-3 { grid-template-columns: 1fr; }
+  .r-hero-title { font-size: clamp(36px, 10vw, 56px); }
+  .r-works-grid { grid-template-columns: 1fr; }
+}

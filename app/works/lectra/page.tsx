@@ -19,8 +19,12 @@ const SCREENS = {
 function Phone({ src, label }: { src: string; label: string }) {
   return (
     <div style={{ display: "flex", flexDirection: "column", alignItems: "center", gap: "10px", flexShrink: 0 }}>
-      <div className="phone-frame" style={{ width: "200px", borderRadius: "32px", overflow: "hidden", boxShadow: "0 20px 60px rgba(0,0,0,0.6)" }}>
-        <img src={src} alt={label} style={{ width: "100%", display: "block" }} />
+      {/* Outer wrapper — holds the liquid border, NO overflow hidden */}
+      <div className="phone-outer">
+        {/* Inner wrapper — clips the image */}
+        <div style={{ width: "200px", borderRadius: "30px", overflow: "hidden", position: "relative", zIndex: 1 }}>
+          <img src={src} alt={label} style={{ width: "100%", display: "block" }} />
+        </div>
       </div>
       <span style={{ ...m, fontSize: "10px", color: "rgba(240,244,241,0.4)", letterSpacing: "0.08em" }}>{label}</span>
     </div>
@@ -79,11 +83,23 @@ export default function LectraCase() {
 
     const onEnterScroll = () => { isHoveringScroll.current = true; };
     const onLeaveScroll = () => { isHoveringScroll.current = false; };
+
     const onWheel = (e: WheelEvent) => {
       if (!isHoveringScroll.current) return;
+
+      const dy = e.deltaY;
+      const atStart = el.scrollLeft <= 0;
+      const atEnd = el.scrollLeft >= el.scrollWidth - el.clientWidth - 1;
+
+      // At left boundary scrolling left — pass to page (scroll up)
+      if (dy < 0 && atStart) return;
+      // At right boundary scrolling right — pass to page (scroll down)
+      if (dy > 0 && atEnd) return;
+
+      // Otherwise handle in the frame
       e.preventDefault();
       e.stopPropagation();
-      el.scrollLeft += e.deltaY * 2.5;
+      el.scrollLeft += dy * 2.5;
     };
 
     el.addEventListener("mouseenter", onEnterScroll);
@@ -162,19 +178,21 @@ export default function LectraCase() {
             background: #1aff6e;
           }
 
-          /* Phone frame — white border default, liquid on hover */
-          .phone-frame {
-            border: 2px solid rgba(255,255,255,0.25);
-            border-radius: 32px;
-            transition: border-color 0.3s;
+          /* Phone outer — holds liquid border, NO overflow hidden */
+          .phone-outer {
             position: relative;
-            z-index: 0;
+            width: 200px;
+            border-radius: 32px;
+            padding: 2px;
+            background: rgba(255,255,255,0.18);
+            box-shadow: 0 20px 60px rgba(0,0,0,0.6);
+            cursor: pointer;
           }
-          .phone-frame::before {
+          .phone-outer::before {
             content: '';
             position: absolute;
-            inset: -3px;
-            border-radius: 35px;
+            inset: 0;
+            border-radius: 32px;
             background: conic-gradient(
               from var(--angle, 0deg),
               transparent 0deg,
@@ -188,21 +206,13 @@ export default function LectraCase() {
             animation: liquidBorder 2s linear infinite;
             opacity: 0;
             transition: opacity 0.4s;
-            z-index: -1;
+            z-index: 0;
           }
-          .phone-frame::after {
-            content: '';
-            position: absolute;
-            inset: 2px;
-            background: #050a06;
-            border-radius: 30px;
-            z-index: -1;
-          }
-          .phone-frame:hover::before {
+          .phone-outer:hover::before {
             opacity: 1;
           }
-          .phone-frame:hover {
-            border-color: transparent;
+          .phone-outer:hover {
+            background: transparent;
           }
         `}</style>
         <div ref={scrollRef} className="phones-scroll">
