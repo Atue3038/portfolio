@@ -87,7 +87,7 @@ export default function VimeworldCase() {
         .divider { width:100%; height:1px; background:linear-gradient(90deg,transparent,rgba(26,255,110,.18),transparent); margin:100px 0; }
         .screen-card { background:var(--bg); display:flex; flex-direction:column; }
         .screen-card img { width:100%; display:block; }
-        .screen-card .info { padding:28px 28px 36px; display:flex; flex-direction:column; gap:12px; }
+        .screen-card .info { padding:16px 0 0; display:flex; flex-direction:column; gap:10px; }
         .num-badge { font-family:'DM Mono',monospace; font-size:11px; letter-spacing:.1em; color:var(--green); border:1px solid rgba(26,255,110,.3); border-radius:4px; padding:4px 10px; display:inline-block; width:fit-content; }
         .screen-title { font-family:'Syne',sans-serif; font-weight:800; font-size:22px; color:var(--white); letter-spacing:-.01em; margin:0; }
         .screen-desc  { font-family:'Space Grotesk',sans-serif; font-size:15px; color:var(--muted); line-height:1.65; margin:0; }
@@ -211,12 +211,12 @@ export default function VimeworldCase() {
             <p className="txt-p" style={{ maxWidth:520, marginBottom:56 }}>Seven screens covering every section of the redesigned menu.</p>
           </div>
 
-          {/* full-bleed grid */}
+          {/* screens — each card is image then text immediately below */}
           <div style={{ maxWidth:1200, margin:"0 auto", padding:"0 48px" }}>
-            <div className="screens-grid" style={{ display:"grid", gridTemplateColumns:"1fr 1fr", gap:2, background:"var(--border)" }}>
+            <div className="screens-grid" style={{ display:"grid", gridTemplateColumns:"1fr 1fr", gap:"120px 48px" }}>
               {SCREENS.map(({ src, num, title, desc })=>(
-                <div key={num} className="screen-card" style={{ border:"none" }}>
-                  <img src={src} alt={title} />
+                <div key={num} className="screen-card">
+                  <img src={src} alt={title} style={{ borderRadius:4, border:"1px solid var(--border)" }} />
                   <div className="info">
                     <span className="num-badge">{num}</span>
                     <h3 className="screen-title">{title}</h3>
@@ -224,10 +224,6 @@ export default function VimeworldCase() {
                   </div>
                 </div>
               ))}
-              {/* if odd number — fill last cell so grid doesn't look broken */}
-              {SCREENS.length % 2 !== 0 && (
-                <div style={{ background:"var(--bg)" }} />
-              )}
             </div>
           </div>
         </section>
