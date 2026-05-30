@@ -1,24 +1,19 @@
+"use client";
 import Link from "next/link";
 
-const font = "'Nexa', sans-serif";
-const bg = "#07100b";
-const white = "#ffffff";
-const muted = "rgba(255,255,255,0.55)";
+// ─── REAL SCREENSHOTS (place in /public/) ───────────────────────────────────
+const IMG_MENU      = "/vimeworld_menu.png";
+const IMG_CASES     = "/vimeworld_cases.png";
+const IMG_PRIVS     = "/vimeworld_privs.png";
+const IMG_KITS      = "/vimeworld_kits.png";
+const IMG_SHOP      = "/vimeworld_shop.png";
+const IMG_CART      = "/vimeworld_cart.png";
+const IMG_WARPS     = "/vimeworld_warps.png";
 
-const IMG_HERO     = "https://www.figma.com/api/mcp/asset/72b8cbf0-89a3-4bf2-9f83-6b001727c2b4";
-const IMG_MAIN_UI  = "https://www.figma.com/api/mcp/asset/dc06252a-1ecd-4a78-9f16-4eefba54881d";
-const IMG_SKETCH   = "https://www.figma.com/api/mcp/asset/f41ea73b-268c-4e77-821b-6366b5e4d915";
-const IMG_UX_FLOW  = "https://www.figma.com/api/mcp/asset/97f61097-48b8-42a4-9c58-0a713737b9d5";
-
-const USER_NEEDS = [
-  "https://www.figma.com/api/mcp/asset/2828cb21-b4e4-4401-9977-627a8af0b535",
-  "https://www.figma.com/api/mcp/asset/166eaa11-ea6d-4954-96f4-800429f6473d",
-  "https://www.figma.com/api/mcp/asset/183e3d6f-f987-4e5d-abd5-f4a32c995656",
-  "https://www.figma.com/api/mcp/asset/d95a61c3-6ad3-41b1-b70d-4381f3e092b8",
-  "https://www.figma.com/api/mcp/asset/7a42f18f-aae9-45fb-b695-f14e27f5b0fc",
-  "https://www.figma.com/api/mcp/asset/7e73860d-a58d-4e9b-add9-7d34825fdfec",
-  "https://www.figma.com/api/mcp/asset/db5b48d8-455c-4933-993d-cfc639781050",
-];
+// Figma assets (kept for Style Guide sections)
+const IMG_HERO      = "https://www.figma.com/api/mcp/asset/72b8cbf0-89a3-4bf2-9f83-6b001727c2b4";
+const IMG_SKETCH    = "https://www.figma.com/api/mcp/asset/f41ea73b-268c-4e77-821b-6366b5e4d915";
+const IMG_UX_FLOW   = "https://www.figma.com/api/mcp/asset/97f61097-48b8-42a4-9c58-0a713737b9d5";
 const COLORS = [
   "https://www.figma.com/api/mcp/asset/cdd7a95c-84a2-412e-9564-4a5c2bb8759d",
   "https://www.figma.com/api/mcp/asset/374b9ebf-da1b-4f52-a31c-158baa2ddfb5",
@@ -30,198 +25,338 @@ const BUTTONS  = "https://www.figma.com/api/mcp/asset/37457c5e-3b93-4356-b432-c9
 const ICONS_1  = "https://www.figma.com/api/mcp/asset/a527cf3d-a216-4c19-a6aa-e546f880e003";
 const ICONS_2  = "https://www.figma.com/api/mcp/asset/df06d388-fdf3-4ed0-965b-95c3cf5204a8";
 const STATES   = "https://www.figma.com/api/mcp/asset/96534af3-cf35-4524-aee3-302e07740ccc";
-const FEATURES = [
-  "https://www.figma.com/api/mcp/asset/e8343665-f4db-4bdb-a0d7-5f94c3bdacde",
-  "https://www.figma.com/api/mcp/asset/e61ad240-d842-4469-aaa5-23c1466d2982",
-  "https://www.figma.com/api/mcp/asset/8a530af1-5057-4fa9-87d7-14e36f8009c2",
-  "https://www.figma.com/api/mcp/asset/709a0243-17b3-4685-b8c1-080530ab4da6",
-  "https://www.figma.com/api/mcp/asset/a5c320cc-5312-4e5c-a350-87d6409c20ea",
-  "https://www.figma.com/api/mcp/asset/8e016223-d2c9-4313-bf67-d0db202da682",
-  "https://www.figma.com/api/mcp/asset/9927f9f5-a7ec-41ce-a2d3-2401c0e1356f",
-];
-const CASES  = [
-  "https://www.figma.com/api/mcp/asset/d1e6a165-b04e-4ec8-a411-37d4c6c24c60",
-  "https://www.figma.com/api/mcp/asset/f0085539-5467-4888-b11f-2c762d7af867",
-  "https://www.figma.com/api/mcp/asset/a0b915fa-6ae8-447e-8f47-e6a87e5f504e",
-];
-const PRIVS  = [
-  "https://www.figma.com/api/mcp/asset/9cb5b341-e1db-4496-a3f2-5df21066e541",
-  "https://www.figma.com/api/mcp/asset/c8d575d3-9efe-4310-b1f5-2c58c9feef07",
-  "https://www.figma.com/api/mcp/asset/6781bc27-9431-47dc-82f9-99fd589c4acc",
-];
-const WARPS  = [
-  "https://www.figma.com/api/mcp/asset/28c075ec-6509-4688-9804-a3821852107e",
-  "https://www.figma.com/api/mcp/asset/02d883d2-390d-4ea5-9542-13414f7dfea3",
-];
-const GUIDES = [
-  "https://www.figma.com/api/mcp/asset/e0e65fe4-7406-4518-8cff-178e26d909b9",
-  "https://www.figma.com/api/mcp/asset/5492f058-324e-4ef1-a776-9c575329c81d",
-];
 
-function Frame({ src }: { src: string }) {
+// ─── TOKENS ──────────────────────────────────────────────────────────────────
+const BG      = "#050a06";
+const GREEN   = "#1aff6e";
+const WHITE   = "#ffffff";
+const MUTED   = "rgba(255,255,255,0.45)";
+const BORDER  = "rgba(255,255,255,0.10)";
+const SYNE    = "'Syne', sans-serif";
+const GROTESK = "'Space Grotesk', sans-serif";
+const MONO    = "'DM Mono', monospace";
+
+// ─── MICRO COMPONENTS ────────────────────────────────────────────────────────
+
+function Tag({ children }: { children: React.ReactNode }) {
   return (
-    <div style={{ border: "8px solid rgba(255,255,255,0.85)", borderRadius: "16px", overflow: "hidden", background: white, flexShrink: 0 }}>
+    <span style={{
+      fontFamily: MONO, fontSize: "11px", letterSpacing: "0.12em",
+      textTransform: "uppercase", color: GREEN,
+      border: `1px solid ${GREEN}`, borderRadius: "4px",
+      padding: "3px 10px", display: "inline-block",
+    }}>{children}</span>
+  );
+}
+
+function Label({ children }: { children: React.ReactNode }) {
+  return (
+    <span style={{
+      fontFamily: MONO, fontSize: "11px", letterSpacing: "0.12em",
+      textTransform: "uppercase", color: MUTED, display: "block", marginBottom: "10px",
+    }}>{children}</span>
+  );
+}
+
+function H2({ children, accent = false }: { children: React.ReactNode; accent?: boolean }) {
+  return (
+    <h2 style={{
+      fontFamily: SYNE, fontWeight: 800, fontSize: "clamp(28px, 4vw, 42px)",
+      color: WHITE, margin: "0 0 32px", lineHeight: 1.1,
+      letterSpacing: "-0.02em",
+    }}>
+      {accent
+        ? <><span style={{ color: GREEN }}>/ </span>{children}</>
+        : children}
+    </h2>
+  );
+}
+
+function H3({ children }: { children: React.ReactNode }) {
+  return (
+    <h3 style={{
+      fontFamily: SYNE, fontWeight: 800, fontSize: "clamp(18px, 2.5vw, 24px)",
+      color: WHITE, margin: "0 0 16px", letterSpacing: "-0.01em",
+    }}>{children}</h3>
+  );
+}
+
+function Body({ children }: { children: React.ReactNode }) {
+  return (
+    <p style={{
+      fontFamily: GROTESK, fontSize: "16px", lineHeight: "1.75",
+      color: "rgba(255,255,255,0.72)", margin: 0,
+    }}>{children}</p>
+  );
+}
+
+function Divider() {
+  return (
+    <div style={{
+      width: "100%", height: "1px",
+      background: "linear-gradient(90deg, transparent, rgba(26,255,110,0.25), transparent)",
+      margin: "80px 0",
+    }} />
+  );
+}
+
+// ─── SCREENSHOT FRAME ────────────────────────────────────────────────────────
+function Frame({ src, rounded = true }: { src: string; rounded?: boolean }) {
+  return (
+    <div style={{
+      borderRadius: rounded ? "16px" : "0",
+      overflow: "hidden",
+      border: `1px solid ${BORDER}`,
+      background: "rgba(255,255,255,0.03)",
+      flexShrink: 0,
+    }}>
       <img src={src} alt="" style={{ width: "100%", height: "auto", display: "block" }} />
     </div>
   );
 }
 
-function Divider() {
-  return <div style={{ width: "100%", height: "1px", background: "rgba(255,255,255,0.12)", margin: "80px 0" }} />;
-}
-function H2({ children }: { children: React.ReactNode }) {
-  return <p style={{ fontFamily: font, fontWeight: 700, fontSize: "34px", color: white, margin: "0 0 32px" }}>{children}</p>;
-}
-function H3({ children }: { children: React.ReactNode }) {
-  return <p style={{ fontFamily: font, fontWeight: 700, fontSize: "26px", color: white, margin: "0 0 20px" }}>{children}</p>;
-}
-function Body({ children }: { children: React.ReactNode }) {
-  return <p style={{ fontFamily: font, fontWeight: 700, fontSize: "18px", lineHeight: "30px", color: white, margin: 0 }}>{children}</p>;
-}
-function Ul({ items }: { items: string[] }) {
+// ─── STAT PILL ───────────────────────────────────────────────────────────────
+function StatPill({ label, value }: { label: string; value: string }) {
   return (
-    <ul style={{ fontFamily: font, fontWeight: 700, fontSize: "18px", lineHeight: "30px", color: white, paddingLeft: "22px", margin: 0, display: "flex", flexDirection: "column", gap: "4px" }}>
-      {items.map((item, i) => <li key={i}>{item}</li>)}
-    </ul>
+    <div style={{
+      display: "flex", flexDirection: "column", gap: "4px",
+      padding: "20px 28px",
+      border: `1px solid ${BORDER}`,
+      borderRadius: "12px",
+      background: "rgba(255,255,255,0.03)",
+    }}>
+      <span style={{ fontFamily: MONO, fontSize: "11px", letterSpacing: "0.1em", textTransform: "uppercase", color: MUTED }}>{label}</span>
+      <span style={{ fontFamily: SYNE, fontWeight: 800, fontSize: "22px", color: WHITE }}>{value}</span>
+    </div>
   );
 }
 
-/*
-  ScreenRow — картинка выходит до самого края экрана
-  side="left"  → картинка слева уходит до левого края браузера
-  side="right" → картинка справа уходит до правого края браузера
-*/
-function ScreenRow({ src, text, side }: { src: string; text?: string; side: "left" | "right" }) {
+// ─── SCREEN CARD (main showcase) ─────────────────────────────────────────────
+function ScreenCard({ src, title, desc, index }: { src: string; title: string; desc: string; index: number }) {
+  return (
+    <div style={{ display: "flex", flexDirection: "column", gap: "20px" }}>
+      <div style={{ position: "relative" }}>
+        <div style={{
+          position: "absolute", top: "16px", left: "16px", zIndex: 2,
+          fontFamily: MONO, fontSize: "11px", letterSpacing: "0.1em",
+          color: GREEN, background: "rgba(5,10,6,0.85)",
+          border: `1px solid rgba(26,255,110,0.3)`,
+          borderRadius: "6px", padding: "4px 10px",
+        }}>
+          {String(index).padStart(2, "0")}
+        </div>
+        <Frame src={src} />
+      </div>
+      <div style={{ display: "flex", flexDirection: "column", gap: "8px" }}>
+        <H3>{title}</H3>
+        <Body>{desc}</Body>
+      </div>
+    </div>
+  );
+}
+
+// ─── ALTERNATING ROW ─────────────────────────────────────────────────────────
+function AltRow({
+  src, title, desc, side, bleedEdge = false
+}: {
+  src: string; title: string; desc: string; side: "left" | "right"; bleedEdge?: boolean;
+}) {
   const imgEl = (
     <div style={{
-      /* Растягиваем картинку до края viewport через viewport units */
-      width: side === "left"
-        ? "calc(60% + ((100vw - 1200px) / 2) + 60px)"
-        : "calc(60% + ((100vw - 1200px) / 2) + 60px)",
-      flexShrink: 0,
-      minWidth: 0,
+      flex: "0 0 58%",
+      marginLeft: side === "left" && bleedEdge ? "-60px" : undefined,
+      marginRight: side === "right" && bleedEdge ? "-60px" : undefined,
     }}>
-      <Frame src={src} />
+      <Frame src={src} rounded={!bleedEdge} />
     </div>
   );
 
-  const txtEl = text ? (
-    <div style={{ flex: 1, display: "flex", alignItems: "center", minWidth: 0 }}>
-      <Body>{text}</Body>
+  const txtEl = (
+    <div style={{ flex: 1, display: "flex", flexDirection: "column", gap: "16px", justifyContent: "center", padding: "16px 0" }}>
+      <Tag>Screen</Tag>
+      <H3>{title}</H3>
+      <Body>{desc}</Body>
     </div>
-  ) : null;
+  );
 
   return (
     <div style={{
-      display: "flex",
-      gap: "40px",
-      alignItems: "center",
-      marginBottom: "32px",
-      /* Выходим за padding контейнера в нужную сторону */
-      marginLeft: side === "left" ? "-60px" : "0",
-      marginRight: side === "right" ? "-60px" : "0",
+      display: "flex", gap: "48px", alignItems: "center",
+      marginBottom: "56px",
     }}>
       {side === "left" ? <>{imgEl}{txtEl}</> : <>{txtEl}{imgEl}</>}
     </div>
   );
 }
 
-function AdditionalSection({ title, rows }: {
-  title: string;
-  rows: { src: string; text?: string; side: "left" | "right" }[];
-}) {
+// ─── CONTACT BUTTON ──────────────────────────────────────────────────────────
+function ContactBtn({ label, href, filled }: { label: string; href: string; filled?: boolean }) {
   return (
-    <div style={{ marginBottom: "80px" }}>
-      <H3>{title}</H3>
-      {rows.map((row, i) => <ScreenRow key={i} {...row} />)}
-    </div>
+    <a href={href} target="_blank" rel="noopener" style={{
+      display: "inline-flex", alignItems: "center", justifyContent: "center",
+      padding: "14px 32px",
+      fontFamily: GROTESK, fontWeight: 600, fontSize: "15px",
+      color: filled ? BG : WHITE,
+      background: filled ? GREEN : "transparent",
+      border: `1px solid ${filled ? GREEN : BORDER}`,
+      borderRadius: "200px",
+      textDecoration: "none",
+      transition: "all 0.2s",
+      whiteSpace: "nowrap",
+    }}>{label}</a>
   );
 }
 
+// ─── PAGE ────────────────────────────────────────────────────────────────────
 export default function VimeworldCase() {
   return (
-    <main style={{ background: bg, minHeight: "100vh" }}>
+    <main style={{ background: BG, minHeight: "100vh", overflowX: "hidden" }}>
 
-      {/* NAV */}
+      {/* ── NAV ─────────────────────────────────────────────────────────── */}
       <header style={{ padding: "45px 60px 0" }}>
-        <Link href="/" style={{ fontFamily: font, fontWeight: 700, fontSize: "110px", color: white, letterSpacing: "-5.5px", textTransform: "uppercase", textDecoration: "none", display: "block", lineHeight: 1 }}>
+        <Link href="/" style={{
+          fontFamily: SYNE, fontWeight: 800, fontSize: "clamp(52px, 8vw, 110px)",
+          color: WHITE, letterSpacing: "-0.05em", textTransform: "uppercase",
+          textDecoration: "none", display: "block", lineHeight: 1,
+        }}>
           Oleksii Klymushkin
         </Link>
         <nav style={{ display: "flex", justifyContent: "space-between", marginTop: "22px" }}>
-          {[["Works", "/#works"], ["About me", "/#about"], ["Contact", "/#contact"]].map(([l, h]) => (
-            <a key={l} href={h} style={{ border: "1px solid rgba(255,255,255,0.2)", borderRadius: "200px", padding: "10px 18px", fontFamily: font, fontWeight: 700, fontSize: "22px", color: white, textDecoration: "none" }}>{l}</a>
+          {([["Works", "/#works"], ["About me", "/#about"], ["Contact", "/#contact"]] as [string, string][]).map(([l, h]) => (
+            <a key={l} href={h} style={{
+              border: `1px solid ${BORDER}`, borderRadius: "200px",
+              padding: "10px 22px",
+              fontFamily: GROTESK, fontWeight: 500, fontSize: "15px",
+              color: WHITE, textDecoration: "none",
+            }}>{l}</a>
           ))}
         </nav>
       </header>
 
-      <div style={{ padding: "72px 60px 0", overflowX: "hidden" }}>
+      <div style={{ padding: "80px 60px 0" }}>
 
-        {/* HERO */}
-        <div style={{ textAlign: "center", marginBottom: "48px" }}>
-          <p style={{ fontFamily: font, fontWeight: 700, fontSize: "40px", color: white, margin: "0 0 12px" }}>Minecraft ESC Menu — UI/UX Design</p>
-          <p style={{ fontFamily: font, fontWeight: 700, fontSize: "28px", color: muted, margin: 0 }}>Full Interface &amp; Experience</p>
-        </div>
-        <Frame src={IMG_HERO} />
-
-        {/* PROJECT OVERVIEW */}
-        <div style={{ marginTop: "72px" }}>
-          <H2>Project overview</H2>
-          <div style={{ display: "flex", flexDirection: "column", gap: "14px", maxWidth: "820px" }}>
-            <Body>The project is a completely redesigned ESC menu for a Minecraft server.</Body>
-            <Body>I created the UX flow, navigation, player action scenarios, as well as a visual UI that integrates the player profile, quests, daily rewards, guidebook, updates, and social features.</Body>
-            <Body>The goal is to enhance the player experience and make the interface intuitive, modern, and user-friendly.</Body>
+        {/* ── HERO ────────────────────────────────────────────────────────── */}
+        <div style={{ marginBottom: "64px" }}>
+          <div style={{ display: "flex", alignItems: "center", gap: "16px", marginBottom: "24px" }}>
+            <Tag>Game UI · 2025</Tag>
+            <Tag>Client Project</Tag>
           </div>
+          <h1 style={{
+            fontFamily: SYNE, fontWeight: 800,
+            fontSize: "clamp(36px, 6vw, 72px)",
+            color: WHITE, letterSpacing: "-0.03em",
+            lineHeight: 1.05, margin: "0 0 20px",
+            maxWidth: "900px",
+          }}>
+            VimeWorld — <span style={{ color: GREEN }}>ESC Menu</span> Redesign
+          </h1>
+          <p style={{
+            fontFamily: GROTESK, fontSize: "18px", color: MUTED,
+            maxWidth: "640px", lineHeight: "1.65", margin: 0,
+          }}>
+            Full UI/UX redesign of the in-game Escape menu for VimeWorld's Pixelmon Ultimate server. From UX flow and player scenarios to final visual interface.
+          </p>
         </div>
 
-        {/* DISCLAIMER */}
-        <div style={{ marginTop: "56px" }}>
-          <H2>Disclaimer</H2>
-          <div style={{ display: "flex", flexDirection: "column", gap: "14px", maxWidth: "820px" }}>
-            <Body>The server logo and branding belong to their respective owners.</Body>
-            <Body>The project showcases both UX and UI: menu structure, player scenarios, navigation, and visual design.</Body>
-            <Body>The project was developed for a client.</Body>
-          </div>
+        {/* stats row */}
+        <div style={{ display: "flex", gap: "16px", flexWrap: "wrap", marginBottom: "56px" }}>
+          {[
+            ["Role", "UI/UX Designer"],
+            ["Client", "VimeWorld · Pixelmon Ultimate"],
+            ["Year", "2025"],
+            ["Screens", "7+"],
+          ].map(([label, value]) => <StatPill key={label} label={label} value={value} />)}
         </div>
 
-        <Divider />
+        {/* hero image */}
+        <div style={{ borderRadius: "20px", overflow: "hidden", border: `1px solid ${BORDER}`, marginBottom: "0" }}>
+          <img src={IMG_HERO} alt="VimeWorld ESC Menu Hero" style={{ width: "100%", height: "auto", display: "block" }} />
+        </div>
 
-        {/* PROBLEM & GOALS */}
-        <H2>Problem &amp; Goals</H2>
-        <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "60px" }}>
+        {/* ── OVERVIEW + DISCLAIMER ────────────────────────────────────────── */}
+        <div style={{ marginTop: "80px", display: "grid", gridTemplateColumns: "1fr 1fr", gap: "60px" }}>
           <div>
-            <H3>Problem</H3>
-            <Body>Standard Minecraft ESC menu:</Body>
-            <div style={{ marginTop: "12px" }}>
-              <Ul items={["Does not display the player's profile or statistics", "Does not reflect bonuses, quests, or the shop", "Not suitable for servers with a large number of features"]} />
+            <Label>Overview</Label>
+            <H2>Project Overview</H2>
+            <div style={{ display: "flex", flexDirection: "column", gap: "16px" }}>
+              <Body>The project is a completely redesigned ESC menu for a Minecraft server. The standard menu provides no server-specific context — no player profile, no quests, no shop, no daily rewards.</Body>
+              <Body>I designed the full UX flow, player navigation scenarios, and a modern UI that integrates all core server features into one coherent screen.</Body>
             </div>
           </div>
           <div>
-            <H3>Goals</H3>
-            <Ul items={["Create an extended ESC menu with clear navigation", "Place key server features on a single screen", "Reduce the number of clicks and make the interface intuitive", "Design a modern UI with a neon aesthetic", "Improve player accessibility and engagement"]} />
+            <Label>Disclaimer</Label>
+            <H2>About the Work</H2>
+            <div style={{ display: "flex", flexDirection: "column", gap: "16px" }}>
+              <Body>Server logo and branding belong to their respective owners. This case documents both the UX design process and the final UI output.</Body>
+              <Body>The project was developed for a client — VimeWorld's Pixelmon Ultimate server team (EfirTeam × VimeWorld).</Body>
+            </div>
           </div>
         </div>
 
         <Divider />
 
-        {/* USER NEEDS */}
-        <H2>User needs</H2>
-        <div style={{ display: "grid", gridTemplateColumns: "repeat(4, 1fr)", gap: "14px", marginBottom: "14px" }}>
-          {USER_NEEDS.slice(0, 4).map((src, i) => <img key={i} src={src} alt="" style={{ width: "100%", borderRadius: "10px" }} />)}
+        {/* ── PROBLEM & GOALS ──────────────────────────────────────────────── */}
+        <Label>Challenge</Label>
+        <H2 accent>Problem &amp; Goals</H2>
+        <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "48px" }}>
+          <div style={{
+            padding: "32px", borderRadius: "16px",
+            border: `1px solid ${BORDER}`,
+            background: "rgba(255,255,255,0.02)",
+          }}>
+            <div style={{ display: "flex", alignItems: "center", gap: "10px", marginBottom: "20px" }}>
+              <div style={{ width: "8px", height: "8px", borderRadius: "50%", background: "rgba(255,80,80,0.8)" }} />
+              <span style={{ fontFamily: MONO, fontSize: "11px", letterSpacing: "0.1em", textTransform: "uppercase", color: MUTED }}>Problem</span>
+            </div>
+            <div style={{ display: "flex", flexDirection: "column", gap: "12px" }}>
+              {[
+                "Standard ESC menu shows no player profile or stats",
+                "No access to bonuses, quests, or the in-game shop",
+                "Not designed for feature-rich servers with complex economies",
+              ].map((item, i) => (
+                <div key={i} style={{ display: "flex", gap: "12px", alignItems: "flex-start" }}>
+                  <span style={{ color: "rgba(255,80,80,0.6)", fontFamily: MONO, fontSize: "13px", flexShrink: 0, marginTop: "2px" }}>×</span>
+                  <Body>{item}</Body>
+                </div>
+              ))}
+            </div>
+          </div>
+
+          <div style={{
+            padding: "32px", borderRadius: "16px",
+            border: `1px solid rgba(26,255,110,0.15)`,
+            background: "rgba(26,255,110,0.03)",
+          }}>
+            <div style={{ display: "flex", alignItems: "center", gap: "10px", marginBottom: "20px" }}>
+              <div style={{ width: "8px", height: "8px", borderRadius: "50%", background: GREEN }} />
+              <span style={{ fontFamily: MONO, fontSize: "11px", letterSpacing: "0.1em", textTransform: "uppercase", color: GREEN }}>Goals</span>
+            </div>
+            <div style={{ display: "flex", flexDirection: "column", gap: "12px" }}>
+              {[
+                "Extended ESC menu with clear, intuitive navigation",
+                "All key server features accessible from a single screen",
+                "Reduce click count — fewer steps to reach any feature",
+                "Modern neon UI consistent with the server aesthetic",
+                "Improve player engagement and accessibility",
+              ].map((item, i) => (
+                <div key={i} style={{ display: "flex", gap: "12px", alignItems: "flex-start" }}>
+                  <span style={{ color: GREEN, fontFamily: MONO, fontSize: "13px", flexShrink: 0, marginTop: "2px" }}>+</span>
+                  <Body>{item}</Body>
+                </div>
+              ))}
+            </div>
+          </div>
         </div>
-        <div style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: "14px", maxWidth: "75%", margin: "0 auto 48px" }}>
-          {USER_NEEDS.slice(4).map((src, i) => <img key={i} src={src} alt="" style={{ width: "100%", borderRadius: "10px" }} />)}
-        </div>
-        <H3>The player needs to:</H3>
-        <Ul items={["quickly access quests", "collect daily rewards", "see their balance and privileges", "keep track of server updates", "navigate to the shop and settings", "easily exit the game and open social links"]} />
 
         <Divider />
 
-        {/* UX STRUCTURE */}
-        <H2>UX structure</H2>
-        <div style={{ display: "grid", gridTemplateColumns: "2fr 3fr", gap: "48px", alignItems: "start" }}>
-          <div style={{ display: "flex", flexDirection: "column", gap: "16px" }}>
-            <Body>At the concept stage, I created sketches to distribute blocks, separate the left and right areas, and define the card-based structure for quests and the guidebook. This helped establish the UX flow and minimize cognitive load.</Body>
-            <Body>The menu structure reflects the logic of how players use the features. The UX flow intuitively guides the player from the main screen to the actions they need.</Body>
+        {/* ── UX STRUCTURE ─────────────────────────────────────────────────── */}
+        <Label>Process</Label>
+        <H2 accent>UX Structure</H2>
+        <div style={{ display: "grid", gridTemplateColumns: "2fr 3fr", gap: "56px", alignItems: "start" }}>
+          <div style={{ display: "flex", flexDirection: "column", gap: "20px" }}>
+            <Body>At the concept stage, I created sketches to distribute blocks, define left/right areas, and establish the card-based structure for quests and the guidebook. This minimised cognitive load early.</Body>
+            <Body>The menu structure mirrors how players actually use features — the flow moves naturally from the main screen toward the actions they need, with no dead ends.</Body>
           </div>
           <div style={{ display: "flex", flexDirection: "column", gap: "14px" }}>
             <Frame src={IMG_SKETCH} />
@@ -231,117 +366,228 @@ export default function VimeworldCase() {
 
         <Divider />
 
-        {/* UI STYLE GUIDE */}
-        <H2>UI Style Guide</H2>
+        {/* ── STYLE GUIDE ──────────────────────────────────────────────────── */}
+        <Label>Design System</Label>
+        <H2 accent>UI Style Guide</H2>
+
         <H3>Colors</H3>
-        <div style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: "14px", marginBottom: "14px" }}>
-          {COLORS.slice(0, 3).map((src, i) => <img key={i} src={src} alt="" style={{ width: "100%", borderRadius: "10px" }} />)}
+        <div style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: "12px", marginBottom: "12px" }}>
+          {COLORS.slice(0, 3).map((src, i) => (
+            <div key={i} style={{ borderRadius: "12px", overflow: "hidden", border: `1px solid ${BORDER}` }}>
+              <img src={src} alt="" style={{ width: "100%", height: "auto", display: "block" }} />
+            </div>
+          ))}
         </div>
-        <div style={{ display: "grid", gridTemplateColumns: "repeat(2, 1fr)", gap: "14px", maxWidth: "66%", marginBottom: "56px" }}>
-          {COLORS.slice(3).map((src, i) => <img key={i} src={src} alt="" style={{ width: "100%", borderRadius: "10px" }} />)}
+        <div style={{ display: "grid", gridTemplateColumns: "repeat(2, 1fr)", gap: "12px", maxWidth: "66%", marginBottom: "56px" }}>
+          {COLORS.slice(3).map((src, i) => (
+            <div key={i} style={{ borderRadius: "12px", overflow: "hidden", border: `1px solid ${BORDER}` }}>
+              <img src={src} alt="" style={{ width: "100%", height: "auto", display: "block" }} />
+            </div>
+          ))}
         </div>
 
         <H3>Typography — Nexa [Bold]</H3>
-        <div style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: "12px", marginBottom: "56px" }}>
-          {[["Headings — 30-40 px", "32px"], ["Body Text — 22-25 px", "22px"], ["Small Buttons — 15 px", "15px"], ["Default Buttons — 20 px", "20px"], ["Large Buttons — 30 px", "28px"], ["UI Labels — 22-30 px", "24px"], ["Captions — 20-30 px", "20px"]].map(([label, size]) => (
-            <div key={label} style={{ background: "rgba(255,255,255,0.06)", borderRadius: "14px", padding: "22px 24px", display: "flex", flexDirection: "column", gap: "18px" }}>
-              <span style={{ fontFamily: font, fontWeight: 700, fontSize: "13px", color: muted }}>{label}</span>
-              <span style={{ fontFamily: font, fontWeight: 700, fontSize: size, color: white }}>Hello World</span>
+        <div style={{ display: "grid", gridTemplateColumns: "repeat(4, 1fr)", gap: "10px", marginBottom: "56px" }}>
+          {([
+            ["Headings", "36px"], ["Body text", "18px"],
+            ["Buttons", "20px"], ["UI Labels", "24px"],
+          ] as [string, string][]).map(([label, size]) => (
+            <div key={label} style={{
+              padding: "24px", borderRadius: "14px",
+              border: `1px solid ${BORDER}`,
+              background: "rgba(255,255,255,0.02)",
+              display: "flex", flexDirection: "column", gap: "20px",
+            }}>
+              <span style={{ fontFamily: MONO, fontSize: "11px", color: MUTED, letterSpacing: "0.08em", textTransform: "uppercase" }}>{label}</span>
+              <span style={{ fontFamily: "'Nexa', sans-serif", fontWeight: 700, fontSize: size, color: WHITE, lineHeight: 1.2 }}>Hello</span>
             </div>
           ))}
         </div>
 
         <H3>Buttons</H3>
-        <img src={BUTTONS} alt="Buttons" style={{ width: "100%", borderRadius: "10px", marginBottom: "56px" }} />
+        <div style={{ borderRadius: "12px", overflow: "hidden", border: `1px solid ${BORDER}`, marginBottom: "56px" }}>
+          <img src={BUTTONS} alt="Buttons" style={{ width: "100%", height: "auto", display: "block" }} />
+        </div>
 
         <H3>Icons &amp; Components</H3>
-        <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "14px", marginBottom: "56px" }}>
-          <img src={ICONS_1} alt="" style={{ width: "100%", borderRadius: "10px" }} />
-          <img src={ICONS_2} alt="" style={{ width: "100%", borderRadius: "10px" }} />
+        <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "12px", marginBottom: "56px" }}>
+          {[ICONS_1, ICONS_2].map((src, i) => (
+            <div key={i} style={{ borderRadius: "12px", overflow: "hidden", border: `1px solid ${BORDER}` }}>
+              <img src={src} alt="" style={{ width: "100%", display: "block" }} />
+            </div>
+          ))}
         </div>
 
-        <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "56px", marginBottom: "32px" }}>
-          <div><H3>Hover state</H3><Ul items={["Icons slightly enlarge when hovered", "Provides visual feedback and draws attention to interactive elements", "Improves click target perception and engagement"]} /></div>
-          <div><H3>Pressed / Active State</H3><Ul items={["A light neon outline appears around the icon or button", "Signals that the element has been clicked or activated", "Maintains visual consistency with the neon UI style"]} /></div>
+        <H3>Interaction States</H3>
+        <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "40px", marginBottom: "28px" }}>
+          <div>
+            <div style={{ display: "flex", alignItems: "center", gap: "10px", marginBottom: "12px" }}>
+              <div style={{ width: "6px", height: "6px", borderRadius: "50%", background: GREEN }} />
+              <span style={{ fontFamily: MONO, fontSize: "11px", color: MUTED, letterSpacing: "0.08em", textTransform: "uppercase" }}>Hover State</span>
+            </div>
+            <Body>Icons slightly enlarge on hover, providing visual feedback and drawing attention to interactive elements.</Body>
+          </div>
+          <div>
+            <div style={{ display: "flex", alignItems: "center", gap: "10px", marginBottom: "12px" }}>
+              <div style={{ width: "6px", height: "6px", borderRadius: "50%", background: GREEN }} />
+              <span style={{ fontFamily: MONO, fontSize: "11px", color: MUTED, letterSpacing: "0.08em", textTransform: "uppercase" }}>Active State</span>
+            </div>
+            <Body>A neon outline appears around the active icon or button, signalling the current section and maintaining visual consistency.</Body>
+          </div>
         </div>
-        <img src={STATES} alt="States" style={{ width: "100%", borderRadius: "10px" }} />
-
-        <Divider />
-
-        {/* MAIN UI */}
-        <H2>Main UI</H2>
-        <Body>The main screen demonstrates the UX flow: large navigation blocks, quest and reward cards, and a right column with social buttons and settings. Everything is designed for convenient and predictable player interaction.</Body>
-        <div style={{ marginTop: "32px" }}><Frame src={IMG_MAIN_UI} /></div>
-
-        <Divider />
-
-        {/* FEATURE BREAKDOWN */}
-        <H2>Feature Breakdown</H2>
-        <div style={{ display: "flex", flexDirection: "column", gap: "14px" }}>
-          <div style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: "14px" }}>
-            {FEATURES.slice(0, 3).map((src, i) => <img key={i} src={src} alt="" style={{ width: "100%", borderRadius: "10px" }} />)}
-          </div>
-          <div style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: "14px" }}>
-            {FEATURES.slice(3, 6).map((src, i) => <img key={i} src={src} alt="" style={{ width: "100%", borderRadius: "10px" }} />)}
-          </div>
-          <div style={{ display: "grid", gridTemplateColumns: "repeat(2, 1fr)", gap: "14px" }}>
-            {FEATURES.slice(6).map((src, i) => <img key={i} src={src} alt="" style={{ width: "100%", borderRadius: "10px" }} />)}
-          </div>
+        <div style={{ borderRadius: "12px", overflow: "hidden", border: `1px solid ${BORDER}` }}>
+          <img src={STATES} alt="States" style={{ width: "100%", display: "block" }} />
         </div>
 
         <Divider />
 
-        {/* ADDITIONAL SCREENS */}
-        <H2>Additional Screens</H2>
+        {/* ── SCREENS SHOWCASE ─────────────────────────────────────────────── */}
+        <Label>Result</Label>
+        <H2 accent>Designed Screens</H2>
+        <Body>Seven fully designed screens covering every section of the menu — from the main dashboard to shop, kits, cases, cart, privileges, and warps.</Body>
 
-        <AdditionalSection title="Cases" rows={[
-          { src: CASES[0], text: 'Clicking the "Buy" button opens a menu where you can select the number of cases to purchase. The total cost and a confirmation button are also displayed.', side: "left" },
-          { src: CASES[1], text: 'Clicking the "Open" button opens a case-opening window for the user, which includes a "Boost" button.', side: "right" },
-          { src: CASES[2], side: "left" },
-        ]} />
+        <div style={{ marginTop: "48px", display: "grid", gridTemplateColumns: "1fr 1fr", gap: "32px" }}>
+          <ScreenCard
+            src={IMG_MENU} index={1}
+            title="Main Menu"
+            desc="Dashboard with quests, daily bonuses, latest server updates, server guidebook, and social links. A neon mascot sits in the right column alongside the settings and exit buttons."
+          />
+          <ScreenCard
+            src={IMG_CASES} index={2}
+            title="Cases"
+            desc="Left panel lists all available cases with prices. Selecting a case shows its drop pool and available actions — Buy or Open — with the player's current currency balance."
+          />
+          <ScreenCard
+            src={IMG_PRIVS} index={3}
+            title="Privileges"
+            desc="Rank store with subscription tiers. Detail panel shows full privilege benefits, a duration selector (monthly toggle), and dedicated Buy and Gift buttons."
+          />
+          <ScreenCard
+            src={IMG_KITS} index={4}
+            title="Kits"
+            desc="Available / All toggle filter. Selecting a kit shows its full inventory grid with a contextual warning about one-time-use mechanics before the player claims."
+          />
+          <ScreenCard
+            src={IMG_SHOP} index={5}
+            title="Shop"
+            desc="Full item store with search, category filters, and currency toggles. Items laid out in a scrollable 5-column grid with sort controls."
+          />
+          <ScreenCard
+            src={IMG_CART} index={6}
+            title="Cart"
+            desc="Collected rewards and purchases categorised into Privileges, Cases, and Other. Each item shows quantity and a Claim button."
+          />
+        </div>
 
-        <AdditionalSection title="Privileges" rows={[
-          { src: PRIVS[0], text: "This screen displays a list of privileges, as well as information about the selected case. There are buttons to purchase a privilege or gift it to another player.", side: "left" },
-          { src: PRIVS[1], text: 'Clicking "Buy" opens a window with purchase details and a confirmation button.', side: "right" },
-          { src: PRIVS[2], text: 'Clicking "Gift" opens an almost identical window to the "Buy" option, but includes a field to enter the nickname of the player to whom the user wants to gift the privilege.', side: "left" },
-        ]} />
-
-        <AdditionalSection title="Warps" rows={[
-          { src: WARPS[0], text: 'The screen displays cards for warps, each with a "More Info" button. Each card has a hover effect, highlighting it and slightly increasing its size.', side: "left" },
-          { src: WARPS[1], text: 'Clicking the "More Info" button opens a window with detailed information about the warp, as well as a "Teleport" button.', side: "right" },
-        ]} />
-
-        <AdditionalSection title="GuideBook" rows={[
-          { src: GUIDES[0], text: 'Clicking the "Go" button opens a convenient window, with categories on the left side and information for the selected category on the right side.', side: "left" },
-          { src: GUIDES[1], text: "On the right side, all information is structured, with each item having buttons to expand for more details and the option to collapse it back.", side: "right" },
-        ]} />
+        {/* Warps — full width */}
+        <div style={{ marginTop: "32px" }}>
+          <ScreenCard
+            src={IMG_WARPS} index={7}
+            title="Warps"
+            desc="Server location cards with colour-coded borders per warp type. Each card has a More Info button leading to detailed teleport info — Shop, Arena, EVS, InfinityTower."
+          />
+        </div>
 
         <Divider />
 
-        {/* FINAL RESULT */}
-        <H2>Final Result</H2>
-        <Body>I created an interface that integrates all server functionality, improved the UX, and developed UI components. The project enhanced my UI/UX skills for game interfaces and helped me gain a deeper understanding of the visual logic behind player interactions.</Body>
+        {/* ── ALTERNATING DEEP-DIVES ────────────────────────────────────────── */}
+        <Label>Deep Dive</Label>
+        <H2 accent>Screen Breakdowns</H2>
 
-        {/* CONTACT */}
-        <div style={{ marginTop: "120px", display: "flex", justifyContent: "flex-end" }}>
-          <div style={{ display: "flex", flexDirection: "column", gap: "28px", maxWidth: "460px" }}>
-            <Body>Ready to work together? Let&apos;s talk about freelance projects, collaborations, and full-time roles.</Body>
-            <div style={{ display: "flex", gap: "12px" }}>
-              {[["Telegram", true], ["Instagram", false], ["Gmail", false]].map(([label, filled]) => (
-                <a key={label as string} href={label === "Gmail" ? "mailto:example@gmail.com" : "#"} style={{ background: filled ? white : "transparent", color: filled ? bg : white, border: filled ? "none" : "1px solid rgba(255,255,255,0.2)", borderRadius: "200px", padding: "12px 24px", fontFamily: font, fontWeight: 700, fontSize: "18px", textDecoration: "none", whiteSpace: "nowrap" }}>{label}</a>
-              ))}
+        <AltRow
+          src={IMG_MENU} side="left"
+          title="Main Screen — Dashboard Logic"
+          desc="The main screen establishes the UX hierarchy: top navigation with icon buttons and player profile, then a four-column content area. Quests on the left, daily bonuses and guidebook in the centre, updates in a timeline, and social/settings on the right. Everything a player needs without leaving the pause screen."
+        />
+        <AltRow
+          src={IMG_CASES} side="right"
+          title="Cases — Split-Panel Pattern"
+          desc="A list-and-detail split panel keeps navigation and content visible simultaneously. The drop pool grid uses rarity-coloured borders (purple for legendary, cyan for rare, gold for uncommon) matching Pixelmon conventions. Price is always visible so players can make quick decisions."
+        />
+        <AltRow
+          src={IMG_PRIVS} side="left"
+          title="Privileges — Subscription Tiers"
+          desc="Rank cards use player skins as avatars, making each tier immediately recognisable. The detail pane includes a duration dropdown and tabbed benefit breakdown (Main vs Kits). The Gift button expands accessibility — players can purchase for others without leaving the interface."
+        />
+        <AltRow
+          src={IMG_SHOP} side="right"
+          title="Shop — Searchable Item Store"
+          desc="Currency toggle buttons (Pixelmon coins vs server tokens) sit next to search, letting players filter by what they can afford. Category sidebar keeps the grid manageable. Sort dropdown defaults to 'Default' with options for price ordering."
+        />
+
+        <Divider />
+
+        {/* ── FINAL RESULT ──────────────────────────────────────────────────── */}
+        <div style={{
+          padding: "56px", borderRadius: "20px",
+          border: `1px solid rgba(26,255,110,0.15)`,
+          background: "linear-gradient(135deg, rgba(26,255,110,0.04) 0%, rgba(5,10,6,0) 60%)",
+          marginBottom: "0",
+        }}>
+          <Label>Takeaway</Label>
+          <H2>Final Result</H2>
+          <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "32px" }}>
+            <Body>Delivered a complete, production-ready interface that integrates all server functionality — quests, economy, cases, kits, privileges, shop, and navigation — into one cohesive system.</Body>
+            <Body>The project sharpened my skills in game UI pattern design and deepened my understanding of player interaction logic: how to reduce cognitive load in high-information interfaces while keeping the visual language exciting.</Body>
+          </div>
+        </div>
+
+        {/* ── CONTACT ──────────────────────────────────────────────────────── */}
+        <div style={{ marginTop: "120px" }}>
+          <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-end", flexWrap: "wrap", gap: "32px" }}>
+            <div style={{ maxWidth: "480px" }}>
+              <Label>Let&apos;s work together</Label>
+              <p style={{
+                fontFamily: SYNE, fontWeight: 800,
+                fontSize: "clamp(28px, 4vw, 48px)",
+                color: WHITE, letterSpacing: "-0.03em",
+                lineHeight: 1.1, margin: "0 0 28px",
+              }}>
+                Ready to build something <span style={{ color: GREEN }}>great?</span>
+              </p>
+              <Body>Open for freelance projects, collaborations, and full-time roles.</Body>
+            </div>
+            <div style={{ display: "flex", gap: "12px", flexWrap: "wrap" }}>
+              <ContactBtn label="Telegram" href="https://t.me/atuedesign" filled />
+              <ContactBtn label="Instagram" href="https://www.instagram.com/atue_design?igsh=ZmRnbXFuNWh6ZWhj&utm_source=qr" />
+              <ContactBtn label="Gmail" href="mailto:atue3038@gmail.com" />
             </div>
           </div>
         </div>
 
-        {/* FOOTER */}
-        <footer style={{ marginTop: "120px" }}>
-          <div style={{ display: "flex", justifyContent: "space-between" }}>
-            {["Insta", "Behance", "Telegram"].map(l => (
-              <a key={l} href="#" style={{ border: "1px solid rgba(255,255,255,0.2)", borderRadius: "200px", padding: "10px 18px", fontFamily: font, fontWeight: 700, fontSize: "22px", color: white, textDecoration: "none" }}>{l}</a>
+        {/* ── NEXT PROJECT ─────────────────────────────────────────────────── */}
+        <div style={{
+          marginTop: "80px",
+          display: "flex", justifyContent: "space-between", alignItems: "center",
+          padding: "32px 0",
+          borderTop: `1px solid ${BORDER}`,
+        }}>
+          <Link href="/works/vimeworld" style={{ fontFamily: MONO, fontSize: "12px", letterSpacing: "0.1em", color: MUTED, textDecoration: "none", textTransform: "uppercase" }}>
+            ← VimeWorld
+          </Link>
+          <Link href="/works/lectra" style={{ fontFamily: MONO, fontSize: "12px", letterSpacing: "0.1em", color: GREEN, textDecoration: "none", textTransform: "uppercase" }}>
+            Lectra →
+          </Link>
+        </div>
+
+        {/* ── FOOTER ───────────────────────────────────────────────────────── */}
+        <footer style={{ marginTop: "60px", paddingBottom: "60px" }}>
+          <div style={{ display: "flex", justifyContent: "space-between", marginBottom: "40px" }}>
+            {(["Insta", "Behance", "Telegram"] as string[]).map(l => (
+              <a key={l} href="#" style={{
+                border: `1px solid ${BORDER}`, borderRadius: "200px",
+                padding: "10px 22px",
+                fontFamily: GROTESK, fontWeight: 500, fontSize: "15px",
+                color: WHITE, textDecoration: "none",
+              }}>{l}</a>
             ))}
           </div>
-          <p style={{ fontFamily: font, fontWeight: 700, fontSize: "110px", color: white, letterSpacing: "-5.5px", textTransform: "uppercase", lineHeight: 1, margin: 0 }}>Oleksii Klymushkin</p>
+          <p style={{
+            fontFamily: SYNE, fontWeight: 800,
+            fontSize: "clamp(48px, 8vw, 110px)",
+            color: WHITE, letterSpacing: "-0.05em",
+            textTransform: "uppercase", lineHeight: 1, margin: 0,
+          }}>Oleksii Klymushkin</p>
         </footer>
 
       </div>
