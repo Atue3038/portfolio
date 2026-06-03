@@ -1,6 +1,7 @@
 "use client";
 import Link from "next/link";
 import { useEffect, useRef, useState } from "react";
+import { useCursor, CursorElements, CaseNav, CaseContact, CaseFooter } from "@/components/CaseShell";
 
 const f = { fontFamily: "'Space Grotesk', sans-serif" } as const;
 const m = { fontFamily: "'DM Mono', monospace" } as const;
@@ -45,47 +46,20 @@ function Shot({ src, alt, caption }: { src: string; alt: string; caption?: strin
 }
 
 export default function RentEaseCase() {
-  const cursorRef = useRef<HTMLDivElement>(null);
-  const ringRef = useRef<HTMLDivElement>(null);
-  const [hovered, setHovered] = useState(false);
-
-  useEffect(() => {
-    const move = (e: MouseEvent) => {
-      if (cursorRef.current) {
-        cursorRef.current.style.left = e.clientX + "px";
-        cursorRef.current.style.top = e.clientY + "px";
-      }
-      setTimeout(() => {
-        if (ringRef.current) {
-          ringRef.current.style.left = e.clientX + "px";
-          ringRef.current.style.top = e.clientY + "px";
-        }
-      }, 80);
-    };
-    window.addEventListener("mousemove", move);
-    return () => window.removeEventListener("mousemove", move);
-  }, []);
+  const { cursorRef, ringRef, hovered, setHovered } = useCursor();
 
   const onEnter = () => setHovered(true);
   const onLeave = () => setHovered(false);
 
   return (
     <>
-      <div ref={cursorRef} className="cursor" style={{ transform: `translate(-50%,-50%) scale(${hovered ? 3 : 1})`, background: hovered ? "transparent" : "var(--green)", border: hovered ? "1px solid var(--green)" : "none" }} />
-      <div ref={ringRef} className="cursor-ring" style={{ width: hovered ? 56 : 36, height: hovered ? 56 : 36 }} />
+      <CursorElements cursorRef={cursorRef} ringRef={ringRef} hovered={hovered} />
 
       <main style={{ background: "#050a06", minHeight: "100vh", overflowX: "hidden" }}>
 
-        {/* BACK */}
-        <div style={{ padding: "32px 48px", maxWidth: "1200px", margin: "0 auto" }}>
-          <Link href="/" onMouseEnter={onEnter} onMouseLeave={onLeave}
-            style={{ display: "inline-flex", alignItems: "center", gap: "10px", ...m, fontSize: "12px", color: "rgba(240,244,241,0.45)", textDecoration: "none", letterSpacing: "0.08em", transition: "color 0.2s" }}
-            onMouseOver={e => (e.currentTarget.style.color = "#f0f4f1")}
-            onMouseOut={e => (e.currentTarget.style.color = "rgba(240,244,241,0.45)")}
-          >← BACK TO WORKS</Link>
-        </div>
+        <CaseNav onEnter={onEnter} onLeave={onLeave} />
 
-        <div style={{ maxWidth: "1200px", margin: "0 auto", padding: "0 48px 120px" }}>
+        <div style={{ maxWidth: "1200px", margin: "0 auto", padding: "80px 48px 120px" }}>
 
           {/* HERO */}
           <div style={{ marginBottom: "72px" }}>
@@ -256,20 +230,9 @@ export default function RentEaseCase() {
 
           <Divider />
 
-          {/* NEXT PROJECT */}
-          <Link href="/works/czysto" onMouseEnter={onEnter} onMouseLeave={onLeave}
-            style={{ display: "flex", justifyContent: "space-between", alignItems: "center", padding: "40px 48px", border: "1px solid rgba(240,244,241,0.08)", textDecoration: "none", transition: "border-color 0.3s, background 0.3s" }}
-            onMouseOver={e => { e.currentTarget.style.borderColor = "rgba(26,255,110,0.4)"; e.currentTarget.style.background = "rgba(26,255,110,0.03)"; }}
-            onMouseOut={e => { e.currentTarget.style.borderColor = "rgba(240,244,241,0.08)"; e.currentTarget.style.background = "transparent"; }}
-          >
-            <div>
-              <div style={{ ...m, fontSize: "11px", color: "rgba(240,244,241,0.35)", letterSpacing: "0.1em", marginBottom: "8px" }}>NEXT PROJECT</div>
-              <div style={{ ...s, fontWeight: 800, fontSize: "28px", color: "#f0f4f1", letterSpacing: "-0.02em" }}>Czysto Cleaner — Website</div>
-            </div>
-            <span style={{ color: "#1aff6e", fontSize: "32px" }}>→</span>
-          </Link>
-
         </div>
+        <CaseContact onEnter={onEnter} onLeave={onLeave} />
+        <CaseFooter prevHref="/works/czysto" prevLabel="CZYSTO CLEANER" nextHref="/works/vimeworld" nextLabel="VIMEWORLD" onEnter={onEnter} onLeave={onLeave} />
       </main>
     </>
   );
