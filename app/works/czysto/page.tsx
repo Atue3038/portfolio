@@ -65,8 +65,6 @@ export default function CzystoCase() {
 
         <div style={{ maxWidth: "1200px", margin: "0 auto", padding: "80px 48px 120px" }}>
 
-        <div style={{ maxWidth: "1200px", margin: "0 auto", padding: "0 48px 120px" }}>
-
           {/* HERO */}
           <div style={{ marginBottom: "72px" }}>
             <div style={{ display: "flex", alignItems: "center", gap: "12px", marginBottom: "20px" }}>
