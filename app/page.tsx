@@ -52,10 +52,27 @@ export default function Home() {
   useEffect(() => {
     const els = document.querySelectorAll<HTMLElement>(".reveal");
     const io = new IntersectionObserver(
-      entries => entries.forEach(e => { if (e.isIntersecting) { (e.target as HTMLElement).classList.add("is-visible"); io.unobserve(e.target); } }),
+      entries => entries.forEach(e => {
+        if (e.isIntersecting) {
+          (e.target as HTMLElement).classList.add("is-visible");
+          io.unobserve(e.target);
+        }
+      }),
       { threshold: 0.15, rootMargin: "0px 0px -40px 0px" }
     );
     els.forEach(el => io.observe(el));
+
+    /* Image fade-in on load */
+    const imgs = document.querySelectorAll<HTMLImageElement>("img");
+    imgs.forEach(img => {
+      if (img.complete) {
+        img.classList.add("img-loaded");
+      } else {
+        img.addEventListener("load", () => img.classList.add("img-loaded"), { once: true });
+        img.addEventListener("error", () => img.classList.add("img-loaded"), { once: true });
+      }
+    });
+
     return () => io.disconnect();
   }, []);
 
@@ -292,7 +309,7 @@ export default function Home() {
                 { href: "/works/rentease",   img: CARD_IMG_RENTEASE,  tag: "WEB APP · IN PROGRESS",   title: "RentEase",       sub: "Booking platform — academic project" },
               ].map(({ href, img, tag, title, sub }) => (
                 <Link key={title} href={href} onMouseEnter={onEnter} onMouseLeave={onLeave}
-                  className="reveal work-card"
+                  className="work-card"
                   style={{ textDecoration: "none", background: "var(--bg)", display: "block", position: "relative", overflow: "hidden" }}>
                   <div className="work-card-img" style={{ position: "relative", height: "400px", overflow: "hidden" }}>
                     <img src={img} alt={title}

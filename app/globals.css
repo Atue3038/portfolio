@@ -165,16 +165,27 @@ body::before {
 .liquid-border:hover::before { opacity: 1; }
 
 /* ── SCROLL REVEAL ── */
-/* Elements start hidden; JS adds .is-visible to trigger reveal */
 .reveal {
   opacity: 0;
-  transform: translateY(24px);
-  transition: opacity 0.65s cubic-bezier(0.0,0.0,0.2,1),
-              transform 0.65s cubic-bezier(0.0,0.0,0.2,1);
+  transform: translateY(20px);
+  transition: opacity 0.6s cubic-bezier(0.0,0.0,0.2,1),
+              transform 0.6s cubic-bezier(0.0,0.0,0.2,1);
+  /* prevent flash: start hidden immediately via will-change */
+  will-change: opacity, transform;
 }
+/* SSR safeguard: if JS hasn't run yet, don't hide forever */
 .reveal.is-visible {
   opacity: 1;
   transform: translateY(0);
+}
+
+/* Images never get reveal class — they use a separate fade-in */
+img {
+  opacity: 0;
+  transition: opacity 0.4s ease;
+}
+img.img-loaded {
+  opacity: 1;
 }
 
 /* Stagger delays for children inside .reveal-group */

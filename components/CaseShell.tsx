@@ -35,7 +35,7 @@ export function useCursor() {
       rafRef.current = requestAnimationFrame(animate);
     };
 
-    /* Scroll reveal */
+    /* Scroll reveal — text elements only */
     const els = document.querySelectorAll<HTMLElement>(".reveal");
     const io = new IntersectionObserver(
       entries => entries.forEach(e => {
@@ -47,6 +47,17 @@ export function useCursor() {
       { threshold: 0.12, rootMargin: "0px 0px -40px 0px" }
     );
     els.forEach(el => io.observe(el));
+
+    /* Image fade-in on load — no FOUC */
+    const imgs = document.querySelectorAll<HTMLImageElement>("img");
+    imgs.forEach(img => {
+      if (img.complete) {
+        img.classList.add("img-loaded");
+      } else {
+        img.addEventListener("load", () => img.classList.add("img-loaded"), { once: true });
+        img.addEventListener("error", () => img.classList.add("img-loaded"), { once: true });
+      }
+    });
 
     window.addEventListener("mousemove", onMove);
     rafRef.current = requestAnimationFrame(animate);

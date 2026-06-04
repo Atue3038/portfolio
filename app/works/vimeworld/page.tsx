@@ -109,7 +109,7 @@ export default function VimeworldCase() {
             <div className="sec-label"><span>02 / ALL SCREENS</span><hr /></div>
             <div className="screens-grid reveal-group" style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "72px 48px" }}>
               {SCREENS.map(({ src, num, title, desc }) => (
-                <div key={num} className="reveal" style={{ display: "flex", flexDirection: "column", gap: 12 }}>
+                <div key={num} style={{ display: "flex", flexDirection: "column", gap: 12 }}>
                   <img src={src} alt={title} style={{ width: "100%", display: "block", borderRadius: 4, border: "1px solid var(--border)" }} />
                   <span className="num-badge">{num}</span>
                   <h3 className="screen-title">{title}</h3>
@@ -127,7 +127,7 @@ export default function VimeworldCase() {
             <div className="sec-label"><span>03 / DEEP DIVE</span><hr /></div>
             <h2 style={{ fontFamily: "'Unbounded', sans-serif", fontWeight: 800, fontSize: "clamp(24px,3vw,38px)", color: "var(--white)", letterSpacing: "-.02em", margin: "0 0 64px" }}>Screen Breakdowns</h2>
             {DEEP.map(({ src, rev, title, desc }, i) => (
-              <div key={i} className={`alt-row reveal${rev ? " rev" : ""}`}>
+              <div key={i} className={`alt-row${rev ? " rev" : ""}`}>
                 <div className="img-side"><img src={src} alt={title} /></div>
                 <div className="txt-side">
                   <span className="txt-label">{String(i+1).padStart(2,"0")} / SCREEN</span>
