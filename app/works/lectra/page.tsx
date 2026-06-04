@@ -1,7 +1,7 @@
 "use client";
 import Link from "next/link";
 import { useEffect, useRef, useState } from "react";
-import { useCursor, CursorElements, CaseNav, CaseContact, CaseFooter } from "@/components/CaseShell";
+import { useCursor, CursorElements, CaseNav, CaseContact, CaseFooter, Lightbox } from "@/components/CaseShell";
 
 const f = { fontFamily: "'Space Grotesk', sans-serif" } as const;
 const m = { fontFamily: "'DM Mono', monospace" } as const;
@@ -24,7 +24,7 @@ function Phone({ src, label }: { src: string; label: string }) {
       <div className="phone-outer">
         {/* Inner wrapper — clips the image */}
         <div style={{ width: "200px", borderRadius: "30px", overflow: "hidden", position: "relative", zIndex: 1 }}>
-          <img src={src} alt={label} style={{ width: "100%", display: "block" }} />
+          <img src={src} alt={label} className="img-loaded lb" style={{ width: "100%", display: "block", cursor: "zoom-in" }} />
         </div>
       </div>
       <span style={{ ...m, fontSize: "10px", color: "rgba(240,244,241,0.4)", letterSpacing: "0.08em" }}>{label}</span>
@@ -100,6 +100,7 @@ export default function LectraCase() {
   return (
     <>
       <CursorElements cursorRef={cursorRef} ringRef={ringRef} hovered={hovered} />
+      <Lightbox />
     <main style={{ background: "#050a06", minHeight: "100vh", overflowX: "hidden" }}>
 
       <CaseNav onEnter={onEnter} onLeave={onLeave} />

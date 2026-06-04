@@ -103,9 +103,11 @@ export function CursorElements({
 export function CaseNav({
   onEnter,
   onLeave,
+  backHref = "/#works",
 }: {
   onEnter: () => void;
   onLeave: () => void;
+  backHref?: string;
 }) {
   const [menuOpen, setMenuOpen] = useState(false);
 
@@ -146,14 +148,32 @@ export function CaseNav({
           background: "rgba(5,10,6,0.85)",
         }}
       >
-        <Link
-          href="/"
-          onMouseEnter={onEnter}
-          onMouseLeave={onLeave}
-          style={{ fontFamily: "'DM Mono', monospace", fontSize: "13px", color: "var(--green)", letterSpacing: ".1em", textDecoration: "none" }}
-        >
-          OK.DESIGN
-        </Link>
+        {/* Left: logo + back */}
+        <div style={{ display: "flex", alignItems: "center", gap: 24 }}>
+          <Link
+            href="/"
+            onMouseEnter={onEnter}
+            onMouseLeave={onLeave}
+            style={{ fontFamily: "'DM Mono', monospace", fontSize: "13px", color: "var(--green)", letterSpacing: ".1em", textDecoration: "none" }}
+          >
+            OK.DESIGN
+          </Link>
+          <Link
+            href={backHref}
+            onMouseEnter={onEnter}
+            onMouseLeave={onLeave}
+            style={{
+              fontFamily: "'DM Mono', monospace", fontSize: "11px",
+              color: "var(--muted)", letterSpacing: ".1em", textDecoration: "none",
+              display: "flex", alignItems: "center", gap: 6,
+              transition: "color .2s",
+            }}
+            onMouseOver={e => (e.currentTarget.style.color = "var(--white)")}
+            onMouseOut={e => (e.currentTarget.style.color = "var(--muted)")}
+          >
+            ← BACK
+          </Link>
+        </div>
 
         <div className="case-nav-links">
           {([["Works", "/#works"], ["About", "/#about"], ["Contact", "/#contact"]] as [string, string][]).map(([l, h]) => (
@@ -222,20 +242,23 @@ export function CaseContact({
           </div>
           <div style={{ display: "flex", flexDirection: "column", gap: 16 }}>
             {[
-              { label: "Telegram",  hint: "Fastest response", href: LINKS.telegram },
-              { label: "Instagram", hint: "Design updates",   href: LINKS.instagram },
-              { label: "Gmail",     hint: "For proposals",    href: LINKS.gmail },
-            ].map(({ label, hint, href }) => (
+              { label: "Telegram",  hint: "Fastest response", href: LINKS.telegram,  primary: true  },
+              { label: "Instagram", hint: "Design updates",   href: LINKS.instagram, primary: false },
+              { label: "Gmail",     hint: "For proposals",    href: LINKS.gmail,     primary: false },
+            ].map(({ label, hint, href, primary }) => (
               <a key={label} href={href}
                 target={label !== "Gmail" ? "_blank" : undefined}
                 rel="noreferrer"
                 onMouseEnter={onEnter} onMouseLeave={onLeave}
                 className="liquid-border"
-                style={{ display: "flex", justifyContent: "space-between", alignItems: "center", padding: "22px 24px", textDecoration: "none", borderRadius: 2, transition: "background .2s" }}
+                style={{ display: "flex", justifyContent: "space-between", alignItems: "center", padding: primary ? "26px 24px" : "22px 24px", textDecoration: "none", borderRadius: 2, transition: "background .2s" }}
                 onMouseOver={e => (e.currentTarget.style.background = "rgba(26,255,110,.05)")}
                 onMouseOut={e => (e.currentTarget.style.background = "transparent")}
               >
-                <span style={{ fontFamily: "'Unbounded', sans-serif", fontWeight: 700, fontSize: 18, color: "var(--white)" }}>{label}</span>
+                <div style={{ display: "flex", alignItems: "center", gap: 12 }}>
+                  <span style={{ fontFamily: "'Unbounded', sans-serif", fontWeight: 700, fontSize: primary ? 20 : 18, color: "var(--white)" }}>{label}</span>
+                  {primary && <span style={{ fontFamily: "'DM Mono', monospace", fontSize: 10, color: "var(--green)", border: "1px solid rgba(26,255,110,0.4)", padding: "2px 8px", letterSpacing: "0.1em" }}>PRIMARY</span>}
+                </div>
                 <div style={{ display: "flex", alignItems: "center", gap: 12 }}>
                   <span style={{ fontFamily: "'DM Mono', monospace", fontSize: 11, color: "var(--muted)" }}>{hint}</span>
                   <span style={{ color: "var(--green)", fontSize: 18 }}>→</span>
@@ -298,5 +321,80 @@ export function CaseFooter({
         ))}
       </div>
     </footer>
+  );
+}
+
+/* ── LIGHTBOX ── */
+export function Lightbox() {
+  const [src, setSrc] = useState<string | null>(null);
+
+  useEffect(() => {
+    const handler = (e: MouseEvent) => {
+      const target = e.target as HTMLElement;
+      const img = target.closest<HTMLImageElement>("img.lb");
+      if (img) { e.preventDefault(); setSrc(img.src); }
+    };
+    document.addEventListener("click", handler);
+    return () => document.removeEventListener("click", handler);
+  }, []);
+
+  useEffect(() => {
+    const onKey = (e: KeyboardEvent) => { if (e.key === "Escape") setSrc(null); };
+    if (src) document.addEventListener("keydown", onKey);
+    return () => document.removeEventListener("keydown", onKey);
+  }, [src]);
+
+  if (!src) return null;
+
+  return (
+    <div
+      onClick={() => setSrc(null)}
+      style={{
+        position: "fixed", inset: 0, zIndex: 9990,
+        background: "rgba(5,10,6,0.92)", backdropFilter: "blur(8px)",
+        display: "flex", alignItems: "center", justifyContent: "center",
+        padding: "32px", cursor: "zoom-out",
+        animation: "fadeIn 0.2s ease both",
+      }}
+    >
+      {/* Close button */}
+      <button
+        onClick={() => setSrc(null)}
+        style={{
+          position: "fixed", top: 24, right: 24,
+          background: "rgba(240,244,241,0.08)", border: "1px solid var(--border)",
+          color: "var(--white)", width: 44, height: 44, borderRadius: "50%",
+          fontSize: 20, cursor: "pointer", display: "flex",
+          alignItems: "center", justifyContent: "center",
+          transition: "background .2s", zIndex: 1,
+        }}
+        onMouseOver={e => (e.currentTarget.style.background = "rgba(26,255,110,0.15)")}
+        onMouseOut={e => (e.currentTarget.style.background = "rgba(240,244,241,0.08)")}
+      >×</button>
+
+      <img
+        src={src}
+        alt=""
+        onClick={e => e.stopPropagation()}
+        className="img-loaded"
+        style={{
+          maxWidth: "90vw", maxHeight: "88vh",
+          objectFit: "contain", borderRadius: 4,
+          border: "1px solid rgba(240,244,241,0.12)",
+          boxShadow: "0 32px 80px rgba(0,0,0,0.6)",
+          cursor: "default",
+          animation: "fadeUp 0.25s cubic-bezier(0,0,0.2,1) both",
+        }}
+      />
+
+      {/* Hint */}
+      <div style={{
+        position: "fixed", bottom: 24, left: "50%", transform: "translateX(-50%)",
+        fontFamily: "'DM Mono', monospace", fontSize: 11,
+        color: "var(--muted)", letterSpacing: "0.1em",
+      }}>
+        ESC или клик для закрытия
+      </div>
+    </div>
   );
 }

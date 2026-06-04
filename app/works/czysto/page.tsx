@@ -1,7 +1,7 @@
 "use client";
 import Link from "next/link";
 import { useEffect, useRef, useState } from "react";
-import { useCursor, CursorElements, CaseNav, CaseContact, CaseFooter } from "@/components/CaseShell";
+import { useCursor, CursorElements, CaseNav, CaseContact, CaseFooter, Lightbox } from "@/components/CaseShell";
 
 const f = { fontFamily: "'Space Grotesk', sans-serif" } as const;
 const m = { fontFamily: "'DM Mono', monospace" } as const;
@@ -42,7 +42,7 @@ function Screenshot({ src, alt, caption }: { src: string; alt: string; caption?:
   return (
     <div style={{ display: "flex", flexDirection: "column", gap: "12px" }}>
       <div style={{ borderRadius: "12px", overflow: "hidden", border: "1px solid rgba(240,244,241,0.08)", boxShadow: "0 24px 64px rgba(0,0,0,0.4)" }}>
-        <img src={src} alt={alt} style={{ width: "100%", display: "block" }} />
+        <img src={src} alt={alt} className="img-loaded lb" style={{ width: "100%", display: "block", cursor: "zoom-in" }} />
       </div>
       {caption && <span style={{ ...m, fontSize: "11px", color: "rgba(240,244,241,0.3)", textAlign: "center", letterSpacing: "0.06em" }}>{caption}</span>}
     </div>
@@ -58,6 +58,7 @@ export default function CzystoCase() {
   return (
     <>
       <CursorElements cursorRef={cursorRef} ringRef={ringRef} hovered={hovered} />
+      <Lightbox />
 
       <main style={{ background: "#050a06", minHeight: "100vh", overflowX: "hidden" }}>
 
