@@ -1,6 +1,5 @@
 "use client";
-import Link from "next/link";
-import { useEffect, useRef, useState } from "react";
+import { useState } from "react";
 import { useCursor, CursorElements, CaseNav, CaseContact, CaseFooter, Lightbox } from "@/components/CaseShell";
 
 const f = { fontFamily: "'Space Grotesk', sans-serif" } as const;
