@@ -202,7 +202,7 @@ export function CaseContact({
         </div>
         <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 80, alignItems: "center" }}>
           <div>
-            <h2 style={{ fontFamily: "'Syne', sans-serif", fontWeight: 800, fontSize: "clamp(32px,4.5vw,56px)", lineHeight: 1.05, letterSpacing: "-.03em", color: "var(--white)", marginBottom: 20 }}>
+            <h2 style={{ fontFamily: "'Unbounded', sans-serif", fontWeight: 800, fontSize: "clamp(32px,4.5vw,56px)", lineHeight: 1.05, letterSpacing: "-.03em", color: "var(--white)", marginBottom: 20 }}>
               Let&apos;s build something<br /><span style={{ color: "var(--green)" }}>worth remembering.</span>
             </h2>
             <p style={{ fontFamily: "'Space Grotesk', sans-serif", fontSize: 16, color: "var(--muted)", lineHeight: 1.7, maxWidth: 360 }}>
@@ -224,7 +224,7 @@ export function CaseContact({
                 onMouseOver={e => (e.currentTarget.style.background = "rgba(26,255,110,.05)")}
                 onMouseOut={e => (e.currentTarget.style.background = "transparent")}
               >
-                <span style={{ fontFamily: "'Syne', sans-serif", fontWeight: 700, fontSize: 18, color: "var(--white)" }}>{label}</span>
+                <span style={{ fontFamily: "'Unbounded', sans-serif", fontWeight: 700, fontSize: 18, color: "var(--white)" }}>{label}</span>
                 <div style={{ display: "flex", alignItems: "center", gap: 12 }}>
                   <span style={{ fontFamily: "'DM Mono', monospace", fontSize: 11, color: "var(--muted)" }}>{hint}</span>
                   <span style={{ color: "var(--green)", fontSize: 18 }}>→</span>

@@ -34,7 +34,7 @@ export default function VimeworldCase() {
         .sec-label hr { flex:1; height:1px; border:none; background:var(--border); margin:0; }
         .divider { width:100%; height:1px; background:linear-gradient(90deg,transparent,rgba(26,255,110,.18),transparent); margin:100px 0; }
         .num-badge { font-family:'DM Mono',monospace; font-size:11px; letter-spacing:.1em; color:var(--green); border:1px solid rgba(26,255,110,.3); border-radius:4px; padding:4px 10px; display:inline-block; width:fit-content; }
-        .screen-title { font-family:'Syne',sans-serif; font-weight:800; font-size:20px; color:var(--white); letter-spacing:-.01em; margin:0; }
+        .screen-title { font-family:'Unbounded', sans-serif; font-weight:800; font-size:20px; color:var(--white); letter-spacing:-.01em; margin:0; }
         .screen-desc  { font-family:'Space Grotesk',sans-serif; font-size:16px; color:var(--muted); line-height:1.7; margin:0; }
         .alt-row { display:flex; gap:72px; align-items:center; margin-bottom:80px; }
         .alt-row.rev { flex-direction:row-reverse; }
@@ -42,7 +42,7 @@ export default function VimeworldCase() {
         .alt-row .img-side img { width:100%; display:block; border-radius:4px; border:1px solid var(--border); }
         .alt-row .txt-side { flex:1; display:flex; flex-direction:column; gap:16px; }
         .txt-label { font-family:'DM Mono',monospace; font-size:11px; color:var(--green); letter-spacing:.1em; }
-        .txt-h { font-family:'Syne',sans-serif; font-weight:800; font-size:clamp(20px,2.5vw,28px); color:var(--white); letter-spacing:-.02em; margin:0; line-height:1.2; }
+        .txt-h { font-family:'Unbounded', sans-serif; font-weight:800; font-size:clamp(20px,2.5vw,28px); color:var(--white); letter-spacing:-.02em; margin:0; line-height:1.2; }
         .txt-p { font-family:'Space Grotesk',sans-serif; font-size:16px; color:var(--muted); line-height:1.75; margin:0; }
         @media(max-width:900px){
           .alt-row,.alt-row.rev{ flex-direction:column !important; }
@@ -68,7 +68,7 @@ export default function VimeworldCase() {
               <div style={{ width: "28px", height: "1px", background: "var(--green)" }} />
               <span style={{ fontFamily: "'DM Mono', monospace", fontSize: "11px", color: "var(--green)", letterSpacing: "0.15em" }}>GAME UI · 2025</span>
             </div>
-            <h1 style={{ fontFamily: "'Syne',sans-serif", fontWeight: 800, fontSize: "clamp(48px,7vw,96px)", lineHeight: 0.95, letterSpacing: "-.03em", color: "var(--white)", marginBottom: 32 }}>
+            <h1 style={{ fontFamily: "'Unbounded', sans-serif", fontWeight: 800, fontSize: "clamp(48px,7vw,96px)", lineHeight: 0.95, letterSpacing: "-.03em", color: "var(--white)", marginBottom: 32 }}>
               VimeWorld —<br />
               <span style={{ WebkitTextStroke: "1px var(--green)", color: "transparent" }}>Pixelmon UI</span>
             </h1>
@@ -82,7 +82,7 @@ export default function VimeworldCase() {
               {[["CLIENT","VimeWorld"],["TYPE","Game UI / GUI"],["PLATFORM","Minecraft Java"],["TOOL","Figma"],["YEAR","2025"]].map(([k,v]) => (
                 <div key={k}>
                   <div style={{ fontFamily: "'DM Mono',monospace", fontSize: 10, letterSpacing: ".18em", color: "var(--green)", opacity: 0.7, marginBottom: 4 }}>{k}</div>
-                  <div style={{ fontFamily: "'Syne',sans-serif", fontWeight: 800, fontSize: 15 }}>{v}</div>
+                  <div style={{ fontFamily: "'Unbounded', sans-serif", fontWeight: 800, fontSize: 15 }}>{v}</div>
                 </div>
               ))}
             </div>
@@ -125,7 +125,7 @@ export default function VimeworldCase() {
           <div className="w-inner">
             <div className="divider" />
             <div className="sec-label"><span>03 / DEEP DIVE</span><hr /></div>
-            <h2 style={{ fontFamily: "'Syne',sans-serif", fontWeight: 800, fontSize: "clamp(24px,3vw,38px)", color: "var(--white)", letterSpacing: "-.02em", margin: "0 0 64px" }}>Screen Breakdowns</h2>
+            <h2 style={{ fontFamily: "'Unbounded', sans-serif", fontWeight: 800, fontSize: "clamp(24px,3vw,38px)", color: "var(--white)", letterSpacing: "-.02em", margin: "0 0 64px" }}>Screen Breakdowns</h2>
             {DEEP.map(({ src, rev, title, desc }, i) => (
               <div key={i} className={`alt-row reveal${rev ? " rev" : ""}`}>
                 <div className="img-side"><img src={src} alt={title} /></div>
@@ -146,7 +146,7 @@ export default function VimeworldCase() {
             <div className="sec-label"><span>04 / RESULT</span><hr /></div>
             <div className="grid-2" style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 80 }}>
               <div>
-                <h2 style={{ fontFamily: "'Syne',sans-serif", fontWeight: 800, fontSize: "clamp(24px,3vw,38px)", color: "var(--white)", letterSpacing: "-.02em", margin: "0 0 20px" }}>Final Result</h2>
+                <h2 style={{ fontFamily: "'Unbounded', sans-serif", fontWeight: 800, fontSize: "clamp(24px,3vw,38px)", color: "var(--white)", letterSpacing: "-.02em", margin: "0 0 20px" }}>Final Result</h2>
                 <p className="txt-p">Delivered a complete, production-ready interface — quests, economy, cases, kits, privileges, shop, and navigation unified into one cohesive system for the Pixelmon Ultimate server.</p>
               </div>
               <div style={{ paddingTop: 8 }}>

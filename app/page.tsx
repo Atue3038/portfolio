@@ -151,7 +151,7 @@ export default function Home() {
             @media (max-width: 1024px) { .hero-grid { grid-template-columns: 1fr !important; gap: 48px !important; } .hero-photo { display: none !important; } }
             @media (max-width: 768px) { .hero-section { padding: 100px 20px 48px !important; } .hero-stats { gap: 24px !important; } }
           `}</style>
-          <div style={{ position: "absolute", right: "-20px", top: "50%", transform: "translateY(-50%)", fontFamily: "'Syne', sans-serif", fontWeight: 800, fontSize: "clamp(180px, 30vw, 420px)", color: "rgba(26,255,110,0.03)", lineHeight: 1, userSelect: "none", pointerEvents: "none", letterSpacing: "-0.05em" }}>01</div>
+          <div style={{ position: "absolute", right: "-20px", top: "50%", transform: "translateY(-50%)", fontFamily: "'Unbounded', sans-serif", fontWeight: 800, fontSize: "clamp(180px, 30vw, 420px)", color: "rgba(26,255,110,0.03)", lineHeight: 1, userSelect: "none", pointerEvents: "none", letterSpacing: "-0.05em" }}>01</div>
           <div style={{ position: "absolute", top: 0, left: 0, right: 0, height: "2px", background: "linear-gradient(90deg, transparent, rgba(26,255,110,0.4), transparent)", animation: "scanline 6s linear infinite", opacity: 0.4 }} />
 
           <div className="hero-grid" style={{ display: "grid", gridTemplateColumns: "1fr auto", gap: "80px", alignItems: "center", width: "100%", maxWidth: "1200px", margin: "0 auto" }}>
@@ -160,7 +160,7 @@ export default function Home() {
                 <div style={{ width: "32px", height: "1px", background: "var(--green)" }} />
                 <span style={{ fontFamily: "'DM Mono', monospace", fontSize: "12px", color: "var(--green)", letterSpacing: "0.15em", textTransform: "uppercase" }}>UI/UX Designer</span>
               </div>
-              <h1 className="hero-title" style={{ fontFamily: "'Syne', sans-serif", fontWeight: 800, fontSize: "clamp(40px, 7vw, 92px)", lineHeight: 0.95, letterSpacing: "-0.03em", color: "var(--white)", marginBottom: "36px" }}>
+              <h1 className="hero-title" style={{ fontFamily: "'Unbounded', sans-serif", fontWeight: 800, fontSize: "clamp(40px, 7vw, 92px)", lineHeight: 0.95, letterSpacing: "-0.03em", color: "var(--white)", marginBottom: "36px" }}>
                 Oleksii<br />
                 <span className="liquid-text">Klymushkin</span>
               </h1>
@@ -226,7 +226,7 @@ export default function Home() {
                 >
                   <div style={{ position: "absolute", bottom: -12, right: 16, fontFamily: "'Barlow', sans-serif", fontWeight: 800, fontSize: "120px", color: "rgba(26,255,110,0.04)", lineHeight: 1, userSelect: "none", pointerEvents: "none" }}>{item.n}</div>
                   <div style={{ fontFamily: "'DM Mono', monospace", fontSize: "11px", color: "var(--green)", marginBottom: "20px", letterSpacing: "0.1em" }}>{item.n}</div>
-                  <h3 style={{ fontFamily: "'Syne', sans-serif", fontWeight: 800, fontSize: "clamp(20px, 2.5vw, 28px)", color: "var(--white)", marginBottom: "14px", letterSpacing: "-0.02em" }}>{item.title}</h3>
+                  <h3 style={{ fontFamily: "'Unbounded', sans-serif", fontWeight: 800, fontSize: "clamp(20px, 2.5vw, 28px)", color: "var(--white)", marginBottom: "14px", letterSpacing: "-0.02em" }}>{item.title}</h3>
                   <p style={{ fontFamily: "'Space Grotesk', sans-serif", fontSize: "clamp(13px, 1.5vw, 15px)", color: "var(--muted)", lineHeight: "1.65", maxWidth: "320px" }}>{item.desc}</p>
                 </div>
               ))}
@@ -255,7 +255,7 @@ export default function Home() {
                   <div style={{ width: "8px", height: "8px", borderRadius: "50%", background: "var(--green)", flexShrink: 0, animation: job.active ? "blink 2s infinite" : "none", opacity: job.active ? 1 : 0.4 }} />
                   <div>
                     <div style={{ display: "flex", alignItems: "center", gap: "12px", flexWrap: "wrap" }}>
-                      <span style={{ fontFamily: "'Syne', sans-serif", fontWeight: 700, fontSize: "clamp(16px, 2vw, 22px)", color: "var(--white)" }}>{job.name}</span>
+                      <span style={{ fontFamily: "'Unbounded', sans-serif", fontWeight: 700, fontSize: "clamp(16px, 2vw, 22px)", color: "var(--white)" }}>{job.name}</span>
                       {job.link && (
                         <a href={job.link} target="_blank" rel="noreferrer"
                           style={{ fontFamily: "'DM Mono', monospace", fontSize: "11px", color: "var(--green)", textDecoration: "none", border: "1px solid rgba(26,255,110,0.3)", padding: "2px 8px", borderRadius: "2px" }}
@@ -305,7 +305,7 @@ export default function Home() {
                       <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-end" }}>
                         <div>
                           <div style={{ fontFamily: "'DM Mono', monospace", fontSize: "11px", color: "var(--green)", letterSpacing: "0.1em", marginBottom: "6px" }}>{tag}</div>
-                          <div style={{ fontFamily: "'Syne', sans-serif", fontWeight: 800, fontSize: "clamp(20px, 2.5vw, 28px)", color: "var(--white)", letterSpacing: "-0.02em", marginBottom: "4px" }}>{title}</div>
+                          <div style={{ fontFamily: "'Unbounded', sans-serif", fontWeight: 800, fontSize: "clamp(20px, 2.5vw, 28px)", color: "var(--white)", letterSpacing: "-0.02em", marginBottom: "4px" }}>{title}</div>
                           <div style={{ fontFamily: "'Space Grotesk', sans-serif", fontSize: "13px", color: "rgba(232,232,224,0.45)", lineHeight: 1.4 }}>{sub}</div>
                         </div>
                         <div style={{ color: "var(--green)", fontSize: "24px", flexShrink: 0 }}>↗</div>
@@ -331,7 +331,7 @@ export default function Home() {
             </div>
             <div className="contact-grid" style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "80px", alignItems: "center" }}>
               <div className="reveal">
-                <h2 style={{ fontFamily: "'Syne', sans-serif", fontWeight: 800, fontSize: "clamp(32px, 4.5vw, 60px)", lineHeight: 1.05, letterSpacing: "-0.03em", color: "var(--white)", marginBottom: "24px" }}>
+                <h2 style={{ fontFamily: "'Unbounded', sans-serif", fontWeight: 800, fontSize: "clamp(32px, 4.5vw, 60px)", lineHeight: 1.05, letterSpacing: "-0.03em", color: "var(--white)", marginBottom: "24px" }}>
                   Let&apos;s build something<br />
                   <span style={{ color: "var(--green)" }}>worth remembering.</span>
                 </h2>
@@ -352,7 +352,7 @@ export default function Home() {
                     onMouseOut={e => (e.currentTarget.style.background = "transparent")}
                   >
                     <div style={{ display: "flex", alignItems: "center", gap: "12px" }}>
-                      <span style={{ fontFamily: "'Syne', sans-serif", fontWeight: 700, fontSize: primary ? "clamp(18px, 2vw, 22px)" : "clamp(16px, 2vw, 18px)", color: "var(--white)" }}>{label}</span>
+                      <span style={{ fontFamily: "'Unbounded', sans-serif", fontWeight: 700, fontSize: primary ? "clamp(18px, 2vw, 22px)" : "clamp(16px, 2vw, 18px)", color: "var(--white)" }}>{label}</span>
                       {primary && <span style={{ fontFamily: "'DM Mono', monospace", fontSize: "10px", color: "var(--green)", border: "1px solid rgba(26,255,110,0.4)", padding: "2px 8px", letterSpacing: "0.1em" }}>PRIMARY</span>}
                     </div>
                     <div style={{ display: "flex", alignItems: "center", gap: "12px" }}>

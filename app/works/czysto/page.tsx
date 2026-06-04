@@ -5,7 +5,7 @@ import { useCursor, CursorElements, CaseNav, CaseContact, CaseFooter } from "@/c
 
 const f = { fontFamily: "'Space Grotesk', sans-serif" } as const;
 const m = { fontFamily: "'DM Mono', monospace" } as const;
-const s = { fontFamily: "'Syne', sans-serif" } as const;
+const s = { fontFamily: "'Unbounded', sans-serif" } as const;
 
 const SCREENS = {
   hero:       "/czysto_hero.png",
