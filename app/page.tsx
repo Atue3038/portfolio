@@ -398,11 +398,119 @@ export default function Home() {
           </div>
         </section>
 
-        {/* ── WORKS ── */}
-        <section id="works" className="works-section">
+        {/* ── ABOUT ── */}
+        <section style={{ padding: "0 48px 120px" }}>
+          <style>{`@media(max-width:768px){.about-section{padding:0 20px 64px !important;}.about-grid{grid-template-columns:1fr !important;gap:48px !important;}}`}</style>
+          <div style={{ maxWidth: "1200px", margin: "0 auto" }}>
+            <div className="reveal" style={{ display: "flex", alignItems: "center", gap: "16px", marginBottom: "64px" }}>
+              <span style={{ fontFamily: "'DM Mono', monospace", fontSize: "11px", color: "var(--green)", letterSpacing: "0.15em" }}>04 / ABOUT</span>
+              <div style={{ flex: 1, height: "1px", background: "var(--border)" }} />
+            </div>
+            <div className="about-grid" style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "80px", alignItems: "start" }}>
+              <div className="reveal">
+                <h2 style={{ fontFamily: "'Unbounded', sans-serif", fontWeight: 800, fontSize: "clamp(28px, 3.5vw, 44px)", lineHeight: 1.05, letterSpacing: "-0.03em", color: "var(--white)", marginBottom: "32px" }}>
+                  Designer who<br />
+                  <span style={{ color: "var(--green)" }}>ships.</span>
+                </h2>
+                <div style={{ display: "flex", flexDirection: "column", gap: "20px" }}>
+                  <p style={{ fontFamily: "'Space Grotesk', sans-serif", fontSize: "16px", lineHeight: "1.8", color: "var(--muted)" }}>
+                    Я украинец, живу в Варшаве. Занимаюсь дизайном меньше года — но за это время успел сделать два коммерческих проекта: интерфейс для Minecraft-сервера с тысячами игроков и полноценный сайт для клининговой компании с нуля до деплоя.
+                  </p>
+                  <p style={{ fontFamily: "'Space Grotesk', sans-serif", fontSize: "16px", lineHeight: "1.8", color: "var(--muted)" }}>
+                    Мне интересны интерфейсы где дизайн и разработка — одно целое. Я не просто рисую макеты — я их собираю. Next.js, TypeScript, Tailwind — это мой обычный стек, не что-то новое.
+                  </p>
+                  <p style={{ fontFamily: "'Space Grotesk', sans-serif", fontSize: "16px", lineHeight: "1.8", color: "var(--muted)" }}>
+                    Мне легко работать с украинскими, польскими и русскоязычными клиентами. Понимаю задачу, предлагаю решение, довожу до конца без лишних итераций.
+                  </p>
+                </div>
+              </div>
+              <div className="reveal" style={{ display: "flex", flexDirection: "column", gap: "16px", paddingTop: "8px" }}>
+                {[
+                  { label: "Локация", value: "Варшава, Польша" },
+                  { label: "Языки", value: "UA · RU · EN · PL (basic)" },
+                  { label: "Стек", value: "Figma · Next.js · TypeScript · Tailwind" },
+                  { label: "Доступность", value: "Открыт к проектам прямо сейчас" },
+                  { label: "Формат", value: "Фриланс · Remote · Частичная занятость" },
+                ].map(({ label, value }) => (
+                  <div key={label} style={{ display: "flex", gap: "20px", padding: "16px 0", borderBottom: "1px solid var(--border)" }}>
+                    <span style={{ fontFamily: "'DM Mono', monospace", fontSize: "11px", color: "var(--muted)", letterSpacing: "0.1em", minWidth: "120px", paddingTop: "2px" }}>{label}</span>
+                    <span style={{ fontFamily: "'Space Grotesk', sans-serif", fontSize: "15px", color: "var(--white)", lineHeight: 1.5 }}>{value}</span>
+                  </div>
+                ))}
+                <a href={LINKS.telegram} target="_blank" rel="noreferrer"
+                  onMouseEnter={onEnter} onMouseLeave={onLeave}
+                  className="liquid-border btn-press"
+                  style={{ marginTop: "8px", display: "inline-flex", alignItems: "center", gap: "10px", padding: "14px 24px", fontFamily: "'DM Mono', monospace", fontSize: "11px", letterSpacing: "0.15em", color: "var(--green)", textDecoration: "none", borderRadius: "2px", width: "fit-content" }}
+                >
+                  НАПИСАТЬ В TELEGRAM →
+                </a>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* ── CAN DO ── */}
+        <section style={{ padding: "0 48px 120px" }}>
+          <style>{`@media(max-width:768px){.cando-section{padding:0 20px 64px !important;}.cando-grid{grid-template-columns:1fr !important;}}`}</style>
+          <div style={{ maxWidth: "1200px", margin: "0 auto" }}>
+            <div className="reveal" style={{ display: "flex", alignItems: "center", gap: "16px", marginBottom: "64px" }}>
+              <span style={{ fontFamily: "'DM Mono', monospace", fontSize: "11px", color: "var(--green)", letterSpacing: "0.15em" }}>05 / МОГУ СДЕЛАТЬ</span>
+              <div style={{ flex: 1, height: "1px", background: "var(--border)" }} />
+            </div>
+            <div className="cando-grid" style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: "2px", background: "var(--border)" }}>
+              {[
+                {
+                  icon: "🌐",
+                  title: "Лендинг под ключ",
+                  price: "от $200",
+                  points: ["Дизайн в Figma", "Next.js / HTML верстка", "Мобильная адаптация", "Деплой на Vercel"],
+                },
+                {
+                  icon: "🏢",
+                  title: "Сайт для бизнеса",
+                  price: "от $350",
+                  points: ["Многостраничный сайт", "CMS по запросу", "SEO-основа", "Мультиязычность"],
+                },
+                {
+                  icon: "✏️",
+                  title: "UI/UX дизайн",
+                  price: "от $150",
+                  points: ["Макет в Figma", "Мобильная версия", "Компонентная система", "Прототип с анимациями"],
+                },
+              ].map((item) => (
+                <div key={item.title} className="reveal"
+                  onMouseEnter={onEnter} onMouseLeave={onLeave}
+                  style={{ background: "var(--bg)", padding: "36px 32px", display: "flex", flexDirection: "column", gap: "20px", transition: "background 0.3s", cursor: "default" }}
+                  onMouseOver={e => (e.currentTarget.style.background = "rgba(26,255,110,0.03)")}
+                  onMouseOut={e => (e.currentTarget.style.background = "var(--bg)")}
+                >
+                  <div style={{ fontSize: "28px" }}>{item.icon}</div>
+                  <div>
+                    <h3 style={{ fontFamily: "'Unbounded', sans-serif", fontWeight: 800, fontSize: "18px", color: "var(--white)", marginBottom: "8px", letterSpacing: "-0.01em" }}>{item.title}</h3>
+                    <div style={{ fontFamily: "'Barlow', sans-serif", fontWeight: 800, fontSize: "22px", color: "var(--green)" }}>{item.price}</div>
+                  </div>
+                  <ul style={{ listStyle: "none", display: "flex", flexDirection: "column", gap: "10px" }}>
+                    {item.points.map(p => (
+                      <li key={p} style={{ display: "flex", alignItems: "center", gap: "10px", fontFamily: "'Space Grotesk', sans-serif", fontSize: "14px", color: "var(--muted)" }}>
+                        <span style={{ color: "var(--green)", fontSize: "12px", flexShrink: 0 }}>✓</span>
+                        {p}
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              ))}
+            </div>
+            <div className="reveal" style={{ marginTop: "24px", padding: "20px 24px", background: "rgba(26,255,110,0.04)", border: "1px solid rgba(26,255,110,0.15)", borderRadius: "2px" }}>
+              <p style={{ fontFamily: "'Space Grotesk', sans-serif", fontSize: "14px", color: "var(--muted)", lineHeight: 1.7 }}>
+                💬 <span style={{ color: "var(--white)" }}>Есть проект?</span> Напиши в Telegram — обсудим задачу, сроки и стоимость. Первая консультация бесплатно.{" "}
+                <a href={LINKS.telegram} target="_blank" rel="noreferrer" style={{ color: "var(--green)", textDecoration: "none", fontFamily: "'DM Mono', monospace", fontSize: "12px", letterSpacing: "0.1em" }}>@atuedesign →</a>
+              </p>
+            </div>
+          </div>
+        </section>
           <div style={{ maxWidth: "1200px", margin: "0 auto" }}>
             <div className="reveal works-header" style={{ display: "flex", alignItems: "center", gap: "16px", marginBottom: "48px", padding: "0" }}>
-              <span style={{ fontFamily: "'DM Mono', monospace", fontSize: "11px", color: "var(--green)", letterSpacing: "0.15em" }}>04 / WORKS</span>
+              <span style={{ fontFamily: "'DM Mono', monospace", fontSize: "11px", color: "var(--green)", letterSpacing: "0.15em" }}>06 / WORKS</span>
               <div style={{ flex: 1, height: "1px", background: "var(--border)" }} />
             </div>
           </div>
@@ -446,7 +554,7 @@ export default function Home() {
         <section id="contact" className="contact-section">
           <div style={{ maxWidth: "1200px", margin: "0 auto" }}>
             <div className="reveal" style={{ display: "flex", alignItems: "center", gap: "16px", marginBottom: "56px" }}>
-              <span style={{ fontFamily: "'DM Mono', monospace", fontSize: "11px", color: "var(--green)", letterSpacing: "0.15em" }}>05 / CONTACT</span>
+              <span style={{ fontFamily: "'DM Mono', monospace", fontSize: "11px", color: "var(--green)", letterSpacing: "0.15em" }}>07 / CONTACT</span>
               <div style={{ flex: 1, height: "1px", background: "var(--border)" }} />
             </div>
             <div className="contact-grid">
