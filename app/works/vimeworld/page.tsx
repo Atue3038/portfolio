@@ -69,17 +69,16 @@ export default function VimeworldCase() {
               <div style={{ width: "28px", height: "1px", background: "var(--green)" }} />
               <span style={{ fontFamily: "'DM Mono', monospace", fontSize: "11px", color: "var(--green)", letterSpacing: "0.15em" }}>GAME UI · 2025</span>
             </div>
-            <h1 style={{ fontFamily: "'Unbounded', sans-serif", fontWeight: 800, fontSize: "clamp(48px,7vw,96px)", lineHeight: 0.95, letterSpacing: "-.03em", color: "var(--white)", marginBottom: 32 }}>
+            <h1 className="reveal" style={{ fontFamily: "'Unbounded', sans-serif", fontWeight: 800, fontSize: "clamp(48px,7vw,96px)", lineHeight: 0.95, letterSpacing: "-.03em", color: "var(--white)", marginBottom: 32 }}>
               VimeWorld —<br />
               <span style={{ WebkitTextStroke: "1px var(--green)", color: "transparent" }}>Pixelmon UI</span>
             </h1>
-            <div style={{ display: "flex", gap: "48px", flexWrap: "wrap", marginBottom: 48 }}>
+            <div className="reveal" style={{ display: "flex", gap: "48px", flexWrap: "wrap", marginBottom: 48 }}>
               <p style={{ fontFamily: "'Space Grotesk',sans-serif", fontSize: 17, lineHeight: 1.7, color: "var(--muted)", maxWidth: 520, margin: 0 }}>
                 Full redesign of the in-game GUI for Pixelmon Ultimate — a custom Minecraft server by VimeWorld. 7 screens covering every section of the redesigned pause menu.
               </p>
             </div>
-            {/* Meta */}
-            <div className="meta-grid" style={{ display: "grid", gridTemplateColumns: "repeat(5, auto)", gap: "40px 48px", width: "fit-content" }}>
+            <div className="reveal meta-grid" style={{ display: "grid", gridTemplateColumns: "repeat(5, auto)", gap: "40px 48px", width: "fit-content" }}>
               {[["CLIENT","VimeWorld"],["TYPE","Game UI / GUI"],["PLATFORM","Minecraft Java"],["TOOL","Figma"],["YEAR","2025"]].map(([k,v]) => (
                 <div key={k}>
                   <div style={{ fontFamily: "'DM Mono',monospace", fontSize: 10, letterSpacing: ".18em", color: "var(--green)", opacity: 0.7, marginBottom: 4 }}>{k}</div>
@@ -93,7 +92,7 @@ export default function VimeworldCase() {
         {/* ── STATS ── */}
         <section>
           <div className="w-inner">
-            <div style={{ display: "grid", gridTemplateColumns: "repeat(3,1fr)", gap: 1, background: "var(--border)", marginBottom: 100 }}>
+            <div className="reveal" style={{ display: "grid", gridTemplateColumns: "repeat(3,1fr)", gap: 1, background: "var(--border)", marginBottom: 100 }}>
               {[["07","Screens"],["01","Designer"],["∞","Players"]].map(([n,l]) => (
                 <div key={l} style={{ background: "var(--bg)", padding: "32px 36px" }}>
                   <div style={{ fontFamily: "'Barlow',sans-serif", fontWeight: 800, fontSize: 56, color: "var(--green)", lineHeight: 1, marginBottom: 8 }}>{n}</div>
@@ -107,7 +106,7 @@ export default function VimeworldCase() {
         {/* ── ALL SCREENS ── */}
         <section style={{ marginBottom: 100 }}>
           <div className="w-inner">
-            <div className="sec-label"><span>02 / ALL SCREENS</span><hr /></div>
+            <div className="sec-label reveal"><span>02 / ALL SCREENS</span><hr /></div>
             <div className="screens-grid reveal-group" style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "72px 48px" }}>
               {SCREENS.map(({ src, num, title, desc }) => (
                 <div key={num} style={{ display: "flex", flexDirection: "column", gap: 12 }}>
@@ -125,7 +124,7 @@ export default function VimeworldCase() {
         <section>
           <div className="w-inner">
             <div className="divider" />
-            <div className="sec-label"><span>03 / DEEP DIVE</span><hr /></div>
+            <div className="sec-label reveal"><span>03 / DEEP DIVE</span><hr /></div>
             <h2 style={{ fontFamily: "'Unbounded', sans-serif", fontWeight: 800, fontSize: "clamp(24px,3vw,38px)", color: "var(--white)", letterSpacing: "-.02em", margin: "0 0 64px" }}>Screen Breakdowns</h2>
             {DEEP.map(({ src, rev, title, desc }, i) => (
               <div key={i} className={`alt-row${rev ? " rev" : ""}`}>
@@ -144,7 +143,7 @@ export default function VimeworldCase() {
         <section>
           <div className="w-inner">
             <div className="divider" />
-            <div className="sec-label"><span>04 / RESULT</span><hr /></div>
+            <div className="sec-label reveal"><span>04 / RESULT</span><hr /></div>
             <div className="grid-2" style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 80 }}>
               <div>
                 <h2 style={{ fontFamily: "'Unbounded', sans-serif", fontWeight: 800, fontSize: "clamp(24px,3vw,38px)", color: "var(--white)", letterSpacing: "-.02em", margin: "0 0 20px" }}>Final Result</h2>

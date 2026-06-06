@@ -59,7 +59,16 @@ export default function RentEaseCase() {
 
         <CaseNav onEnter={onEnter} onLeave={onLeave} />
 
-        <div style={{ maxWidth: "1200px", margin: "0 auto", padding: "80px 48px 120px" }}>
+        <style>{`
+          @media (max-width: 768px) {
+            .re-inner { padding: 120px 20px 80px !important; }
+            .re-grid  { grid-template-columns: 1fr !important; gap: 40px !important; }
+            .re-3col  { grid-template-columns: 1fr !important; }
+            .re-3shot { grid-template-columns: 1fr !important; gap: 24px !important; }
+          }
+        `}</style>
+
+        <div className="re-inner" style={{ maxWidth: "1200px", margin: "0 auto", padding: "80px 48px 120px" }}>
 
           {/* HERO */}
           <div style={{ marginBottom: "72px" }}>
@@ -92,7 +101,7 @@ export default function RentEaseCase() {
 
           {/* OVERVIEW */}
           <Label n="01" text="OVERVIEW" />
-          <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "80px", alignItems: "start", marginBottom: "0" }}>
+          <div className="re-grid" style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "80px", alignItems: "start", marginBottom: "0" }}>
             <div style={{ display: "flex", flexDirection: "column", gap: "16px" }}>
               <p style={{ ...f, fontSize: "17px", lineHeight: "1.75", color: "rgba(240,244,241,0.55)" }}>
                 RentEase is a university design project — a booking platform inspired by Airbnb. The goal was to design a full end-to-end booking experience: search, date selection, auth, and property cards.
@@ -127,7 +136,7 @@ export default function RentEaseCase() {
           <Label n="02" text="SCREENS" />
 
           {/* Search + Location */}
-          <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "64px", alignItems: "center", marginBottom: "72px" }}>
+          <div className="re-grid" style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "64px", alignItems: "center", marginBottom: "72px" }}>
             <div>
               <div style={{ ...m, fontSize: "11px", color: "#1aff6e", letterSpacing: "0.15em", marginBottom: "16px" }}>SCREEN 01</div>
               <h3 style={{ ...s, fontWeight: 800, fontSize: "28px", color: "#f0f4f1", marginBottom: "16px", letterSpacing: "-0.02em" }}>Smart search bar</h3>
@@ -142,7 +151,7 @@ export default function RentEaseCase() {
           </div>
 
           {/* Calendar */}
-          <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "64px", alignItems: "center", marginBottom: "72px" }}>
+          <div className="re-grid" style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "64px", alignItems: "center", marginBottom: "72px" }}>
             <Shot src={SCREENS.calRange} alt="Date range selected" caption="Date range picker — April 29 → May 5 selected" />
             <div>
               <div style={{ ...m, fontSize: "11px", color: "#1aff6e", letterSpacing: "0.15em", marginBottom: "16px" }}>SCREEN 02</div>
@@ -157,14 +166,14 @@ export default function RentEaseCase() {
           </div>
 
           {/* Calendar states row */}
-          <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr 1fr", gap: "20px", marginBottom: "72px" }}>
+          <div className="re-3shot" style={{ display: "grid", gridTemplateColumns: "1fr 1fr 1fr", gap: "20px", marginBottom: "72px" }}>
             <Shot src={SCREENS.calEmpty} alt="Calendar empty" caption="State 1 — empty" />
             <Shot src={SCREENS.calStart} alt="Calendar start selected" caption="State 2 — start date" />
             <Shot src={SCREENS.calRange} alt="Calendar range selected" caption="State 3 — range selected" />
           </div>
 
           {/* Auth */}
-          <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "64px", alignItems: "center" }}>
+          <div className="re-grid" style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "64px", alignItems: "center" }}>
             <div>
               <div style={{ ...m, fontSize: "11px", color: "#1aff6e", letterSpacing: "0.15em", marginBottom: "16px" }}>SCREEN 03</div>
               <h3 style={{ ...s, fontWeight: 800, fontSize: "28px", color: "#f0f4f1", marginBottom: "16px", letterSpacing: "-0.02em" }}>Auth modal — log in or sign up</h3>
@@ -182,7 +191,7 @@ export default function RentEaseCase() {
 
           {/* DESIGN DECISIONS */}
           <Label n="03" text="DESIGN DECISIONS" />
-          <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr 1fr", gap: "2px", background: "rgba(240,244,241,0.08)", marginBottom: "0" }}>
+          <div className="re-3col" style={{ display: "grid", gridTemplateColumns: "1fr 1fr 1fr", gap: "2px", background: "rgba(240,244,241,0.08)", marginBottom: "0" }}>
             {[
               { icon: "🤍", title: "Light UI by choice", desc: "Airbnb, Booking.com, and every major travel platform uses light UI. It feels airy, open, and trustworthy — right for accommodation browsing." },
               { icon: "🔵", title: "Blue as the only accent", desc: "Blue signals interactivity and trust. Used only for primary CTAs and active states — Log in button, search icon, selected dates. Nothing else." },
@@ -206,7 +215,7 @@ export default function RentEaseCase() {
 
           {/* RESULT */}
           <Label n="04" text="RESULT SO FAR" />
-          <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "80px", alignItems: "center" }}>
+          <div className="re-grid" style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "80px", alignItems: "center" }}>
             <div style={{ display: "flex", flexDirection: "column", gap: "16px" }}>
               <p style={{ ...f, fontSize: "17px", lineHeight: "1.75", color: "rgba(240,244,241,0.55)" }}>
                 RentEase is my first experience designing a complex product flow from scratch — search, discovery, date selection, and auth as a connected system, not isolated screens.

@@ -17,6 +17,14 @@ export function useCursor() {
   const ringPos   = useRef({ x: 0, y: 0 });
 
   useEffect(() => {
+    // Page enter animation
+    const main = document.querySelector<HTMLElement>("main");
+    if (main) {
+      main.classList.remove("page-enter");
+      void main.offsetHeight;
+      main.classList.add("page-enter");
+    }
+
     const onMove = (e: MouseEvent) => {
       mousePos.current = { x: e.clientX, y: e.clientY };
       if (cursorRef.current) {

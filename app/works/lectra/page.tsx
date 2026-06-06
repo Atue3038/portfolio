@@ -101,11 +101,21 @@ export default function LectraCase() {
     <>
       <CursorElements cursorRef={cursorRef} ringRef={ringRef} hovered={hovered} />
       <Lightbox />
-    <main style={{ background: "#050a06", minHeight: "100vh", overflowX: "hidden" }}>
 
-      <CaseNav onEnter={onEnter} onLeave={onLeave} />
+      <main style={{ background: "#050a06", minHeight: "100vh", overflowX: "hidden" }}>
 
-      <div style={{ maxWidth: "1200px", margin: "0 auto", padding: "80px 48px 120px" }}>
+        <CaseNav onEnter={onEnter} onLeave={onLeave} />
+
+        <style>{`
+          @media (max-width: 768px) {
+            .lectra-inner { padding: 80px 20px 80px !important; }
+            .lectra-grid  { grid-template-columns: 1fr !important; gap: 40px !important; }
+            .lectra-3col  { grid-template-columns: 1fr !important; }
+            .lectra-phones-pair { flex-direction: column !important; align-items: center !important; }
+          }
+        `}</style>
+
+        <div className="lectra-inner" style={{ maxWidth: "1200px", margin: "0 auto", padding: "120px 48px 120px" }}>
 
         {/* ── HERO ── */}
         <div style={{ marginBottom: "80px" }}>
@@ -263,7 +273,7 @@ export default function LectraCase() {
         <Label n="03" text="SOLUTION" />
 
         {/* Feature 1 */}
-        <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "72px", alignItems: "center", marginBottom: "80px" }}>
+        <div className="lectra-grid" style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "72px", alignItems: "center", marginBottom: "80px" }}>
           <div>
             <div style={{ ...m, fontSize: "11px", color: "#1aff6e", letterSpacing: "0.15em", marginBottom: "16px" }}>FEATURE 01</div>
             <h3 style={{ ...s, fontWeight: 800, fontSize: "30px", color: "#f0f4f1", marginBottom: "16px", letterSpacing: "-0.02em" }}>Record. Import. Upload.</h3>
@@ -280,7 +290,7 @@ export default function LectraCase() {
         </div>
 
         {/* Feature 2 */}
-        <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "72px", alignItems: "center", marginBottom: "80px" }}>
+        <div className="lectra-grid" style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "72px", alignItems: "center", marginBottom: "80px" }}>
           <div style={{ display: "flex", justifyContent: "center" }}>
             <Phone src={SCREENS.ai} label="Lexi — AI Assistant" />
           </div>
@@ -297,7 +307,7 @@ export default function LectraCase() {
         </div>
 
         {/* Feature 3 */}
-        <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "72px", alignItems: "center", marginBottom: "80px" }}>
+        <div className="lectra-grid" style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "72px", alignItems: "center", marginBottom: "80px" }}>
           <div>
             <div style={{ ...m, fontSize: "11px", color: "#1aff6e", letterSpacing: "0.15em", marginBottom: "16px" }}>FEATURE 03</div>
             <h3 style={{ ...s, fontWeight: 800, fontSize: "30px", color: "#f0f4f1", marginBottom: "16px", letterSpacing: "-0.02em" }}>Exam countdown + smart prep tracker</h3>
@@ -314,7 +324,7 @@ export default function LectraCase() {
         </div>
 
         {/* Feature 4 */}
-        <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "72px", alignItems: "center" }}>
+        <div className="lectra-grid" style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "72px", alignItems: "center" }}>
           <div style={{ display: "flex", gap: "20px", justifyContent: "center" }}>
             <Phone src={SCREENS.library}  label="Library" />
             <Phone src={SCREENS.discrete} label="Subject detail" />
@@ -335,7 +345,7 @@ export default function LectraCase() {
 
         {/* ── UX DECISIONS ── */}
         <Label n="04" text="UX DECISIONS" />
-        <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr 1fr", gap: "2px", background: "rgba(240,244,241,0.08)" }}>
+        <div className="lectra-3col" style={{ display: "grid", gridTemplateColumns: "1fr 1fr 1fr", gap: "2px", background: "rgba(240,244,241,0.08)" }}>
           {[
             { icon: "🌙", title: "Dark-first UI", desc: "Students use the app in lectures, libraries, late at night. Dark theme reduces eye strain and fits the environment." },
             { icon: "🎯", title: "One action per screen", desc: "Each screen has a single clear goal. No cognitive overload — the student always knows what to do next." },
@@ -359,7 +369,7 @@ export default function LectraCase() {
 
         {/* ── RESULT ── */}
         <Label n="05" text="RESULT" />
-        <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "80px", alignItems: "center" }}>
+        <div className="lectra-grid" style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "80px", alignItems: "center" }}>
           <div style={{ display: "flex", flexDirection: "column", gap: "16px" }}>
             <p style={{ ...f, fontSize: "17px", lineHeight: "1.75", color: "rgba(240,244,241,0.55)" }}>
               Designing Lectra pushed me to think about AI not as a feature — but as the core interaction. The challenge was making it feel natural and trustworthy, not technical or intimidating.
@@ -383,10 +393,10 @@ export default function LectraCase() {
 
         <Divider />
 
-      </div>
-      <CaseContact onEnter={onEnter} onLeave={onLeave} />
-      <CaseFooter prevHref="/works/vimeworld" prevLabel="VIMEWORLD" nextHref="/works/czysto" nextLabel="CZYSTO CLEANER" onEnter={onEnter} onLeave={onLeave} />
-    </main>
+        </div>
+        <CaseContact onEnter={onEnter} onLeave={onLeave} />
+        <CaseFooter prevHref="/works/vimeworld" prevLabel="VIMEWORLD" nextHref="/works/czysto" nextLabel="CZYSTO CLEANER" onEnter={onEnter} onLeave={onLeave} />
+      </main>
     </>
   );
 }

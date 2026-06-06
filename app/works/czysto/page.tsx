@@ -63,7 +63,15 @@ export default function CzystoCase() {
 
         <CaseNav onEnter={onEnter} onLeave={onLeave} />
 
-        <div style={{ maxWidth: "1200px", margin: "0 auto", padding: "80px 48px 120px" }}>
+        <style>{`
+          @media (max-width: 768px) {
+            .czy-inner  { padding: 120px 20px 80px !important; }
+            .czy-grid   { grid-template-columns: 1fr !important; gap: 40px !important; }
+            .czy-3col   { grid-template-columns: 1fr !important; }
+          }
+        `}</style>
+
+        <div className="czy-inner" style={{ maxWidth: "1200px", margin: "0 auto", padding: "80px 48px 120px" }}>
 
           {/* HERO */}
           <div style={{ marginBottom: "72px" }}>
@@ -96,7 +104,7 @@ export default function CzystoCase() {
 
           {/* OVERVIEW */}
           <Label n="01" text="OVERVIEW" />
-          <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "80px", alignItems: "start", marginBottom: "60px" }}>
+          <div className="czy-grid" style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "80px", alignItems: "start", marginBottom: "60px" }}>
             <div style={{ display: "flex", flexDirection: "column", gap: "16px" }}>
               <p style={{ ...f, fontSize: "17px", lineHeight: "1.75", color: "rgba(240,244,241,0.55)" }}>
                 Czysto Cleaner is a professional deep cleaning service based in Warsaw, specialising in sofas, mattresses, and upholstered furniture. The client needed a complete web presence — from zero to live.
@@ -159,7 +167,7 @@ export default function CzystoCase() {
           <Label n="03" text="SECTIONS" />
 
           {/* Services */}
-          <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "64px", alignItems: "center", marginBottom: "72px" }}>
+          <div className="czy-grid" style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "64px", alignItems: "center", marginBottom: "72px" }}>
             <div>
               <div style={{ ...m, fontSize: "11px", color: "#1aff6e", letterSpacing: "0.15em", marginBottom: "16px" }}>SECTION 01</div>
               <h3 style={{ ...s, fontWeight: 800, fontSize: "28px", color: "#f0f4f1", marginBottom: "16px", letterSpacing: "-0.02em" }}>What&apos;s included</h3>
@@ -174,7 +182,7 @@ export default function CzystoCase() {
           </div>
 
           {/* Pricing */}
-          <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "64px", alignItems: "center", marginBottom: "72px" }}>
+          <div className="czy-grid" style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "64px", alignItems: "center", marginBottom: "72px" }}>
             <Screenshot src={SCREENS.pricing} alt="Cennik" />
             <div>
               <div style={{ ...m, fontSize: "11px", color: "#1aff6e", letterSpacing: "0.15em", marginBottom: "16px" }}>SECTION 02</div>
@@ -189,7 +197,7 @@ export default function CzystoCase() {
           </div>
 
           {/* Equipment */}
-          <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "64px", alignItems: "center", marginBottom: "72px" }}>
+          <div className="czy-grid" style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "64px", alignItems: "center", marginBottom: "72px" }}>
             <div>
               <div style={{ ...m, fontSize: "11px", color: "#1aff6e", letterSpacing: "0.15em", marginBottom: "16px" }}>SECTION 03</div>
               <h3 style={{ ...s, fontWeight: 800, fontSize: "28px", color: "#f0f4f1", marginBottom: "16px", letterSpacing: "-0.02em" }}>Equipment & guarantees</h3>
@@ -204,7 +212,7 @@ export default function CzystoCase() {
           </div>
 
           {/* Contact */}
-          <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "64px", alignItems: "center" }}>
+          <div className="czy-grid" style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "64px", alignItems: "center" }}>
             <Screenshot src={SCREENS.contact} alt="Kontakt" />
             <div>
               <div style={{ ...m, fontSize: "11px", color: "#1aff6e", letterSpacing: "0.15em", marginBottom: "16px" }}>SECTION 04</div>
@@ -222,7 +230,7 @@ export default function CzystoCase() {
 
           {/* RESULT */}
           <Label n="04" text="RESULT" />
-          <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "80px", alignItems: "center" }}>
+          <div className="czy-grid" style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "80px", alignItems: "center" }}>
             <div style={{ display: "flex", flexDirection: "column", gap: "16px" }}>
               <p style={{ ...f, fontSize: "17px", lineHeight: "1.75", color: "rgba(240,244,241,0.55)" }}>
                 This was my first fully commercial end-to-end project — from brief to live production website. I handled design and development simultaneously, which forced me to think in systems from day one.
