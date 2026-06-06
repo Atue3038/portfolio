@@ -1,4 +1,5 @@
 "use client";
+import Image from "next/image";
 import { useState } from "react";
 import { useCursor, CursorElements, CaseNav, CaseContact, CaseFooter, Lightbox } from "@/components/CaseShell";
 
@@ -41,7 +42,7 @@ function Screenshot({ src, alt, caption }: { src: string; alt: string; caption?:
   return (
     <div style={{ display: "flex", flexDirection: "column", gap: "12px" }}>
       <div style={{ borderRadius: "12px", overflow: "hidden", border: "1px solid rgba(240,244,241,0.08)", boxShadow: "0 24px 64px rgba(0,0,0,0.4)" }}>
-        <img src={src} alt={alt} className="img-loaded lb" style={{ width: "100%", display: "block", cursor: "zoom-in" }} />
+        <Image src={src} alt={alt} width={1440} height={900} className="img-loaded lb" style={{ width: "100%", height: "auto", display: "block", cursor: "zoom-in" }} quality={95} />
       </div>
       {caption && <span style={{ ...m, fontSize: "11px", color: "rgba(240,244,241,0.3)", textAlign: "center", letterSpacing: "0.06em" }}>{caption}</span>}
     </div>
