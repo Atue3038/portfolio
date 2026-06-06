@@ -196,18 +196,22 @@ img.img-loaded {
 .reveal-group .reveal:nth-child(5) { transition-delay: 320ms; }
 .reveal-group .reveal:nth-child(6) { transition-delay: 400ms; }
 
-/* ── PAGE TRANSITION ── */
+/* ── PAGE ENTER — fires on every route change via AnimationProvider ── */
 .page-enter {
-  animation: fadeUp 0.5s cubic-bezier(0.0,0.0,0.2,1) both;
+  animation: pageEnter 0.55s cubic-bezier(0.0, 0.0, 0.2, 1) both;
+}
+@keyframes pageEnter {
+  from { opacity: 0; transform: translateY(16px); }
+  to   { opacity: 1; transform: translateY(0); }
 }
 
-/* ── HERO ENTRANCE (staggered, fired once on load) ── */
-.hero-tag    { animation: fadeUp 0.6s cubic-bezier(0.0,0.0,0.2,1) 0.05s both; }
-.hero-title  { animation: fadeUp 0.7s cubic-bezier(0.0,0.0,0.2,1) 0.15s both; }
-.hero-bio    { animation: fadeUp 0.6s cubic-bezier(0.0,0.0,0.2,1) 0.28s both; }
-.hero-stats  { animation: fadeUp 0.6s cubic-bezier(0.0,0.0,0.2,1) 0.38s both; }
-.hero-cta    { animation: fadeUp 0.6s cubic-bezier(0.0,0.0,0.2,1) 0.46s both; }
-.hero-photo  { animation: fadeIn 0.9s cubic-bezier(0.0,0.0,0.2,1) 0.3s  both; }
+/* ── HERO ENTRANCE — staggered, CSS-only, fires on first load ── */
+.hero-tag    { animation: fadeUp 0.55s cubic-bezier(0.0,0.0,0.2,1) 0.08s  both; }
+.hero-title  { animation: fadeUp 0.65s cubic-bezier(0.0,0.0,0.2,1) 0.18s  both; }
+.hero-bio    { animation: fadeUp 0.55s cubic-bezier(0.0,0.0,0.2,1) 0.30s  both; }
+.hero-stats  { animation: fadeUp 0.55s cubic-bezier(0.0,0.0,0.2,1) 0.40s  both; }
+.hero-cta    { animation: fadeUp 0.55s cubic-bezier(0.0,0.0,0.2,1) 0.48s  both; }
+.hero-photo  { animation: fadeIn 0.80s cubic-bezier(0.0,0.0,0.2,1) 0.32s  both; }
 
 /* ── BUTTON PRESS ── */
 .btn-press {

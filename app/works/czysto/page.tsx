@@ -16,12 +16,12 @@ const SCREENS = {
 };
 
 function Divider() {
-  return <div style={{ height: "1px", background: "rgba(240,244,241,0.08)", margin: "80px 0" }} />;
+  return <div className="reveal" style={{ height: "1px", background: "rgba(240,244,241,0.08)", margin: "80px 0" }} />;
 }
 
 function Label({ n, text }: { n: string; text: string }) {
   return (
-    <div style={{ display: "flex", alignItems: "center", gap: "14px", marginBottom: "48px" }}>
+    <div className="reveal" style={{ display: "flex", alignItems: "center", gap: "14px", marginBottom: "48px" }}>
       <span style={{ ...m, fontSize: "11px", color: "#1aff6e", letterSpacing: "0.15em" }}>{n} / {text}</span>
       <div style={{ flex: 1, height: "1px", background: "rgba(240,244,241,0.08)" }} />
     </div>
@@ -67,22 +67,22 @@ export default function CzystoCase() {
 
           {/* HERO */}
           <div style={{ marginBottom: "72px" }}>
-            <div style={{ display: "flex", alignItems: "center", gap: "12px", marginBottom: "20px" }}>
+            <div className="reveal" style={{ display: "flex", alignItems: "center", gap: "12px", marginBottom: "20px" }}>
               <div style={{ width: "28px", height: "1px", background: "#1aff6e" }} />
               <span style={{ ...m, fontSize: "11px", color: "#1aff6e", letterSpacing: "0.15em" }}>COMMERCIAL PROJECT · 2026</span>
             </div>
-            <h1 style={{ ...s, fontWeight: 800, fontSize: "clamp(48px, 7vw, 84px)", lineHeight: 0.95, letterSpacing: "-0.03em", color: "#f0f4f1", marginBottom: "24px" }}>
+            <h1 className="reveal" style={{ ...s, fontWeight: 800, fontSize: "clamp(48px, 7vw, 84px)", lineHeight: 0.95, letterSpacing: "-0.03em", color: "#f0f4f1", marginBottom: "24px" }}>
               Czysto Cleaner —<br />
               <span style={{ background: "linear-gradient(90deg,#fff 0%,#1aff6e 100%)", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent" }}>Website</span><br />
               End-to-End
             </h1>
-            <p style={{ ...f, fontSize: "18px", lineHeight: "1.75", color: "rgba(240,244,241,0.5)", maxWidth: "560px", marginBottom: "32px" }}>
+            <p className="reveal" style={{ ...f, fontSize: "18px", lineHeight: "1.75", color: "rgba(240,244,241,0.5)", maxWidth: "560px", marginBottom: "32px" }}>
               A complete commercial website for a professional upholstery cleaning service in Warsaw — designed, built, and delivered as a ready-to-launch product.
             </p>
-            <div style={{ display: "flex", gap: "10px", flexWrap: "wrap", marginBottom: "32px" }}>
+            <div className="reveal" style={{ display: "flex", gap: "10px", flexWrap: "wrap", marginBottom: "32px" }}>
               {["Web Design", "Development", "Next.js", "Commercial", "PL / RU / EN"].map(t => <Tag key={t}>{t}</Tag>)}
             </div>
-            <a href="https://czysto-cleaner.pl" target="_blank" rel="noreferrer" onMouseEnter={onEnter} onMouseLeave={onLeave}
+            <a className="reveal" href="https://czysto-cleaner.pl" target="_blank" rel="noreferrer" onMouseEnter={onEnter} onMouseLeave={onLeave}
               style={{ display: "inline-flex", alignItems: "center", gap: "10px", border: "1px solid rgba(26,255,110,0.4)", borderRadius: "4px", padding: "12px 20px", ...m, fontSize: "12px", color: "#1aff6e", textDecoration: "none", letterSpacing: "0.1em", transition: "background 0.2s" }}
               onMouseOver={e => (e.currentTarget.style.background = "rgba(26,255,110,0.08)")}
               onMouseOut={e => (e.currentTarget.style.background = "transparent")}

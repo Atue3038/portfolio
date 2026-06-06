@@ -16,11 +16,11 @@ const SCREENS = {
 };
 
 function Divider() {
-  return <div style={{ height: "1px", background: "rgba(240,244,241,0.08)", margin: "80px 0" }} />;
+  return <div className="reveal" style={{ height: "1px", background: "rgba(240,244,241,0.08)", margin: "80px 0" }} />;
 }
 function Label({ n, text }: { n: string; text: string }) {
   return (
-    <div style={{ display: "flex", alignItems: "center", gap: "14px", marginBottom: "48px" }}>
+    <div className="reveal" style={{ display: "flex", alignItems: "center", gap: "14px", marginBottom: "48px" }}>
       <span style={{ ...m, fontSize: "11px", color: "#1aff6e", letterSpacing: "0.15em" }}>{n} / {text}</span>
       <div style={{ flex: 1, height: "1px", background: "rgba(240,244,241,0.08)" }} />
     </div>
@@ -63,19 +63,19 @@ export default function RentEaseCase() {
 
           {/* HERO */}
           <div style={{ marginBottom: "72px" }}>
-            <div style={{ display: "flex", alignItems: "center", gap: "12px", marginBottom: "20px" }}>
+            <div className="reveal" style={{ display: "flex", alignItems: "center", gap: "12px", marginBottom: "20px" }}>
               <div style={{ width: "28px", height: "1px", background: "#1aff6e" }} />
               <span style={{ ...m, fontSize: "11px", color: "#1aff6e", letterSpacing: "0.15em" }}>ACADEMIC PROJECT · 2025 — IN PROGRESS</span>
             </div>
-            <h1 style={{ ...s, fontWeight: 800, fontSize: "clamp(48px, 7vw, 84px)", lineHeight: 0.95, letterSpacing: "-0.03em", color: "#f0f4f1", marginBottom: "24px" }}>
+            <h1 className="reveal" style={{ ...s, fontWeight: 800, fontSize: "clamp(48px, 7vw, 84px)", lineHeight: 0.95, letterSpacing: "-0.03em", color: "#f0f4f1", marginBottom: "24px" }}>
               RentEase —<br />
               <span style={{ background: "linear-gradient(90deg,#fff 0%,#1aff6e 100%)", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent" }}>Booking</span><br />
               Platform
             </h1>
-            <p style={{ ...f, fontSize: "18px", lineHeight: "1.75", color: "rgba(240,244,241,0.5)", maxWidth: "560px", marginBottom: "32px" }}>
+            <p className="reveal" style={{ ...f, fontSize: "18px", lineHeight: "1.75", color: "rgba(240,244,241,0.5)", maxWidth: "560px", marginBottom: "32px" }}>
               A booking platform in the style of Airbnb — designed as a university project. Clean light UI, smart search with location suggestions, date range picker, and auth flow.
             </p>
-            <div style={{ display: "flex", gap: "10px", flexWrap: "wrap", marginBottom: "16px" }}>
+            <div className="reveal" style={{ display: "flex", gap: "10px", flexWrap: "wrap", marginBottom: "16px" }}>
               {["Web Design", "UI/UX", "Booking Platform", "Academic", "In Progress"].map(t => <Tag key={t}>{t}</Tag>)}
             </div>
             {/* In progress badge */}

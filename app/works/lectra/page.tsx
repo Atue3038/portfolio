@@ -33,12 +33,12 @@ function Phone({ src, label }: { src: string; label: string }) {
 }
 
 function Divider() {
-  return <div style={{ height: "1px", background: "rgba(240,244,241,0.08)", margin: "80px 0" }} />;
+  return <div className="reveal" style={{ height: "1px", background: "rgba(240,244,241,0.08)", margin: "80px 0" }} />;
 }
 
 function Label({ n, text }: { n: string; text: string }) {
   return (
-    <div style={{ display: "flex", alignItems: "center", gap: "14px", marginBottom: "48px" }}>
+    <div className="reveal" style={{ display: "flex", alignItems: "center", gap: "14px", marginBottom: "48px" }}>
       <span style={{ ...m, fontSize: "11px", color: "#1aff6e", letterSpacing: "0.15em" }}>{n} / {text}</span>
       <div style={{ flex: 1, height: "1px", background: "rgba(240,244,241,0.08)" }} />
     </div>
@@ -109,25 +109,25 @@ export default function LectraCase() {
 
         {/* ── HERO ── */}
         <div style={{ marginBottom: "80px" }}>
-          <div style={{ display: "flex", alignItems: "center", gap: "12px", marginBottom: "20px" }}>
+          <div className="reveal" style={{ display: "flex", alignItems: "center", gap: "12px", marginBottom: "20px" }}>
             <div style={{ width: "28px", height: "1px", background: "#1aff6e" }} />
             <span style={{ ...m, fontSize: "11px", color: "#1aff6e", letterSpacing: "0.15em" }}>ACADEMIC PROJECT · 2025</span>
           </div>
-          <h1 style={{ ...s, fontWeight: 800, fontSize: "clamp(48px, 7vw, 84px)", lineHeight: 0.95, letterSpacing: "-0.03em", color: "#f0f4f1", marginBottom: "24px" }}>
+          <h1 className="reveal" style={{ ...s, fontWeight: 800, fontSize: "clamp(48px, 7vw, 84px)", lineHeight: 0.95, letterSpacing: "-0.03em", color: "#f0f4f1", marginBottom: "24px" }}>
             Lectra —<br />
             <span style={{ background: "linear-gradient(90deg,#fff 0%,#1aff6e 100%)", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent" }}>AI Note-Taking</span><br />
             for Students
           </h1>
-          <p style={{ ...f, fontSize: "18px", lineHeight: "1.75", color: "rgba(240,244,241,0.5)", maxWidth: "520px", marginBottom: "32px" }}>
+          <p className="reveal" style={{ ...f, fontSize: "18px", lineHeight: "1.75", color: "rgba(240,244,241,0.5)", maxWidth: "520px", marginBottom: "32px" }}>
             A mobile app that records lectures, processes notes with AI, and builds a personalized study plan — so students can focus on understanding, not writing.
           </p>
-          <div style={{ display: "flex", gap: "10px", flexWrap: "wrap" }}>
+          <div className="reveal" style={{ display: "flex", gap: "10px", flexWrap: "wrap" }}>
             {["Mobile App", "UI/UX Design", "AI Product", "iOS"].map(t => <Tag key={t}>{t}</Tag>)}
           </div>
         </div>
 
         {/* ── ALL SCREENS ROW ── */}
-        <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: "20px" }}>
+        <div className="reveal" style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: "20px" }}>
           <span style={{ fontFamily: "'DM Mono', monospace", fontSize: "10px", color: "rgba(240,244,241,0.3)", letterSpacing: "0.15em", textTransform: "uppercase" }}>All screens</span>
           <span style={{ fontFamily: "'DM Mono', monospace", fontSize: "10px", color: "rgba(26,255,110,0.6)", letterSpacing: "0.12em" }}>← scroll to explore →</span>
         </div>
