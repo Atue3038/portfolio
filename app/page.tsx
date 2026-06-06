@@ -508,6 +508,9 @@ export default function Home() {
             </div>
           </div>
         </section>
+
+        {/* ── WORKS ── */}
+        <section id="works" className="works-section">
           <div style={{ maxWidth: "1200px", margin: "0 auto" }}>
             <div className="reveal works-header" style={{ display: "flex", alignItems: "center", gap: "16px", marginBottom: "48px", padding: "0" }}>
               <span style={{ fontFamily: "'DM Mono', monospace", fontSize: "11px", color: "var(--green)", letterSpacing: "0.15em" }}>06 / WORKS</span>
