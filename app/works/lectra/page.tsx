@@ -219,7 +219,7 @@ export default function LectraCase() {
         <Divider />
 
         {/* ── OVERVIEW ── */}
-        <Label n="01" text="OVERVIEW" />
+        <Label n="01" text={tr("lectra_l1")} />
         <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "80px", alignItems: "start" }}>
           <div style={{ display: "flex", flexDirection: "column", gap: "16px" }}>
             <p style={{ ...f, fontSize: "17px", lineHeight: "1.75", color: "rgba(240,244,241,0.55)" }}>
@@ -251,7 +251,7 @@ export default function LectraCase() {
         <Divider />
 
         {/* ── PROBLEM ── */}
-        <Label n="02" text="PROBLEM" />
+        <Label n="02" text={tr("lectra_l2")} />
         <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "2px", background: "rgba(240,244,241,0.08)" }}>
           {[
             { icon: "✍️", title: "Divided attention", desc: "Students can't listen and write at the same time. Important context gets lost while rushing to copy words." },
@@ -273,13 +273,13 @@ export default function LectraCase() {
         <Divider />
 
         {/* ── SOLUTION ── */}
-        <Label n="03" text="SOLUTION" />
+        <Label n="03" text={tr("lectra_l3")} />
 
         {/* Feature 1 */}
         <div className="lectra-grid" style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "72px", alignItems: "center", marginBottom: "80px" }}>
           <div>
             <div style={{ ...m, fontSize: "11px", color: "#1aff6e", letterSpacing: "0.15em", marginBottom: "16px" }}>FEATURE 01</div>
-            <h3 style={{ ...s, fontWeight: 800, fontSize: "30px", color: "#f0f4f1", marginBottom: "16px", letterSpacing: "-0.02em" }}>Record. Import. Upload.</h3>
+            <h3 style={{ ...s, fontWeight: 800, fontSize: "30px", color: "#f0f4f1", marginBottom: "16px", letterSpacing: "-0.02em" }}>{tr("lectra_h1")}</h3>
             <p style={{ ...f, fontSize: "16px", lineHeight: "1.75", color: "rgba(240,244,241,0.5)", marginBottom: "16px" }}>
               Three ways to feed material: record the lecture live, import a file, or photograph your handwritten notes. The AI handles everything after that.
             </p>
@@ -299,7 +299,7 @@ export default function LectraCase() {
           </div>
           <div>
             <div style={{ ...m, fontSize: "11px", color: "#1aff6e", letterSpacing: "0.15em", marginBottom: "16px" }}>FEATURE 02</div>
-            <h3 style={{ ...s, fontWeight: 800, fontSize: "30px", color: "#f0f4f1", marginBottom: "16px", letterSpacing: "-0.02em" }}>Lexi processes the lecture for you</h3>
+            <h3 style={{ ...s, fontWeight: 800, fontSize: "30px", color: "#f0f4f1", marginBottom: "16px", letterSpacing: "-0.02em" }}>{tr("lectra_h2")}</h3>
             <p style={{ ...f, fontSize: "16px", lineHeight: "1.75", color: "rgba(240,244,241,0.5)", marginBottom: "16px" }}>
               After uploading or recording, Lexi analyzes the content and returns a structured breakdown: key topics, definitions, and a summary you can actually study from.
             </p>
@@ -313,7 +313,7 @@ export default function LectraCase() {
         <div className="lectra-grid" style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "72px", alignItems: "center", marginBottom: "80px" }}>
           <div>
             <div style={{ ...m, fontSize: "11px", color: "#1aff6e", letterSpacing: "0.15em", marginBottom: "16px" }}>FEATURE 03</div>
-            <h3 style={{ ...s, fontWeight: 800, fontSize: "30px", color: "#f0f4f1", marginBottom: "16px", letterSpacing: "-0.02em" }}>Exam countdown + smart prep tracker</h3>
+            <h3 style={{ ...s, fontWeight: 800, fontSize: "30px", color: "#f0f4f1", marginBottom: "16px", letterSpacing: "-0.02em" }}>{tr("lectra_h3")}</h3>
             <p style={{ ...f, fontSize: "16px", lineHeight: "1.75", color: "rgba(240,244,241,0.5)", marginBottom: "16px" }}>
               Set your exam date and Lectra calculates exactly how prepared you are. Circular progress shows readiness per subject — with preparation level, target score, and gap to goal.
             </p>
@@ -334,7 +334,7 @@ export default function LectraCase() {
           </div>
           <div>
             <div style={{ ...m, fontSize: "11px", color: "#1aff6e", letterSpacing: "0.15em", marginBottom: "16px" }}>FEATURE 04</div>
-            <h3 style={{ ...s, fontWeight: 800, fontSize: "30px", color: "#f0f4f1", marginBottom: "16px", letterSpacing: "-0.02em" }}>Library — everything in one place</h3>
+            <h3 style={{ ...s, fontWeight: 800, fontSize: "30px", color: "#f0f4f1", marginBottom: "16px", letterSpacing: "-0.02em" }}>{tr("lectra_h4")}</h3>
             <p style={{ ...f, fontSize: "16px", lineHeight: "1.75", color: "rgba(240,244,241,0.5)", marginBottom: "16px" }}>
               All subjects and their lectures in one structured library. You can see at a glance how many lessons each subject has and how prepared you are.
             </p>
@@ -347,7 +347,7 @@ export default function LectraCase() {
         <Divider />
 
         {/* ── UX DECISIONS ── */}
-        <Label n="04" text="UX DECISIONS" />
+        <Label n="04" text={tr("lectra_l4")} />
         <div className="lectra-3col" style={{ display: "grid", gridTemplateColumns: "1fr 1fr 1fr", gap: "2px", background: "rgba(240,244,241,0.08)" }}>
           {[
             { icon: "🌙", title: "Dark-first UI", desc: "Students use the app in lectures, libraries, late at night. Dark theme reduces eye strain and fits the environment." },
@@ -371,7 +371,7 @@ export default function LectraCase() {
         <Divider />
 
         {/* ── RESULT ── */}
-        <Label n="05" text="RESULT" />
+        <Label n="05" text={tr("lectra_l5")} />
         <div className="lectra-grid" style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "80px", alignItems: "center" }}>
           <div style={{ display: "flex", flexDirection: "column", gap: "16px" }}>
             <p style={{ ...f, fontSize: "17px", lineHeight: "1.75", color: "rgba(240,244,241,0.55)" }}>

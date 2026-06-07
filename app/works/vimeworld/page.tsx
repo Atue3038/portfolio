@@ -3,28 +3,28 @@ import Image from "next/image";
 import { useCursor, CursorElements, CaseNav, CaseContact, CaseFooter, Lightbox } from "@/components/CaseShell";
 import { useLang } from "@/lib/LangContext";
 
-const SCREENS = [
-  { src: "/vimeworld_menu.png",  num: "01", title: "Main Menu",   desc: "Dashboard with quests, daily bonuses, server updates, guidebook, and social links. All key features accessible without leaving the pause screen." },
-  { src: "/vimeworld_cases.png", num: "02", title: "Cases",       desc: "Split-panel layout — case list on the left, drop pool and Buy / Open actions on the right. Rarity borders follow Pixelmon colour conventions." },
-  { src: "/vimeworld_privs.png", num: "03", title: "Privileges",  desc: "Rank tiers displayed as cards with player skins. Detail panel shows full benefits, a duration dropdown, and dedicated Buy and Gift buttons." },
-  { src: "/vimeworld_kits.png",  num: "04", title: "Kits",        desc: "Available / All toggle filter. Selecting a kit shows the full inventory grid with a one-time-use warning before the player claims." },
-  { src: "/vimeworld_shop.png",  num: "05", title: "Shop",        desc: "Full item store with search, category filters, and currency toggle. Items in a scrollable 5-column grid with sort controls." },
-  { src: "/vimeworld_cart.png",  num: "06", title: "Cart",        desc: "Pending rewards and purchases grouped by category — Privileges, Cases, Other. Each item shows quantity and a Claim button." },
-  { src: "/vimeworld_warps.png", num: "07", title: "Warps",       desc: "Location cards with colour-coded borders per warp type. More Info reveals a detail view with a Teleport action." },
-];
-
-const DEEP = [
-  { src: "/vimeworld_menu.png",  rev: false, title: "Main Screen — Dashboard Logic",       desc: "Top nav with icon buttons and player profile, then a four-column content area. Quests on the left, daily bonuses and guidebook in the centre, updates as a timeline, social links and settings on the right. Everything a player needs without leaving the pause screen." },
-  { src: "/vimeworld_cases.png", rev: true,  title: "Cases — Split-Panel Pattern",          desc: "List and detail sit side by side so navigation and content are always visible. The drop pool grid uses rarity-coloured borders following Pixelmon conventions — purple for legendary, cyan for rare, gold for uncommon. Price stays visible so players decide without extra clicks." },
-  { src: "/vimeworld_privs.png", rev: false, title: "Privileges — Subscription Tiers",     desc: "Rank cards use player skins as avatars, making each tier immediately recognisable. The detail pane has a duration dropdown and tabbed benefit breakdown. A dedicated Gift button lets players purchase for others without leaving the interface." },
-  { src: "/vimeworld_shop.png",  rev: true,  title: "Shop — Searchable Item Store",         desc: "Currency toggle sits next to search, letting players filter by what they can afford. Category sidebar keeps the 5-column grid manageable. Sort dropdown defaults to 'Default' — minimal friction to find any item." },
-];
-
 export default function VimeworldCase() {
   const { cursorRef, ringRef, hovered, setHovered } = useCursor();
   const { tr } = useLang();
   const onEnter = () => setHovered(true);
   const onLeave = () => setHovered(false);
+
+  const SCREENS = [
+    { src: "/vimeworld_menu.png",  num: "01", titleKey: "vw_s1_title", descKey: "vw_s1_desc" },
+    { src: "/vimeworld_cases.png", num: "02", titleKey: "vw_s2_title", descKey: "vw_s2_desc" },
+    { src: "/vimeworld_privs.png", num: "03", titleKey: "vw_s3_title", descKey: "vw_s3_desc" },
+    { src: "/vimeworld_kits.png",  num: "04", titleKey: "vw_s4_title", descKey: "vw_s4_desc" },
+    { src: "/vimeworld_shop.png",  num: "05", titleKey: "vw_s5_title", descKey: "vw_s5_desc" },
+    { src: "/vimeworld_cart.png",  num: "06", titleKey: "vw_s6_title", descKey: "vw_s6_desc" },
+    { src: "/vimeworld_warps.png", num: "07", titleKey: "vw_s7_title", descKey: "vw_s7_desc" },
+  ];
+
+  const DEEP = [
+    { src: "/vimeworld_menu.png",  rev: false, titleKey: "vw_d1_title", descKey: "vw_d1_desc" },
+    { src: "/vimeworld_cases.png", rev: true,  titleKey: "vw_d2_title", descKey: "vw_d2_desc" },
+    { src: "/vimeworld_privs.png", rev: false, titleKey: "vw_d3_title", descKey: "vw_d3_desc" },
+    { src: "/vimeworld_shop.png",  rev: true,  titleKey: "vw_d4_title", descKey: "vw_d4_desc" },
+  ];
 
   return (
     <>
@@ -111,12 +111,12 @@ export default function VimeworldCase() {
           <div className="w-inner">
             <div className="sec-label reveal"><span>02 / ALL SCREENS</span><hr /></div>
             <div className="screens-grid reveal-group" style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "72px 48px" }}>
-              {SCREENS.map(({ src, num, title, desc }) => (
+              {SCREENS.map(({ src, num, titleKey, descKey }) => (
                 <div key={num} style={{ display: "flex", flexDirection: "column", gap: 12 }}>
-                  <Image src={src} alt={title} width={1440} height={900} className="img-loaded lb" style={{ width: "100%", height: "auto", display: "block", borderRadius: 4, border: "1px solid var(--border)", cursor: "zoom-in" }} quality={95} />
+                  <Image src={src} alt={tr(titleKey as any)} width={1440} height={900} className="img-loaded lb" style={{ width: "100%", height: "auto", display: "block", borderRadius: 4, border: "1px solid var(--border)", cursor: "zoom-in" }} quality={95} />
                   <span className="num-badge">{num}</span>
-                  <h3 className="screen-title">{title}</h3>
-                  <p className="screen-desc">{desc}</p>
+                  <h3 className="screen-title">{tr(titleKey as any)}</h3>
+                  <p className="screen-desc">{tr(descKey as any)}</p>
                 </div>
               ))}
             </div>
@@ -129,13 +129,13 @@ export default function VimeworldCase() {
             <div className="divider" />
             <div className="sec-label reveal"><span>03 / DEEP DIVE</span><hr /></div>
             <h2 style={{ fontFamily: "'Unbounded', sans-serif", fontWeight: 800, fontSize: "clamp(24px,3vw,38px)", color: "var(--white)", letterSpacing: "-.02em", margin: "0 0 64px" }}>Screen Breakdowns</h2>
-            {DEEP.map(({ src, rev, title, desc }, i) => (
+            {DEEP.map(({ src, rev, titleKey, descKey }, i) => (
               <div key={i} className={`alt-row${rev ? " rev" : ""}`}>
-                <div className="img-side"><Image src={src} alt={title} width={1440} height={900} className="img-loaded lb" style={{ width: "100%", height: "auto", cursor: "zoom-in", display: "block" }} quality={95} /></div>
+                <div className="img-side"><Image src={src} alt={tr(titleKey as any)} width={1440} height={900} className="img-loaded lb" style={{ width: "100%", height: "auto", cursor: "zoom-in", display: "block" }} quality={95} /></div>
                 <div className="txt-side">
                   <span className="txt-label">{String(i+1).padStart(2,"0")} / SCREEN</span>
-                  <h3 className="txt-h">{title}</h3>
-                  <p className="txt-p">{desc}</p>
+                  <h3 className="txt-h">{tr(titleKey as any)}</h3>
+                  <p className="txt-p">{tr(descKey as any)}</p>
                 </div>
               </div>
             ))}

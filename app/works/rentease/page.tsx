@@ -103,7 +103,7 @@ export default function RentEaseCase() {
           <Divider />
 
           {/* OVERVIEW */}
-          <Label n="01" text="OVERVIEW" />
+          <Label n="01" text={tr("rentease_l1")} />
           <div className="re-grid" style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "80px", alignItems: "start", marginBottom: "0" }}>
             <div style={{ display: "flex", flexDirection: "column", gap: "16px" }}>
               <p style={{ ...f, fontSize: "17px", lineHeight: "1.75", color: "rgba(240,244,241,0.55)" }}>
@@ -193,7 +193,7 @@ export default function RentEaseCase() {
           <Divider />
 
           {/* DESIGN DECISIONS */}
-          <Label n="03" text="DESIGN DECISIONS" />
+          <Label n="03" text={tr("rentease_l3")} />
           <div className="re-3col" style={{ display: "grid", gridTemplateColumns: "1fr 1fr 1fr", gap: "2px", background: "rgba(240,244,241,0.08)", marginBottom: "0" }}>
             {[
               { icon: "🤍", title: "Light UI by choice", desc: "Airbnb, Booking.com, and every major travel platform uses light UI. It feels airy, open, and trustworthy — right for accommodation browsing." },

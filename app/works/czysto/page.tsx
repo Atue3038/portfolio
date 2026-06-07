@@ -106,7 +106,7 @@ export default function CzystoCase() {
           <Divider />
 
           {/* OVERVIEW */}
-          <Label n="01" text="OVERVIEW" />
+          <Label n="01" text={tr("czysto_l1")} />
           <div className="czy-grid" style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "80px", alignItems: "start", marginBottom: "60px" }}>
             <div style={{ display: "flex", flexDirection: "column", gap: "16px" }}>
               <p style={{ ...f, fontSize: "17px", lineHeight: "1.75", color: "rgba(240,244,241,0.55)" }}>
@@ -140,7 +140,7 @@ export default function CzystoCase() {
           <Divider />
 
           {/* DESIGN DECISIONS */}
-          <Label n="02" text="DESIGN DECISIONS" />
+          <Label n="02" text={tr("czysto_l2")} />
           <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr 1fr", gap: "2px", background: "rgba(240,244,241,0.08)", marginBottom: "64px" }}>
             {[
               { icon: "🤍", title: "Clean & trustworthy", desc: "White background with green accents. Service businesses need trust at first glance — no clutter, no distractions." },
@@ -167,7 +167,7 @@ export default function CzystoCase() {
           <Divider />
 
           {/* SECTIONS BREAKDOWN */}
-          <Label n="03" text="SECTIONS" />
+          <Label n="03" text={tr("czysto_l3")} />
 
           {/* Services */}
           <div className="czy-grid" style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "64px", alignItems: "center", marginBottom: "72px" }}>
@@ -232,7 +232,7 @@ export default function CzystoCase() {
           <Divider />
 
           {/* RESULT */}
-          <Label n="04" text="RESULT" />
+          <Label n="04" text={tr("czysto_l4")} />
           <div className="czy-grid" style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "80px", alignItems: "center" }}>
             <div style={{ display: "flex", flexDirection: "column", gap: "16px" }}>
               <p style={{ ...f, fontSize: "17px", lineHeight: "1.75", color: "rgba(240,244,241,0.55)" }}>

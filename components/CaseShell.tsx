@@ -142,6 +142,7 @@ export function CaseNav({
   backHref?: string;
 }) {
   const [menuOpen, setMenuOpen] = useState(false);
+  const { tr } = useLang();
 
   return (
     <>
@@ -208,7 +209,11 @@ export function CaseNav({
         </div>
 
         <div className="case-nav-links">
-          {([["Works", "/#works"], ["About", "/#about"], ["Contact", "/#contact"]] as [string, string][]).map(([l, h]) => (
+          {([
+            [tr("nav_works"), "/#works"],
+            [tr("nav_about"), "/#about"],
+            [tr("nav_contact"), "/#contact"],
+          ] as [string, string][]).map(([l, h]) => (
             <a key={l} href={h}
               onMouseEnter={onEnter} onMouseLeave={onLeave}
               style={{ fontFamily: "'DM Mono', monospace", fontSize: "13px", color: "var(--muted)", textDecoration: "none", letterSpacing: ".05em", transition: "color .2s" }}
@@ -219,7 +224,7 @@ export function CaseNav({
         </div>
 
         <span className="case-nav-status" style={{ fontFamily: "'DM Mono', monospace", fontSize: "11px", color: "var(--muted)" }}>
-          <span style={{ animation: "blink 1.2s infinite", color: "var(--green)" }}>●</span>&nbsp;Available
+          <span style={{ animation: "blink 1.2s infinite", color: "var(--green)" }}>●</span>&nbsp;{tr("nav_available")}
         </span>
 
         <LangSwitcher onEnter={onEnter} onLeave={onLeave} />
@@ -243,7 +248,11 @@ export function CaseNav({
 
       {/* Mobile menu */}
       <div className="case-mobile-menu">
-        {([["Works", "/#works"], ["About", "/#about"], ["Contact", "/#contact"]] as [string, string][]).map(([l, h]) => (
+        {([
+          [tr("nav_works"), "/#works"],
+          [tr("nav_about"), "/#about"],
+          [tr("nav_contact"), "/#contact"],
+        ] as [string, string][]).map(([l, h]) => (
           <a key={l} href={h} onClick={() => setMenuOpen(false)}>{l}</a>
         ))}
       </div>
@@ -258,28 +267,29 @@ export function CaseContact({
   onEnter: () => void;
   onLeave: () => void;
 }) {
+  const { tr } = useLang();
   return (
     <section style={{ borderTop: "1px solid var(--border)", marginTop: 100, padding: "100px 0 120px" }}>
       <div style={{ maxWidth: 1200, margin: "0 auto", padding: "0 48px" }}>
         <div style={{ display: "flex", alignItems: "center", gap: "16px", marginBottom: "56px" }}>
-          <span style={{ fontFamily: "'DM Mono', monospace", fontSize: "11px", color: "var(--green)", letterSpacing: ".15em" }}>CONTACT</span>
+          <span style={{ fontFamily: "'DM Mono', monospace", fontSize: "11px", color: "var(--green)", letterSpacing: ".15em" }}>{tr("contact_label")}</span>
           <div style={{ flex: 1, height: "1px", background: "var(--border)" }} />
         </div>
         <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 80, alignItems: "center" }}>
           <div>
             <h2 style={{ fontFamily: "'Unbounded', sans-serif", fontWeight: 800, fontSize: "clamp(32px,4.5vw,56px)", lineHeight: 1.05, letterSpacing: "-.03em", color: "var(--white)", marginBottom: 20 }}>
-              Let&apos;s build something<br /><span style={{ color: "var(--green)" }}>worth remembering.</span>
+              {tr("contact_h")}<br /><span style={{ color: "var(--green)" }}>{tr("contact_h_accent")}</span>
             </h2>
             <p style={{ fontFamily: "'Space Grotesk', sans-serif", fontSize: 16, color: "var(--muted)", lineHeight: 1.7, maxWidth: 360 }}>
-              Open to freelance, collaborations, and full-time roles.
+              {tr("contact_p")}
             </p>
           </div>
           <div style={{ display: "flex", flexDirection: "column", gap: 16 }}>
             {[
-              { label: "Telegram",  hint: "Fastest response", href: LINKS.telegram,  primary: true  },
-              { label: "Instagram", hint: "Design updates",   href: LINKS.instagram, primary: false },
-              { label: "Gmail",     hint: "For proposals",    href: LINKS.gmail,     primary: false },
-            ].map(({ label, hint, href, primary }) => (
+              { label: "Telegram",  hintKey: "tg_hint", href: LINKS.telegram,  primary: true  },
+              { label: "Instagram", hintKey: "ig_hint", href: LINKS.instagram, primary: false },
+              { label: "Gmail",     hintKey: "gm_hint", href: LINKS.gmail,     primary: false },
+            ].map(({ label, hintKey, href, primary }) => (
               <a key={label} href={href}
                 target={label !== "Gmail" ? "_blank" : undefined}
                 rel="noreferrer"
@@ -294,7 +304,7 @@ export function CaseContact({
                   {primary && <span style={{ fontFamily: "'DM Mono', monospace", fontSize: 10, color: "var(--green)", border: "1px solid rgba(26,255,110,0.4)", padding: "2px 8px", letterSpacing: "0.1em" }}>PRIMARY</span>}
                 </div>
                 <div style={{ display: "flex", alignItems: "center", gap: 12 }}>
-                  <span style={{ fontFamily: "'DM Mono', monospace", fontSize: 11, color: "var(--muted)" }}>{hint}</span>
+                  <span style={{ fontFamily: "'DM Mono', monospace", fontSize: 11, color: "var(--muted)" }}>{tr(hintKey as any)}</span>
                   <span style={{ color: "var(--green)", fontSize: 18 }}>→</span>
                 </div>
               </a>
