@@ -13,13 +13,13 @@ const Ctx = createContext<LangCtx>({
   lang: "en",
   setLang: () => {},
   tr: (k) => t.en[k] as string,
-  trArr: (k) => t.en[k] as string[],
+  trArr: (k) => t.en[k] as unknown as string[],
 });
 
 export function LangProvider({ children }: { children: ReactNode }) {
   const [lang, setLang] = useState<Lang>("en");
   const tr = (key: TKeys) => t[lang][key] as string;
-  const trArr = (key: TKeys) => t[lang][key] as string[];
+  const trArr = (key: TKeys) => t[lang][key] as unknown as string[];
   return <Ctx.Provider value={{ lang, setLang, tr, trArr }}>{children}</Ctx.Provider>;
 }
 
