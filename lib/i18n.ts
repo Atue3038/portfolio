@@ -77,6 +77,19 @@ export const t = {
     vw_d2_title: "Cases — Split-Panel Pattern", vw_d2_desc: "List and detail sit side by side so navigation and content are always visible. Rarity-coloured borders follow Pixelmon conventions — purple for legendary, cyan for rare, gold for uncommon.",
     vw_d3_title: "Privileges — Subscription Tiers", vw_d3_desc: "Rank cards use player skins as avatars, making each tier immediately recognisable. The detail pane has a duration dropdown and tabbed benefit breakdown. A dedicated Gift button lets players purchase for others.",
     vw_d4_title: "Shop — Searchable Item Store", vw_d4_desc: "Currency toggle sits next to search, letting players filter by what they can afford. Category sidebar keeps the 5-column grid manageable. Sort dropdown defaults to Default — minimal friction to find any item.",
+    // LECTRA
+    lectra_l1: "OVERVIEW", lectra_l2: "PROBLEM", lectra_l3: "SOLUTION", lectra_l4: "UX DECISIONS", lectra_l5: "RESULT",
+    lectra_h1: "Record. Import. Upload.", lectra_h2: "Lexi processes the lecture for you",
+    lectra_h3: "Exam countdown + smart prep tracker", lectra_h4: "Library — everything in one place",
+    lectra_result_h: "What I learned", lectra_result_p: "Lectra taught me how to design for AI-heavy products — where the interface needs to earn trust before the user will engage with the AI. The onboarding flow and Lexi's warmth were intentional design decisions, not decoration.",
+    // CZYSTO
+    czysto_l1: "OVERVIEW", czysto_l2: "DESIGN DECISIONS", czysto_l3: "SECTIONS", czysto_l4: "RESULT",
+    czysto_result_h: "What was delivered",
+    czysto_result_p: "A complete, launched commercial website — on time, within scope. The client got a professional online presence across three languages, Google Business integration, and a site fast enough to score green on Core Web Vitals.",
+    // RENTEASE
+    rentease_l1: "OVERVIEW", rentease_l2: "KEY SCREENS", rentease_l3: "DESIGN DECISIONS", rentease_l4: "STATUS",
+    rentease_status_h: "In Progress",
+    rentease_status_p: "RentEase is an ongoing academic project. The current version covers the main booking flow — search, location picker, date range, and auth. Next: property detail page, booking confirmation, and host dashboard.",
   },
   ua: {
     nav_works: "Роботи", nav_about: "Про мене", nav_contact: "Контакт",
@@ -154,6 +167,19 @@ export const t = {
     vw_d2_title: "Кейси — патерн спліт-панелі", vw_d2_desc: "Список і деталі поруч — навігація та контент завжди видні. Кольорові рамки рідкості відповідають конвенціям Pixelmon — фіолетовий для легендарних, блакитний для рідкісних, золотий для рідкісних.",
     vw_d3_title: "Привілеї — рівні підписки", vw_d3_desc: "Картки рангів зі скіном гравця як аватаром роблять кожен тір впізнаваним. Панель деталей має дропдаун терміну та вкладки переваг. Кнопка Подарувати дозволяє купити для інших.",
     vw_d4_title: "Магазин — каталог з пошуком", vw_d4_desc: "Перемикач валюти поруч з пошуком дозволяє фільтрувати за доступністю. Бічна панель категорій спрощує навігацію у великій сітці. Сортування за замовчуванням — мінімум зусиль для пошуку.",
+    // LECTRA
+    lectra_l1: "ОГЛЯД", lectra_l2: "ПРОБЛЕМА", lectra_l3: "РІШЕННЯ", lectra_l4: "UX-РІШЕННЯ", lectra_l5: "РЕЗУЛЬТАТ",
+    lectra_h1: "Запис. Імпорт. Завантаження.", lectra_h2: "Lexi обробляє лекцію за тебе",
+    lectra_h3: "Зворотний відлік до екзамену + трекер підготовки", lectra_h4: "Бібліотека — все в одному місці",
+    lectra_result_h: "Що я навчився", lectra_result_p: "Lectra навчив мене проектувати продукти з AI — де інтерфейс має спочатку завоювати довіру, перш ніж користувач взаємодіятиме з AI. Онбординг та теплота Lexi — навмисні дизайн-рішення, а не декор.",
+    // CZYSTO
+    czysto_l1: "ОГЛЯД", czysto_l2: "ДИЗАЙН-РІШЕННЯ", czysto_l3: "СЕКЦІЇ", czysto_l4: "РЕЗУЛЬТАТ",
+    czysto_result_h: "Що було зроблено",
+    czysto_result_p: "Повноцінний запущений комерційний сайт — вчасно, в рамках scope. Клієнт отримав професійну присутність в інтернеті трьома мовами, інтеграцію з Google Business та сайт з зеленими показниками Core Web Vitals.",
+    // RENTEASE
+    rentease_l1: "ОГЛЯД", rentease_l2: "КЛЮЧОВІ ЕКРАНИ", rentease_l3: "ДИЗАЙН-РІШЕННЯ", rentease_l4: "СТАТУС",
+    rentease_status_h: "В процесі",
+    rentease_status_p: "RentEase — проєкт, що продовжується. Поточна версія покриває основний флоу бронювання — пошук, вибір локації, діапазон дат та авторизацію. Далі: сторінка об'єкту, підтвердження бронювання та дашборд господаря.",
   },
   ru: {
     nav_works: "Работы", nav_about: "Обо мне", nav_contact: "Контакт",
@@ -231,6 +257,19 @@ export const t = {
     vw_d2_title: "Кейсы — паттерн сплит-панели", vw_d2_desc: "Список и детали рядом — навигация и контент всегда видны. Цветные рамки редкости соответствуют конвенциям Pixelmon — фиолетовый для легендарных, голубой для редких, золотой для необычных.",
     vw_d3_title: "Привилегии — уровни подписки", vw_d3_desc: "Карточки рангов со скином игрока как аватаром делают каждый тир узнаваемым. Панель деталей имеет дропдаун срока и вкладки преимуществ. Кнопка Подарить позволяет купить для других.",
     vw_d4_title: "Магазин — каталог с поиском", vw_d4_desc: "Переключатель валюты рядом с поиском позволяет фильтровать по доступности. Боковая панель категорий упрощает навигацию в большой сетке. Сортировка по умолчанию — минимум усилий для поиска.",
+    // LECTRA
+    lectra_l1: "ОБЗОР", lectra_l2: "ПРОБЛЕМА", lectra_l3: "РЕШЕНИЕ", lectra_l4: "UX-РЕШЕНИЯ", lectra_l5: "РЕЗУЛЬТАТ",
+    lectra_h1: "Запись. Импорт. Загрузка.", lectra_h2: "Lexi обрабатывает лекцию за тебя",
+    lectra_h3: "Обратный отсчёт до экзамена + трекер подготовки", lectra_h4: "Библиотека — всё в одном месте",
+    lectra_result_h: "Что я узнал", lectra_result_p: "Lectra научил меня проектировать продукты с AI — где интерфейс должен сначала завоевать доверие, прежде чем пользователь будет взаимодействовать с AI. Онбординг и теплота Lexi — намеренные дизайн-решения, а не декор.",
+    // CZYSTO
+    czysto_l1: "ОБЗОР", czysto_l2: "ДИЗАЙН-РЕШЕНИЯ", czysto_l3: "СЕКЦИИ", czysto_l4: "РЕЗУЛЬТАТ",
+    czysto_result_h: "Что было сделано",
+    czysto_result_p: "Полноценный запущенный коммерческий сайт — в срок, в рамках scope. Клиент получил профессиональное присутствие в интернете на трёх языках, интеграцию с Google Business и сайт с зелёными показателями Core Web Vitals.",
+    // RENTEASE
+    rentease_l1: "ОБЗОР", rentease_l2: "КЛЮЧЕВЫЕ ЭКРАНЫ", rentease_l3: "ДИЗАЙН-РЕШЕНИЯ", rentease_l4: "СТАТУС",
+    rentease_status_h: "В процессе",
+    rentease_status_p: "RentEase — продолжающийся проект. Текущая версия охватывает основной флоу бронирования — поиск, выбор локации, диапазон дат и авторизацию. Далее: страница объекта, подтверждение бронирования и дашборд хозяина.",
   },
 } as const;
 
