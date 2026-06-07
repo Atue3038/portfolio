@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import "./globals.css";
 import { AnimationProvider } from "@/components/AnimationProvider";
+import { LangProvider } from "@/lib/LangContext";
 
 export const metadata: Metadata = {
   title: "Oleksii Klymushkin — UI/UX Designer",
@@ -11,8 +12,10 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   return (
     <html lang="en">
       <body style={{ margin: 0, padding: 0, overflowX: "hidden" }}>
-        <AnimationProvider />
-        {children}
+        <LangProvider>
+          <AnimationProvider />
+          {children}
+        </LangProvider>
       </body>
     </html>
   );

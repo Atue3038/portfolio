@@ -3,6 +3,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { useEffect, useRef, useState } from "react";
 import { useCursor, CursorElements, CaseNav, CaseContact, CaseFooter, Lightbox } from "@/components/CaseShell";
+import { useLang } from "@/lib/LangContext";
 
 const f = { fontFamily: "'Space Grotesk', sans-serif" } as const;
 const m = { fontFamily: "'DM Mono', monospace" } as const;
@@ -56,6 +57,7 @@ function Tag({ children }: { children: React.ReactNode }) {
 
 export default function LectraCase() {
   const { cursorRef, ringRef, hovered, setHovered } = useCursor();
+  const { tr } = useLang();
 
   const scrollRef = useRef<HTMLDivElement>(null);
   const isHoveringScroll = useRef(false);
@@ -122,7 +124,7 @@ export default function LectraCase() {
         <div style={{ marginBottom: "80px" }}>
           <div className="reveal" style={{ display: "flex", alignItems: "center", gap: "12px", marginBottom: "20px" }}>
             <div style={{ width: "28px", height: "1px", background: "#1aff6e" }} />
-            <span style={{ ...m, fontSize: "11px", color: "#1aff6e", letterSpacing: "0.15em" }}>ACADEMIC PROJECT · 2025</span>
+            <span style={{ ...m, fontSize: "11px", color: "#1aff6e", letterSpacing: "0.15em" }}>{tr("lectra_tag")}</span>
           </div>
           <h1 className="reveal" style={{ ...s, fontWeight: 800, fontSize: "clamp(48px, 7vw, 84px)", lineHeight: 0.95, letterSpacing: "-0.03em", color: "#f0f4f1", marginBottom: "24px" }}>
             Lectra —<br />
@@ -130,7 +132,7 @@ export default function LectraCase() {
             for Students
           </h1>
           <p className="reveal" style={{ ...f, fontSize: "18px", lineHeight: "1.75", color: "rgba(240,244,241,0.5)", maxWidth: "520px", marginBottom: "32px" }}>
-            A mobile app that records lectures, processes notes with AI, and builds a personalized study plan — so students can focus on understanding, not writing.
+            {tr("lectra_bio")}
           </p>
           <div className="reveal" style={{ display: "flex", gap: "10px", flexWrap: "wrap" }}>
             {["Mobile App", "UI/UX Design", "AI Product", "iOS"].map(t => <Tag key={t}>{t}</Tag>)}

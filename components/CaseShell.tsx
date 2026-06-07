@@ -1,12 +1,36 @@
 "use client";
 import { useEffect, useRef, useState } from "react";
 import Link from "next/link";
+import { useLang } from "@/lib/LangContext";
+import type { Lang } from "@/lib/i18n";
 
 const LINKS = {
   telegram:  "https://t.me/atuedesign",
   instagram: "https://www.instagram.com/atue_design?igsh=ZmRnbXFuNWh6ZWhj&utm_source=qr",
   gmail:     "mailto:atue3038@gmail.com",
 };
+
+function LangSwitcher({ onEnter, onLeave }: { onEnter: () => void; onLeave: () => void }) {
+  const { lang, setLang } = useLang();
+  return (
+    <div style={{ display: "flex", gap: "4px" }}>
+      {(["en", "ua", "ru"] as Lang[]).map(l => (
+        <button key={l} onClick={() => setLang(l)}
+          onMouseEnter={onEnter} onMouseLeave={onLeave}
+          style={{
+            background: lang === l ? "rgba(26,255,110,0.12)" : "transparent",
+            border: `1px solid ${lang === l ? "rgba(26,255,110,0.5)" : "var(--border)"}`,
+            color: lang === l ? "var(--green)" : "var(--muted)",
+            fontFamily: "'DM Mono', monospace", fontSize: "10px",
+            letterSpacing: "0.08em", padding: "4px 8px",
+            cursor: "pointer", borderRadius: "2px", transition: "all 0.2s",
+            textTransform: "uppercase",
+          }}
+        >{l}</button>
+      ))}
+    </div>
+  );
+}
 
 export function useCursor() {
   const cursorRef = useRef<HTMLDivElement>(null);
@@ -195,8 +219,10 @@ export function CaseNav({
         </div>
 
         <span className="case-nav-status" style={{ fontFamily: "'DM Mono', monospace", fontSize: "11px", color: "var(--muted)" }}>
-          <span style={{ animation: "blink 1.2s infinite", color: "var(--green)" }}>●</span>&nbsp;Available for work
+          <span style={{ animation: "blink 1.2s infinite", color: "var(--green)" }}>●</span>&nbsp;Available
         </span>
+
+        <LangSwitcher onEnter={onEnter} onLeave={onLeave} />
 
         {/* Hamburger */}
         <button

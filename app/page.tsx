@@ -1,6 +1,8 @@
 "use client";
 import { useEffect, useRef, useState } from "react";
 import Link from "next/link";
+import { useLang } from "@/lib/LangContext";
+import type { Lang } from "@/lib/i18n";
 
 const CARD_IMG = "/vimeworld_preview.png";
 const CARD_IMG_LECTRA = "/lectra_preview.png";
@@ -95,6 +97,21 @@ export default function Home() {
 
   const onEnter = () => setHovered(true);
   const onLeave = () => setHovered(false);
+  const { lang, setLang, tr, trArr } = useLang();
+
+  const LangBtn = ({ l }: { l: Lang }) => (
+    <button onClick={() => setLang(l)} onMouseEnter={onEnter} onMouseLeave={onLeave}
+      style={{
+        background: lang === l ? "rgba(26,255,110,0.12)" : "transparent",
+        border: `1px solid ${lang === l ? "rgba(26,255,110,0.5)" : "var(--border)"}`,
+        color: lang === l ? "var(--green)" : "var(--muted)",
+        fontFamily: "'DM Mono', monospace", fontSize: "10px",
+        letterSpacing: "0.08em", padding: "4px 8px",
+        cursor: "pointer", borderRadius: "2px", transition: "all 0.2s",
+        textTransform: "uppercase" as const,
+      }}
+    >{l}</button>
+  );
 
   return (
     <>
@@ -244,8 +261,12 @@ export default function Home() {
         }}>
           <span style={{ fontFamily: "'DM Mono', monospace", fontSize: "13px", color: "var(--green)", letterSpacing: "0.1em" }}>OK.DESIGN</span>
           <div className="nav-links" style={{ display: "flex", gap: "32px" }}>
-            {([["Works", "#works", "works"], ["About", "#about", "about"], ["Contact", "#contact", "contact"]] as [string, string, string][]).map(([l, h, id]) => (
-              <a key={l} href={h} onMouseEnter={onEnter} onMouseLeave={onLeave}
+            {([
+              [tr("nav_works"), "#works", "works"],
+              [tr("nav_about"), "#about", "about"],
+              [tr("nav_contact"), "#contact", "contact"],
+            ] as [string, string, string][]).map(([l, h, id]) => (
+              <a key={id} href={h} onMouseEnter={onEnter} onMouseLeave={onLeave}
                 className={`nav-link-anim${activeSection === id ? " active" : ""}`}
                 style={{ fontFamily: "'DM Mono', monospace", fontSize: "13px", color: activeSection === id ? "var(--white)" : "var(--muted)", textDecoration: "none", letterSpacing: "0.05em", transition: "color 0.2s" }}
                 onMouseOver={e => (e.currentTarget.style.color = "var(--white)")}
@@ -253,8 +274,13 @@ export default function Home() {
               >{l}</a>
             ))}
           </div>
-          <div className="nav-status" style={{ fontFamily: "'DM Mono', monospace", fontSize: "11px", color: "var(--muted)" }}>
-            <span style={{ animation: "blink 1.2s infinite", color: "var(--green)" }}>●</span>&nbsp;Available for work
+          <div style={{ display: "flex", alignItems: "center", gap: "16px" }}>
+            <div className="nav-status" style={{ fontFamily: "'DM Mono', monospace", fontSize: "11px", color: "var(--muted)" }}>
+              <span style={{ animation: "blink 1.2s infinite", color: "var(--green)" }}>●</span>&nbsp;{tr("nav_available")}
+            </div>
+            <div style={{ display: "flex", gap: "4px" }}>
+              {(["en", "ua", "ru"] as Lang[]).map(l => <LangBtn key={l} l={l} />)}
+            </div>
           </div>
           <button className="nav-hamburger" onClick={() => setMenuOpen(!menuOpen)}
             style={{ background: "none", border: "none", cursor: "pointer", display: "none", flexDirection: "column", gap: "5px", padding: "4px" }}>
@@ -265,7 +291,11 @@ export default function Home() {
 
         {/* Mobile menu */}
         <div className="mobile-menu">
-          {[["Works", "#works"], ["About", "#about"], ["Contact", "#contact"]].map(([l, h]) => (
+          {[
+            [tr("nav_works"), "#works"],
+            [tr("nav_about"), "#about"],
+            [tr("nav_contact"), "#contact"],
+          ].map(([l, h]) => (
             <a key={l} href={h} onClick={() => setMenuOpen(false)}>{l}</a>
           ))}
         </div>
@@ -279,7 +309,7 @@ export default function Home() {
             <div>
               <div className="hero-tag" style={{ display: "flex", alignItems: "center", gap: "12px", marginBottom: "28px" }}>
                 <div style={{ width: "32px", height: "1px", background: "var(--green)" }} />
-                <span style={{ fontFamily: "'DM Mono', monospace", fontSize: "12px", color: "var(--green)", letterSpacing: "0.15em", textTransform: "uppercase" }}>UI/UX Designer</span>
+                <span style={{ fontFamily: "'DM Mono', monospace", fontSize: "12px", color: "var(--green)", letterSpacing: "0.15em", textTransform: "uppercase" }}>{tr("hero_tag")}</span>
               </div>
               <h1 className="hero-title" style={{ fontFamily: "'Unbounded', sans-serif", fontWeight: 800, fontSize: "clamp(36px, 7vw, 92px)", lineHeight: 0.95, letterSpacing: "-0.03em", color: "var(--white)", marginBottom: "28px" }}>
                 Oleksii<br />
@@ -289,18 +319,18 @@ export default function Home() {
               {/* Photo — mobile only (between name and bio) */}
               <div className="hero-photo-mobile">
                 <img src="/photo.png" alt="Oleksii Klymushkin" className="img-loaded" style={{ filter: "contrast(1.05)" }} />
-                <div className="photo-tag">WARSAW — POLAND</div>
+                <div className="photo-tag">{tr("location")}</div>
                 <div className="photo-line" />
               </div>
 
               <p className="hero-bio" style={{ fontFamily: "'Space Grotesk', sans-serif", fontSize: "clamp(14px, 2vw, 17px)", lineHeight: "1.75", color: "var(--muted)", maxWidth: "440px", marginBottom: "40px" }}>
-                Creating interfaces where every pixel has a reason. Game UI, web experiences, and digital products that feel alive.
+                {tr("hero_bio")}
               </p>
               <div className="hero-stats" style={{ display: "flex", gap: "40px", marginBottom: "40px" }}>
-                {[["04", "Projects"], ["01", "Year Exp"], ["∞", "Ideas"]].map(([n, l]) => (
-                  <div key={l} style={{ display: "flex", flexDirection: "column", alignItems: "center" }}>
-                    <div style={{ fontFamily: "'Barlow', sans-serif", fontWeight: 800, fontSize: "34px", color: "var(--green)", lineHeight: 1, height: "40px", display: "flex", alignItems: l === "Ideas" ? "center" : "flex-end" }}>{n}</div>
-                    <div style={{ fontFamily: "'DM Mono', monospace", fontSize: "11px", color: "var(--muted)", marginTop: "8px", letterSpacing: "0.1em", textTransform: "uppercase", textAlign: "center", whiteSpace: "nowrap" }}>{l}</div>
+                {([["04","stat_projects"],["01","stat_exp"],["∞","stat_ideas"]] as [string,string][]).map(([n,k]) => (
+                  <div key={k} style={{ display: "flex", flexDirection: "column", alignItems: "center" }}>
+                    <div style={{ fontFamily: "'Barlow', sans-serif", fontWeight: 800, fontSize: "34px", color: "var(--green)", lineHeight: 1, height: "40px", display: "flex", alignItems: k === "stat_ideas" ? "center" : "flex-end" }}>{n}</div>
+                    <div style={{ fontFamily: "'DM Mono', monospace", fontSize: "11px", color: "var(--muted)", marginTop: "8px", letterSpacing: "0.1em", textTransform: "uppercase", textAlign: "center", whiteSpace: "nowrap" }}>{tr(k as any)}</div>
                   </div>
                 ))}
               </div>
@@ -309,7 +339,7 @@ export default function Home() {
                 style={{ display: "inline-flex", alignItems: "center", gap: "10px", padding: "14px 28px", fontFamily: "'DM Mono', monospace", fontSize: "12px", letterSpacing: "0.15em", color: "var(--white)", textDecoration: "none", borderRadius: "2px" }}
                 onMouseOver={e => { e.currentTarget.style.color = "var(--green)"; }}
                 onMouseOut={e => { e.currentTarget.style.color = "var(--white)"; }}
-              >VIEW WORK <span style={{ fontSize: "16px" }}>↓</span></a>
+              >{tr("hero_cta")} <span style={{ fontSize: "16px" }}>↓</span></a>
             </div>
 
             {/* Photo — desktop only */}
@@ -320,7 +350,7 @@ export default function Home() {
                 <div style={{ position: "absolute", bottom: 0, left: 0, right: 0, height: "3px", background: "var(--green)" }} />
               </div>
               <div style={{ position: "absolute", bottom: 20, left: -20, background: "var(--bg)", border: "1px solid var(--border)", padding: "7px 14px", fontFamily: "'DM Mono', monospace", fontSize: "11px", color: "var(--green)", letterSpacing: "0.1em", zIndex: 2 }}>
-                WARSAW — POLAND
+                {tr("location")}
               </div>
             </div>
           </div>
@@ -335,16 +365,11 @@ export default function Home() {
         <section id="about" className="services-section">
           <div style={{ maxWidth: "1200px", margin: "0 auto" }}>
             <div className="reveal" style={{ display: "flex", alignItems: "center", gap: "16px", marginBottom: "56px" }}>
-              <span style={{ fontFamily: "'DM Mono', monospace", fontSize: "11px", color: "var(--green)", letterSpacing: "0.15em" }}>02 / SERVICES</span>
+              <span style={{ fontFamily: "'DM Mono', monospace", fontSize: "11px", color: "var(--green)", letterSpacing: "0.15em" }}>{tr("s_label")}</span>
               <div style={{ flex: 1, height: "1px", background: "var(--border)" }} />
             </div>
             <div className="services-grid reveal-group">
-              {[
-                { n: "01", title: "UI/UX Design", desc: "User research, flows, wireframes, and final UI — built as a connected system, not a set of screens." },
-                { n: "02", title: "Interface Design", desc: "ESC menus, admin panels, dashboards — I design for high information density without cognitive overload." },
-                { n: "03", title: "Website Design", desc: "Landing pages that convert: fast load, clear CTA hierarchy, and a visual language that builds trust on first scroll." },
-                { n: "04", title: "App Design", desc: "Mobile-first experiences where every tap has one clear goal. Frictionless flows, dark themes, zero decoration without function." },
-              ].map((item, i) => (
+              {([{n:"01",k:"s1"},{n:"02",k:"s2"},{n:"03",k:"s3"},{n:"04",k:"s4"}] as {n:string;k:string}[]).map((item,i) => (
                 <div key={item.n} className="reveal" onMouseEnter={onEnter} onMouseLeave={onLeave}
                   style={{ position: "relative", padding: "clamp(24px, 3vw, 44px)", borderBottom: i < 2 ? "1px solid var(--border)" : "none", borderRight: i % 2 === 0 ? "1px solid var(--border)" : "none", outline: "1px solid var(--border)", cursor: "default", transition: "background 0.3s", overflow: "hidden" }}
                   onMouseOver={e => (e.currentTarget.style.background = "rgba(26,255,110,0.04)")}
@@ -352,8 +377,8 @@ export default function Home() {
                 >
                   <div style={{ position: "absolute", bottom: -12, right: 16, fontFamily: "'Barlow', sans-serif", fontWeight: 800, fontSize: "120px", color: "rgba(26,255,110,0.04)", lineHeight: 1, userSelect: "none", pointerEvents: "none" }}>{item.n}</div>
                   <div style={{ fontFamily: "'DM Mono', monospace", fontSize: "11px", color: "var(--green)", marginBottom: "20px", letterSpacing: "0.1em" }}>{item.n}</div>
-                  <h3 style={{ fontFamily: "'Unbounded', sans-serif", fontWeight: 800, fontSize: "clamp(18px, 2.5vw, 26px)", color: "var(--white)", marginBottom: "14px", letterSpacing: "-0.02em" }}>{item.title}</h3>
-                  <p style={{ fontFamily: "'Space Grotesk', sans-serif", fontSize: "clamp(13px, 1.5vw, 15px)", color: "var(--muted)", lineHeight: "1.65", maxWidth: "320px" }}>{item.desc}</p>
+                  <h3 style={{ fontFamily: "'Unbounded', sans-serif", fontWeight: 800, fontSize: "clamp(18px, 2.5vw, 26px)", color: "var(--white)", marginBottom: "14px", letterSpacing: "-0.02em" }}>{tr(`${item.k}_title` as any)}</h3>
+                  <p style={{ fontFamily: "'Space Grotesk', sans-serif", fontSize: "clamp(13px, 1.5vw, 15px)", color: "var(--muted)", lineHeight: "1.65", maxWidth: "320px" }}>{tr(`${item.k}_desc` as any)}</p>
                 </div>
               ))}
             </div>
@@ -364,12 +389,12 @@ export default function Home() {
         <section className="exp-section">
           <div style={{ maxWidth: "1200px", margin: "0 auto" }}>
             <div style={{ display: "flex", alignItems: "center", gap: "16px", marginBottom: "48px" }}>
-              <span style={{ fontFamily: "'DM Mono', monospace", fontSize: "11px", color: "var(--green)", letterSpacing: "0.15em" }}>03 / EXPERIENCE</span>
+              <span style={{ fontFamily: "'DM Mono', monospace", fontSize: "11px", color: "var(--green)", letterSpacing: "0.15em" }}>{tr("exp_label")}</span>
               <div style={{ flex: 1, height: "1px", background: "var(--border)" }} />
             </div>
             {[
-              { name: "VimeWorld — Pixelmon Ultimate", role: "UI/UX Designer", year: "2025 — NOW", link: null, active: true },
-              { name: "Czysto Cleaner", role: "UI/UX Designer & Web Developer", year: "2026", link: "https://czysto-cleaner.pl", active: false },
+              { name: "VimeWorld — Pixelmon Ultimate", role: tr("exp_vime_role"), year: "2025 — NOW", link: null, active: true },
+              { name: "Czysto Cleaner", role: tr("exp_czysto_role"), year: "2026", link: "https://czysto-cleaner.pl", active: false },
             ].map((job) => (
               <div key={job.name} className="liquid-border exp-row"
                 style={{ borderRadius: "2px", marginBottom: "2px", transition: "background 0.3s" }}
@@ -403,38 +428,38 @@ export default function Home() {
           <style>{`@media(max-width:768px){.about-section{padding:0 20px 64px !important;}.about-grid{grid-template-columns:1fr !important;gap:48px !important;}}`}</style>
           <div style={{ maxWidth: "1200px", margin: "0 auto" }}>
             <div className="reveal" style={{ display: "flex", alignItems: "center", gap: "16px", marginBottom: "64px" }}>
-              <span style={{ fontFamily: "'DM Mono', monospace", fontSize: "11px", color: "var(--green)", letterSpacing: "0.15em" }}>04 / ABOUT</span>
+              <span style={{ fontFamily: "'DM Mono', monospace", fontSize: "11px", color: "var(--green)", letterSpacing: "0.15em" }}>{tr("about_label")}</span>
               <div style={{ flex: 1, height: "1px", background: "var(--border)" }} />
             </div>
             <div className="about-grid" style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "80px", alignItems: "start" }}>
               <div className="reveal">
                 <h2 style={{ fontFamily: "'Unbounded', sans-serif", fontWeight: 800, fontSize: "clamp(28px, 3.5vw, 44px)", lineHeight: 1.05, letterSpacing: "-0.03em", color: "var(--white)", marginBottom: "32px" }}>
-                  Designer who<br />
-                  <span style={{ color: "var(--green)" }}>ships.</span>
+                  {tr("about_title")}<br />
+                  <span style={{ color: "var(--green)" }}>{tr("about_title_accent")}</span>
                 </h2>
                 <div style={{ display: "flex", flexDirection: "column", gap: "20px" }}>
                   <p style={{ fontFamily: "'Space Grotesk', sans-serif", fontSize: "16px", lineHeight: "1.8", color: "var(--muted)" }}>
-                    Я украинец, живу в Варшаве. Занимаюсь дизайном меньше года — но за это время успел сделать два коммерческих проекта: интерфейс для Minecraft-сервера с тысячами игроков и полноценный сайт для клининговой компании с нуля до деплоя.
+                    {tr("about_p1")}
                   </p>
                   <p style={{ fontFamily: "'Space Grotesk', sans-serif", fontSize: "16px", lineHeight: "1.8", color: "var(--muted)" }}>
-                    Мне интересны интерфейсы где дизайн и разработка — одно целое. Я не просто рисую макеты — я их собираю. Next.js, TypeScript, Tailwind — это мой обычный стек, не что-то новое.
+                    {tr("about_p2")}
                   </p>
                   <p style={{ fontFamily: "'Space Grotesk', sans-serif", fontSize: "16px", lineHeight: "1.8", color: "var(--muted)" }}>
-                    Мне легко работать с украинскими, польскими и русскоязычными клиентами. Понимаю задачу, предлагаю решение, довожу до конца без лишних итераций.
+                    {tr("about_p3")}
                   </p>
                 </div>
               </div>
               <div className="reveal" style={{ display: "flex", flexDirection: "column", gap: "16px", paddingTop: "8px" }}>
-                {[
-                  { label: "Локация", value: "Варшава, Польша" },
-                  { label: "Языки", value: "UA · RU · EN · PL (basic)" },
-                  { label: "Стек", value: "Figma · Next.js · TypeScript · Tailwind" },
-                  { label: "Доступность", value: "Открыт к проектам прямо сейчас" },
-                  { label: "Формат", value: "Фриланс · Remote · Частичная занятость" },
-                ].map(({ label, value }) => (
-                  <div key={label} style={{ display: "flex", gap: "20px", padding: "16px 0", borderBottom: "1px solid var(--border)" }}>
-                    <span style={{ fontFamily: "'DM Mono', monospace", fontSize: "11px", color: "var(--muted)", letterSpacing: "0.1em", minWidth: "120px", paddingTop: "2px" }}>{label}</span>
-                    <span style={{ fontFamily: "'Space Grotesk', sans-serif", fontSize: "15px", color: "var(--white)", lineHeight: 1.5 }}>{value}</span>
+                {([
+                  ["about_location","about_location_val"],
+                  ["about_langs","about_langs_val"],
+                  ["about_stack","about_stack_val"],
+                  ["about_avail","about_avail_val"],
+                  ["about_format","about_format_val"],
+                ] as [string,string][]).map(([lk,vk]) => (
+                  <div key={lk} style={{ display: "flex", gap: "20px", padding: "16px 0", borderBottom: "1px solid var(--border)" }}>
+                    <span style={{ fontFamily: "'DM Mono', monospace", fontSize: "11px", color: "var(--muted)", letterSpacing: "0.1em", minWidth: "120px", paddingTop: "2px" }}>{tr(lk as any)}</span>
+                    <span style={{ fontFamily: "'Space Grotesk', sans-serif", fontSize: "15px", color: "var(--white)", lineHeight: 1.5 }}>{tr(vk as any)}</span>
                   </div>
                 ))}
                 <a href={LINKS.telegram} target="_blank" rel="noreferrer"
@@ -442,7 +467,7 @@ export default function Home() {
                   className="liquid-border btn-press"
                   style={{ marginTop: "8px", display: "inline-flex", alignItems: "center", gap: "10px", padding: "14px 24px", fontFamily: "'DM Mono', monospace", fontSize: "11px", letterSpacing: "0.15em", color: "var(--green)", textDecoration: "none", borderRadius: "2px", width: "fit-content" }}
                 >
-                  НАПИСАТЬ В TELEGRAM →
+                  {tr("about_cta")}
                 </a>
               </div>
             </div>
@@ -454,31 +479,16 @@ export default function Home() {
           <style>{`@media(max-width:768px){.cando-section{padding:0 20px 64px !important;}.cando-grid{grid-template-columns:1fr !important;}}`}</style>
           <div style={{ maxWidth: "1200px", margin: "0 auto" }}>
             <div className="reveal" style={{ display: "flex", alignItems: "center", gap: "16px", marginBottom: "64px" }}>
-              <span style={{ fontFamily: "'DM Mono', monospace", fontSize: "11px", color: "var(--green)", letterSpacing: "0.15em" }}>05 / МОГУ СДЕЛАТЬ</span>
+              <span style={{ fontFamily: "'DM Mono', monospace", fontSize: "11px", color: "var(--green)", letterSpacing: "0.15em" }}>{tr("cando_label")}</span>
               <div style={{ flex: 1, height: "1px", background: "var(--border)" }} />
             </div>
             <div className="cando-grid" style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: "2px", background: "var(--border)" }}>
-              {[
-                {
-                  icon: "🌐",
-                  title: "Лендинг под ключ",
-                  price: "от $200",
-                  points: ["Дизайн в Figma", "Next.js / HTML верстка", "Мобильная адаптация", "Деплой на Vercel"],
-                },
-                {
-                  icon: "🏢",
-                  title: "Сайт для бизнеса",
-                  price: "от $350",
-                  points: ["Многостраничный сайт", "CMS по запросу", "SEO-основа", "Мультиязычность"],
-                },
-                {
-                  icon: "✏️",
-                  title: "UI/UX дизайн",
-                  price: "от $150",
-                  points: ["Макет в Figma", "Мобильная версия", "Компонентная система", "Прототип с анимациями"],
-                },
-              ].map((item) => (
-                <div key={item.title} className="reveal"
+              {([
+                { icon: "🌐", tk: "cando_1" },
+                { icon: "🏢", tk: "cando_2" },
+                { icon: "✏️", tk: "cando_3" },
+              ] as {icon:string;tk:string}[]).map((item) => (
+                <div key={item.tk} className="reveal"
                   onMouseEnter={onEnter} onMouseLeave={onLeave}
                   style={{ background: "var(--bg)", padding: "36px 32px", display: "flex", flexDirection: "column", gap: "20px", transition: "background 0.3s", cursor: "default" }}
                   onMouseOver={e => (e.currentTarget.style.background = "rgba(26,255,110,0.03)")}
@@ -486,11 +496,11 @@ export default function Home() {
                 >
                   <div style={{ fontSize: "28px" }}>{item.icon}</div>
                   <div>
-                    <h3 style={{ fontFamily: "'Unbounded', sans-serif", fontWeight: 800, fontSize: "18px", color: "var(--white)", marginBottom: "8px", letterSpacing: "-0.01em" }}>{item.title}</h3>
-                    <div style={{ fontFamily: "'Barlow', sans-serif", fontWeight: 800, fontSize: "22px", color: "var(--green)" }}>{item.price}</div>
+                    <h3 style={{ fontFamily: "'Unbounded', sans-serif", fontWeight: 800, fontSize: "18px", color: "var(--white)", marginBottom: "8px", letterSpacing: "-0.01em" }}>{tr(`${item.tk}_title` as any)}</h3>
+                    <div style={{ fontFamily: "'Barlow', sans-serif", fontWeight: 800, fontSize: "22px", color: "var(--green)" }}>{tr(`${item.tk}_price` as any)}</div>
                   </div>
                   <ul style={{ listStyle: "none", display: "flex", flexDirection: "column", gap: "10px" }}>
-                    {item.points.map(p => (
+                    {trArr(`${item.tk}_p` as any).map((p:string) => (
                       <li key={p} style={{ display: "flex", alignItems: "center", gap: "10px", fontFamily: "'Space Grotesk', sans-serif", fontSize: "14px", color: "var(--muted)" }}>
                         <span style={{ color: "var(--green)", fontSize: "12px", flexShrink: 0 }}>✓</span>
                         {p}
@@ -502,7 +512,7 @@ export default function Home() {
             </div>
             <div className="reveal" style={{ marginTop: "24px", padding: "20px 24px", background: "rgba(26,255,110,0.04)", border: "1px solid rgba(26,255,110,0.15)", borderRadius: "2px" }}>
               <p style={{ fontFamily: "'Space Grotesk', sans-serif", fontSize: "14px", color: "var(--muted)", lineHeight: 1.7 }}>
-                💬 <span style={{ color: "var(--white)" }}>Есть проект?</span> Напиши в Telegram — обсудим задачу, сроки и стоимость. Первая консультация бесплатно.{" "}
+                💬 <span style={{ color: "var(--white)" }}>{tr("cando_cta_text")}</span> {tr("cando_cta_desc")}{" "}
                 <a href={LINKS.telegram} target="_blank" rel="noreferrer" style={{ color: "var(--green)", textDecoration: "none", fontFamily: "'DM Mono', monospace", fontSize: "12px", letterSpacing: "0.1em" }}>@atuedesign →</a>
               </p>
             </div>
@@ -513,7 +523,7 @@ export default function Home() {
         <section id="works" className="works-section">
           <div style={{ maxWidth: "1200px", margin: "0 auto" }}>
             <div className="reveal works-header" style={{ display: "flex", alignItems: "center", gap: "16px", marginBottom: "48px", padding: "0" }}>
-              <span style={{ fontFamily: "'DM Mono', monospace", fontSize: "11px", color: "var(--green)", letterSpacing: "0.15em" }}>06 / WORKS</span>
+              <span style={{ fontFamily: "'DM Mono', monospace", fontSize: "11px", color: "var(--green)", letterSpacing: "0.15em" }}>{tr("works_label")}</span>
               <div style={{ flex: 1, height: "1px", background: "var(--border)" }} />
             </div>
           </div>
@@ -521,10 +531,10 @@ export default function Home() {
             <style>{`@media(max-width:768px){.works-inner{padding:0 !important;}}`}</style>
             <div className="works-grid">
               {[
-                { href: "/works/vimeworld",  img: CARD_IMG,           tag: "GAME UI · 2025",          title: "VimeWorld",      sub: "In-game GUI redesign for Minecraft server" },
-                { href: "/works/lectra",     img: CARD_IMG_LECTRA,    tag: "MOBILE APP · 2025",       title: "Lectra",         sub: "Academic project — AI note-taking app" },
-                { href: "/works/czysto",     img: CARD_IMG_CZYSTO,    tag: "WEB · COMMERCIAL · 2026", title: "Czysto Cleaner", sub: "Commercial website — design & development" },
-                { href: "/works/rentease",   img: CARD_IMG_RENTEASE,  tag: "WEB APP · IN PROGRESS",   title: "RentEase",       sub: "Booking platform — academic project" },
+                { href: "/works/vimeworld",  img: CARD_IMG,           tag: tr("vw_tag"),             title: "VimeWorld",      sub: tr("work_vime_sub") },
+                { href: "/works/lectra",     img: CARD_IMG_LECTRA,    tag: "MOBILE APP · 2025",      title: "Lectra",         sub: tr("work_lectra_sub") },
+                { href: "/works/czysto",     img: CARD_IMG_CZYSTO,    tag: tr("czysto_tag"),         title: "Czysto Cleaner", sub: tr("work_czysto_sub") },
+                { href: "/works/rentease",   img: CARD_IMG_RENTEASE,  tag: tr("rentease_tag"),       title: "RentEase",       sub: tr("work_rentease_sub") },
               ].map(({ href, img, tag, title, sub }) => (
                 <Link key={title} href={href} onMouseEnter={onEnter} onMouseLeave={onLeave}
                   className="work-card"
@@ -557,24 +567,24 @@ export default function Home() {
         <section id="contact" className="contact-section">
           <div style={{ maxWidth: "1200px", margin: "0 auto" }}>
             <div className="reveal" style={{ display: "flex", alignItems: "center", gap: "16px", marginBottom: "56px" }}>
-              <span style={{ fontFamily: "'DM Mono', monospace", fontSize: "11px", color: "var(--green)", letterSpacing: "0.15em" }}>07 / CONTACT</span>
+              <span style={{ fontFamily: "'DM Mono', monospace", fontSize: "11px", color: "var(--green)", letterSpacing: "0.15em" }}>{tr("contact_label")}</span>
               <div style={{ flex: 1, height: "1px", background: "var(--border)" }} />
             </div>
             <div className="contact-grid">
               <div className="reveal">
                 <h2 style={{ fontFamily: "'Unbounded', sans-serif", fontWeight: 800, fontSize: "clamp(28px, 4.5vw, 56px)", lineHeight: 1.1, letterSpacing: "-0.03em", color: "var(--white)", marginBottom: "20px" }}>
-                  Let&apos;s build something<br />
-                  <span style={{ color: "var(--green)" }}>worth remembering.</span>
+                  {tr("contact_h")}<br />
+                  <span style={{ color: "var(--green)" }}>{tr("contact_h_accent")}</span>
                 </h2>
                 <p style={{ fontFamily: "'Space Grotesk', sans-serif", fontSize: "clamp(14px, 1.5vw, 16px)", color: "var(--muted)", lineHeight: "1.7", maxWidth: "380px" }}>
-                  Open to freelance, collaborations, and full-time roles. If you have a project in mind — let&apos;s talk.
+                  {tr("contact_p")}
                 </p>
               </div>
               <div style={{ display: "flex", flexDirection: "column", gap: "12px" }}>
                 {[
-                  { label: "Telegram", hint: "Fastest response", href: LINKS.telegram, primary: true },
-                  { label: "Instagram", hint: "Design updates", href: LINKS.instagram, primary: false },
-                  { label: "Gmail", hint: "For proposals", href: LINKS.gmail, primary: false },
+                  { label: "Telegram", hint: tr("tg_hint"), href: LINKS.telegram, primary: true },
+                  { label: "Instagram", hint: tr("ig_hint"), href: LINKS.instagram, primary: false },
+                  { label: "Gmail", hint: tr("gm_hint"), href: LINKS.gmail, primary: false },
                 ].map(({ label, hint, href, primary }) => (
                   <a key={label} href={href} target={label !== "Gmail" ? "_blank" : undefined} rel="noreferrer"
                     onMouseEnter={onEnter} onMouseLeave={onLeave}
@@ -600,7 +610,7 @@ export default function Home() {
 
         {/* ── FOOTER ── */}
         <footer className="main-footer">
-          <span style={{ fontFamily: "'DM Mono', monospace", fontSize: "11px", color: "var(--muted)" }}>© 2025 OLEKSII KLYMUSHKIN</span>
+          <span style={{ fontFamily: "'DM Mono', monospace", fontSize: "11px", color: "var(--muted)" }}>{tr("footer_copy")}</span>
           <div style={{ display: "flex", gap: "24px" }}>
             {[["Insta", LINKS.instagram], ["Telegram", LINKS.telegram], ["Gmail", LINKS.gmail]].map(([l, href]) => (
               <a key={l} href={href} target={l !== "Gmail" ? "_blank" : undefined} rel="noreferrer"

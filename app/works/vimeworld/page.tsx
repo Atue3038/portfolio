@@ -1,6 +1,7 @@
 "use client";
 import Image from "next/image";
 import { useCursor, CursorElements, CaseNav, CaseContact, CaseFooter, Lightbox } from "@/components/CaseShell";
+import { useLang } from "@/lib/LangContext";
 
 const SCREENS = [
   { src: "/vimeworld_menu.png",  num: "01", title: "Main Menu",   desc: "Dashboard with quests, daily bonuses, server updates, guidebook, and social links. All key features accessible without leaving the pause screen." },
@@ -21,6 +22,7 @@ const DEEP = [
 
 export default function VimeworldCase() {
   const { cursorRef, ringRef, hovered, setHovered } = useCursor();
+  const { tr } = useLang();
   const onEnter = () => setHovered(true);
   const onLeave = () => setHovered(false);
 
@@ -68,7 +70,7 @@ export default function VimeworldCase() {
           <div className="w-inner">
             <div className="reveal" style={{ display: "flex", alignItems: "center", gap: "12px", marginBottom: "20px" }}>
               <div style={{ width: "28px", height: "1px", background: "var(--green)" }} />
-              <span style={{ fontFamily: "'DM Mono', monospace", fontSize: "11px", color: "var(--green)", letterSpacing: "0.15em" }}>GAME UI · 2025</span>
+              <span style={{ fontFamily: "'DM Mono', monospace", fontSize: "11px", color: "var(--green)", letterSpacing: "0.15em" }}>{tr("vw_tag")}</span>
             </div>
             <h1 className="reveal" style={{ fontFamily: "'Unbounded', sans-serif", fontWeight: 800, fontSize: "clamp(48px,7vw,96px)", lineHeight: 0.95, letterSpacing: "-.03em", color: "var(--white)", marginBottom: 32 }}>
               VimeWorld —<br />
@@ -76,11 +78,11 @@ export default function VimeworldCase() {
             </h1>
             <div className="reveal" style={{ display: "flex", gap: "48px", flexWrap: "wrap", marginBottom: 48 }}>
               <p style={{ fontFamily: "'Space Grotesk',sans-serif", fontSize: 17, lineHeight: 1.7, color: "var(--muted)", maxWidth: 520, margin: 0 }}>
-                Full redesign of the in-game GUI for Pixelmon Ultimate — a custom Minecraft server by VimeWorld. 7 screens covering every section of the redesigned pause menu.
+                {tr("vw_bio")}
               </p>
             </div>
             <div className="reveal meta-grid" style={{ display: "grid", gridTemplateColumns: "repeat(5, auto)", gap: "40px 48px", width: "fit-content" }}>
-              {[["CLIENT","VimeWorld"],["TYPE","Game UI / GUI"],["PLATFORM","Minecraft Java"],["TOOL","Figma"],["YEAR","2025"]].map(([k,v]) => (
+              {[[tr("vw_client"),tr("vw_client_val")],[tr("vw_type"),tr("vw_type_val")],[tr("vw_platform"),tr("vw_platform_val")],[tr("vw_tool"),tr("vw_tool_val")],[tr("vw_year"),tr("vw_year_val")]].map(([k,v]) => (
                 <div key={k}>
                   <div style={{ fontFamily: "'DM Mono',monospace", fontSize: 10, letterSpacing: ".18em", color: "var(--green)", opacity: 0.7, marginBottom: 4 }}>{k}</div>
                   <div style={{ fontFamily: "'Unbounded', sans-serif", fontWeight: 800, fontSize: 15 }}>{v}</div>
@@ -94,7 +96,7 @@ export default function VimeworldCase() {
         <section>
           <div className="w-inner">
             <div className="reveal" style={{ display: "grid", gridTemplateColumns: "repeat(3,1fr)", gap: 1, background: "var(--border)", marginBottom: 100 }}>
-              {[["07","Screens"],["01","Designer"],["∞","Players"]].map(([n,l]) => (
+              {[["07",tr("vw_stat_screens")],["01",tr("vw_stat_designer")],["∞",tr("vw_stat_players")]].map(([n,l]) => (
                 <div key={l} style={{ background: "var(--bg)", padding: "32px 36px" }}>
                   <div style={{ fontFamily: "'Barlow',sans-serif", fontWeight: 800, fontSize: 56, color: "var(--green)", lineHeight: 1, marginBottom: 8 }}>{n}</div>
                   <div style={{ fontFamily: "'DM Mono',monospace", fontSize: 10, letterSpacing: ".15em", color: "var(--muted)", textTransform: "uppercase" }}>{l}</div>
@@ -147,11 +149,11 @@ export default function VimeworldCase() {
             <div className="sec-label reveal"><span>04 / RESULT</span><hr /></div>
             <div className="grid-2" style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 80 }}>
               <div>
-                <h2 style={{ fontFamily: "'Unbounded', sans-serif", fontWeight: 800, fontSize: "clamp(24px,3vw,38px)", color: "var(--white)", letterSpacing: "-.02em", margin: "0 0 20px" }}>Final Result</h2>
-                <p className="txt-p">Delivered a complete, production-ready interface — quests, economy, cases, kits, privileges, shop, and navigation unified into one cohesive system for the Pixelmon Ultimate server.</p>
+                <h2 style={{ fontFamily: "'Unbounded', sans-serif", fontWeight: 800, fontSize: "clamp(24px,3vw,38px)", color: "var(--white)", letterSpacing: "-.02em", margin: "0 0 20px" }}>{tr("vw_result_title")}</h2>
+                <p className="txt-p">{tr("vw_result_p1")}</p>
               </div>
               <div style={{ paddingTop: 8 }}>
-                <p className="txt-p">The project sharpened my skills in game UI pattern design and deepened my understanding of player interaction logic — how to reduce cognitive load in high-information interfaces while keeping the visual language exciting.</p>
+                <p className="txt-p">{tr("vw_result_p2")}</p>
               </div>
             </div>
           </div>

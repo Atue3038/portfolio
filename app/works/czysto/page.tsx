@@ -2,6 +2,7 @@
 import Image from "next/image";
 import { useState } from "react";
 import { useCursor, CursorElements, CaseNav, CaseContact, CaseFooter, Lightbox } from "@/components/CaseShell";
+import { useLang } from "@/lib/LangContext";
 
 const f = { fontFamily: "'Space Grotesk', sans-serif" } as const;
 const m = { fontFamily: "'DM Mono', monospace" } as const;
@@ -51,6 +52,7 @@ function Screenshot({ src, alt, caption }: { src: string; alt: string; caption?:
 
 export default function CzystoCase() {
   const { cursorRef, ringRef, hovered, setHovered } = useCursor();
+  const { tr } = useLang();
 
   const onEnter = () => setHovered(true);
   const onLeave = () => setHovered(false);
@@ -78,7 +80,7 @@ export default function CzystoCase() {
           <div style={{ marginBottom: "72px" }}>
             <div className="reveal" style={{ display: "flex", alignItems: "center", gap: "12px", marginBottom: "20px" }}>
               <div style={{ width: "28px", height: "1px", background: "#1aff6e" }} />
-              <span style={{ ...m, fontSize: "11px", color: "#1aff6e", letterSpacing: "0.15em" }}>COMMERCIAL PROJECT · 2026</span>
+              <span style={{ ...m, fontSize: "11px", color: "#1aff6e", letterSpacing: "0.15em" }}>{tr("czysto_tag")}</span>
             </div>
             <h1 className="reveal" style={{ ...s, fontWeight: 800, fontSize: "clamp(48px, 7vw, 84px)", lineHeight: 0.95, letterSpacing: "-0.03em", color: "#f0f4f1", marginBottom: "24px" }}>
               Czysto Cleaner —<br />
@@ -86,7 +88,7 @@ export default function CzystoCase() {
               End-to-End
             </h1>
             <p className="reveal" style={{ ...f, fontSize: "18px", lineHeight: "1.75", color: "rgba(240,244,241,0.5)", maxWidth: "560px", marginBottom: "32px" }}>
-              A complete commercial website for a professional upholstery cleaning service in Warsaw — designed, built, and delivered as a ready-to-launch product.
+              {tr("czysto_bio")}
             </p>
             <div className="reveal" style={{ display: "flex", gap: "10px", flexWrap: "wrap", marginBottom: "32px" }}>
               {["Web Design", "Development", "Next.js", "Commercial", "PL / RU / EN"].map(t => <Tag key={t}>{t}</Tag>)}
@@ -95,7 +97,7 @@ export default function CzystoCase() {
               style={{ display: "inline-flex", alignItems: "center", gap: "10px", border: "1px solid rgba(26,255,110,0.4)", borderRadius: "4px", padding: "12px 20px", ...m, fontSize: "12px", color: "#1aff6e", textDecoration: "none", letterSpacing: "0.1em", transition: "background 0.2s" }}
               onMouseOver={e => (e.currentTarget.style.background = "rgba(26,255,110,0.08)")}
               onMouseOut={e => (e.currentTarget.style.background = "transparent")}
-            >↗ VISIT LIVE SITE — czysto-cleaner.pl</a>
+            >{tr("czysto_visit")}</a>
           </div>
 
           {/* HERO SCREENSHOT */}
