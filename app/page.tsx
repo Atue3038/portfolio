@@ -330,7 +330,7 @@ export default function Home() {
                 {([["04","stat_projects"],["01","stat_exp"],["∞","stat_ideas"]] as [string,string][]).map(([n,k]) => (
                   <div key={k} style={{ display: "flex", flexDirection: "column", alignItems: "center" }}>
                     <div style={{ fontFamily: "'Barlow', sans-serif", fontWeight: 800, fontSize: "34px", color: "var(--green)", lineHeight: 1, height: "40px", display: "flex", alignItems: k === "stat_ideas" ? "center" : "flex-end" }}>{n}</div>
-                    <div style={{ fontFamily: "'DM Mono', monospace", fontSize: "11px", color: "var(--muted)", marginTop: "8px", letterSpacing: "0.1em", textTransform: "uppercase", textAlign: "center", whiteSpace: "nowrap" }}>{tr(k as any)}</div>
+                    <div style={{ fontFamily: "'DM Mono', monospace", fontSize: "11px", color: "var(--muted)", marginTop: "8px", letterSpacing: "0.1em", textTransform: "uppercase", textAlign: "center", whiteSpace: "nowrap" }}>{tr(k)}</div>
                   </div>
                 ))}
               </div>
@@ -377,8 +377,8 @@ export default function Home() {
                 >
                   <div style={{ position: "absolute", bottom: -12, right: 16, fontFamily: "'Barlow', sans-serif", fontWeight: 800, fontSize: "120px", color: "rgba(26,255,110,0.04)", lineHeight: 1, userSelect: "none", pointerEvents: "none" }}>{item.n}</div>
                   <div style={{ fontFamily: "'DM Mono', monospace", fontSize: "11px", color: "var(--green)", marginBottom: "20px", letterSpacing: "0.1em" }}>{item.n}</div>
-                  <h3 style={{ fontFamily: "'Unbounded', sans-serif", fontWeight: 800, fontSize: "clamp(18px, 2.5vw, 26px)", color: "var(--white)", marginBottom: "14px", letterSpacing: "-0.02em" }}>{tr(`${item.k}_title` as any)}</h3>
-                  <p style={{ fontFamily: "'Space Grotesk', sans-serif", fontSize: "clamp(13px, 1.5vw, 15px)", color: "var(--muted)", lineHeight: "1.65", maxWidth: "320px" }}>{tr(`${item.k}_desc` as any)}</p>
+                  <h3 style={{ fontFamily: "'Unbounded', sans-serif", fontWeight: 800, fontSize: "clamp(18px, 2.5vw, 26px)", color: "var(--white)", marginBottom: "14px", letterSpacing: "-0.02em" }}>{tr(`${item.k}_title`)}</h3>
+                  <p style={{ fontFamily: "'Space Grotesk', sans-serif", fontSize: "clamp(13px, 1.5vw, 15px)", color: "var(--muted)", lineHeight: "1.65", maxWidth: "320px" }}>{tr(`${item.k}_desc`)}</p>
                 </div>
               ))}
             </div>
@@ -458,8 +458,8 @@ export default function Home() {
                   ["about_format","about_format_val"],
                 ] as [string,string][]).map(([lk,vk]) => (
                   <div key={lk} style={{ display: "flex", gap: "20px", padding: "16px 0", borderBottom: "1px solid var(--border)" }}>
-                    <span style={{ fontFamily: "'DM Mono', monospace", fontSize: "11px", color: "var(--muted)", letterSpacing: "0.1em", minWidth: "120px", paddingTop: "2px" }}>{tr(lk as any)}</span>
-                    <span style={{ fontFamily: "'Space Grotesk', sans-serif", fontSize: "15px", color: "var(--white)", lineHeight: 1.5 }}>{tr(vk as any)}</span>
+                    <span style={{ fontFamily: "'DM Mono', monospace", fontSize: "11px", color: "var(--muted)", letterSpacing: "0.1em", minWidth: "120px", paddingTop: "2px" }}>{tr(lk)}</span>
+                    <span style={{ fontFamily: "'Space Grotesk', sans-serif", fontSize: "15px", color: "var(--white)", lineHeight: 1.5 }}>{tr(vk)}</span>
                   </div>
                 ))}
                 <a href={LINKS.telegram} target="_blank" rel="noreferrer"
@@ -496,8 +496,8 @@ export default function Home() {
                 >
                   <div style={{ fontSize: "28px" }}>{item.icon}</div>
                   <div>
-                    <h3 style={{ fontFamily: "'Unbounded', sans-serif", fontWeight: 800, fontSize: "18px", color: "var(--white)", marginBottom: "8px", letterSpacing: "-0.01em" }}>{tr(`${item.tk}_title` as any)}</h3>
-                    <div style={{ fontFamily: "'Barlow', sans-serif", fontWeight: 800, fontSize: "22px", color: "var(--green)" }}>{tr(`${item.tk}_price` as any)}</div>
+                    <h3 style={{ fontFamily: "'Unbounded', sans-serif", fontWeight: 800, fontSize: "18px", color: "var(--white)", marginBottom: "8px", letterSpacing: "-0.01em" }}>{tr(`${item.tk}_title`)}</h3>
+                    <div style={{ fontFamily: "'Barlow', sans-serif", fontWeight: 800, fontSize: "22px", color: "var(--green)" }}>{tr(`${item.tk}_price`)}</div>
                   </div>
                   <ul style={{ listStyle: "none", display: "flex", flexDirection: "column", gap: "10px" }}>
                     {trArr(`${item.tk}_p` as any).map((p:string) => (
