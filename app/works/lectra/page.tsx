@@ -223,26 +223,26 @@ export default function LectraCase() {
         <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "80px", alignItems: "start" }}>
           <div style={{ display: "flex", flexDirection: "column", gap: "16px" }}>
             <p style={{ ...f, fontSize: "17px", lineHeight: "1.75", color: "rgba(240,244,241,0.55)" }}>
-              Lectra is an AI-powered note-taking app designed for university students. The core idea: instead of frantically writing during a lecture, you record it — and the AI does the rest.
+              {tr("lectra_ov_p1")}
             </p>
             <p style={{ ...f, fontSize: "17px", lineHeight: "1.75", color: "rgba(240,244,241,0.55)" }}>
-              The app transcribes audio, extracts key topics, structures the material, and builds a personalized preparation plan tied to your exam schedule.
+              {tr("lectra_ov_p2")}
             </p>
             <p style={{ ...f, fontSize: "17px", lineHeight: "1.75", color: "rgba(240,244,241,0.55)" }}>
-              You can also photograph textbook pages or upload existing notes — Lexi, the built-in AI assistant, processes everything and helps you study smarter.
+              {tr("lectra_ov_p3")}
             </p>
           </div>
           <div>
-            {[
-              ["Platform", "iOS Mobile App"],
-              ["Role", "UI/UX Designer (solo)"],
-              ["Type", "Academic Project"],
-              ["Year", "2025"],
-              ["Tools", "Figma, Auto Layout"],
-            ].map(([label, value]) => (
-              <div key={label} style={{ display: "flex", justifyContent: "space-between", alignItems: "center", padding: "18px 0", borderBottom: "1px solid rgba(240,244,241,0.07)" }}>
-                <span style={{ ...m, fontSize: "11px", color: "rgba(240,244,241,0.35)", letterSpacing: "0.1em", textTransform: "uppercase" }}>{label}</span>
-                <span style={{ ...f, fontSize: "15px", color: "#f0f4f1", fontWeight: 600 }}>{value}</span>
+            {([
+              ["lectra_meta_platform","lectra_meta_platform_v"],
+              ["lectra_meta_role","lectra_meta_role_v"],
+              ["lectra_meta_type","lectra_meta_type_v"],
+              ["lectra_meta_year","lectra_meta_year_v"],
+              ["lectra_meta_tool","lectra_meta_tool_v"],
+            ] as [string,string][]).map(([lk,vk]) => (
+              <div key={lk} style={{ display: "flex", justifyContent: "space-between", alignItems: "center", padding: "18px 0", borderBottom: "1px solid rgba(240,244,241,0.07)" }}>
+                <span style={{ ...m, fontSize: "11px", color: "rgba(240,244,241,0.35)", letterSpacing: "0.1em", textTransform: "uppercase" }}>{tr(lk)}</span>
+                <span style={{ ...f, fontSize: "15px", color: "#f0f4f1", fontWeight: 600 }}>{tr(vk)}</span>
               </div>
             ))}
           </div>
@@ -254,18 +254,18 @@ export default function LectraCase() {
         <Label n="02" text={tr("lectra_l2")} />
         <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "2px", background: "rgba(240,244,241,0.08)" }}>
           {[
-            { icon: "✍️", title: "Divided attention", desc: "Students can't listen and write at the same time. Important context gets lost while rushing to copy words." },
-            { icon: "📚", title: "Passive material", desc: "Static notes don't adapt. Students don't know what to review first, or how much time they have left." },
-            { icon: "⏰", title: "No study plan", desc: "Most students start preparing too late. There's no system that connects the material to the exam date." },
-            { icon: "🔍", title: "Hard to navigate", desc: "Finding a specific topic across multiple notebooks is time-consuming and frustrating." },
-          ].map(item => (
-            <div key={item.title} style={{ background: "#050a06", padding: "36px 32px", transition: "background 0.3s" }}
+            { icon: "✍️", tk: "lectra_prob_1" },
+            { icon: "📚", tk: "lectra_prob_2" },
+            { icon: "⏰", tk: "lectra_prob_3" },
+            { icon: "🔍", tk: "lectra_prob_4" },
+          ].map((item: any) => (
+            <div key={item.tk} style={{ background: "#050a06", padding: "36px 32px", transition: "background 0.3s" }}
               onMouseOver={e => (e.currentTarget.style.background = "rgba(26,255,110,0.04)")}
               onMouseOut={e => (e.currentTarget.style.background = "#050a06")}
             >
               <div style={{ fontSize: "28px", marginBottom: "14px" }}>{item.icon}</div>
-              <h3 style={{ ...s, fontWeight: 800, fontSize: "20px", color: "#f0f4f1", marginBottom: "10px" }}>{item.title}</h3>
-              <p style={{ ...f, fontSize: "14px", lineHeight: "1.7", color: "rgba(240,244,241,0.45)" }}>{item.desc}</p>
+              <h3 style={{ ...s, fontWeight: 800, fontSize: "20px", color: "#f0f4f1", marginBottom: "10px" }}>{tr(`${item.tk}_title`)}</h3>
+              <p style={{ ...f, fontSize: "14px", lineHeight: "1.7", color: "rgba(240,244,241,0.45)" }}>{tr(`${item.tk}_desc`)}</p>
             </div>
           ))}
         </div>
@@ -278,13 +278,13 @@ export default function LectraCase() {
         {/* Feature 1 */}
         <div className="lectra-grid" style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "72px", alignItems: "center", marginBottom: "80px" }}>
           <div>
-            <div style={{ ...m, fontSize: "11px", color: "#1aff6e", letterSpacing: "0.15em", marginBottom: "16px" }}>FEATURE 01</div>
+            <div style={{ ...m, fontSize: "11px", color: "#1aff6e", letterSpacing: "0.15em", marginBottom: "16px" }}>{tr("lectra_f1_num")}</div>
             <h3 style={{ ...s, fontWeight: 800, fontSize: "30px", color: "#f0f4f1", marginBottom: "16px", letterSpacing: "-0.02em" }}>{tr("lectra_h1")}</h3>
             <p style={{ ...f, fontSize: "16px", lineHeight: "1.75", color: "rgba(240,244,241,0.5)", marginBottom: "16px" }}>
-              Three ways to feed material: record the lecture live, import a file, or photograph your handwritten notes. The AI handles everything after that.
+              {tr("lectra_f1_p1")}
             </p>
             <p style={{ ...f, fontSize: "16px", lineHeight: "1.75", color: "rgba(240,244,241,0.5)" }}>
-              The interface makes the choice obvious — two green buttons for passive input, one blue button for live recording. Color signals priority.
+              {tr("lectra_f1_p2")}
             </p>
           </div>
           <div style={{ display: "flex", justifyContent: "center" }}>
@@ -298,13 +298,13 @@ export default function LectraCase() {
             <Phone src={SCREENS.ai} label="Lexi — AI Assistant" />
           </div>
           <div>
-            <div style={{ ...m, fontSize: "11px", color: "#1aff6e", letterSpacing: "0.15em", marginBottom: "16px" }}>FEATURE 02</div>
+            <div style={{ ...m, fontSize: "11px", color: "#1aff6e", letterSpacing: "0.15em", marginBottom: "16px" }}>{tr("lectra_f2_num")}</div>
             <h3 style={{ ...s, fontWeight: 800, fontSize: "30px", color: "#f0f4f1", marginBottom: "16px", letterSpacing: "-0.02em" }}>{tr("lectra_h2")}</h3>
             <p style={{ ...f, fontSize: "16px", lineHeight: "1.75", color: "rgba(240,244,241,0.5)", marginBottom: "16px" }}>
-              After uploading or recording, Lexi analyzes the content and returns a structured breakdown: key topics, definitions, and a summary you can actually study from.
+              {tr("lectra_f2_p1")}
             </p>
             <p style={{ ...f, fontSize: "16px", lineHeight: "1.75", color: "rgba(240,244,241,0.5)" }}>
-              You can also ask Lexi questions directly in the chat. It&apos;s like having a tutor who was at the same lecture.
+              {tr("lectra_f2_p2")}
             </p>
           </div>
         </div>
@@ -312,13 +312,13 @@ export default function LectraCase() {
         {/* Feature 3 */}
         <div className="lectra-grid" style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "72px", alignItems: "center", marginBottom: "80px" }}>
           <div>
-            <div style={{ ...m, fontSize: "11px", color: "#1aff6e", letterSpacing: "0.15em", marginBottom: "16px" }}>FEATURE 03</div>
+            <div style={{ ...m, fontSize: "11px", color: "#1aff6e", letterSpacing: "0.15em", marginBottom: "16px" }}>{tr("lectra_f3_num")}</div>
             <h3 style={{ ...s, fontWeight: 800, fontSize: "30px", color: "#f0f4f1", marginBottom: "16px", letterSpacing: "-0.02em" }}>{tr("lectra_h3")}</h3>
             <p style={{ ...f, fontSize: "16px", lineHeight: "1.75", color: "rgba(240,244,241,0.5)", marginBottom: "16px" }}>
-              Set your exam date and Lectra calculates exactly how prepared you are. Circular progress shows readiness per subject — with preparation level, target score, and gap to goal.
+              {tr("lectra_f3_p1")}
             </p>
             <p style={{ ...f, fontSize: "16px", lineHeight: "1.75", color: "rgba(240,244,241,0.5)" }}>
-              If you&apos;re falling behind, the app tells you — and helps you prioritize what to tackle next.
+              {tr("lectra_f3_p2")}
             </p>
           </div>
           <div style={{ display: "flex", justifyContent: "center" }}>
@@ -333,13 +333,13 @@ export default function LectraCase() {
             <Phone src={SCREENS.discrete} label="Subject detail" />
           </div>
           <div>
-            <div style={{ ...m, fontSize: "11px", color: "#1aff6e", letterSpacing: "0.15em", marginBottom: "16px" }}>FEATURE 04</div>
+            <div style={{ ...m, fontSize: "11px", color: "#1aff6e", letterSpacing: "0.15em", marginBottom: "16px" }}>{tr("lectra_f4_num")}</div>
             <h3 style={{ ...s, fontWeight: 800, fontSize: "30px", color: "#f0f4f1", marginBottom: "16px", letterSpacing: "-0.02em" }}>{tr("lectra_h4")}</h3>
             <p style={{ ...f, fontSize: "16px", lineHeight: "1.75", color: "rgba(240,244,241,0.5)", marginBottom: "16px" }}>
-              All subjects and their lectures in one structured library. You can see at a glance how many lessons each subject has and how prepared you are.
+              {tr("lectra_f4_p1")}
             </p>
             <p style={{ ...f, fontSize: "16px", lineHeight: "1.75", color: "rgba(240,244,241,0.5)" }}>
-              Drill into any subject to see individual lectures with listen progress — so you always know exactly where you left off.
+              {tr("lectra_f4_p2")}
             </p>
           </div>
         </div>
@@ -350,20 +350,20 @@ export default function LectraCase() {
         <Label n="04" text={tr("lectra_l4")} />
         <div className="lectra-3col" style={{ display: "grid", gridTemplateColumns: "1fr 1fr 1fr", gap: "2px", background: "rgba(240,244,241,0.08)" }}>
           {[
-            { icon: "🌙", title: "Dark-first UI", desc: "Students use the app in lectures, libraries, late at night. Dark theme reduces eye strain and fits the environment." },
-            { icon: "🎯", title: "One action per screen", desc: "Each screen has a single clear goal. No cognitive overload — the student always knows what to do next." },
-            { icon: "🟢", title: "Green = progress", desc: "Accent color reserved for active/completed states only — progress bars, listened labels, AI responses." },
-            { icon: "📊", title: "Visual readiness", desc: "Circular indicators communicate urgency instantly. Numbers alone don't — shapes do." },
-            { icon: "🤖", title: "AI feels human", desc: "Lexi introduces itself warmly and guides the user. The chat interface lowers the barrier to AI features." },
-            { icon: "⚡", title: "Freemium done right", desc: "Premium is surfaced subtly — a soft banner, not a blocker. Users see value first, then get invited to unlock more." },
-          ].map(item => (
-            <div key={item.title} style={{ background: "#050a06", padding: "32px 28px", transition: "background 0.3s" }}
+            { icon: "🌙", tk: "lectra_ux1" },
+            { icon: "🎯", tk: "lectra_ux2" },
+            { icon: "🟢", tk: "lectra_ux3" },
+            { icon: "📊", tk: "lectra_ux4" },
+            { icon: "🤖", tk: "lectra_ux5" },
+            { icon: "⚡", tk: "lectra_ux6" },
+          ].map((item: any) => (
+            <div key={item.tk} style={{ background: "#050a06", padding: "32px 28px", transition: "background 0.3s" }}
               onMouseOver={e => (e.currentTarget.style.background = "rgba(26,255,110,0.04)")}
               onMouseOut={e => (e.currentTarget.style.background = "#050a06")}
             >
               <div style={{ fontSize: "24px", marginBottom: "14px" }}>{item.icon}</div>
-              <h3 style={{ ...s, fontWeight: 800, fontSize: "17px", color: "#f0f4f1", marginBottom: "10px" }}>{item.title}</h3>
-              <p style={{ ...f, fontSize: "13px", lineHeight: "1.65", color: "rgba(240,244,241,0.45)" }}>{item.desc}</p>
+              <h3 style={{ ...s, fontWeight: 800, fontSize: "17px", color: "#f0f4f1", marginBottom: "10px" }}>{tr(`${item.tk}_title`)}</h3>
+              <p style={{ ...f, fontSize: "13px", lineHeight: "1.65", color: "rgba(240,244,241,0.45)" }}>{tr(`${item.tk}_desc`)}</p>
             </div>
           ))}
         </div>
@@ -375,20 +375,20 @@ export default function LectraCase() {
         <div className="lectra-grid" style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "80px", alignItems: "center" }}>
           <div style={{ display: "flex", flexDirection: "column", gap: "16px" }}>
             <p style={{ ...f, fontSize: "17px", lineHeight: "1.75", color: "rgba(240,244,241,0.55)" }}>
-              Designing Lectra pushed me to think about AI not as a feature — but as the core interaction. The challenge was making it feel natural and trustworthy, not technical or intimidating.
+              {tr("lectra_r_p1")}
             </p>
             <p style={{ ...f, fontSize: "17px", lineHeight: "1.75", color: "rgba(240,244,241,0.55)" }}>
-              I also deepened my understanding of freemium UX — how to show value without blocking it, and how to place upgrade prompts that feel helpful rather than aggressive.
+              {tr("lectra_r_p2")}
             </p>
             <p style={{ ...f, fontSize: "17px", lineHeight: "1.75", color: "rgba(240,244,241,0.55)" }}>
-              Every design decision had to earn its place — designing for students means tired, distracted, time-pressured users.
+              {tr("lectra_r_p3")}
             </p>
           </div>
           <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "2px", background: "rgba(240,244,241,0.08)" }}>
-            {[["7+", "Screens designed"], ["3", "Input methods"], ["1", "AI assistant"], ["∞", "Study sessions"]].map(([n, l]) => (
+            {([["7+","lectra_stat1"],["3","lectra_stat2"],["1","lectra_stat3"],["∞","lectra_stat4"]] as [string,string][]).map(([n, lk]) => (
               <div key={l} style={{ background: "#050a06", padding: "32px 24px", textAlign: "center" }}>
                 <div style={{ ...s, fontWeight: 800, fontSize: "44px", color: "#1aff6e", lineHeight: 1, marginBottom: "8px" }}>{n}</div>
-                <div style={{ ...m, fontSize: "10px", color: "rgba(240,244,241,0.35)", letterSpacing: "0.08em", textTransform: "uppercase" }}>{l}</div>
+                <div style={{ ...m, fontSize: "10px", color: "rgba(240,244,241,0.35)", letterSpacing: "0.08em", textTransform: "uppercase" }}>{tr(lk)}</div>
               </div>
             ))}
           </div>

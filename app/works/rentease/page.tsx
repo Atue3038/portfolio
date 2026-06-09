@@ -93,12 +93,12 @@ export default function RentEaseCase() {
             {/* In progress badge */}
             <div style={{ display: "inline-flex", alignItems: "center", gap: "8px", marginTop: "8px" }}>
               <div style={{ width: "6px", height: "6px", borderRadius: "50%", background: "#ffcc00", animation: "blink 2s infinite" }} />
-              <span style={{ ...m, fontSize: "11px", color: "rgba(240,244,241,0.4)", letterSpacing: "0.1em" }}>Work in progress — more screens coming</span>
+              <span style={{ ...m, fontSize: "11px", color: "rgba(240,244,241,0.4)", letterSpacing: "0.1em" }}>{tr("re_wip")}</span>
             </div>
           </div>
 
           {/* HERO SCREENSHOT */}
-          <Shot src={SCREENS.main} alt="RentEase — main screen" caption="Main screen — hero search + Popular Places" />
+          <Shot src={SCREENS.main} alt="RentEase — main screen" caption={tr("re_cap1")} />
 
           <Divider />
 
@@ -107,27 +107,27 @@ export default function RentEaseCase() {
           <div className="re-grid" style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "80px", alignItems: "start", marginBottom: "0" }}>
             <div style={{ display: "flex", flexDirection: "column", gap: "16px" }}>
               <p style={{ ...f, fontSize: "17px", lineHeight: "1.75", color: "rgba(240,244,241,0.55)" }}>
-                RentEase is a university design project — a booking platform inspired by Airbnb. The goal was to design a full end-to-end booking experience: search, date selection, auth, and property cards.
+                {tr("re_ov_p1")}
               </p>
               <p style={{ ...f, fontSize: "17px", lineHeight: "1.75", color: "rgba(240,244,241,0.55)" }}>
-                The design language is deliberately clean and light — white surfaces, blue accents, subtle shadows. It needed to feel trustworthy and familiar to users who already book accommodation online.
+                {tr("re_ov_p2")}
               </p>
               <p style={{ ...f, fontSize: "17px", lineHeight: "1.75", color: "rgba(240,244,241,0.55)" }}>
-                The project is still in progress — the screens here cover the core booking funnel. More flows (property detail, booking confirmation, host dashboard) are planned.
+                {tr("re_ov_p3")}
               </p>
             </div>
             <div>
-              {[
-                ["Type", "Academic Project"],
-                ["Role", "UI/UX Designer (solo)"],
-                ["Platform", "Web — Desktop"],
-                ["Stack", "Figma"],
-                ["Year", "2025"],
-                ["Status", "🟡 In progress"],
-              ].map(([label, value]) => (
-                <div key={label} style={{ display: "flex", justifyContent: "space-between", alignItems: "center", padding: "16px 0", borderBottom: "1px solid rgba(240,244,241,0.07)" }}>
-                  <span style={{ ...m, fontSize: "11px", color: "rgba(240,244,241,0.35)", letterSpacing: "0.1em", textTransform: "uppercase" }}>{label}</span>
-                  <span style={{ ...f, fontSize: "15px", color: "#f0f4f1", fontWeight: 600 }}>{value}</span>
+              {([
+                ["re_meta_type",     "re_meta_type_v"],
+                ["re_meta_role",     "re_meta_role_v"],
+                ["re_meta_platform", "re_meta_platform_v"],
+                ["re_meta_tool",     "re_meta_tool_v"],
+                ["re_meta_year",     "re_meta_year_v"],
+                ["re_meta_status",   "re_meta_status_v"],
+              ] as [string,string][]).map(([lk, vk]) => (
+                <div key={lk} style={{ display: "flex", justifyContent: "space-between", alignItems: "center", padding: "16px 0", borderBottom: "1px solid rgba(240,244,241,0.07)" }}>
+                  <span style={{ ...m, fontSize: "11px", color: "rgba(240,244,241,0.35)", letterSpacing: "0.1em", textTransform: "uppercase" }}>{tr(lk)}</span>
+                  <span style={{ ...f, fontSize: "15px", color: "#f0f4f1", fontWeight: 600 }}>{tr(vk)}</span>
                 </div>
               ))}
             </div>
@@ -136,58 +136,58 @@ export default function RentEaseCase() {
           <Divider />
 
           {/* SCREENS */}
-          <Label n="02" text="SCREENS" />
+          <Label n="02" text={tr("rentease_l2")} />
 
           {/* Search + Location */}
           <div className="re-grid" style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "64px", alignItems: "center", marginBottom: "72px" }}>
             <div>
-              <div style={{ ...m, fontSize: "11px", color: "#1aff6e", letterSpacing: "0.15em", marginBottom: "16px" }}>SCREEN 01</div>
-              <h3 style={{ ...s, fontWeight: 800, fontSize: "28px", color: "#f0f4f1", marginBottom: "16px", letterSpacing: "-0.02em" }}>Smart search bar</h3>
+              <div style={{ ...m, fontSize: "11px", color: "#1aff6e", letterSpacing: "0.15em", marginBottom: "16px" }}>{tr("re_s1_num")}</div>
+              <h3 style={{ ...s, fontWeight: 800, fontSize: "28px", color: "#f0f4f1", marginBottom: "16px", letterSpacing: "-0.02em" }}>{tr("re_s1_title")}</h3>
               <p style={{ ...f, fontSize: "16px", lineHeight: "1.75", color: "rgba(240,244,241,0.5)", marginBottom: "16px" }}>
-                The search bar combines three inputs — Location, Check-in &amp; Check-out, and Guests — into a single unified pill. This mirrors the Airbnb pattern users already know, reducing friction.
+                {tr("re_s1_p1")}
               </p>
               <p style={{ ...f, fontSize: "16px", lineHeight: "1.75", color: "rgba(240,244,241,0.5)" }}>
-                Clicking Location reveals a dropdown with suggested destinations — Nearby, Bali, Paris, Zakopane — each with location tags like Beach, Tropical, Romantic. Context before the user even types.
+                {tr("re_s1_p2")}
               </p>
             </div>
-            <Shot src={SCREENS.location} alt="Location dropdown" caption="Location dropdown with suggested destinations" />
+            <Shot src={SCREENS.location} alt="Location dropdown" caption={tr("re_cap2")} />
           </div>
 
           {/* Calendar */}
           <div className="re-grid" style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "64px", alignItems: "center", marginBottom: "72px" }}>
-            <Shot src={SCREENS.calRange} alt="Date range selected" caption="Date range picker — April 29 → May 5 selected" />
+            <Shot src={SCREENS.calRange} alt="Date range selected" caption={tr("re_cap3")} />
             <div>
-              <div style={{ ...m, fontSize: "11px", color: "#1aff6e", letterSpacing: "0.15em", marginBottom: "16px" }}>SCREEN 02</div>
-              <h3 style={{ ...s, fontWeight: 800, fontSize: "28px", color: "#f0f4f1", marginBottom: "16px", letterSpacing: "-0.02em" }}>Date range picker — 3 states</h3>
+              <div style={{ ...m, fontSize: "11px", color: "#1aff6e", letterSpacing: "0.15em", marginBottom: "16px" }}>{tr("re_s2_num")}</div>
+              <h3 style={{ ...s, fontWeight: 800, fontSize: "28px", color: "#f0f4f1", marginBottom: "16px", letterSpacing: "-0.02em" }}>{tr("re_s2_title")}</h3>
               <p style={{ ...f, fontSize: "16px", lineHeight: "1.75", color: "rgba(240,244,241,0.5)", marginBottom: "16px" }}>
-                The date picker shows two months side-by-side for a clear view of the booking window. It has three distinct states: empty, start date selected, and full range selected.
+                {tr("re_s2_p1")}
               </p>
               <p style={{ ...f, fontSize: "16px", lineHeight: "1.75", color: "rgba(240,244,241,0.5)" }}>
-                The selected range highlights in blue between the two dates — a pattern familiar from every major booking platform, but implemented cleanly with no visual clutter.
+                {tr("re_s2_p2")}
               </p>
             </div>
           </div>
 
           {/* Calendar states row */}
           <div className="re-3shot" style={{ display: "grid", gridTemplateColumns: "1fr 1fr 1fr", gap: "20px", marginBottom: "72px" }}>
-            <Shot src={SCREENS.calEmpty} alt="Calendar empty" caption="State 1 — empty" />
-            <Shot src={SCREENS.calStart} alt="Calendar start selected" caption="State 2 — start date" />
-            <Shot src={SCREENS.calRange} alt="Calendar range selected" caption="State 3 — range selected" />
+            <Shot src={SCREENS.calEmpty} alt="Calendar empty" caption={tr("re_cal1")} />
+            <Shot src={SCREENS.calStart} alt="Calendar start selected" caption={tr("re_cal2")} />
+            <Shot src={SCREENS.calRange} alt="Calendar range selected" caption={tr("re_cal3")} />
           </div>
 
           {/* Auth */}
           <div className="re-grid" style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "64px", alignItems: "center" }}>
             <div>
-              <div style={{ ...m, fontSize: "11px", color: "#1aff6e", letterSpacing: "0.15em", marginBottom: "16px" }}>SCREEN 03</div>
-              <h3 style={{ ...s, fontWeight: 800, fontSize: "28px", color: "#f0f4f1", marginBottom: "16px", letterSpacing: "-0.02em" }}>Auth modal — log in or sign up</h3>
+              <div style={{ ...m, fontSize: "11px", color: "#1aff6e", letterSpacing: "0.15em", marginBottom: "16px" }}>{tr("re_s3_num")}</div>
+              <h3 style={{ ...s, fontWeight: 800, fontSize: "28px", color: "#f0f4f1", marginBottom: "16px", letterSpacing: "-0.02em" }}>{tr("re_s3_title")}</h3>
               <p style={{ ...f, fontSize: "16px", lineHeight: "1.75", color: "rgba(240,244,241,0.5)", marginBottom: "16px" }}>
-                Authentication is handled via a centered modal overlay — keeping the user in context rather than navigating to a separate page. One input for phone or email, then Google and Apple SSO.
+                {tr("re_s3_p1")}
               </p>
               <p style={{ ...f, fontSize: "16px", lineHeight: "1.75", color: "rgba(240,244,241,0.5)" }}>
-                The modal is intentionally minimal — no distractions, no unnecessary fields. The background is dimmed but still visible, reinforcing that auth is a quick step, not a detour.
+                {tr("re_s3_p2")}
               </p>
             </div>
-            <Shot src={SCREENS.auth} alt="Auth modal" caption="Auth modal — log in or sign up" />
+            <Shot src={SCREENS.auth} alt="Auth modal" caption={tr("re_auth_cap")} />
           </div>
 
           <Divider />
@@ -196,20 +196,20 @@ export default function RentEaseCase() {
           <Label n="03" text={tr("rentease_l3")} />
           <div className="re-3col" style={{ display: "grid", gridTemplateColumns: "1fr 1fr 1fr", gap: "2px", background: "rgba(240,244,241,0.08)", marginBottom: "0" }}>
             {[
-              { icon: "🤍", title: "Light UI by choice", desc: "Airbnb, Booking.com, and every major travel platform uses light UI. It feels airy, open, and trustworthy — right for accommodation browsing." },
-              { icon: "🔵", title: "Blue as the only accent", desc: "Blue signals interactivity and trust. Used only for primary CTAs and active states — Log in button, search icon, selected dates. Nothing else." },
-              { icon: "🗂️", title: "Unified search pill", desc: "Three separate inputs merged into one horizontal bar. Reduces visual complexity and matches the mental model users already have from Airbnb." },
-              { icon: "📍", title: "Suggested destinations UX", desc: "Instead of an empty dropdown, users see curated destinations with tags. Reduces decision paralysis and makes the search feel helpful, not blank." },
-              { icon: "📅", title: "Two-month calendar", desc: "Showing April and May simultaneously lets users see their full booking window at once. No need to navigate between months for short trips." },
-              { icon: "🔐", title: "Modal auth, not page", desc: "Keeping the background visible during auth reduces the sense of leaving the main flow. The user stays oriented and can dismiss easily." },
-            ].map(item => (
-              <div key={item.title} style={{ background: "#050a06", padding: "32px 28px", transition: "background 0.3s" }}
+              { icon: "🤍", tk: "re_dd1" },
+              { icon: "🔵", tk: "re_dd2" },
+              { icon: "🗂️", tk: "re_dd3" },
+              { icon: "📍", tk: "re_dd4" },
+              { icon: "📅", tk: "re_dd5" },
+              { icon: "🔐", tk: "re_dd6" },
+            ].map((item: any) => (
+              <div key={item.tk} style={{ background: "#050a06", padding: "32px 28px", transition: "background 0.3s" }}
                 onMouseOver={e => (e.currentTarget.style.background = "rgba(26,255,110,0.04)")}
                 onMouseOut={e => (e.currentTarget.style.background = "#050a06")}
               >
                 <div style={{ fontSize: "24px", marginBottom: "14px" }}>{item.icon}</div>
-                <h3 style={{ ...s, fontWeight: 800, fontSize: "17px", color: "#f0f4f1", marginBottom: "10px" }}>{item.title}</h3>
-                <p style={{ ...f, fontSize: "13px", lineHeight: "1.65", color: "rgba(240,244,241,0.45)" }}>{item.desc}</p>
+                <h3 style={{ ...s, fontWeight: 800, fontSize: "17px", color: "#f0f4f1", marginBottom: "10px" }}>{tr(`${item.tk}_title`)}</h3>
+                <p style={{ ...f, fontSize: "13px", lineHeight: "1.65", color: "rgba(240,244,241,0.45)" }}>{tr(`${item.tk}_desc`)}</p>
               </div>
             ))}
           </div>
@@ -217,24 +217,24 @@ export default function RentEaseCase() {
           <Divider />
 
           {/* RESULT */}
-          <Label n="04" text="RESULT SO FAR" />
+          <Label n="04" text={tr("re_result_label")} />
           <div className="re-grid" style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "80px", alignItems: "center" }}>
             <div style={{ display: "flex", flexDirection: "column", gap: "16px" }}>
               <p style={{ ...f, fontSize: "17px", lineHeight: "1.75", color: "rgba(240,244,241,0.55)" }}>
-                RentEase is my first experience designing a complex product flow from scratch — search, discovery, date selection, and auth as a connected system, not isolated screens.
+                {tr("re_r_p1")}
               </p>
               <p style={{ ...f, fontSize: "17px", lineHeight: "1.75", color: "rgba(240,244,241,0.55)" }}>
-                The challenge was making familiar patterns feel fresh and purposeful — not just copying Airbnb, but understanding why every interaction works the way it does.
+                {tr("re_r_p2")}
               </p>
               <p style={{ ...f, fontSize: "17px", lineHeight: "1.75", color: "rgba(240,244,241,0.55)" }}>
-                More screens are in progress: property detail page, booking confirmation, host profile, and the host dashboard.
+                {tr("re_r_p3")}
               </p>
             </div>
             <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "2px", background: "rgba(240,244,241,0.08)" }}>
-              {[["6", "Screens done"], ["3", "Interactive states"], ["1", "Full funnel"], ["∞", "To come"]].map(([n, l]) => (
+              {([["6","re_stat1"],["3","re_stat2"],["1","re_stat3"],["∞","re_stat4"]] as [string,string][]).map(([n, lk]) => (
                 <div key={l} style={{ background: "#050a06", padding: "32px 24px", textAlign: "center" }}>
                   <div style={{ ...s, fontWeight: 800, fontSize: "44px", color: "#1aff6e", lineHeight: 1, marginBottom: "8px" }}>{n}</div>
-                  <div style={{ ...m, fontSize: "10px", color: "rgba(240,244,241,0.35)", letterSpacing: "0.08em", textTransform: "uppercase" }}>{l}</div>
+                  <div style={{ ...m, fontSize: "10px", color: "rgba(240,244,241,0.35)", letterSpacing: "0.08em", textTransform: "uppercase" }}>{tr(lk)}</div>
                 </div>
               ))}
             </div>
