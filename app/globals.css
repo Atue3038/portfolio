@@ -26,7 +26,14 @@ body {
   cursor: none;
 }
 
-/* ── CUSTOM CURSOR ── */
+/* ── NAV ALWAYS ON TOP ── */
+nav[class*="nav"], .main-nav, .case-nav {
+  position: fixed !important;
+  top: 0 !important;
+  z-index: 9000 !important;
+  transform: translateZ(0);
+  -webkit-transform: translateZ(0);
+}
 .cursor {
   width: 10px; height: 10px;
   background: var(--green);

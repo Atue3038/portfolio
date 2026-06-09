@@ -254,10 +254,12 @@ export default function Home() {
 
         {/* ── NAV ── */}
         <nav className="main-nav" style={{
-          position: "fixed", top: 0, left: 0, right: 0, zIndex: 50,
+          position: "fixed", top: 0, left: 0, right: 0, zIndex: 9000,
           padding: "20px 48px", display: "flex", justifyContent: "space-between",
-          alignItems: "center", backdropFilter: "blur(12px)",
-          borderBottom: "1px solid var(--border)", background: "rgba(5,10,6,0.85)",
+          alignItems: "center", backdropFilter: "blur(16px)",
+          borderBottom: "1px solid var(--border)",
+          background: "rgba(5,10,6,0.92)",
+          WebkitBackdropFilter: "blur(16px)",
         }}>
           <span style={{ fontFamily: "'DM Mono', monospace", fontSize: "13px", color: "var(--green)", letterSpacing: "0.1em" }}>OK.DESIGN</span>
           <div className="nav-links" style={{ display: "flex", gap: "32px" }}>

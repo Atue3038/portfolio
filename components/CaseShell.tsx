@@ -174,11 +174,12 @@ export function CaseNav({
       <nav
         className="case-nav"
         style={{
-          position: "fixed", top: 0, left: 0, right: 0, zIndex: 50,
+          position: "fixed", top: 0, left: 0, right: 0, zIndex: 9000,
           padding: "20px 48px", display: "flex", justifyContent: "space-between",
-          alignItems: "center", backdropFilter: "blur(12px)",
+          alignItems: "center", backdropFilter: "blur(16px)",
+          WebkitBackdropFilter: "blur(16px)",
           borderBottom: "1px solid var(--border)",
-          background: "rgba(5,10,6,0.85)",
+          background: "rgba(5,10,6,0.92)",
         }}
       >
         {/* Left: logo + back */}
