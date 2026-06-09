@@ -386,7 +386,7 @@ export default function LectraCase() {
           </div>
           <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "2px", background: "rgba(240,244,241,0.08)" }}>
             {([["7+","lectra_stat1"],["3","lectra_stat2"],["1","lectra_stat3"],["∞","lectra_stat4"]] as [string,string][]).map(([n, lk]) => (
-              <div key={l} style={{ background: "#050a06", padding: "32px 24px", textAlign: "center" }}>
+              <div key={n} style={{ background: "#050a06", padding: "32px 24px", textAlign: "center" }}>
                 <div style={{ ...s, fontWeight: 800, fontSize: "44px", color: "#1aff6e", lineHeight: 1, marginBottom: "8px" }}>{n}</div>
                 <div style={{ ...m, fontSize: "10px", color: "rgba(240,244,241,0.35)", letterSpacing: "0.08em", textTransform: "uppercase" }}>{tr(lk)}</div>
               </div>
