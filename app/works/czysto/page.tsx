@@ -38,7 +38,6 @@ function Tag({ children }: { children: React.ReactNode }) {
   );
 }
 
-/* Full-width screenshot with subtle frame */
 function Screenshot({ src, alt, caption }: { src: string; alt: string; caption?: string }) {
   return (
     <div style={{ display: "flex", flexDirection: "column", gap: "12px" }}>
@@ -53,7 +52,6 @@ function Screenshot({ src, alt, caption }: { src: string; alt: string; caption?:
 export default function CzystoCase() {
   const { cursorRef, ringRef, hovered, setHovered } = useCursor();
   const { tr } = useLang();
-
   const onEnter = () => setHovered(true);
   const onLeave = () => setHovered(false);
 
@@ -61,19 +59,15 @@ export default function CzystoCase() {
     <>
       <CursorElements cursorRef={cursorRef} ringRef={ringRef} hovered={hovered} />
       <Lightbox />
-
       <main style={{ background: "#050a06", minHeight: "100vh", overflowX: "hidden" }}>
-
         <CaseNav onEnter={onEnter} onLeave={onLeave} />
-
         <style>{`
           @media (max-width: 768px) {
-            .czy-inner  { padding: 120px 20px 80px !important; }
-            .czy-grid   { grid-template-columns: 1fr !important; gap: 40px !important; }
-            .czy-3col   { grid-template-columns: 1fr !important; }
+            .czy-inner { padding: 120px 20px 80px !important; }
+            .czy-grid  { grid-template-columns: 1fr !important; gap: 40px !important; }
+            .czy-3col  { grid-template-columns: 1fr !important; }
           }
         `}</style>
-
         <div className="czy-inner" style={{ maxWidth: "1200px", margin: "0 auto", padding: "80px 48px 120px" }}>
 
           {/* HERO */}
@@ -100,132 +94,101 @@ export default function CzystoCase() {
             >{tr("czysto_visit")}</a>
           </div>
 
-          {/* HERO SCREENSHOT */}
           <Screenshot src={SCREENS.hero} alt="Czysto Cleaner — Hero" caption="Hero section" />
-
           <Divider />
 
           {/* OVERVIEW */}
           <Label n="01" text={tr("czysto_l1")} />
           <div className="czy-grid" style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "80px", alignItems: "start", marginBottom: "60px" }}>
             <div style={{ display: "flex", flexDirection: "column", gap: "16px" }}>
-              <p style={{ ...f, fontSize: "17px", lineHeight: "1.75", color: "rgba(240,244,241,0.55)" }}>
-                Czysto Cleaner is a professional deep cleaning service based in Warsaw, specialising in sofas, mattresses, and upholstered furniture. The client needed a complete web presence — from zero to live.
-              </p>
-              <p style={{ ...f, fontSize: "17px", lineHeight: "1.75", color: "rgba(240,244,241,0.55)" }}>
-                I handled the entire project end-to-end: UI/UX design, frontend development with Next.js, multilingual content (Polish, Russian, English), SEO setup, and deployment. The client received a fully working product ready to take orders.
-              </p>
-              <p style={{ ...f, fontSize: "17px", lineHeight: "1.75", color: "rgba(240,244,241,0.55)" }}>
-                The design language is clean and trustworthy — white backgrounds, fresh green accents, and clear information hierarchy that guides visitors toward booking.
-              </p>
+              <p style={{ ...f, fontSize: "17px", lineHeight: "1.75", color: "rgba(240,244,241,0.55)" }}>{tr("czysto_ov_p1")}</p>
+              <p style={{ ...f, fontSize: "17px", lineHeight: "1.75", color: "rgba(240,244,241,0.55)" }}>{tr("czysto_ov_p2")}</p>
+              <p style={{ ...f, fontSize: "17px", lineHeight: "1.75", color: "rgba(240,244,241,0.55)" }}>{tr("czysto_ov_p3")}</p>
             </div>
             <div>
               {[
-                ["Client", "Czysto Cleaner"],
-                ["Platform", "Web (Desktop + Mobile)"],
-                ["Role", "Designer + Developer"],
-                ["Stack", "Next.js, TypeScript, CSS"],
-                ["Languages", "Polish, Russian, English"],
-                ["Year", "2026"],
-                ["Status", "Live ↗"],
-              ].map(([label, value]) => (
-                <div key={label} style={{ display: "flex", justifyContent: "space-between", alignItems: "center", padding: "16px 0", borderBottom: "1px solid rgba(240,244,241,0.07)" }}>
-                  <span style={{ ...m, fontSize: "11px", color: "rgba(240,244,241,0.35)", letterSpacing: "0.1em", textTransform: "uppercase" }}>{label}</span>
-                  <span style={{ ...f, fontSize: "15px", color: "#f0f4f1", fontWeight: 600 }}>{value}</span>
+                ["czysto_meta_client",   "czysto_meta_client_v"],
+                ["czysto_meta_platform", "czysto_meta_platform_v"],
+                ["czysto_meta_role",     "czysto_meta_role_v"],
+                ["czysto_meta_stack",    "czysto_meta_stack_v"],
+                ["czysto_meta_langs",    "czysto_meta_langs_v"],
+                ["czysto_meta_year",     "czysto_meta_year_v"],
+                ["czysto_meta_status",   "czysto_meta_status_v"],
+              ].map(([lk, vk]) => (
+                <div key={lk} style={{ display: "flex", justifyContent: "space-between", alignItems: "center", padding: "14px 0", borderBottom: "1px solid rgba(240,244,241,0.06)" }}>
+                  <span style={{ ...m, fontSize: "10px", color: "rgba(240,244,241,0.35)", letterSpacing: "0.1em", textTransform: "uppercase" }}>{tr(lk)}</span>
+                  <span style={{ ...s, fontWeight: 700, fontSize: "14px", color: "#f0f4f1", textAlign: "right" }}>{tr(vk)}</span>
                 </div>
               ))}
             </div>
           </div>
 
-          <Divider />
-
           {/* DESIGN DECISIONS */}
+          <Divider />
           <Label n="02" text={tr("czysto_l2")} />
-          <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr 1fr", gap: "2px", background: "rgba(240,244,241,0.08)", marginBottom: "64px" }}>
-            {[
-              { icon: "🤍", title: "Clean & trustworthy", desc: "White background with green accents. Service businesses need trust at first glance — no clutter, no distractions." },
-              { icon: "🌍", title: "Trilingual from day one", desc: "Warsaw has a large Russian-speaking community. The site supports PL / RU / EN with a simple language switcher in the nav." },
-              { icon: "📱", title: "Mobile-first layout", desc: "Most local service bookings happen on phone. Every section was designed for mobile first, then adapted for desktop." },
-              { icon: "⚡", title: "CTA in every section", desc: "Each section ends with a booking action — scroll depth shouldn't matter. The client should always be one tap away." },
-              { icon: "🎥", title: "Video for equipment", desc: "Instead of just listing machine specs, we embedded short videos showing Kirby, Sabrina and Karcher in action. Trust through proof." },
-              { icon: "🎁", title: "Promo banner logic", desc: "The free window cleaning gift at 1000 zł is surfaced as an orange banner right after the services list — right when the decision happens." },
-            ].map(item => (
-              <div key={item.title} style={{ background: "#050a06", padding: "32px 28px", transition: "background 0.3s" }}
+          <div className="czy-3col" style={{ display: "grid", gridTemplateColumns: "1fr 1fr 1fr", gap: "2px", background: "rgba(240,244,241,0.06)", marginBottom: "0" }}>
+            {([
+              { icon: "🤍", tk: "czysto_dd_1" },
+              { icon: "🌍", tk: "czysto_dd_2" },
+              { icon: "📱", tk: "czysto_dd_3" },
+              { icon: "⚡", tk: "czysto_dd_4" },
+              { icon: "🎥", tk: "czysto_dd_5" },
+              { icon: "🎁", tk: "czysto_dd_6" },
+            ] as { icon: string; tk: string }[]).map(item => (
+              <div key={item.tk} style={{ background: "#050a06", padding: "32px 28px", transition: "background 0.3s" }}
                 onMouseOver={e => (e.currentTarget.style.background = "rgba(26,255,110,0.04)")}
                 onMouseOut={e => (e.currentTarget.style.background = "#050a06")}
               >
                 <div style={{ fontSize: "24px", marginBottom: "14px" }}>{item.icon}</div>
-                <h3 style={{ ...s, fontWeight: 800, fontSize: "17px", color: "#f0f4f1", marginBottom: "10px" }}>{item.title}</h3>
-                <p style={{ ...f, fontSize: "13px", lineHeight: "1.65", color: "rgba(240,244,241,0.45)" }}>{item.desc}</p>
+                <h3 style={{ ...s, fontWeight: 800, fontSize: "17px", color: "#f0f4f1", marginBottom: "10px" }}>{tr(`${item.tk}_title`)}</h3>
+                <p style={{ ...f, fontSize: "13px", lineHeight: "1.65", color: "rgba(240,244,241,0.45)" }}>{tr(`${item.tk}_desc`)}</p>
               </div>
             ))}
           </div>
 
-          {/* ADVANTAGES SCREENSHOT */}
-          <Screenshot src={SCREENS.advantages} alt="Nasze zalety" caption="Advantages section — 6 benefit cards" />
-
+          <Screenshot src={SCREENS.advantages} alt="Nasze zalety" caption="Advantages section" />
           <Divider />
 
           {/* SECTIONS BREAKDOWN */}
           <Label n="03" text={tr("czysto_l3")} />
 
-          {/* Services */}
           <div className="czy-grid" style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "64px", alignItems: "center", marginBottom: "72px" }}>
             <div>
-              <div style={{ ...m, fontSize: "11px", color: "#1aff6e", letterSpacing: "0.15em", marginBottom: "16px" }}>SECTION 01</div>
-              <h3 style={{ ...s, fontWeight: 800, fontSize: "28px", color: "#f0f4f1", marginBottom: "16px", letterSpacing: "-0.02em" }}>What&apos;s included</h3>
-              <p style={{ ...f, fontSize: "16px", lineHeight: "1.75", color: "rgba(240,244,241,0.5)", marginBottom: "16px" }}>
-                The service breakdown is shown with a real process photo on the left and a clean checklist on the right — 3-stage deep cleaning, steam disinfection, stain removal, professional drying.
-              </p>
-              <p style={{ ...f, fontSize: "16px", lineHeight: "1.75", color: "rgba(240,244,241,0.5)" }}>
-                The orange gift banner below creates a natural upsell moment — free window cleaning for orders over 1000 zł.
-              </p>
+              <div style={{ ...m, fontSize: "11px", color: "#1aff6e", letterSpacing: "0.15em", marginBottom: "16px" }}>{tr("czysto_s1_num")}</div>
+              <h3 style={{ ...s, fontWeight: 800, fontSize: "28px", color: "#f0f4f1", marginBottom: "16px", letterSpacing: "-0.02em" }}>{tr("czysto_s1_title")}</h3>
+              <p style={{ ...f, fontSize: "16px", lineHeight: "1.75", color: "rgba(240,244,241,0.5)", marginBottom: "16px" }}>{tr("czysto_s1_p1")}</p>
+              <p style={{ ...f, fontSize: "16px", lineHeight: "1.75", color: "rgba(240,244,241,0.5)" }}>{tr("czysto_s1_p2")}</p>
             </div>
             <Screenshot src={SCREENS.included} alt="Co wchodzi w skład usługi" />
           </div>
 
-          {/* Pricing */}
           <div className="czy-grid" style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "64px", alignItems: "center", marginBottom: "72px" }}>
             <Screenshot src={SCREENS.pricing} alt="Cennik" />
             <div>
-              <div style={{ ...m, fontSize: "11px", color: "#1aff6e", letterSpacing: "0.15em", marginBottom: "16px" }}>SECTION 02</div>
-              <h3 style={{ ...s, fontWeight: 800, fontSize: "28px", color: "#f0f4f1", marginBottom: "16px", letterSpacing: "-0.02em" }}>Transparent pricing</h3>
-              <p style={{ ...f, fontSize: "16px", lineHeight: "1.75", color: "rgba(240,244,241,0.5)", marginBottom: "16px" }}>
-                Pricing is split into two clear cards — Sofas and Mattresses. Green price values stand out against the light card background, making scanning instant.
-              </p>
-              <p style={{ ...f, fontSize: "16px", lineHeight: "1.75", color: "rgba(240,244,241,0.5)" }}>
-                A small note about custom pricing for additional items keeps expectations honest without creating friction.
-              </p>
+              <div style={{ ...m, fontSize: "11px", color: "#1aff6e", letterSpacing: "0.15em", marginBottom: "16px" }}>{tr("czysto_s2_num")}</div>
+              <h3 style={{ ...s, fontWeight: 800, fontSize: "28px", color: "#f0f4f1", marginBottom: "16px", letterSpacing: "-0.02em" }}>{tr("czysto_s2_title")}</h3>
+              <p style={{ ...f, fontSize: "16px", lineHeight: "1.75", color: "rgba(240,244,241,0.5)", marginBottom: "16px" }}>{tr("czysto_s2_p1")}</p>
+              <p style={{ ...f, fontSize: "16px", lineHeight: "1.75", color: "rgba(240,244,241,0.5)" }}>{tr("czysto_s2_p2")}</p>
             </div>
           </div>
 
-          {/* Equipment */}
           <div className="czy-grid" style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "64px", alignItems: "center", marginBottom: "72px" }}>
             <div>
-              <div style={{ ...m, fontSize: "11px", color: "#1aff6e", letterSpacing: "0.15em", marginBottom: "16px" }}>SECTION 03</div>
-              <h3 style={{ ...s, fontWeight: 800, fontSize: "28px", color: "#f0f4f1", marginBottom: "16px", letterSpacing: "-0.02em" }}>Equipment & guarantees</h3>
-              <p style={{ ...f, fontSize: "16px", lineHeight: "1.75", color: "rgba(240,244,241,0.5)", marginBottom: "16px" }}>
-                4 equipment cards (Kirby, Santoemma Sabrina, Karcher, Raypath) each with key specs — each paired with a video demo. Showing the actual machines in action builds credibility far better than copy alone.
-              </p>
-              <p style={{ ...f, fontSize: "16px", lineHeight: "1.75", color: "rgba(240,244,241,0.5)" }}>
-                Below: 3 guarantee icons with OC insurance, property safety, and certified equipment — standard trust signals for a service business.
-              </p>
+              <div style={{ ...m, fontSize: "11px", color: "#1aff6e", letterSpacing: "0.15em", marginBottom: "16px" }}>{tr("czysto_s3_num")}</div>
+              <h3 style={{ ...s, fontWeight: 800, fontSize: "28px", color: "#f0f4f1", marginBottom: "16px", letterSpacing: "-0.02em" }}>{tr("czysto_s3_title")}</h3>
+              <p style={{ ...f, fontSize: "16px", lineHeight: "1.75", color: "rgba(240,244,241,0.5)", marginBottom: "16px" }}>{tr("czysto_s3_p1")}</p>
+              <p style={{ ...f, fontSize: "16px", lineHeight: "1.75", color: "rgba(240,244,241,0.5)" }}>{tr("czysto_s3_p2")}</p>
             </div>
             <Screenshot src={SCREENS.equipment} alt="Sprzęt i gwarancje" />
           </div>
 
-          {/* Contact */}
           <div className="czy-grid" style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "64px", alignItems: "center" }}>
             <Screenshot src={SCREENS.contact} alt="Kontakt" />
             <div>
-              <div style={{ ...m, fontSize: "11px", color: "#1aff6e", letterSpacing: "0.15em", marginBottom: "16px" }}>SECTION 04</div>
-              <h3 style={{ ...s, fontWeight: 800, fontSize: "28px", color: "#f0f4f1", marginBottom: "16px", letterSpacing: "-0.02em" }}>Contact — green gradient CTA</h3>
-              <p style={{ ...f, fontSize: "16px", lineHeight: "1.75", color: "rgba(240,244,241,0.5)", marginBottom: "16px" }}>
-                The footer CTA section uses a bold green-to-teal gradient to stand out from the rest of the page. Three contact options: phone, WhatsApp, and email — covering all preferred contact methods of the target audience.
-              </p>
-              <p style={{ ...f, fontSize: "16px", lineHeight: "1.75", color: "rgba(240,244,241,0.5)" }}>
-                &quot;Working daily 8:00&ndash;20:00, specialist dispatched same day&quot; — these two lines remove the last objection before booking.
-              </p>
+              <div style={{ ...m, fontSize: "11px", color: "#1aff6e", letterSpacing: "0.15em", marginBottom: "16px" }}>{tr("czysto_s4_num")}</div>
+              <h3 style={{ ...s, fontWeight: 800, fontSize: "28px", color: "#f0f4f1", marginBottom: "16px", letterSpacing: "-0.02em" }}>{tr("czysto_s4_title")}</h3>
+              <p style={{ ...f, fontSize: "16px", lineHeight: "1.75", color: "rgba(240,244,241,0.5)", marginBottom: "16px" }}>{tr("czysto_s4_p1")}</p>
+              <p style={{ ...f, fontSize: "16px", lineHeight: "1.75", color: "rgba(240,244,241,0.5)" }}>{tr("czysto_s4_p2")}</p>
             </div>
           </div>
 
@@ -235,26 +198,20 @@ export default function CzystoCase() {
           <Label n="04" text={tr("czysto_l4")} />
           <div className="czy-grid" style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "80px", alignItems: "center" }}>
             <div style={{ display: "flex", flexDirection: "column", gap: "16px" }}>
-              <p style={{ ...f, fontSize: "17px", lineHeight: "1.75", color: "rgba(240,244,241,0.55)" }}>
-                This was my first fully commercial end-to-end project — from brief to live production website. I handled design and development simultaneously, which forced me to think in systems from day one.
-              </p>
-              <p style={{ ...f, fontSize: "17px", lineHeight: "1.75", color: "rgba(240,244,241,0.55)" }}>
-                Building a multilingual site taught me how to structure content and routing cleanly, and how to keep the codebase maintainable when the same UI needs to render in 3 languages.
-              </p>
-              <p style={{ ...f, fontSize: "17px", lineHeight: "1.75", color: "rgba(240,244,241,0.55)" }}>
-                The client received a complete, deployed product — no handoff friction, no separate developer needed. That&apos;s the value of owning the full stack.
-              </p>
+              <p style={{ ...f, fontSize: "17px", lineHeight: "1.75", color: "rgba(240,244,241,0.55)" }}>{tr("czysto_r_p1")}</p>
+              <p style={{ ...f, fontSize: "17px", lineHeight: "1.75", color: "rgba(240,244,241,0.55)" }}>{tr("czysto_r_p2")}</p>
+              <p style={{ ...f, fontSize: "17px", lineHeight: "1.75", color: "rgba(240,244,241,0.55)" }}>{tr("czysto_r_p3")}</p>
             </div>
             <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "2px", background: "rgba(240,244,241,0.08)" }}>
-              {[
-                ["01", "Commercial client"],
-                ["3", "Languages"],
-                ["6", "Page sections"],
-                ["∞", "Cups of tea"],
-              ].map(([n, l]) => (
-                <div key={l} style={{ background: "#050a06", padding: "32px 24px", textAlign: "center" }}>
+              {([
+                ["01", "czysto_stat_1"],
+                ["3",  "czysto_stat_2"],
+                ["6",  "czysto_stat_3"],
+                ["∞",  "czysto_stat_4"],
+              ] as [string, string][]).map(([n, lk]) => (
+                <div key={lk} style={{ background: "#050a06", padding: "32px 24px", textAlign: "center" }}>
                   <div style={{ ...s, fontWeight: 800, fontSize: "44px", color: "#1aff6e", lineHeight: 1, marginBottom: "8px" }}>{n}</div>
-                  <div style={{ ...m, fontSize: "10px", color: "rgba(240,244,241,0.35)", letterSpacing: "0.08em", textTransform: "uppercase" }}>{l}</div>
+                  <div style={{ ...m, fontSize: "10px", color: "rgba(240,244,241,0.35)", letterSpacing: "0.08em", textTransform: "uppercase" }}>{tr(lk)}</div>
                 </div>
               ))}
             </div>
