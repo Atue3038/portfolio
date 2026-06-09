@@ -58,7 +58,8 @@ export default function RentEaseCase() {
       <CursorElements cursorRef={cursorRef} ringRef={ringRef} hovered={hovered} />
       <Lightbox />
 
-      <main style={{ background: "#050a06", minHeight: "100vh", overflowX: "hidden" }}>
+      <main style={{ background: "#050a06", minHeight: "100vh" }}>
+        <div style={{ overflowX: "hidden" }}>
 
         <CaseNav onEnter={onEnter} onLeave={onLeave} />
 
@@ -245,6 +246,7 @@ export default function RentEaseCase() {
         </div>
         <CaseContact onEnter={onEnter} onLeave={onLeave} />
         <CaseFooter prevHref="/works/czysto" prevLabel="CZYSTO CLEANER" nextHref="/works/vimeworld" nextLabel="VIMEWORLD" onEnter={onEnter} onLeave={onLeave} />
+        </div>
       </main>
     </>
   );

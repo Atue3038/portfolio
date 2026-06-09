@@ -61,7 +61,8 @@ export default function VimeworldCase() {
         }
       `}</style>
 
-      <main style={{ background: "var(--bg)", minHeight: "100vh", overflowX: "hidden" }}>
+      <main style={{ background: "var(--bg)", minHeight: "100vh" }}>
+        <div style={{ overflowX: "hidden" }}>
 
         <CaseNav onEnter={onEnter} onLeave={onLeave} />
 
@@ -162,6 +163,7 @@ export default function VimeworldCase() {
         <CaseContact onEnter={onEnter} onLeave={onLeave} />
         <CaseFooter prevHref="/#works" prevLabel="ALL WORKS" nextHref="/works/lectra" nextLabel="LECTRA" onEnter={onEnter} onLeave={onLeave} />
 
+        </div>
       </main>
     </>
   );

@@ -59,7 +59,8 @@ export default function CzystoCase() {
     <>
       <CursorElements cursorRef={cursorRef} ringRef={ringRef} hovered={hovered} />
       <Lightbox />
-      <main style={{ background: "#050a06", minHeight: "100vh", overflowX: "hidden" }}>
+      <main style={{ background: "#050a06", minHeight: "100vh" }}>
+        <div style={{ overflowX: "hidden" }}>
         <CaseNav onEnter={onEnter} onLeave={onLeave} />
         <style>{`
           @media (max-width: 768px) {
@@ -222,6 +223,7 @@ export default function CzystoCase() {
         </div>
         <CaseContact onEnter={onEnter} onLeave={onLeave} />
         <CaseFooter prevHref="/works/lectra" prevLabel="LECTRA" nextHref="/works/rentease" nextLabel="RENTEASE" onEnter={onEnter} onLeave={onLeave} />
+        </div>
       </main>
     </>
   );
