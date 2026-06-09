@@ -118,6 +118,56 @@ export default function Home() {
       <div ref={cursorRef} className="cursor" style={{ transform: `translate(-50%,-50%) scale(${hovered ? 3 : 1})`, background: hovered ? "transparent" : "var(--green)", border: hovered ? "1px solid var(--green)" : "none" }} />
       <div ref={ringRef} className="cursor-ring" style={{ width: hovered ? 56 : 36, height: hovered ? 56 : 36 }} />
 
+      {/* ── NAV — outside main to prevent stacking context issues ── */}
+      <nav className="main-nav" style={{
+        position: "fixed", top: 0, left: 0, right: 0, zIndex: 9000,
+        padding: "20px 48px", display: "flex", justifyContent: "space-between",
+        alignItems: "center", backdropFilter: "blur(16px)",
+        borderBottom: "1px solid var(--border)",
+        background: "rgba(5,10,6,0.92)",
+        WebkitBackdropFilter: "blur(16px)",
+      }}>
+        <span style={{ fontFamily: "'DM Mono', monospace", fontSize: "13px", color: "var(--green)", letterSpacing: "0.1em" }}>OK.DESIGN</span>
+        <div className="nav-links" style={{ display: "flex", gap: "32px" }}>
+          {([
+            [tr("nav_works"), "#works", "works"],
+            [tr("nav_about"), "#about", "about"],
+            [tr("nav_contact"), "#contact", "contact"],
+          ] as [string, string, string][]).map(([l, h, id]) => (
+            <a key={id} href={h} onMouseEnter={onEnter} onMouseLeave={onLeave}
+              className={`nav-link-anim${activeSection === id ? " active" : ""}`}
+              style={{ fontFamily: "'DM Mono', monospace", fontSize: "13px", color: activeSection === id ? "var(--white)" : "var(--muted)", textDecoration: "none", letterSpacing: "0.05em", transition: "color 0.2s" }}
+              onMouseOver={e => (e.currentTarget.style.color = "var(--white)")}
+              onMouseOut={e => (e.currentTarget.style.color = activeSection === id ? "var(--white)" : "var(--muted)")}
+            >{l}</a>
+          ))}
+        </div>
+        <div style={{ display: "flex", alignItems: "center", gap: "16px" }}>
+          <div className="nav-status" style={{ fontFamily: "'DM Mono', monospace", fontSize: "11px", color: "var(--muted)" }}>
+            <span style={{ animation: "blink 1.2s infinite", color: "var(--green)" }}>●</span>&nbsp;{tr("nav_available")}
+          </div>
+          <div style={{ display: "flex", gap: "4px" }}>
+            {(["en", "ua", "ru"] as Lang[]).map(l => <LangBtn key={l} l={l} />)}
+          </div>
+        </div>
+        <button className="nav-hamburger" onClick={() => setMenuOpen(!menuOpen)}
+          style={{ background: "none", border: "none", cursor: "pointer", display: "none", flexDirection: "column", gap: "5px", padding: "4px" }}>
+          {[0,1,2].map(i => <div key={i} style={{ width: "22px", height: "2px", background: menuOpen && i === 1 ? "transparent" : "var(--white)", transition: "all 0.3s",
+            transform: menuOpen ? (i === 0 ? "rotate(45deg) translate(5px, 5px)" : i === 2 ? "rotate(-45deg) translate(5px, -5px)" : "") : "" }} />)}
+        </button>
+      </nav>
+
+      {/* Mobile menu */}
+      <div className="mobile-menu">
+        {[
+          [tr("nav_works"), "#works"],
+          [tr("nav_about"), "#about"],
+          [tr("nav_contact"), "#contact"],
+        ].map(([l, h]) => (
+          <a key={l} href={h} onClick={() => setMenuOpen(false)}>{l}</a>
+        ))}
+      </div>
+
       {/* ── GLOBAL MOBILE STYLES ── */}
       <style>{`
         /* NAV */
@@ -251,45 +301,6 @@ export default function Home() {
       `}</style>
 
       <main style={{ background: "var(--bg)", minHeight: "100vh" }}>
-
-        {/* ── NAV ── */}
-        <nav className="main-nav" style={{
-          position: "fixed", top: 0, left: 0, right: 0, zIndex: 9000,
-          padding: "20px 48px", display: "flex", justifyContent: "space-between",
-          alignItems: "center", backdropFilter: "blur(16px)",
-          borderBottom: "1px solid var(--border)",
-          background: "rgba(5,10,6,0.92)",
-          WebkitBackdropFilter: "blur(16px)",
-        }}>
-          <span style={{ fontFamily: "'DM Mono', monospace", fontSize: "13px", color: "var(--green)", letterSpacing: "0.1em" }}>OK.DESIGN</span>
-          <div className="nav-links" style={{ display: "flex", gap: "32px" }}>
-            {([
-              [tr("nav_works"), "#works", "works"],
-              [tr("nav_about"), "#about", "about"],
-              [tr("nav_contact"), "#contact", "contact"],
-            ] as [string, string, string][]).map(([l, h, id]) => (
-              <a key={id} href={h} onMouseEnter={onEnter} onMouseLeave={onLeave}
-                className={`nav-link-anim${activeSection === id ? " active" : ""}`}
-                style={{ fontFamily: "'DM Mono', monospace", fontSize: "13px", color: activeSection === id ? "var(--white)" : "var(--muted)", textDecoration: "none", letterSpacing: "0.05em", transition: "color 0.2s" }}
-                onMouseOver={e => (e.currentTarget.style.color = "var(--white)")}
-                onMouseOut={e => (e.currentTarget.style.color = activeSection === id ? "var(--white)" : "var(--muted)")}
-              >{l}</a>
-            ))}
-          </div>
-          <div style={{ display: "flex", alignItems: "center", gap: "16px" }}>
-            <div className="nav-status" style={{ fontFamily: "'DM Mono', monospace", fontSize: "11px", color: "var(--muted)" }}>
-              <span style={{ animation: "blink 1.2s infinite", color: "var(--green)" }}>●</span>&nbsp;{tr("nav_available")}
-            </div>
-            <div style={{ display: "flex", gap: "4px" }}>
-              {(["en", "ua", "ru"] as Lang[]).map(l => <LangBtn key={l} l={l} />)}
-            </div>
-          </div>
-          <button className="nav-hamburger" onClick={() => setMenuOpen(!menuOpen)}
-            style={{ background: "none", border: "none", cursor: "pointer", display: "none", flexDirection: "column", gap: "5px", padding: "4px" }}>
-            {[0,1,2].map(i => <div key={i} style={{ width: "22px", height: "2px", background: menuOpen && i === 1 ? "transparent" : "var(--white)", transition: "all 0.3s",
-              transform: menuOpen ? (i === 0 ? "rotate(45deg) translate(5px, 5px)" : i === 2 ? "rotate(-45deg) translate(5px, -5px)" : "") : "" }} />)}
-          </button>
-        </nav>
 
         {/* Mobile menu */}
         <div className="mobile-menu">

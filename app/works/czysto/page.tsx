@@ -60,8 +60,8 @@ export default function CzystoCase() {
       <CursorElements cursorRef={cursorRef} ringRef={ringRef} hovered={hovered} />
       <Lightbox />
       <main style={{ background: "#050a06", minHeight: "100vh" }}>
-        <div style={{ overflowX: "hidden" }}>
         <CaseNav onEnter={onEnter} onLeave={onLeave} />
+        <div style={{ overflowX: "hidden" }}>
         <style>{`
           @media (max-width: 768px) {
             .czy-inner { padding: 120px 20px 80px !important; }

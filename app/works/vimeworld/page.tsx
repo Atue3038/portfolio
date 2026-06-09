@@ -62,9 +62,8 @@ export default function VimeworldCase() {
       `}</style>
 
       <main style={{ background: "var(--bg)", minHeight: "100vh" }}>
-        <div style={{ overflowX: "hidden" }}>
-
         <CaseNav onEnter={onEnter} onLeave={onLeave} />
+        <div style={{ overflowX: "hidden" }}>
 
         {/* ── HERO ── */}
         <section style={{ padding: "140px 0 80px" }}>

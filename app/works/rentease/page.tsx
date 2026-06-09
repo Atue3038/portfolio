@@ -59,9 +59,8 @@ export default function RentEaseCase() {
       <Lightbox />
 
       <main style={{ background: "#050a06", minHeight: "100vh" }}>
-        <div style={{ overflowX: "hidden" }}>
-
         <CaseNav onEnter={onEnter} onLeave={onLeave} />
+        <div style={{ overflowX: "hidden" }}>
 
         <style>{`
           @media (max-width: 768px) {
