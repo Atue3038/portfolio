@@ -143,80 +143,43 @@ export function CaseNav({
 }) {
   const [menuOpen, setMenuOpen] = useState(false);
   const { tr } = useLang();
+  const [mounted, setMounted] = useState(false);
 
-  return (
+  useEffect(() => { setMounted(true); }, []);
+
+  const navContent = (
     <>
-      <style>{`
-        .case-nav-links { display: flex; gap: 32px; }
-        .case-nav-status { display: block; }
-        .case-nav-hamburger { display: none !important; }
-        .case-mobile-menu { display: none !important; }
-        @media (max-width: 768px) {
-          .case-nav-links { display: none !important; }
-          .case-nav-status { display: none !important; }
-          .case-nav-hamburger { display: flex !important; }
-          .case-mobile-menu { display: ${menuOpen ? "flex" : "none"} !important; }
-          .case-nav { padding: 16px 20px !important; }
-        }
-        .case-mobile-menu {
-          position: fixed; top: 61px; left: 0; right: 0;
-          background: rgba(5,10,6,0.97); backdrop-filter: blur(12px);
-          flex-direction: column; padding: 24px 20px; gap: 0;
-          border-bottom: 1px solid var(--border); z-index: 49;
-        }
-        .case-mobile-menu a {
-          padding: 16px 0; font-family: 'DM Mono', monospace;
-          font-size: 14px; color: var(--white); text-decoration: none;
-          border-bottom: 1px solid var(--border); letter-spacing: 0.08em;
-        }
-      `}</style>
-
       <nav
         className="case-nav"
         style={{
-          position: "fixed", top: 0, left: 0, right: 0, zIndex: 9000,
-          padding: "20px 48px", display: "flex", justifyContent: "space-between",
-          alignItems: "center", backdropFilter: "blur(16px)",
-          WebkitBackdropFilter: "blur(16px)",
+          position: "fixed", top: 0, left: 0, right: 0, zIndex: 9999,
+          padding: "0 48px", height: "61px", display: "flex",
+          justifyContent: "space-between", alignItems: "center",
+          backdropFilter: "blur(16px)", WebkitBackdropFilter: "blur(16px)",
           borderBottom: "1px solid var(--border)",
           background: "rgba(5,10,6,0.92)",
         }}
       >
         {/* Left: logo + back */}
         <div style={{ display: "flex", alignItems: "center", gap: 24 }}>
-          <Link
-            href="/"
-            onMouseEnter={onEnter}
-            onMouseLeave={onLeave}
+          <Link href="/" onMouseEnter={onEnter} onMouseLeave={onLeave}
             style={{ fontFamily: "'DM Mono', monospace", fontSize: "13px", color: "var(--green)", letterSpacing: ".1em", textDecoration: "none" }}
-          >
-            OK.DESIGN
-          </Link>
-          <Link
-            href={backHref}
-            onMouseEnter={onEnter}
-            onMouseLeave={onLeave}
-            style={{
-              fontFamily: "'DM Mono', monospace", fontSize: "11px",
-              color: "var(--muted)", letterSpacing: ".1em", textDecoration: "none",
-              display: "flex", alignItems: "center", gap: 6,
-              transition: "color .2s",
-            }}
+          >OK.DESIGN</Link>
+          <Link href={backHref} onMouseEnter={onEnter} onMouseLeave={onLeave}
+            style={{ fontFamily: "'DM Mono', monospace", fontSize: "11px", color: "var(--muted)", letterSpacing: ".1em", textDecoration: "none", display: "flex", alignItems: "center", gap: 6, transition: "color .2s" }}
             onMouseOver={e => (e.currentTarget.style.color = "var(--white)")}
             onMouseOut={e => (e.currentTarget.style.color = "var(--muted)")}
-          >
-            ← BACK
-          </Link>
+          >← BACK</Link>
         </div>
 
-        <div className="case-nav-links">
+        {/* Center: links */}
+        <div className="case-nav-links" style={{ display: "flex", gap: "32px" }}>
           {([
             [tr("nav_works"), "/#works"],
             [tr("nav_about"), "/#about"],
             [tr("nav_contact"), "/#contact"],
           ] as [string, string][]).map(([l, h]) => (
-            <a key={l} href={h}
-              onMouseEnter={onEnter} onMouseLeave={onLeave}
+            <a key={l} href={h} onMouseEnter={onEnter} onMouseLeave={onLeave}
               style={{ fontFamily: "'DM Mono', monospace", fontSize: "13px", color: "var(--muted)", textDecoration: "none", letterSpacing: ".05em", transition: "color .2s" }}
               onMouseOver={e => (e.currentTarget.style.color = "var(--white)")}
               onMouseOut={e => (e.currentTarget.style.color = "var(--muted)")}
@@ -224,41 +187,50 @@ export function CaseNav({
           ))}
         </div>
 
-        <span className="case-nav-status" style={{ fontFamily: "'DM Mono', monospace", fontSize: "11px", color: "var(--muted)" }}>
-          <span style={{ animation: "blink 1.2s infinite", color: "var(--green)" }}>●</span>&nbsp;{tr("nav_available")}
-        </span>
-
-        <LangSwitcher onEnter={onEnter} onLeave={onLeave} />
-
-        {/* Hamburger */}
-        <button
-          className="case-nav-hamburger"
-          onClick={() => setMenuOpen(!menuOpen)}
-          style={{ background: "none", border: "none", cursor: "pointer", flexDirection: "column", gap: "5px", padding: "4px" }}
-        >
-          {[0, 1, 2].map(i => (
-            <div key={i} style={{
-              width: "22px", height: "2px",
-              background: menuOpen && i === 1 ? "transparent" : "var(--white)",
-              transition: "all 0.3s",
-              transform: menuOpen ? (i === 0 ? "rotate(45deg) translate(5px, 5px)" : i === 2 ? "rotate(-45deg) translate(5px, -5px)" : "") : "",
-            }} />
-          ))}
-        </button>
+        {/* Right: status + lang + hamburger */}
+        <div style={{ display: "flex", alignItems: "center", gap: 16 }}>
+          <span className="case-nav-status" style={{ fontFamily: "'DM Mono', monospace", fontSize: "11px", color: "var(--muted)", whiteSpace: "nowrap" }}>
+            <span style={{ animation: "blink 1.2s infinite", color: "var(--green)" }}>●</span>&nbsp;{tr("nav_available")}
+          </span>
+          <LangSwitcher onEnter={onEnter} onLeave={onLeave} />
+          <button className="case-nav-hamburger"
+            onClick={() => setMenuOpen(!menuOpen)}
+            style={{ background: "none", border: "none", cursor: "pointer", flexDirection: "column", gap: "5px", padding: "4px", display: "none" }}
+          >
+            {[0, 1, 2].map(i => (
+              <div key={i} style={{ width: "22px", height: "2px", background: menuOpen && i === 1 ? "transparent" : "var(--white)", transition: "all 0.3s",
+                transform: menuOpen ? (i === 0 ? "rotate(45deg) translate(5px, 5px)" : i === 2 ? "rotate(-45deg) translate(5px, -5px)" : "") : "" }} />
+            ))}
+          </button>
+        </div>
       </nav>
 
       {/* Mobile menu */}
-      <div className="case-mobile-menu">
+      <div style={{
+        position: "fixed", top: "61px", left: 0, right: 0, zIndex: 9998,
+        background: "rgba(5,10,6,0.97)", backdropFilter: "blur(12px)",
+        flexDirection: "column", padding: "24px 20px", gap: 0,
+        borderBottom: "1px solid var(--border)",
+        display: menuOpen ? "flex" : "none",
+      }}>
         {([
           [tr("nav_works"), "/#works"],
           [tr("nav_about"), "/#about"],
           [tr("nav_contact"), "/#contact"],
         ] as [string, string][]).map(([l, h]) => (
-          <a key={l} href={h} onClick={() => setMenuOpen(false)}>{l}</a>
+          <a key={l} href={h} onClick={() => setMenuOpen(false)}
+            style={{ padding: "16px 0", fontFamily: "'DM Mono', monospace", fontSize: "14px", color: "var(--white)", textDecoration: "none", borderBottom: "1px solid var(--border)", letterSpacing: "0.08em" }}
+          >{l}</a>
         ))}
       </div>
     </>
   );
+
+  if (!mounted) return null;
+
+  // Render nav directly into body via portal — bypasses all stacking contexts
+  const { createPortal } = require("react-dom");
+  return createPortal(navContent, document.body);
 }
 
 export function CaseContact({
