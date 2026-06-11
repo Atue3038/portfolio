@@ -160,6 +160,15 @@ export function CaseNav({
           background: "rgba(5,10,6,0.92)",
         }}
       >
+        <style>{`
+          @media (max-width: 768px) {
+            .case-nav { padding: 0 20px !important; }
+            .case-nav-center { display: none !important; }
+            .case-nav-right { display: none !important; }
+            .case-nav-hamburger { display: flex !important; }
+          }
+        `}</style>
+
         {/* Left: logo + back */}
         <div style={{ display: "flex", alignItems: "center", gap: 24 }}>
           <Link href="/" onMouseEnter={onEnter} onMouseLeave={onLeave}
@@ -173,7 +182,7 @@ export function CaseNav({
         </div>
 
         {/* Center: links */}
-        <div className="case-nav-links" style={{ display: "flex", gap: "32px" }}>
+        <div className="case-nav-center" style={{ display: "flex", gap: "32px" }}>
           {([
             [tr("nav_works"), "/#works"],
             [tr("nav_about"), "/#about"],
@@ -189,10 +198,10 @@ export function CaseNav({
 
         {/* Right: status + lang + hamburger */}
         <div style={{ display: "flex", alignItems: "center", gap: 16 }}>
-          <span className="case-nav-status" style={{ fontFamily: "'DM Mono', monospace", fontSize: "11px", color: "var(--muted)", whiteSpace: "nowrap" }}>
+          <span className="case-nav-right" style={{ fontFamily: "'DM Mono', monospace", fontSize: "11px", color: "var(--muted)", whiteSpace: "nowrap" }}>
             <span style={{ animation: "blink 1.2s infinite", color: "var(--green)" }}>●</span>&nbsp;{tr("nav_available")}
           </span>
-          <LangSwitcher onEnter={onEnter} onLeave={onLeave} />
+          <div className="case-nav-right"><LangSwitcher onEnter={onEnter} onLeave={onLeave} /></div>
           <button className="case-nav-hamburger"
             onClick={() => setMenuOpen(!menuOpen)}
             style={{ background: "none", border: "none", cursor: "pointer", flexDirection: "column", gap: "5px", padding: "4px", display: "none" }}
@@ -242,22 +251,29 @@ export function CaseContact({
 }) {
   const { tr } = useLang();
   return (
-    <section style={{ borderTop: "1px solid var(--border)", marginTop: 100, padding: "100px 0 120px" }}>
-      <div style={{ maxWidth: 1200, margin: "0 auto", padding: "0 48px" }}>
-        <div style={{ display: "flex", alignItems: "center", gap: "16px", marginBottom: "56px" }}>
+    <section style={{ borderTop: "1px solid var(--border)", marginTop: 100, padding: "80px 0 100px" }}>
+      <style>{`
+        @media (max-width: 768px) {
+          .case-contact-grid { grid-template-columns: 1fr !important; gap: 40px !important; }
+          .case-contact-wrap { padding: 0 20px !important; }
+          .case-contact-hint { display: none !important; }
+        }
+      `}</style>
+      <div className="case-contact-wrap" style={{ maxWidth: 1200, margin: "0 auto", padding: "0 48px" }}>
+        <div style={{ display: "flex", alignItems: "center", gap: "16px", marginBottom: "48px" }}>
           <span style={{ fontFamily: "'DM Mono', monospace", fontSize: "11px", color: "var(--green)", letterSpacing: ".15em" }}>{tr("contact_label")}</span>
           <div style={{ flex: 1, height: "1px", background: "var(--border)" }} />
         </div>
-        <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 80, alignItems: "center" }}>
+        <div className="case-contact-grid" style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 80, alignItems: "start" }}>
           <div>
-            <h2 style={{ fontFamily: "'Unbounded', sans-serif", fontWeight: 800, fontSize: "clamp(32px,4.5vw,56px)", lineHeight: 1.05, letterSpacing: "-.03em", color: "var(--white)", marginBottom: 20 }}>
+            <h2 style={{ fontFamily: "'Unbounded', sans-serif", fontWeight: 800, fontSize: "clamp(28px,4.5vw,52px)", lineHeight: 1.1, letterSpacing: "-.03em", color: "var(--white)", marginBottom: 20 }}>
               {tr("contact_h")}<br /><span style={{ color: "var(--green)" }}>{tr("contact_h_accent")}</span>
             </h2>
             <p style={{ fontFamily: "'Space Grotesk', sans-serif", fontSize: 16, color: "var(--muted)", lineHeight: 1.7, maxWidth: 360 }}>
               {tr("contact_p")}
             </p>
           </div>
-          <div style={{ display: "flex", flexDirection: "column", gap: 16 }}>
+          <div style={{ display: "flex", flexDirection: "column", gap: 12 }}>
             {[
               { label: "Telegram",  hintKey: "tg_hint", href: LINKS.telegram,  primary: true  },
               { label: "Instagram", hintKey: "ig_hint", href: LINKS.instagram, primary: false },
@@ -268,16 +284,16 @@ export function CaseContact({
                 rel="noreferrer"
                 onMouseEnter={onEnter} onMouseLeave={onLeave}
                 className="liquid-border"
-                style={{ display: "flex", justifyContent: "space-between", alignItems: "center", padding: primary ? "26px 24px" : "22px 24px", textDecoration: "none", borderRadius: 2, transition: "background .2s" }}
+                style={{ display: "flex", justifyContent: "space-between", alignItems: "center", padding: primary ? "22px 20px" : "18px 20px", textDecoration: "none", borderRadius: 2, transition: "background .2s" }}
                 onMouseOver={e => (e.currentTarget.style.background = "rgba(26,255,110,.05)")}
                 onMouseOut={e => (e.currentTarget.style.background = "transparent")}
               >
-                <div style={{ display: "flex", alignItems: "center", gap: 12 }}>
-                  <span style={{ fontFamily: "'Unbounded', sans-serif", fontWeight: 700, fontSize: primary ? 20 : 18, color: "var(--white)" }}>{label}</span>
-                  {primary && <span style={{ fontFamily: "'DM Mono', monospace", fontSize: 10, color: "var(--green)", border: "1px solid rgba(26,255,110,0.4)", padding: "2px 8px", letterSpacing: "0.1em" }}>PRIMARY</span>}
+                <div style={{ display: "flex", alignItems: "center", gap: 10 }}>
+                  <span style={{ fontFamily: "'Unbounded', sans-serif", fontWeight: 700, fontSize: primary ? 18 : 16, color: "var(--white)" }}>{label}</span>
+                  {primary && <span style={{ fontFamily: "'DM Mono', monospace", fontSize: 9, color: "var(--green)", border: "1px solid rgba(26,255,110,0.4)", padding: "2px 6px", letterSpacing: "0.1em", whiteSpace: "nowrap" }}>PRIMARY</span>}
                 </div>
-                <div style={{ display: "flex", alignItems: "center", gap: 12 }}>
-                  <span style={{ fontFamily: "'DM Mono', monospace", fontSize: 11, color: "var(--muted)" }}>{tr(hintKey as any)}</span>
+                <div style={{ display: "flex", alignItems: "center", gap: 10 }}>
+                  <span className="case-contact-hint" style={{ fontFamily: "'DM Mono', monospace", fontSize: 11, color: "var(--muted)" }}>{tr(hintKey as any)}</span>
                   <span style={{ color: "var(--green)", fontSize: 18 }}>→</span>
                 </div>
               </a>

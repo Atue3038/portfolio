@@ -220,7 +220,7 @@ export default function LectraCase() {
 
         {/* ── OVERVIEW ── */}
         <Label n="01" text={tr("lectra_l1")} />
-        <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "80px", alignItems: "start" }}>
+        <div className="lectra-grid" style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "80px", alignItems: "start" }}>
           <div style={{ display: "flex", flexDirection: "column", gap: "16px" }}>
             <p style={{ ...f, fontSize: "17px", lineHeight: "1.75", color: "rgba(240,244,241,0.55)" }}>
               {tr("lectra_ov_p1")}
