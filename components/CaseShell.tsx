@@ -418,7 +418,6 @@ export function Lightbox() {
           boxShadow: "0 32px 80px rgba(0,0,0,0.6)",
           cursor: "default",
           imageRendering: "auto",
-          WebkitImageRendering: "auto" as any,
           animation: "fadeIn 0.25s ease both",
         }}
       />
