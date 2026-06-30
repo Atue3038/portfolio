@@ -1,5 +1,4 @@
 "use client";
-import Image from "next/image";
 import Link from "next/link";
 import { useEffect, useRef, useState } from "react";
 import { useCursor, CursorElements, CaseNav, CaseContact, CaseFooter, Lightbox } from "@/components/CaseShell";
@@ -26,7 +25,7 @@ function Phone({ src, label }: { src: string; label: string }) {
       <div className="phone-outer">
         {/* Inner wrapper — clips the image */}
         <div style={{ width: "200px", borderRadius: "30px", overflow: "hidden", position: "relative", zIndex: 1 }}>
-          <Image src={src} alt={label} width={390} height={844} className="img-loaded lb" style={{ width: "100%", height: "auto", display: "block", cursor: "zoom-in" }} unoptimized />
+          <img src={src} alt={label} className="img-loaded lb" style={{ width: "100%", height: "auto", display: "block", cursor: "zoom-in" }} />
         </div>
       </div>
       <span style={{ ...m, fontSize: "10px", color: "rgba(240,244,241,0.4)", letterSpacing: "0.08em" }}>{label}</span>
