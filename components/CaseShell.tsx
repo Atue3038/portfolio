@@ -412,11 +412,14 @@ export function Lightbox() {
         className="img-loaded"
         style={{
           maxWidth: "90vw", maxHeight: "88vh",
+          width: "auto", height: "auto",
           objectFit: "contain", borderRadius: 4,
           border: "1px solid rgba(240,244,241,0.12)",
           boxShadow: "0 32px 80px rgba(0,0,0,0.6)",
           cursor: "default",
-          animation: "fadeUp 0.25s cubic-bezier(0,0,0.2,1) both",
+          imageRendering: "auto",
+          WebkitImageRendering: "auto" as any,
+          animation: "fadeIn 0.25s ease both",
         }}
       />
 

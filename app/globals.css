@@ -196,18 +196,9 @@ body::before {
 img {
   opacity: 0;
   transition: opacity 0.4s ease;
-  /* Crisp rendering for UI screenshots */
-  image-rendering: -webkit-optimize-contrast;
-  image-rendering: crisp-edges;
 }
 img.img-loaded {
   opacity: 1;
-}
-
-/* Case study screenshots — full quality */
-.case-img {
-  image-rendering: auto;
-  -webkit-font-smoothing: antialiased;
 }
 
 /* Stagger delays for children inside .reveal-group */
