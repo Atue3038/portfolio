@@ -201,6 +201,15 @@ img.img-loaded {
   opacity: 1;
 }
 
+/* High-quality downscale for screenshots shown at small sizes —
+   default browser downscale algorithm on AMD/some GPUs produces
+   visible blur when shrinking large screenshots into small cards.
+   "high-quality" forces a better (often Lanczos-like) resampling. */
+img.lb {
+  image-rendering: -webkit-optimize-contrast;
+  image-rendering: high-quality;
+}
+
 /* Stagger delays for children inside .reveal-group */
 .reveal-group .reveal:nth-child(1) { transition-delay: 0ms;   }
 .reveal-group .reveal:nth-child(2) { transition-delay: 80ms;  }
